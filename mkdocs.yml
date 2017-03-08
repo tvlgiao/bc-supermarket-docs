@@ -1,0 +1,23 @@
+site_name: "BigCommerce Theme Modez - User Guide"
+pages:
+- Home: index.md
+- Install the theme: installation.md
+- Customize the homepages: customization.md
+- Block Sections: sections.md
+- Theme Settings: settings.md
+- Help & Support: support.md
+theme: readthedocs
+
+extra_css:
+  - https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
+  - css/style.css
+extra_javascript:
+  - https://use.fontawesome.com/540034d990.js
+
+markdown_extensions:
+- toc:
+    permalink: True
+    separator: "-"
+- sane_lists
+- extra
+- fenced_code
