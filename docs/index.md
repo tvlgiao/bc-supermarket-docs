@@ -1,13 +1,13 @@
-# User Guide - BigCommerce Theme Modez
+# User Guide - BigCommerce Theme LaParis
 
-Theme Version: 0.1.4 (2017-03-08)
+Theme Version: 0.1.0 (2017-03-23)
 
-Theme designed and developed by Codespot Software JSC - <https://www.emthemes.com/>.
+Theme designed and developed by [papathemes](http://papathemes.com) 
 
 ## User Guide Contents
 
 * [Install the theme](installation.md)
-* [Customize the homepages](customization.md)
-* [Block Sections](sections.md)
+* [Quick Start Guide](quickstart.md)
+* [Customization](customization.md)
 * [Theme Settings](settings.md)
 * [Help & Support](support.md)

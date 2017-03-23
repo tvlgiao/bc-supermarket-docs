@@ -1,9 +1,9 @@
-site_name: "BigCommerce Theme Modez - User Guide"
+site_name: "BigCommerce Theme LaParis - User Guide"
 pages:
 - Home: index.md
 - Install the theme: installation.md
-- Customize the homepages: customization.md
-- Block Sections: sections.md
+- Quick Start Guide: quickstart.md
+- Customization: customization.md
 - Theme Settings: settings.md
 - Help & Support: support.md
 theme: readthedocs

@@ -1,20 +1,20 @@
-# Theme Customization
+# Customization
 
-This page will instruct you how to edit the homepages.
-
-- How to edit content, images, banners.
-- How to rearrange position of each sections on homepage, hide or show more sections.
-- How to configure options of each section like number of products, products carousel, grid, list...
+This page will explain all configuration available and how to edit each section appear on theme. Let's view the first homepage.
 
 ![Homepage of Default Style](img/home1.jpg)
 
-Now let go through from top down:
+
+
+
+
+
 
 ## Top Banner
 
 ![Top Banner](img/home1-top-banner.png)
 
-The top banner can be showed / edited in admin page > Marketing > Banners. When you add / edit remember to choose __Location__ is __Top of Page__.
+The top banner can be showed / edited in admin page > __Marketing__ > __Banners__. When you add / edit remember to choose __Location__ is __Top of Page__.
 
 ### Colors Customization
 
@@ -25,6 +25,7 @@ To customize colors of this section, go to admin page > __Storefront Design__ > 
 Look into the options showing below:
 
 ![Theme editor top banner](img/theme-editor-top-banner.png)
+
 
 
 ## Header
@@ -45,11 +46,30 @@ To configure, open the __Theme Editor__, scroll down to section __Logo__, click 
 
 ![Change logo position](img/change-logo-position.png)
 
+### Edit 3 info text blocks
+![Header info text](img/home1-infobar.png)
+
+Show or hide these text blocks in Theme Editor > __Header__ section as showing below: 
+![Theme editor top info bar](img/theme-editor-top-info-bar.png)
+
+Edit content in the language file, from admin page > __Storefront Design__ > __My Themes__, click button __Advanced__ > __Edit Theme Files__ of the current theme:
+
+![Edit theme files](img/edit-theme-files.png)
+
+From the left navigation, click to edit the language file (e.i `en.json`):
+
+![Edit language file](img/edit-language-top-info-text.png)
+
+Edit the text as figured above.
+
+
 ### Colors Customization
 
 To customize colors of the header section, look into the options showing below in the Theme Editor:
 
 ![Theme editor header](img/theme-editor-header.png)
+
+
 
 
 ## Main Slideshow / Carousel
@@ -79,57 +99,192 @@ To customize color of the slideshow's elements, look into section __Carousel__ i
 To hide the slideshow on homepage, uncheck on the checkbox __Show Carousel__ in section __Carousel__ of the Theme Editor.
 
 
-## Homepage Body / Sections
 
-The homepage's body is divided into __block sections__ (aka __sections__), This theme supports up to 10 sections. You can customize which content to show on each section in the Theme Editor:
 
-![Theme editor homepage sections](img/theme-editor-homepage-sections.png)
 
-With this feature you can build your own store with a unique layout easily without edit the theme source code. No technical knowledge needed.
+## 3 Banners
 
-We will go through each section's options and customization more details in the chapter [Sections](sections.md).
+![3 Banners LaParis Style 1](img/home1-banner-laparis1.jpg)
 
-## New Products Section
+To edit content and images of 3 banners, edit the language file `en.json` as showing below:
 
-![New products](img/home1-new-products.png)
+![Edit language banner LaParis1](img/edit-language-banner-laparis1.png)
 
-See how to configure in chapter [Sections > New / Featured / Popular Products Blocks](sections.md#new-featured-popular-products-blocks)
+If you don't want to show any elements of a banner, for example the button, leave the value __a single space__ character. Example: `"button": " "`.
 
-## 2 Banners 2/3 & 1/3 Column Section
 
-![2 Banners](img/home1-banners-2313.png)
+## New / Featured / Popular Products
 
-See how to configure in chapter [Sections > Image Banners](sections.md#image-banners)
+The theme supports 3 layout type of New Products, Featured Products and Popular Products blocks:
 
-## Featured Products Section
+__Grid__:
 
-![Featured products](img/home1-featured-products.png)
+![Products Grid](img/home1-products-grid.jpg)
 
-See how to configure in chapter [Sections > New / Featured / Popular Products Blocks](sections.md#new-featured-popular-products-blocks)
+__List__:
 
-## 3 Banners 1/3 Column Section
+![Products Grid](img/home1-products-list.jpg)
 
-![3 Banners](img/home1-3-banners.png)
+__Carousel__:
 
-See how to configure in chapter [Sections > Image Banners](sections.md#image-banners)
+![Products Grid](img/home1-products-carousel.jpg)
 
-## Popular Products Section
 
-![Popular products](img/home1-popular-products.png)
+### Configure a Layout Type of products block & Number of Products to show up
 
-See how to configure in chapter [Sections > New / Featured / Popular Products Blocks](sections.md#new-featured-popular-products-blocks)
+In the __Theme Editor__ > __Homepage__, look into __New Products__ section (or __Featured Products__, __Most Popular Products__):
 
-## Instagram Photos Section
+- __Display type__: Choose appropriate layout type (__Grid__, __List__ or __Carousel__).
+- __Number of Products__: Choose number of products to show up.
 
-![Instagram Photos](img/home1-instagram.png)
+![Theme editor homepage products options](img/theme-editor-homepage-products-options.png)
 
-See how to configure in chapter [Sections > Instagram Photos](sections.md#instagram-photos)
+### Show/Hide Quickview button
 
-## Recent Posts Section
+When hover on a product item, Quickview button is showed up by default. To disable this feature, uncheck the checkbox __Show Quickview__ in the __Theme Editor__ > __Products__ section.
 
-![Recent Posts](img/home1-blog.png)
+![Theme editor show/hide Quickview button](img/theme-editor-quickview.png)
 
-See how to configure in chapter [Sections > Recent Blog Posts](sections.md#recent-blog-posts)
+### Change colors and image sizes
+
+In the __Theme Editor__ > __Products__ section, Look into the color options below __Product cards__, __Product Sale Badges__, __Product cards (Quick search)__ and __Image sizes__'s options.
+
+![Theme Editor Product Cards options](img/theme-editor-product-cards.png)
+![Theme Editor Product Sale Badges options](img/theme-editor-product-sale-badges.png)
+![Theme Editor Product Cards Quick Search options](img/theme-editor-product-cards-quick-search.png)
+![Theme Editor Image Sizes options](img/theme-editor-image-sizes.png)
+
+### Change the heading text
+
+To change the heading text (New Products, Featured Products, Most Popular Products), edit the language file, look for the key `products` > `new` or `featured` or `top`.
+
+![Edit language new products heading text](img/edit-language-products-new.png)
+
+
+
+
+
+
+
+## Recent Blog Posts
+
+![Recent blog posts](img/home1-blog.jpg)
+
+This block show the most recent blog posts.
+
+### Customize heading text and other text
+
+To change the heading text, read more text and date format, edit the language file. Find the key `blog` > `recent_posts`, `posted_by` and `read_more`, edit its values as you want.
+
+![Edit recent blog text in the language file](img/edit-language-blog.png)
+
+
+
+
+
+## Image Carousel
+
+![Image carousel](img/home1-image-carousel.png)
+
+To edit image and links in this image carousel section, edit the language file, find key `emthemesmodez` > `image_carousel`
+
+![Edit language image carousel](img/edit-language-brands-carousel.png)
+
+- `image*`: is link to the image.
+- `title*`: is image text description.
+- `url*`: is image link. Leave a single space letter in the value if you want to hide any image.
+
+
+
+
+
+## Instagram Photos
+
+![Instagram Photos block](img/home1-instagram.jpg)
+
+### Get your own User ID, Client ID, Access Token
+
+In order to display your Instagram photos on your website, you will need to get the __User ID__, __Client ID__ and __Access Token__ from __Instagram Developer__ portal.
+
+#### 1. Create your own Client ID
+
+Open the URL <https://www.instagram.com/developer/> in your browser.
+
+Login to your Instagram account.
+
+Click button __Register Your Application__: 
+
+![Instagram register your application](img/instagram-register.png)
+
+Click button __Register a New Client__: 
+
+![Instagram new client](img/instagram-register-new-client.png)
+
+Enter all required info on the form. 
+
+![Instagram registration form](img/instagram-registration-form.png)
+
+Note that __Valid redirect URIs__ should be exactly `http://127.0.0.1` as recommended as it will be used in the next step.
+
+After submitting the form you will get back to the previous page with a new __Client ID__ is created.
+
+![Instagram Manage Clients](img/instagram-manage-clients.png)
+
+Save this __Client ID__ value, it will be used to configure the Instagram Photos block.
+
+#### 2. Retrieve your Access Token
+
+Click button __Manage__ on your the client app created previously. Open __Security__ tab, uncheck __Disable Implicit OAuth__ checkbox:
+
+![Manage client - security tab](img/instagram-implicit-oauth.png)
+
+Click __Update Client__ button to complete.
+
+Now open your web browser with the URL: 
+
+```plain
+https://api.instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=http://127.0.0.1&response_type=token
+```
+
+where `CLIENT-ID` is replaced by your __Client ID__ number created previously.
+
+Click __Authorize__ button to grant access permission:
+
+![Authorize client app](img/instagram-authorize.png)
+
+Instagram will redirect you to an error page with the URL similiar: 
+
+![URL contains access token](img/instagram-get-code.png)
+
+The text after `access_token=` is the __Access Token__ you want to get. Save it for the next step.
+
+#### 3. Retrieve your User ID
+
+Open the link below on your web browser:
+
+```plain
+https://api.instagram.com/v1/users/self/?access_token=ACCESS-TOKEN
+```
+Where `ACCESS-TOKEN` is replaced by your real __Access Token__ just received previously.
+
+![User ID code](img/instagram-get-userid.png)
+
+The number in `"id": "..."` is your __User ID__.
+
+### Display your Instagram photos
+
+To display our own Instagram photos, edit the language file. Find the key `emthemesmodez` > `instagram`, input your real code:
+
+- `user_id`: Is your Instagram __User ID__.
+- `client_id`: is your Instagram __Client ID__.
+- `access_token`: is your Instagram __Access Token__.
+- `title`: Is the heading text.
+
+![Edit instagram in the language file](img/edit-language-instagram.png)
+
+
+
+
 
 ## Footer - Newsletter
 
@@ -157,96 +312,122 @@ To customize colors of the header section, look into the options showing below i
 
 ![Theme editor newsletter](img/theme-editor-newsletter.png)
 
-### Social Icons
 
-To show/hide or change position of the Social Icons, look into the options showing below in the __Theme Editor__ > __Social Media Icons__:
+## Footer - Links
 
-![Theme editor newsletter](img/theme-editor-social-icons.png)
+![Footer Links](img/home1-footer-columns.png)
 
-## Footer - About Us, Contact Info, Navigate, Location
+To edit text and links on the footer, edit the language file, section `footer` > `links`:
 
-![Footer Info](img/home1-footer-info.png)
+![Edit language footer links](img/edit-language-footer-links.png)
 
-### Edit text of About Us
+- `col1_heading`, `col2_heading`, `col3_heading`: is the heading text of each column.
+- `col*_url*`, `col*_title*`: is URL and text of each link.
 
-Edit the language file, section `footer` > `about` and `about_text`:
 
-![Edit language about us](img/edit-language-aboutus.png)
 
-### Edit text of Contact Info
+## Social Media Icons
 
-Edit the language file, section `footer` > `call_us` and `email`:
+![Theme editor social media icons](img/theme-editor-social-media-icons.png)
 
-![Edit language about us](img/edit-language-aboutus.png)
+To show social icons in the footer, open __Theme Editor__ > __Social Media Icons__ section, set __Bottom Placement__ = `Right`. 
 
-The address is edited in admin page > __Store Setup__ > __Store Profile__ > __Store Address__:
+Note: You will need to configure which icons to appear in admin panel > __Storefront Design__ > __Design Options__, input your social links in __Social Media__ section.
 
-![Edit store address](img/edit-store-address.png)
 
-### Edit Navigate
 
-__Navigate__ links automatically showing all your published pages.
-
-You can change the heading in the language file:
-
-![Edit language navigate](img/edit-language-navigate.png)
-
-### Edit Location
-
-You can change text and image in the language file, section `footer` > `location` and `location_image`:
-
-![Edit language location](img/edit-language-location.png)
-
-## Brands Carousel
-
-Theme support 2 type of brands carousel: __Static Images__ and __Dynamic Popular Brands__.
-
-![Theme editor footer brands carousel](img/theme-editor-footer-brands.png)
-
-### Static Images Carousel
-
-If using this option, your custom images will be showed up instead of the real brands you input in the backend.
-
-You can change text and image in the language file, section `footer` > `emthemesmodez` > `brands`:
-
-![Edit language brands images](img/edit-language-brands-images.png)
-
-The theme supports up to 10 images.
-
-To hide any image, just input __a single space__ in the quote, for example `"image1": " "`.
-
-### Dynamic Popular Brands
-
-If using this option, your store's real brands will be showed up.
-
-![Theme editor footer real brands carousel](img/theme-editor-footer-real-brands.png)
-
-### Hide the brands carousel
-
-To hide the brands carousel, in the Theme Editor > __Footer__ > __Show brands in footer__, choose __Disable__.
 
 ## Payment Icons
 
 ![Theme editor payment icons](img/theme-editor-payment-icons.png)
 
-To show/hide any payment icons, go to __Theme Editor__ > __Payment Icons__ > check/uncheck the corresponding payment methods.
+To show/hide payment icons, go to Theme __Editor__ > __Payment Icons__ secitons, check or uncheck any icons you want to show or hide.
 
-## Copyright Section
 
-![Theme editor copyright](img/theme-editor-copyright.png)
+## Copyright Links
 
-### Colors Customization
+![Copyright links](img/home1-copyright-links.png)
 
-To customize colors of this section, look into the options showing below in the __Theme Editor__ > __Footer__ > __Copyright section__.
+To edit links in the copyright section at footer, edit the language file, find `footer` > `copyright_links`:
 
-### Show/Hide Power By text
+![Edit language copyright links](img/edit-language-copyright-links.png)
 
-To show/hide the text "Powered by BigCommerce", toggle the checkbox __Show "Powerd by BigCommerce"__ in the __Theme Editor__ > __Footer__.
+- `url*` is link URL. Leave a __single space__ letter if you want to hide any link.
+- `title*` is link title.
 
-### Show/Hide Store Name text
 
-To show/hide this text, toggle the checkbox __"©", current year and store name__ in the __Theme Editor__ > __Footer__.
 
-### Show/Hide GeoTrust SSL seal
+## Credit Links
 
-Toggle the checkbox __Show Seal__ in the __Theme Editor__ > __Footer__ > __GeoTrust SSL__.
+![Theme editor credit links](img/theme-editor-credits.png)
+
+To show/hide the credit links, go to Theme Editor > __Footer__ section, tick or untick the checkboxes as showing above.
+
+
+
+## Mix contents from other theme styles
+
+For example, if you want to use theme __default__ style as the main theme, but also want to display other content blocks from __LaParis II__ style. You can edit the template files, rearrange, add more content blocks or delete unused content blocks.
+
+Let open folder `templates` > `components` > `emthemes-modez` > `home` in the template files editor:
+
+![Edit template file home default](img/edit-file-home-default.png)
+
+There is 2 files in this folder:
+
+- `default.html`: is used for __default__ style.
+- `laparis2.html`: is used for __LaParis II__ style.
+
+Let's take a look at contents of 2 files:
+
+__default.html__
+
+```plain
+{{> components/emthemes-modez/sections/section section="banner_laparis1_1"}}
+{{> components/emthemes-modez/sections/section section="new_products"}}
+{{> components/emthemes-modez/sections/section section="categories_featured"}}
+{{> components/emthemes-modez/sections/section section="popular_products"}}
+{{> components/emthemes-modez/sections/section section="blog_recent"}}
+{{> components/emthemes-modez/sections/section section="brands_carousel"}}
+{{> components/emthemes-modez/sections/section section="instagram_grid"}}
+```
+
+__laparis2.html__
+
+```plain
+{{> components/emthemes-modez/sections/section section="products_by_category_1"}}
+{{> components/emthemes-modez/sections/section section="products_by_category_2"}}
+{{> components/emthemes-modez/sections/section section="carousel_laparis2_1"}}
+{{> components/emthemes-modez/sections/section section="special_products_columns"}}
+{{> components/emthemes-modez/sections/section section="brands_carousel"}}
+{{> components/emthemes-modez/sections/section section="instagram_grid"}}
+```
+
+The files are showing very clearly how content blocks are displayed. See values in parameter `section="..."`:
+
+- `banner_laparis1_1`: Is the first block content 3 banners in the homepage of default style.
+- `new_products`: Is a block contains new products.
+- `categories_featured`: Is a block contains featured products with categories list as appeared on the homepage of default style.
+- `popular_products`: Is a block contains popular (or bestselling) products.
+- `blog_recent`: Is a block contains recent blog posts.
+- `brands_carousel`: Is a brand images carousel.
+- `instagram_grid`: Is a block displaying instagram photos.
+- `products_by_category_1` & `products_by_category_2`: Is a block contains product in a certain category as showing on homepage of LaParis II style.
+- `carousel_laparis2_1`: Is the image carousel as showing on homepage of LaParis II style.
+- `special_products_columns`: Is a block contains 3 columns showing new products, featured products and bestselling products as displayed on homepage of LaParis II style.
+
+So just copy a line from the other file to the other. Arrange position of these sections as you wish.
+
+Example of a mixed __default.html__:
+
+```plain
+{{> components/emthemes-modez/sections/section section="new_products"}}
+{{> components/emthemes-modez/sections/section section="popular_products"}}
+{{> components/emthemes-modez/sections/section section="banner_laparis1_1"}}
+{{> components/emthemes-modez/sections/section section="products_by_category_1"}}
+{{> components/emthemes-modez/sections/section section="products_by_category_2"}}
+{{> components/emthemes-modez/sections/section section="instagram_grid"}}
+{{> components/emthemes-modez/sections/section section="blog_recent"}}
+{{> components/emthemes-modez/sections/section section="brands_carousel"}}
+```
+
