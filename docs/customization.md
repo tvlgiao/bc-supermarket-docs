@@ -286,6 +286,61 @@ To display our own Instagram photos, edit the language file. Find the key `emthe
 
 
 
+
+## LaParis II - Products By Category
+
+![Products by category](img/home2-products-by-category.jpg)
+
+This section allows you to show products in a certain category. To configure it edit the language file. File keys `emthemesmodez` > `products_by_category`.
+
+![Edit language products by category](img/edit-language-products-by-category.png)
+
+- `category_id_*`: is the product category ID that products belong.
+- `image_*`: is the image URL to show up beside the products.
+- `heading_*`: The heading text on the banner beside.
+- `text_*`: Description text on the banner beside.
+- `banner_*`: Button text on the banner beside
+- `style_*`: `" "` or `"right"` to show banner on left or right.
+
+Theme supports up to 3 products by category blocks.
+
+
+## LaParis II - Images Carousel
+
+![Images Carousel](img/home2-image-carousel.jpg)
+
+To configure this image carousel, edit the lagnuage file, find keys `emthemesmodez` > `image_carousel`:
+
+![Edit language image carousel](img/edit-language-image-carousel.png)
+
+- `image_*`: Slide image URL. Leave a single space letter if not use.
+- `image_alt_*`: image alt text.
+- `url_*`: link URL.
+- `heading_*`: Heading text. Leave a single space letter to hide.
+- `text_*`: Description text. Leave a single space letter to hide.
+- `button_*`: Button text. Leave a single space to hide.
+
+Theme supports up to 5 images in this section. 
+
+
+
+## LaParis II - New / Featured / Bestselling Columns
+
+![New Featured Bestselling products columns](img/home2-special-products-columns.jpg)
+
+This section show new products, featured products and bestselling products in 3 columns.
+
+You can configure number of products to display in __Theme Editor__ > __Homepage__ section:
+
+![Theme editor products](img/theme-editor-homepage-products-options.png)
+
+You can change the heading text of each column in the language files, find and edit keys `products` > `new`, `products` > `featured`, `products` > `top`.
+
+
+
+
+
+
 ## Footer - Newsletter
 
 ![Newsletter](img/home1-newsletter.png)
@@ -362,6 +417,7 @@ To edit links in the copyright section at footer, edit the language file, find `
 ![Theme editor credit links](img/theme-editor-credits.png)
 
 To show/hide the credit links, go to Theme Editor > __Footer__ section, tick or untick the checkboxes as showing above.
+
 
 
 
