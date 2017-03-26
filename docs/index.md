@@ -1,4 +1,4 @@
-# User Guide - BigCommerce Theme LaParis
+# User Guide - BigCommerce Theme SarahMarket
 
 Theme Version: 0.1.0 (2017-03-23)
 

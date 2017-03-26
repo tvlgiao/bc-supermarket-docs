@@ -1,2 +1,2 @@
-# bc-modez-docs
-Documentation for the BigCommerce Theme Modez by tvlgiao
+# bc-sarahmarket-docs
+Documentation for the BigCommerce Theme SarahMarket by tvlgiao

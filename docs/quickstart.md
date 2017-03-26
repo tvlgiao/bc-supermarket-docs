@@ -60,13 +60,8 @@ To activate a theme style, open Theme Editor, find __Styles__ section, click on 
 ![Theme editor style](img/theme-editor-style.jpg)
 
 
-Theme includes 2 styles:
-
 ### Default
 
 ![Home 1](img/home1.jpg)
 
-### LaParis II
-
-![Home 2](img/home2.jpg)
 
