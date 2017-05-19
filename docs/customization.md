@@ -658,3 +658,16 @@ If you want more control about the footer, you can edit the footer template at `
 
 ![Edit footer template](img/edit-file-footer.png)
 
+
+
+
+## Add our own CSS (Sass) code
+
+To add your own custom CSS code you can edit the file `assets/scss/_theme-custom.scss` in __Edit Theme Files__ editor:
+
+![Edit file _theme-custom.scss](img/edit-file-theme-custom-css.png)
+
+__Note: __
+
+- Copy / backup this file for future theme upgrade.
+- Add custom CSS code required CSS (or Sass) programming skill. It's not recommended for new users.

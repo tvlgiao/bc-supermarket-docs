@@ -1,8 +1,8 @@
 # User Guide - BigCommerce Theme SarahMarket
 
-Theme Version: 0.1.0 (2017-03-23)
+Theme Version: 1.0.0 (2017-04-06)
 
-Theme designed and developed by [papathemes](http://papathemes.com) 
+Theme designed and developed by [papathemes](https://papathemes.com) 
 
 ## User Guide Contents
 

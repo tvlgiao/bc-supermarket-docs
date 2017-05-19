@@ -5,8 +5,10 @@ pages:
 - Quick Start Guide: quickstart.md
 - Customization: customization.md
 - Theme Settings: settings.md
+- Upgrade Theme: upgrade.md
 - Help & Support: support.md
 theme: readthedocs
+use_directory_urls: false
 
 extra_css:
   - https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
