@@ -1,6 +1,6 @@
-# User Guide - BigCommerce Theme SarahMarket
+# User Guide - BigCommerce Theme Supermarket
 
-Theme Version: 1.0.0 (2017-04-06)
+Theme Version: 1.0.2 (2017-06-28)
 
 Theme designed and developed by [papathemes](https://papathemes.com) 
 

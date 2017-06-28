@@ -1,11 +1,9 @@
-site_name: "BigCommerce Theme SarahMarket - User Guide"
+site_name: "BigCommerce Theme Supermarket - User Guide"
 pages:
 - Home: index.md
 - Install the theme: installation.md
 - Quick Start Guide: quickstart.md
 - Customization: customization.md
-- Theme Settings: settings.md
-- Upgrade Theme: upgrade.md
 - Help & Support: support.md
 theme: readthedocs
 use_directory_urls: false
@@ -23,3 +21,5 @@ markdown_extensions:
 - sane_lists
 - extra
 - fenced_code
+
+google_analytics: ['UA-241859-16', 'tvlgiao.github.io']
