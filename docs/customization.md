@@ -86,54 +86,6 @@ To hide the slideshow on homepage, uncheck on the checkbox __Show Carousel__ in 
 
 
 
-
-
-## 3 Banners on Homepage
-
-![3 banners on homepage](img/home1-3-banners.jpg)
-
-To show these banners on homepage, from your admin page > __Marketing__ > __Banners __> click button __Create a Banner__. In field __Banner Content__, click button HTML to open __HTML Source Editor__, input content below:
-
-```html
-<div id="emthemesModezBannersBlockHome01" class="emthemesModez-section  emthemesModez-section--banners-3x">
-<div class="emthemesModez-section-inner">
-<div class="emthemesModez-bannersContainer 
-            emthemesModez-bannersContainer--onethird-x3 
-            emthemesModez-bannersContainer--onethird-x3-1 
-            ">
-<div class="emthemesModez-banner">
-<div class="emthemesModez-banner-container"><a href="#"><img class="emthemesModez-banner-image" src="https://tvlgiao.github.io/bigcommerce-themes/supermarket/demo/images/banner01.jpg" alt="Sample banner 1" /></a></div>
-</div>
-<div class="emthemesModez-banner">
-<div class="emthemesModez-banner-container"><a href="#"><img class="emthemesModez-banner-image" src="https://tvlgiao.github.io/bigcommerce-themes/supermarket/demo/images/banner02.jpg" alt="Sample banner 2" /></a></div>
-</div>
-<div class="emthemesModez-banner">
-<div class="emthemesModez-banner-container"><a href="#"><img class="emthemesModez-banner-image" src="https://tvlgiao.github.io/bigcommerce-themes/supermarket/demo/images/banner03.jpg" alt="Sample banner 3" /></a></div>
-</div>
-</div>
-</div>
-</div>
-```
-
-![Edit homepage 3 banners](img/edit-home1-3-banners.png)
-
-Then click __Update__ button to go back previous screen.
-
-Choose __Show on Page__ is __Home Page__.
-
-Choose __Location__ is __Top of Page__.
-
-![Show on Page & Location](img/edit-banner-show-on-page-location.png)
-
-Click __Save__ button to finish.
-
-You can freely edit the HTML above to change banner images or link but keep the HTML attribute `id="emthemesModezBannersBlockHome01"` unchanged.
-
-
-
-
-
-
 ## Featured / Bestselling / New In Product Tabs
 
 ![Special products tabs](img/home1-special-product-tabs.jpg)
@@ -156,21 +108,6 @@ The __Hot Categories__ appears on the right is sub-categories of the current cat
 
 ![Hot categories](img/home1-products-by-category-hot-categories.png)
 
-
-### Banner Image
-
-![Placeholder category image](img/home1-products-by-category-placeholder-image.png)
-
-The placeholder image can be replaced by uploading your own images to your BigCommerce WebDAV. Upload your image to correct path `content/papasupermarket/img/products-by-category-CATEGORYID.jpg` where `CATEGORYID` is replaced by your current category ID.
-
-You can find Category ID by editing that category and look at the URL:
-
-![Find category ID](img/find-category-id.jpg)
-
-
-To access to your WebDAV, from admin page > __Server Settings__ > __File Access (WebDAV)__, follow instruction on that page to upload files.
-
-![WebDAV Connect](img/webdav-connect.png)
 
 
 ### Configuration 
@@ -196,93 +133,6 @@ You can configure number of categories to display in __Theme Editor__ > __Homepa
 
 ![Configure Top Categories](img/theme-editor-top-categories.png)
 
-
-### Banner Images
-
-![Top categories placeholder](img/home1-top-categories-placeholder.png)
-
-Replace this placeholder image similar to [Replace image of Product by Categories section](customization.md#banner-image), except the image to upload is `content/papasupermarket/img/categories-list-thumbnail-NUMBER.jpg` where `NUMBER` is the index number start with 1.
-
-
-
-
-
-## Fullwidth Banner on Homepage
-
-![fullwidth banner on homepage](img/home1-fullwidth-banner.jpg)
-
-To show these banners on homepage, from your admin page > __Marketing__ > __Banners __> click button __Create a Banner__. In field __Banner Content__, click button HTML to open __HTML Source Editor__, input content below:
-
-```html
-<div id="emthemesModezBannersBlockHome02" class="emthemesModez-section  emthemesModez-section--banners-one">
-<div class="emthemesModez-section-inner">
-<div class="emthemesModez-bannersContainer 
-            emthemesModez-bannersContainer--one 
-            emthemesModez-bannersContainer--one-1 
-            ">
-<div class="emthemesModez-banner">
-<div class="emthemesModez-banner-container"><a href="#"><img class="emthemesModez-banner-image" src="https://tvlgiao.github.io/bigcommerce-themes/supermarket/demo/images/banner04.jpg" alt="sample fullwidth banne" /></a></div>
-</div>
-</div>
-</div>
-</div>
-```
-
-![Edit homepage fullwidth banner](img/edit-home1-fullwidth-banner.png)
-
-Then click __Update__ button to go back previous screen.
-
-Choose __Show on Page__ is __Home Page__.
-
-Choose __Location__ is __Top of Page__.
-
-![Show on Page & Location](img/edit-banner-show-on-page-location.png)
-
-Click __Save__ button to finish.
-
-You can freely edit the HTML above to change banner images or link but keep the HTML attribute `id="emthemesModezBannersBlockHome02"` unchanged.
-
-
-
-
-
-## Brand Carousel
-
-![Brand Carousel](img/home1-brand-carousel.png)
-
-
-To show this carousel on homepage, from your admin page > __Marketing__ > __Banners __> click button __Create a Banner__. In field __Banner Content__, click button HTML to open __HTML Source Editor__, input content below:
-
-```html
-<div id="emthemesModezBannersBlockHome03" class="emthemesModez-brandCarousel-container" data-section-type="brands-logo">
-<div class="emthemesModez-brandCarousel" data-emthemesmodez-brand-carousel="">
-<div class="emthemesModez-brandCarousel-slide"><a href="#"><img src="https://tvlgiao.github.io/bigcommerce-themes/laparis/demo/images/brand01.png" alt="Sample Brand 1" /></a></div>
-<div class="emthemesModez-brandCarousel-slide"><a href="#"><img src="https://tvlgiao.github.io/bigcommerce-themes/laparis/demo/images/brand02.png" alt="Sample Brand 2" /></a></div>
-<div class="emthemesModez-brandCarousel-slide"><a href="#"><img src="https://tvlgiao.github.io/bigcommerce-themes/laparis/demo/images/brand03.png" alt="Sample Brand 3" /></a></div>
-<div class="emthemesModez-brandCarousel-slide"><a href="#"><img src="https://tvlgiao.github.io/bigcommerce-themes/laparis/demo/images/brand04.png" alt="Sample Brand 4" /></a></div>
-<div class="emthemesModez-brandCarousel-slide"><a href="#"><img src="https://tvlgiao.github.io/bigcommerce-themes/laparis/demo/images/brand05.png" alt="Sample Brand 5" /></a></div>
-<div class="emthemesModez-brandCarousel-slide"><a href="#"><img src="https://tvlgiao.github.io/bigcommerce-themes/laparis/demo/images/brand01.png" alt="Sample Brand 6" /></a></div>
-<div class="emthemesModez-brandCarousel-slide"><a href="#"><img src="https://tvlgiao.github.io/bigcommerce-themes/laparis/demo/images/brand02.png" alt="Sample Brand 7" /></a></div>
-<div class="emthemesModez-brandCarousel-slide"><a href="#"><img src="https://tvlgiao.github.io/bigcommerce-themes/laparis/demo/images/brand03.png" alt="Sample Brand 8" /></a></div>
-<div class="emthemesModez-brandCarousel-slide"><a href="#"><img src="https://tvlgiao.github.io/bigcommerce-themes/laparis/demo/images/brand04.png" alt="Sample Brand 9" /></a></div>
-<div class="emthemesModez-brandCarousel-slide"><a href="#"><img src="https://tvlgiao.github.io/bigcommerce-themes/laparis/demo/images/brand05.png" alt="Sample Brand 10" /></a></div>
-</div>
-</div>
-```
-
-![Edit homepage fullwidth banner](img/edit-home1-fullwidth-banner.png)
-
-Then click __Update__ button to go back previous screen.
-
-Choose __Show on Page__ is __Home Page__.
-
-Choose __Location__ is __Top of Page__.
-
-![Show on Page & Location](img/edit-banner-show-on-page-location.png)
-
-Click __Save__ button to finish.
-
-You can freely edit the HTML above to change banner images or link but keep the HTML attribute `id="emthemesModezBannersBlockHome03"` unchanged.
 
 
 
