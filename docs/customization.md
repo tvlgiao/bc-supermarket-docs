@@ -46,6 +46,21 @@ To configure, open the __Theme Editor__, scroll down to section __Logo__, click 
 
 ![Change logo position](img/change-logo-position.png)
 
+
+### Welcome Text
+
+![Welcome text](img/home1-welcome-text.png)
+
+This welcome text can be showed/hide in the __Theme Editor__ > __Header__ > __Show welcome text__:
+
+![Toggle show/ide welcome text](img/theme-editor-show-welcome-text.png)
+
+You can edit the text in the language file `lang/en.json` in __Edit Theme Files__:
+
+![Edit language for welcome text](img/edit-language-welcome-text.png)
+
+
+
 ### Phone Number & Store Address
 ![Header info text](img/home1-infobar.png)
 
