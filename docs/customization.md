@@ -68,6 +68,21 @@ Store address and phone number are pulled out from your store profile. You can e
 
 ![Edit Store Address and Phone](img/edit-store-address-phone.png)
 
+
+### Social Media Icons
+
+![Social media icons on header](img/home1-header-social-icons.png)
+
+This social media icons group can be turned on/off in __Theme Editor__ > __Social Media Icons__ > __Placement__ > __Top/Right__:
+
+![Configure social icons on header](img/theme-editor-social-icons-top.png)
+
+To configure your social media links, go to admin page > __Storefront Design__ > __Design Options__ > __Social Media__ section:
+
+![Edit social media links](img/edit-social-media-icons.png)
+
+
+
 ### Colors Customization
 
 To customize colors of the header section, look into the options showing below in the Theme Editor:
