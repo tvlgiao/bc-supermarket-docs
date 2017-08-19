@@ -1,0 +1,18 @@
+<div id="emthemesModezBannersBlockHome01" class="emthemesModez-section  emthemesModez-section--banners-3x">
+<div class="emthemesModez-section-inner">
+<div class="emthemesModez-bannersContainer 
+            emthemesModez-bannersContainer--onethird-x3 
+            emthemesModez-bannersContainer--onethird-x3-1 
+            ">
+<div class="emthemesModez-banner">
+<div class="emthemesModez-banner-container"><a href="{{ banner1_link }}"><img class="emthemesModez-banner-image" src="{{ banner1_img }}" alt="{{ banner1_alt }}" /></a></div>
+</div>
+<div class="emthemesModez-banner">
+<div class="emthemesModez-banner-container"><a href="{{ banner2_link }}"><img class="emthemesModez-banner-image" src="{{ banner2_img }}" alt="{{ banner2_alt }}" /></a></div>
+</div>
+<div class="emthemesModez-banner">
+<div class="emthemesModez-banner-container"><a href="{{ banner3_link }}"><img class="emthemesModez-banner-image" src="{{ banner3_img }}" alt="{{ banner3_alt }}" /></a></div>
+</div>
+</div>
+</div>
+</div>

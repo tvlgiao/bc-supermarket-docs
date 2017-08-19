@@ -1,0 +1,14 @@
+<div id="emthemesModezBannersBlockHome03" class="emthemesModez-brandCarousel-container" data-section-type="brands-logo">
+<div class="emthemesModez-brandCarousel" data-emthemesmodez-brand-carousel="">
+<div class="emthemesModez-brandCarousel-slide"><a href="{{ banner1_link }}"><img src="{{ banner1_img }}" alt="{{ banner1_alt }}" /></a></div>
+<div class="emthemesModez-brandCarousel-slide"><a href="{{ banner2_link }}"><img src="{{ banner2_img }}" alt="{{ banner2_alt }}" /></a></div>
+<div class="emthemesModez-brandCarousel-slide"><a href="{{ banner3_link }}"><img src="{{ banner3_img }}" alt="{{ banner3_alt }}" /></a></div>
+<div class="emthemesModez-brandCarousel-slide"><a href="{{ banner4_link }}"><img src="{{ banner4_img }}" alt="{{ banner4_alt }}" /></a></div>
+<div class="emthemesModez-brandCarousel-slide"><a href="{{ banner5_link }}"><img src="{{ banner5_img }}" alt="{{ banner5_alt }}" /></a></div>
+<div class="emthemesModez-brandCarousel-slide"><a href="{{ banner6_link }}"><img src="{{ banner6_img }}" alt="{{ banner6_alt }}" /></a></div>
+<div class="emthemesModez-brandCarousel-slide"><a href="{{ banner7_link }}"><img src="{{ banner7_img }}" alt="{{ banner7_alt }}" /></a></div>
+<div class="emthemesModez-brandCarousel-slide"><a href="{{ banner8_link }}"><img src="{{ banner8_img }}" alt="{{ banner8_alt }}" /></a></div>
+<div class="emthemesModez-brandCarousel-slide"><a href="{{ banner9_link }}"><img src="{{ banner9_img }}" alt="{{ banner9_alt }}" /></a></div>
+<div class="emthemesModez-brandCarousel-slide"><a href="{{ banner10_link }}"><img src="{{ banner10_img }}" alt="{{ banner10_alt }}" /></a></div>
+</div>
+</div>

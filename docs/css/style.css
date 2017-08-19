@@ -38,7 +38,21 @@ pre code {
 	border: 0;
 }
 
+.wy-menu-vertical.affix {
+	position: static;
+}
+
 .wy-menu-vertical a:hover,
 .wy-menu-vertical a:focus {
 	color: #ffffff;
+}
+
+
+.highlight-code {
+	max-height: 150px;
+	overflow: auto;
+}
+
+.panel-title a {
+	display: block;
 }
