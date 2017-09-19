@@ -1,0 +1,7 @@
+<div class="sidebarBlock sidebarBlock--banner emthemesModezBannersBlockSidebar{{ banner_position }}">
+<div class="emthemesModez-bannersContainer">
+<div class="emthemesModez-banner">
+<div class="emthemesModez-banner-figure"><a href="{{ banner_link }}"><img class="emthemesModez-banner-image" title="{{ banner_alt }}" src="{{ banner_img }}" alt="{{ banner_alt }}" /></a></div>
+</div>
+</div>
+</div>

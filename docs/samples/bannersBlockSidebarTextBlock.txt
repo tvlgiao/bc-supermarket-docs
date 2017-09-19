@@ -1,0 +1,7 @@
+<div class="sidebarBlock sidebarBlock--textBlock sidebarBlock--mobileCollapsible emthemesModezBannersBlockSidebar{{ position }}">
+<h5 class="sidebarBlock-heading is-open" data-collapsible="#sidebar-textBlock01" data-collapsible-disabled-breakpoint="medium">{{ heading }}</h5>
+<div id="sidebar-textBlock01" class="sidebarBlock-content is-open">
+{{ content }}
+<p><a class="button" href="{{ btn_link }}">{{ btn_text }}</a></p>
+</div>
+</div>

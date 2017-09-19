@@ -418,6 +418,118 @@
       </div>
     </div>
   </div><!-- modal #bannersBlockHome03Modal -->
+  <!-- Modal -->
+  <div class="modal fade" id="bannersBlockSidebarImgModal" tabindex="-1" role="dialog" aria-labelledby="bannersBlockSidebarImgModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="bannersBlockSidebarImgModalLabel">Code Generator: Banners Block on Sidebar</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+                <div class="panel-group" id="bannersBlockSidebarImgAccordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="bannersBlockSidebarImgBannerHeading">
+                      <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#bannersBlockSidebarImgAccordion" href="#bannersBlockSidebarImgBannerCollapse" aria-expanded="true" aria-controls="bannersBlockSidebarImgBannerCollapse">
+                          Banner
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="bannersBlockSidebarImgBannerCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="bannersBlockSidebarImgBannerHeading">
+                      <div class="panel-body">
+                        <div class="form-group">
+                          <label for="bannersBlockSidebarImgBannerPosition">Position:</label>
+                          <select ng-model="banner_position" class="form-control" id="bannersBlockSidebarImgBannerPosition">
+                            <option value="01">Before Facebook Block</option>
+                            <option value="02">After Facebook Block</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="bannersBlockSidebarImgBannerImg">Image URL:</label>
+                          <input ng-model="banner_img" type="text" class="form-control" id="bannersBlockSidebarImgBannerImg" placeholder="Example: https://placehold.it/270x450">
+                        </div>
+                        <div class="form-group">
+                          <label for="bannersBlockSidebarImgBannerAlt">Image Alt:</label>
+                          <input ng-model="banner_alt" type="text" class="form-control" id="bannersBlockSidebarImgBannerAlt" placeholder="Example: Banner 1">
+                        </div>
+                        <div class="form-group">
+                          <label for="bannersBlockSidebarImgBannerLink">Link URL:</label>
+                          <input ng-model="banner_link" type="text" class="form-control" id="bannersBlockSidebarImgBannerLink" placeholder="Example: https://supermarket-blue-demo.mybigcommerce.com">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div hljs include="'/samples/bannersBlockSidebarImg.txt'" compile="true" id="bannersBlockSidebarImgCode" class="highlight-code"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-clipboard-target="#bannersBlockSidebarImgCode">Copy Code</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- modal #bannersBlockSidebarImgModal -->
+  <!-- Modal -->
+  <div class="modal fade" id="bannersBlockSidebarTextBlockModal" tabindex="-1" role="dialog" aria-labelledby="bannersBlockSidebarTextBlockModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="bannersBlockSidebarTextBlockModalLabel">Code Generator: Text Block on Sidebar</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+                <div class="panel-group" id="bannersBlockSidebarTextBlockAccordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="bannersBlockSidebarTextBlockPanelHeading">
+                      <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#bannersBlockSidebarTextBlockAccordion" href="#bannersBlockSidebarTextBlockCollapse" aria-expanded="true" aria-controls="bannersBlockSidebarTextBlockCollapse">
+                          Banner
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="bannersBlockSidebarTextBlockCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="bannersBlockSidebarTextBlockPanelHeading">
+                      <div class="panel-body">
+                        <div class="form-group">
+                          <label for="bannersBlockSidebarTextBlockPosition">Position:</label>
+                          <select ng-model="position" class="form-control" id="bannersBlockSidebarTextBlockPosition">
+                            <option value="01">Before Facebook Block</option>
+                            <option value="02">After Facebook Block</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="bannersBlockSidebarTextBlockHeading">Heading:</label>
+                          <input ng-model="heading" type="text" class="form-control" id="bannersBlockSidebarTextBlockHeading" placeholder="Example: Custom Block">
+                        </div>
+                        <div class="form-group">
+                          <label for="bannersBlockSidebarTextBlockBannerContent">Content:</label>
+                          <textarea ng-model="content" type="text" class="form-control" id="bannersBlockSidebarTextBlockBannerContent" placeholder="Custom block displayed at the left sidebar. You can put your own content here: text, html, images, media... whatever you like. Here are many similar sample content placeholders across the store. All editable from admin panel. Sample Button"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="bannersBlockSidebarTextBlockButtonText">Button Text:</label>
+                          <input ng-model="btn_text" type="text" class="form-control" id="bannersBlockSidebarTextBlockButtonText" placeholder="Example: Sample Button">
+                        </div>
+                        <div class="form-group">
+                          <label for="bannersBlockSidebarTextBlockButtonLink">Button URL:</label>
+                          <input ng-model="btn_link" type="text" class="form-control" id="bannersBlockSidebarTextBlockButtonLink" placeholder="Example: https://supermarket-blue-demo.mybigcommerce.com">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div hljs include="'/samples/bannersBlockSidebarTextBlock.txt'" compile="true" id="bannersBlockSidebarTextBlockCode" class="highlight-code"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-clipboard-target="#bannersBlockSidebarTextBlockCode">Copy Code</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- modal #bannersBlockSidebarTextBlockModal -->
 </div>
 
 
@@ -430,6 +542,14 @@ This page will explain all configuration available and how to edit each section 
 
 
 
+
+## Use Fixed Vertical Menu layout across the whole site
+
+![fixed vertical menu layout](img/home1-left-sidebar.jpg)
+
+You can enable this layout in __Theme Editor__ > __Global__ > __Layout__, choose `Left Sidebar`:
+
+![Theme editor layout](img/theme-editor-layout.png)
 
 
 
@@ -811,6 +931,110 @@ To show/hide payment icons, go to Theme __Editor__ > __Payment Icons__ secitons,
 
 To show/hide the credit links, go to Theme Editor > __Footer__ section, tick or untick the checkboxes as showing above.
 
+
+
+## Banners on the Left Sidebar
+
+### Show a banner above Facebook Like Page block
+
+![sidebar banner 1](img/home1-sidebar-banner1.jpg)
+
+To show this banner, go to Marketing > Banners, click button __Create a Banner__. Input:
+
+- __Banner Name__: whatever you want
+- __Banner Content__: click the square button `HTML` to open HTML source code editor.
+
+Copy and paste the sample code below:
+
+```
+<div class="sidebarBlock sidebarBlock--banner emthemesModezBannersBlockSidebar01">
+<div class="emthemesModez-bannersContainer">
+<div class="emthemesModez-banner">
+<div class="emthemesModez-banner-figure"><a href="#"><img class="emthemesModez-banner-image" title="Sample Banner" src="https://placehold.it/270x450" alt="Sample Banner" /></a></div>
+</div>
+</div>
+</div>
+```
+
+Or you can use this tool to generate your banner content:
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockSidebarImgModal">
+  Launch Banner Code Generator
+</button>
+
+- __Show on Page__: `Search Results Page`
+- __Visible__: Checked
+- __Location__: `Top of Page`
+
+
+### Show banners & text block below Facebook Like Page block
+
+![sidebar banner 2](img/home1-sidebar-banner2.jpg)
+
+To show this banner and the text block, go to Marketing > Banners, click button __Create a Banner__. Input:
+
+- __Banner Name__: whatever you want
+- __Banner Content__: click the square button `HTML` to open HTML source code editor.
+
+Copy and paste the sample code below:
+
+```
+<!-- Banner -->
+<div class="sidebarBlock sidebarBlock--banner emthemesModezBannersBlockSidebar02">
+<div class="emthemesModez-bannersContainer">
+<div class="emthemesModez-banner">
+<div class="emthemesModez-banner-figure"><a href="#"><img class="emthemesModez-banner-image" title="Fullscreen Banner" src="https://placehold.it/270x270" alt="Sample Banner" /></a></div>
+</div>
+</div>
+</div>
+
+<!-- Text Block -->
+<div class="sidebarBlock sidebarBlock--textBlock sidebarBlock--mobileCollapsible emthemesModezBannersBlockSidebar02">
+<h5 class="sidebarBlock-heading is-open" data-collapsible="#sidebar-textBlock01" data-collapsible-disabled-breakpoint="medium">Custom Block</h5>
+<div id="sidebar-textBlock01" class="sidebarBlock-content is-open">
+<p>Custom block displayed at the left sidebar. You can put your own content here: text, html, images, media... whatever you like.</p>
+<p>Here are many similar sample content placeholders across the store. All editable from admin panel.</p>
+<p><a class="button" href="#">Sample Button</a></p>
+</div>
+</div>
+
+<!-- Banner -->
+<div class="sidebarBlock sidebarBlock--banner emthemesModezBannersBlockSidebar02">
+<div class="emthemesModez-bannersContainer">
+<div class="emthemesModez-banner">
+<div class="emthemesModez-banner-figure"><a href="#"><img class="emthemesModez-banner-image" title="Fullscreen Banner" src="https://placehold.it/270x450" alt="Sample Banner" /></a></div>
+</div>
+</div>
+</div>
+```
+
+Or you can use this tool to generate your banner & text block content:
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockSidebarImgModal">
+  Launch Banner Code Generator
+</button>
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockSidebarTextBlockModal">
+  Launch Text Block Code Generator
+</button>
+
+- __Show on Page__: `Search Results Page`
+- __Visible__: Checked
+- __Location__: `Top of Page`
+
+
+
+
+## Facebook Like Page on the Left Sidebar
+
+![Facebook like page](img/home1-facebook-like-page.jpg)
+
+You can show your own Facebook Like Page block or hide it completely. 
+
+From __Theme Editor__ > __Social Media Icons__ > Enter your facebook page name in __Facebook page__ field. For example if your Facebook page URL is <https://www.facebook.com/papathemes/> you should only input `papathemes`.
+
+To hide this block, just leave it empty value.
 
 
 ## Add our own CSS (Sass) code
