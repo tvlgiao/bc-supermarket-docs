@@ -1,3 +1,5 @@
+angular.module("app", ['hljs']);
+
 $(function() {
   $('[data-clipboard-target]').tooltip({
     title: function() {

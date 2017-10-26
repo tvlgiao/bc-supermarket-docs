@@ -1,0 +1,11 @@
+<div id="emthemesModezBannersBlockBeforeDescription" class="container emthemesModezBannersBlockBeforeDescription">
+<div class="emthemesModez-section emthemesModez-section--banners-one">
+<div class="emthemesModez-section-inner">
+<div class="emthemesModez-bannersContainer emthemesModez-bannersContainer--one">
+<div class="emthemesModez-banner">
+<div class="emthemesModez-banner-container"><a href="{{ banner_link }}"><img class="emthemesModez-banner-image" src="{{ banner_img }}" alt="{{ banner_alt }}" title="{{ banner_alt }}" /></a></div>
+</div>
+</div>
+</div>
+</div>
+</div>

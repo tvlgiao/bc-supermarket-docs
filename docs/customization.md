@@ -1,6 +1,3 @@
-<script>
-  angular.module("app", ['hljs']);
-</script>
 <div ng-app="app">
   <!-- Modal -->
   <div class="modal fade" id="bannersBlockHome01Modal" tabindex="-1" role="dialog" aria-labelledby="bannersBlockHome01ModalLabel">
@@ -530,6 +527,477 @@
       </div>
     </div>
   </div><!-- modal #bannersBlockSidebarTextBlockModal -->
+  <!-- Modal -->
+  <div class="modal fade" id="bannersBlockStaticNavPagesModal" tabindex="-1" role="dialog" aria-labelledby="bannersBlockStaticNavPagesModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="bannersBlockStaticNavPagesModalLabel">Code Generator: Manual Main Menu</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <!-- Panel -->
+            <div class="panel-group" id="bannersBlockStaticNavPagesAccordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="bannersBlockStaticNavPagesLink1Heading">
+                  <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#bannersBlockStaticNavPagesAccordion" href="#bannersBlockStaticNavPagesLink1Collapse" aria-expanded="true" aria-controls="bannersBlockStaticNavPagesLink1Collapse">
+                      Link 1
+                    </a>
+                  </h4>
+                </div>
+                <div id="bannersBlockStaticNavPagesLink1Collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="bannersBlockStaticNavPagesLink1Heading">
+                  <div class="panel-body">
+                    <div class="form-group">
+                      <label for="bannersBlockStaticNavPagesLink1Img">Link URL:</label>
+                      <input ng-model="link1_url" type="text" class="form-control" id="bannersBlockStaticNavPagesLink1Url" placeholder="Example: /">
+                    </div>
+                    <div class="form-group">
+                      <label for="bannersBlockStaticNavPagesLink1Title">Link Title:</label>
+                      <input ng-model="link1_title" type="text" class="form-control" id="bannersBlockStaticNavPagesLink1Title" placeholder="Example: Home">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Panel Collapsed -->
+            <div class="panel-group" id="bannersBlockStaticNavPagesAccordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="bannersBlockStaticNavPagesLink2Heading">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#bannersBlockStaticNavPagesAccordion" href="#bannersBlockStaticNavPagesLink2Collapse" aria-expanded="false" aria-controls="bannersBlockStaticNavPagesLink2Collapse">
+                      Link 2
+                    </a>
+                  </h4>
+                </div>
+                <div id="bannersBlockStaticNavPagesLink2Collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="bannersBlockStaticNavPagesLink2Heading">
+                  <div class="panel-body">
+                    <div class="form-group">
+                      <label for="bannersBlockStaticNavPagesLink2Img">Link URL:</label>
+                      <input ng-model="link2_url" type="text" class="form-control" id="bannersBlockStaticNavPagesLink2Url" placeholder="Example: /about-us">
+                    </div>
+                    <div class="form-group">
+                      <label for="bannersBlockStaticNavPagesLink2Title">Link Title:</label>
+                      <input ng-model="link2_title" type="text" class="form-control" id="bannersBlockStaticNavPagesLink2Title" placeholder="Example: About Us">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Panel Collapsed -->
+            <div class="panel-group" id="bannersBlockStaticNavPagesAccordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="bannersBlockStaticNavPagesLink3Heading">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#bannersBlockStaticNavPagesAccordion" href="#bannersBlockStaticNavPagesLink3Collapse" aria-expanded="false" aria-controls="bannersBlockStaticNavPagesLink3Collapse">
+                      Link 3
+                    </a>
+                  </h4>
+                </div>
+                <div id="bannersBlockStaticNavPagesLink3Collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="bannersBlockStaticNavPagesLink3Heading">
+                  <div class="panel-body">
+                    <div class="form-group">
+                      <label for="bannersBlockStaticNavPagesLink3Img">Link URL:</label>
+                      <input ng-model="link3_url" type="text" class="form-control" id="bannersBlockStaticNavPagesLink3Url" placeholder="Example: /contact-us">
+                    </div>
+                    <div class="form-group">
+                      <label for="bannersBlockStaticNavPagesLink3Title">Link Title:</label>
+                      <input ng-model="link3_title" type="text" class="form-control" id="bannersBlockStaticNavPagesLink3Title" placeholder="Example: Contact Us">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Panel Collapsed -->
+            <div class="panel-group" id="bannersBlockStaticNavPagesAccordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="bannersBlockStaticNavPagesLink4Heading">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#bannersBlockStaticNavPagesAccordion" href="#bannersBlockStaticNavPagesLink4Collapse" aria-expanded="false" aria-controls="bannersBlockStaticNavPagesLink4Collapse">
+                      Link 4
+                    </a>
+                  </h4>
+                </div>
+                <div id="bannersBlockStaticNavPagesLink4Collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="bannersBlockStaticNavPagesLink4Heading">
+                  <div class="panel-body">
+                    <div class="form-group">
+                      <label for="bannersBlockStaticNavPagesLink4Img">Link URL:</label>
+                      <input ng-model="link4_url" type="text" class="form-control" id="bannersBlockStaticNavPagesLink4Url" placeholder="Example: /link-a">
+                    </div>
+                    <div class="form-group">
+                      <label for="bannersBlockStaticNavPagesLink4Title">Link Title:</label>
+                      <input ng-model="link4_title" type="text" class="form-control" id="bannersBlockStaticNavPagesLink4Title" placeholder="Example: Link A">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Panel Collapsed -->
+            <div class="panel-group" id="bannersBlockStaticNavPagesAccordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="bannersBlockStaticNavPagesLink5Heading">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#bannersBlockStaticNavPagesAccordion" href="#bannersBlockStaticNavPagesLink5Collapse" aria-expanded="false" aria-controls="bannersBlockStaticNavPagesLink5Collapse">
+                      Link 5
+                    </a>
+                  </h4>
+                </div>
+                <div id="bannersBlockStaticNavPagesLink5Collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="bannersBlockStaticNavPagesLink5Heading">
+                  <div class="panel-body">
+                    <div class="form-group">
+                      <label for="bannersBlockStaticNavPagesLink5Img">Link URL:</label>
+                      <input ng-model="link5_url" type="text" class="form-control" id="bannersBlockStaticNavPagesLink5Url" placeholder="Example: /link-b">
+                    </div>
+                    <div class="form-group">
+                      <label for="bannersBlockStaticNavPagesLink5Title">Link Title:</label>
+                      <input ng-model="link5_title" type="text" class="form-control" id="bannersBlockStaticNavPagesLink5Title" placeholder="Example: Link B">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Panel Collapsed -->
+            <div class="panel-group" id="bannersBlockStaticNavPagesAccordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="bannersBlockStaticNavPagesLink6Heading">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#bannersBlockStaticNavPagesAccordion" href="#bannersBlockStaticNavPagesLink6Collapse" aria-expanded="false" aria-controls="bannersBlockStaticNavPagesLink6Collapse">
+                      Link 6
+                    </a>
+                  </h4>
+                </div>
+                <div id="bannersBlockStaticNavPagesLink6Collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="bannersBlockStaticNavPagesLink6Heading">
+                  <div class="panel-body">
+                    <div class="form-group">
+                      <label for="bannersBlockStaticNavPagesLink6Img">Link URL:</label>
+                      <input ng-model="link6_url" type="text" class="form-control" id="bannersBlockStaticNavPagesLink6Url" placeholder="Example: /link-c">
+                    </div>
+                    <div class="form-group">
+                      <label for="bannersBlockStaticNavPagesLink6Title">Link Title:</label>
+                      <input ng-model="link6_title" type="text" class="form-control" id="bannersBlockStaticNavPagesLink6Title" placeholder="Example: Link C">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Panel Collapsed -->
+            <div class="panel-group" id="bannersBlockStaticNavPagesAccordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="bannersBlockStaticNavPagesLink7Heading">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#bannersBlockStaticNavPagesAccordion" href="#bannersBlockStaticNavPagesLink7Collapse" aria-expanded="false" aria-controls="bannersBlockStaticNavPagesLink7Collapse">
+                      Link 7
+                    </a>
+                  </h4>
+                </div>
+                <div id="bannersBlockStaticNavPagesLink7Collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="bannersBlockStaticNavPagesLink7Heading">
+                  <div class="panel-body">
+                    <div class="form-group">
+                      <label for="bannersBlockStaticNavPagesLink7Img">Link URL:</label>
+                      <input ng-model="link7_url" type="text" class="form-control" id="bannersBlockStaticNavPagesLink7Url" placeholder="Example: /link-d">
+                    </div>
+                    <div class="form-group">
+                      <label for="bannersBlockStaticNavPagesLink7Title">Link Title:</label>
+                      <input ng-model="link7_title" type="text" class="form-control" id="bannersBlockStaticNavPagesLink7Title" placeholder="Example: Link D">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Panel Collapsed -->
+            <div class="panel-group" id="bannersBlockStaticNavPagesAccordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="bannersBlockStaticNavPagesLink8Heading">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#bannersBlockStaticNavPagesAccordion" href="#bannersBlockStaticNavPagesLink8Collapse" aria-expanded="false" aria-controls="bannersBlockStaticNavPagesLink8Collapse">
+                      Link 8
+                    </a>
+                  </h4>
+                </div>
+                <div id="bannersBlockStaticNavPagesLink8Collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="bannersBlockStaticNavPagesLink8Heading">
+                  <div class="panel-body">
+                    <div class="form-group">
+                      <label for="bannersBlockStaticNavPagesLink8Img">Link URL:</label>
+                      <input ng-model="link8_url" type="text" class="form-control" id="bannersBlockStaticNavPagesLink8Url" placeholder="Example: /link-e">
+                    </div>
+                    <div class="form-group">
+                      <label for="bannersBlockStaticNavPagesLink8Title">Link Title:</label>
+                      <input ng-model="link8_title" type="text" class="form-control" id="bannersBlockStaticNavPagesLink8Title" placeholder="Example: Link E">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Panel Collapsed -->
+            <div class="panel-group" id="bannersBlockStaticNavPagesAccordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="bannersBlockStaticNavPagesLink9Heading">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#bannersBlockStaticNavPagesAccordion" href="#bannersBlockStaticNavPagesLink9Collapse" aria-expanded="false" aria-controls="bannersBlockStaticNavPagesLink9Collapse">
+                      Link 9
+                    </a>
+                  </h4>
+                </div>
+                <div id="bannersBlockStaticNavPagesLink9Collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="bannersBlockStaticNavPagesLink9Heading">
+                  <div class="panel-body">
+                    <div class="form-group">
+                      <label for="bannersBlockStaticNavPagesLink9Img">Link URL:</label>
+                      <input ng-model="link9_url" type="text" class="form-control" id="bannersBlockStaticNavPagesLink9Url" placeholder="Example: /link-f">
+                    </div>
+                    <div class="form-group">
+                      <label for="bannersBlockStaticNavPagesLink9Title">Link Title:</label>
+                      <input ng-model="link9_title" type="text" class="form-control" id="bannersBlockStaticNavPagesLink9Title" placeholder="Example: Link F">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div hljs include="'/samples/bannersBlockStaticNavPages.txt'" compile="true" id="bannersBlockStaticNavPagesCode" class="highlight-code"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-clipboard-target="#bannersBlockStaticNavPagesCode">Copy Code</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- modal #bannersBlockStaticNavPagesModal -->
+  <!-- Modal -->
+  <div class="modal fade" id="bannersBlockAfterHeaderModal" tabindex="-1" role="dialog" aria-labelledby="bannersBlockAfterHeaderModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="bannersBlockAfterHeaderModalLabel">Code Generator: Banner below header</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+                <div class="panel-group" id="bannersBlockAfterHeaderAccordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="bannersBlockAfterHeaderBannerHeading">
+                      <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#bannersBlockAfterHeaderAccordion" href="#bannersBlockAfterHeaderBannerCollapse" aria-expanded="true" aria-controls="bannersBlockAfterHeaderBannerCollapse">
+                          Banner
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="bannersBlockAfterHeaderBannerCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="bannersBlockAfterHeaderBannerHeading">
+                      <div class="panel-body">
+                        <div class="form-group">
+                          <label for="bannersBlockAfterHeaderBannerImg">Image URL:</label>
+                          <input ng-model="banner_img" type="text" class="form-control" id="bannersBlockAfterHeaderBannerImg" placeholder="Example: https://placehold.it/270x450">
+                        </div>
+                        <div class="form-group">
+                          <label for="bannersBlockAfterHeaderBannerAlt">Image Alt:</label>
+                          <input ng-model="banner_alt" type="text" class="form-control" id="bannersBlockAfterHeaderBannerAlt" placeholder="Example: Banner 1">
+                        </div>
+                        <div class="form-group">
+                          <label for="bannersBlockAfterHeaderBannerLink">Link URL:</label>
+                          <input ng-model="banner_link" type="text" class="form-control" id="bannersBlockAfterHeaderBannerLink" placeholder="Example: https://supermarket-blue-demo.mybigcommerce.com">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div hljs include="'/samples/bannersBlockAfterHeader.txt'" compile="true" id="bannersBlockAfterHeaderCode" class="highlight-code"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-clipboard-target="#bannersBlockAfterHeaderCode">Copy Code</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- modal #bannersBlockAfterHeaderModal -->
+  <!-- Modal -->
+  <div class="modal fade" id="bannersBlockBeforeCategoryModal" tabindex="-1" role="dialog" aria-labelledby="bannersBlockBeforeCategoryModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="bannersBlockBeforeCategoryModalLabel">Code Generator: Banner on category page top content</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+                <div class="panel-group" id="bannersBlockBeforeCategoryAccordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="bannersBlockBeforeCategoryBannerHeading">
+                      <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#bannersBlockBeforeCategoryAccordion" href="#bannersBlockBeforeCategoryBannerCollapse" aria-expanded="true" aria-controls="bannersBlockBeforeCategoryBannerCollapse">
+                          Banner
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="bannersBlockBeforeCategoryBannerCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="bannersBlockBeforeCategoryBannerHeading">
+                      <div class="panel-body">
+                        <div class="form-group">
+                          <label for="bannersBlockBeforeCategoryBannerImg">Image URL:</label>
+                          <input ng-model="banner_img" type="text" class="form-control" id="bannersBlockBeforeCategoryBannerImg" placeholder="Example: https://placehold.it/270x450">
+                        </div>
+                        <div class="form-group">
+                          <label for="bannersBlockBeforeCategoryBannerAlt">Image Alt:</label>
+                          <input ng-model="banner_alt" type="text" class="form-control" id="bannersBlockBeforeCategoryBannerAlt" placeholder="Example: Banner 1">
+                        </div>
+                        <div class="form-group">
+                          <label for="bannersBlockBeforeCategoryBannerLink">Link URL:</label>
+                          <input ng-model="banner_link" type="text" class="form-control" id="bannersBlockBeforeCategoryBannerLink" placeholder="Example: https://supermarket-blue-demo.mybigcommerce.com">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div hljs include="'/samples/bannersBlockBeforeCategory.txt'" compile="true" id="bannersBlockBeforeCategoryCode" class="highlight-code"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-clipboard-target="#bannersBlockBeforeCategoryCode">Copy Code</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- modal #bannersBlockBeforeCategoryModal -->
+  <!-- Modal -->
+  <div class="modal fade" id="bannersBlockAfterRatingModal" tabindex="-1" role="dialog" aria-labelledby="bannersBlockAfterRatingModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="bannersBlockAfterRatingModalLabel">Code Generator: Banner below ratings</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+                <div class="panel-group" id="bannersBlockAfterRatingAccordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="bannersBlockAfterRatingBannerHeading">
+                      <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#bannersBlockAfterRatingAccordion" href="#bannersBlockAfterRatingBannerCollapse" aria-expanded="true" aria-controls="bannersBlockAfterRatingBannerCollapse">
+                          Banner
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="bannersBlockAfterRatingBannerCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="bannersBlockAfterRatingBannerHeading">
+                      <div class="panel-body">
+                        <div class="form-group">
+                          <label for="bannersBlockAfterRatingBannerImg">Image URL:</label>
+                          <input ng-model="banner_img" type="text" class="form-control" id="bannersBlockAfterRatingBannerImg" placeholder="Example: https://placehold.it/270x450">
+                        </div>
+                        <div class="form-group">
+                          <label for="bannersBlockAfterRatingBannerAlt">Image Alt:</label>
+                          <input ng-model="banner_alt" type="text" class="form-control" id="bannersBlockAfterRatingBannerAlt" placeholder="Example: Banner 1">
+                        </div>
+                        <div class="form-group">
+                          <label for="bannersBlockAfterRatingBannerLink">Link URL:</label>
+                          <input ng-model="banner_link" type="text" class="form-control" id="bannersBlockAfterRatingBannerLink" placeholder="Example: https://supermarket-blue-demo.mybigcommerce.com">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div hljs include="'/samples/bannersBlockAfterRating.txt'" compile="true" id="bannersBlockAfterRatingCode" class="highlight-code"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-clipboard-target="#bannersBlockAfterRatingCode">Copy Code</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- modal #bannersBlockAfterRatingModal -->
+  <!-- Modal -->
+  <div class="modal fade" id="bannersBlockAfterAddToCartButtonModal" tabindex="-1" role="dialog" aria-labelledby="bannersBlockAfterAddToCartButtonModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="bannersBlockAfterAddToCartButtonModalLabel">Code Generator: Banner below Add To Cart button</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+                <div class="panel-group" id="bannersBlockAfterAddToCartButtonAccordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="bannersBlockAfterAddToCartButtonBannerHeading">
+                      <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#bannersBlockAfterAddToCartButtonAccordion" href="#bannersBlockAfterAddToCartButtonBannerCollapse" aria-expanded="true" aria-controls="bannersBlockAfterAddToCartButtonBannerCollapse">
+                          Banner
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="bannersBlockAfterAddToCartButtonBannerCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="bannersBlockAfterAddToCartButtonBannerHeading">
+                      <div class="panel-body">
+                        <div class="form-group">
+                          <label for="bannersBlockAfterAddToCartButtonBannerImg">Image URL:</label>
+                          <input ng-model="banner_img" type="text" class="form-control" id="bannersBlockAfterAddToCartButtonBannerImg" placeholder="Example: https://placehold.it/270x450">
+                        </div>
+                        <div class="form-group">
+                          <label for="bannersBlockAfterAddToCartButtonBannerAlt">Image Alt:</label>
+                          <input ng-model="banner_alt" type="text" class="form-control" id="bannersBlockAfterAddToCartButtonBannerAlt" placeholder="Example: Banner 1">
+                        </div>
+                        <div class="form-group">
+                          <label for="bannersBlockAfterAddToCartButtonBannerLink">Link URL:</label>
+                          <input ng-model="banner_link" type="text" class="form-control" id="bannersBlockAfterAddToCartButtonBannerLink" placeholder="Example: https://supermarket-blue-demo.mybigcommerce.com">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div hljs include="'/samples/bannersBlockAfterAddToCartButton.txt'" compile="true" id="bannersBlockAfterAddToCartButtonCode" class="highlight-code"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-clipboard-target="#bannersBlockAfterAddToCartButtonCode">Copy Code</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- modal #bannersBlockAfterAddToCartButtonModal -->
+  <!-- Modal -->
+  <div class="modal fade" id="bannersBlockBeforeDescriptionModal" tabindex="-1" role="dialog" aria-labelledby="bannersBlockBeforeDescriptionModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="bannersBlockBeforeDescriptionModalLabel">Code Generator: Banner above description tabs</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+                <div class="panel-group" id="bannersBlockBeforeDescriptionAccordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="bannersBlockBeforeDescriptionBannerHeading">
+                      <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#bannersBlockBeforeDescriptionAccordion" href="#bannersBlockBeforeDescriptionBannerCollapse" aria-expanded="true" aria-controls="bannersBlockBeforeDescriptionBannerCollapse">
+                          Banner
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="bannersBlockBeforeDescriptionBannerCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="bannersBlockBeforeDescriptionBannerHeading">
+                      <div class="panel-body">
+                        <div class="form-group">
+                          <label for="bannersBlockBeforeDescriptionBannerImg">Image URL:</label>
+                          <input ng-model="banner_img" type="text" class="form-control" id="bannersBlockBeforeDescriptionBannerImg" placeholder="Example: https://placehold.it/270x450">
+                        </div>
+                        <div class="form-group">
+                          <label for="bannersBlockBeforeDescriptionBannerAlt">Image Alt:</label>
+                          <input ng-model="banner_alt" type="text" class="form-control" id="bannersBlockBeforeDescriptionBannerAlt" placeholder="Example: Banner 1">
+                        </div>
+                        <div class="form-group">
+                          <label for="bannersBlockBeforeDescriptionBannerLink">Link URL:</label>
+                          <input ng-model="banner_link" type="text" class="form-control" id="bannersBlockBeforeDescriptionBannerLink" placeholder="Example: https://supermarket-blue-demo.mybigcommerce.com">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div hljs include="'/samples/bannersBlockBeforeDescription.txt'" compile="true" id="bannersBlockBeforeDescriptionCode" class="highlight-code"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-clipboard-target="#bannersBlockBeforeDescriptionCode">Copy Code</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- modal #bannersBlockBeforeDescriptionModal -->
 </div>
 
 
@@ -550,6 +1018,27 @@ This page will explain all configuration available and how to edit each section 
 You can enable this layout in __Theme Editor__ > __Global__ > __Layout__, choose `Left Sidebar`:
 
 ![Theme editor layout](img/theme-editor-layout.png)
+
+
+
+
+
+## Vertical mega menu vs. Slide down menu
+
+__Note: slide down menu only works with Fixed vertical menu layout.__
+
+
+__Mega menu__ (default):
+
+![Mega menu](img/home1-mega-menu.jpg)
+
+__Slide down menu__:
+
+![Slidedown menu](img/home1-slidedown-menu.jpg)
+
+You can switch the default mega menu to slide down menu in **Theme Editor** > **Header** > tick to **Showing sub-categories vertical**:
+
+![subcategories vertical menu](img/theme-editor-subcategories-vertical-menu.png)
 
 
 
@@ -626,12 +1115,101 @@ To configure your social media links, go to admin page > __Storefront Design__ >
 ![Edit social media links](img/edit-social-media-icons.png)
 
 
-
 ### Colors Customization
 
 To customize colors of the header section, look into the options showing below in the Theme Editor:
 
 ![Theme editor header](img/theme-editor-header.png)
+
+
+## Main Menu
+
+![Main menu](img/home1-main-menu.jpg)
+
+This menu automatically show your web page links if visible.
+
+You can hide this menu bar completely or enable custom content, custom links in this posible in **Theme Editor** > **Header** > **Page Navigation**:
+
+![theme editor page navigation](img/theme-editor-page-navigation.png)
+
+- **Hide Content Pages in Main Menu**: if checked will hide all this menu bar completely.
+- **Use manual links in Main Menu**: if checked will allow you enter custom content or custom links in **Marketing** > **Banners**. Use this tool below to generate your own links.
+
+### Manually input links in Main Menu
+
+Theme allow you input your own links manually in this menu area. First tick on the check box **Use manual links in Main Menu** in **Theme Editor**.
+
+Go to **Marketing** > **Banners**, click button **Create a Banner**. In field **Banner Content**, click button HTML to open **HTML Source Editor**, input sample content below:
+
+```html
+<ul id="emthemesModezBannersBlockStaticNavPages" class="navPages-list">
+<li class="navPages-item"><a class="navPages-action" href="/">Home</a></li>
+<li class="navPages-item"><a class="navPages-action" href="/about-us">About Us</a></li>
+<li class="navPages-item"><a class="navPages-action" href="/contact">Contact Us</a></li>
+<li class="navPages-item"><a class="navPages-action" href="/link-1">Link 1</a></li>
+<li class="navPages-item"><a class="navPages-action" href="/link-2">Link 2</a></li>
+</ul>
+```
+
+Or use button below to generate the code with your own banners:
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockStaticNavPagesModal">
+  Launch Main Menu Code Generator
+</button>
+
+
+
+
+
+
+## Banner below header
+
+![banner below header](img/home1-banner-below-header.png)
+
+You can enable this banner on all pages or all other pages except homepage in **Theme Editor** > **Banners** > **Banner after header**:
+
+![configure banner after header](img/theme-editor-banner-after-header.png)
+
+
+
+After enabled, you can edit banner content by go to **Marketing** > **Banners**, click button **Create a Banner**. Input:
+
+- __Banner Name__: whatever you want
+- __Banner Content__: click the square button `HTML` to open HTML source code editor.
+
+Copy and paste the sample code below:
+
+```html
+<div id="emthemesModezBannersBlockAfterHeader" class="container emthemesModezBannersBlockAfterHeader">
+<div class="emthemesModez-section emthemesModez-section--banners-one">
+<div class="emthemesModez-section-inner">
+<div class="emthemesModez-bannersContainer emthemesModez-bannersContainer--one">
+<div class="emthemesModez-banner">
+<div class="emthemesModez-banner-container"><a href="#"><img class="emthemesModez-banner-image" src="https://placehold.it/1920x150?text=Content+or+Banner+can+turn+on/off+on+all+pages+or+other+pages" alt="After Header Position" /></a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+```
+
+You can use button below to generate the code with your own banner image:
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockAfterHeaderModal">
+  Launch Banner Code Generator
+</button>
+
+- __Show on Page__: `Search Results Page`
+- __Visible__: Checked
+- __Location__: `Top of Page`
+
+
+
+
+
+
 
 
 
@@ -696,9 +1274,6 @@ Or use button below to generate the code with your own banners:
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockHome01Modal">
   Launch Banner Code Generator
 </button>
-
-
-
 
 
 
@@ -1035,6 +1610,148 @@ You can show your own Facebook Like Page block or hide it completely.
 From __Theme Editor__ > __Social Media Icons__ > Enter your facebook page name in __Facebook page__ field. For example if your Facebook page URL is <https://www.facebook.com/papathemes/> you should only input `papathemes`.
 
 To hide this block, just leave it empty value.
+
+
+
+
+
+
+
+## Category Page - Content Top Banner
+
+![content top banner on category page](img/home1-category-page-top-banner.png)
+
+You can enable this banner on all category pages in **Theme Editor** > **Banners** > **Top banner on category page** set to `Show`.
+
+After enabled, you can edit banner content by go to **Marketing** > **Banners**, click button **Create a Banner**. Input:
+
+- __Banner Name__: whatever you want
+- __Banner Content__: click the square button `HTML` to open HTML source code editor.
+
+Copy and paste the sample code below:
+
+```html
+<div id="emthemesModezBannersBlockBeforeCategory" class="container emthemesModezBannersBlockBeforeCategory">
+<div class="emthemesModez-section emthemesModez-section--banners-one">
+<div class="emthemesModez-section-inner">
+<div class="emthemesModez-bannersContainer emthemesModez-bannersContainer--one">
+<div class="emthemesModez-banner">
+<div class="emthemesModez-banner-container"><a href="#"><img class="emthemesModez-banner-image" src="https://placehold.it/1920x200?text=Content+or+Banner+can+turn+on/off+on+category+pages" alt="Before Category Position" /></a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+```
+
+You can use button below to generate the code with your own banner image:
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockBeforeCategoryModal">
+  Launch Banner Code Generator
+</button>
+
+- __Show on Page__: `Search Results Page`
+- __Visible__: Checked
+- __Location__: `Top of Page`
+
+
+
+
+
+
+## Product Page - Banners
+
+![banners on product page](img/home1-product-page-banners.png)
+
+Theme supports various banner positions on product pages. You can enable these banner position in **Theme Editor** > **Banners**:
+
+- **Banner below ratings on product page**
+- **Banner below Add To Cart button on product page**
+- **Banner above description tabs on product page**
+
+
+After enabled, you can edit banner content by go to **Marketing** > **Banners**, click button **Create a Banner**. Input:
+
+- __Banner Name__: whatever you want
+- __Banner Content__: click the square button `HTML` to open HTML source code editor.
+
+Copy and paste the sample code below:
+
+**For banner below ratings:**
+
+```html
+<div id="emthemesModezBannersBlockAfterRating" class="emthemesModezBannersBlockAfterRating">
+<div class="emthemesModez-section emthemesModez-section--banners-one">
+<div class="emthemesModez-section-inner">
+<div class="emthemesModez-bannersContainer emthemesModez-bannersContainer--one">
+<div class="emthemesModez-banner">
+<div class="emthemesModez-banner-container"><a href="#"><img class="emthemesModez-banner-image" src="https://placehold.it/500x80?text=Content+or+Banner+can+turn+on/off+on+product+pages" alt="After product ratings on product page" /></a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+```
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockAfterRatingModal">
+  Launch Banner Code Generator
+</button>
+
+
+**For banner below Add to Cart button:**
+
+```html
+<div id="emthemesModezBannersBlockAfterAddToCartButton" class="emthemesModezBannersBlockAfterAddToCartButton">
+<div class="emthemesModez-section emthemesModez-section--banners-one">
+<div class="emthemesModez-section-inner">
+<div class="emthemesModez-bannersContainer emthemesModez-bannersContainer--one">
+<div class="emthemesModez-banner">
+<div class="emthemesModez-banner-container"><a href="#"><img class="emthemesModez-banner-image" src="https://placehold.it/500x80?text=Content+or+Banner+can+turn+on/off+on+product+pages" alt="After add to cart button on product page" /></a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+```
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockAfterAddToCartButtonModal">
+  Launch Banner Code Generator
+</button>
+
+
+**For banner above description tabs:**
+
+```html
+<div id="emthemesModezBannersBlockBeforeDescription" class="emthemesModezBannersBlockBeforeDescription">
+<div class="emthemesModez-section emthemesModez-section--banners-one">
+<div class="emthemesModez-section-inner">
+<div class="emthemesModez-bannersContainer emthemesModez-bannersContainer--one">
+<div class="emthemesModez-banner">
+<div class="emthemesModez-banner-container"><a href="#"><img class="emthemesModez-banner-image" src="https://placehold.it/1920x250?text=Content+or+Banner+can+turn+on/off+on+product+pages" alt="Before description tabs on product page" /></a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+```
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockBeforeDescriptionModal">
+  Launch Banner Code Generator
+</button>
+
+
+- __Show on Page__: `Search Results Page`
+- __Visible__: Checked
+- __Location__: `Top of Page`
+
+
+
+
+
 
 
 ## Add our own CSS (Sass) code

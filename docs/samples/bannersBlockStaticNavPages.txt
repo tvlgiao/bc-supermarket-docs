@@ -1,0 +1,11 @@
+<ul id="emthemesModezBannersBlockStaticNavPages" class="navPages-list">
+<li class="navPages-item"><a class="navPages-action" href="{{ link1_url }}">{{ link1_title }}</a></li>
+<li class="navPages-item"><a class="navPages-action" href="{{ link2_url }}">{{ link2_title }}</a></li>
+<li class="navPages-item"><a class="navPages-action" href="{{ link3_url }}">{{ link3_title }}</a></li>
+<li class="navPages-item"><a class="navPages-action" href="{{ link4_url }}">{{ link4_title }}</a></li>
+<li class="navPages-item"><a class="navPages-action" href="{{ link5_url }}">{{ link5_title }}</a></li>
+<li class="navPages-item"><a class="navPages-action" href="{{ link6_url }}">{{ link6_title }}</a></li>
+<li class="navPages-item"><a class="navPages-action" href="{{ link7_url }}">{{ link7_title }}</a></li>
+<li class="navPages-item"><a class="navPages-action" href="{{ link8_url }}">{{ link8_title }}</a></li>
+<li class="navPages-item"><a class="navPages-action" href="{{ link9_url }}">{{ link9_title }}</a></li>
+</ul>
