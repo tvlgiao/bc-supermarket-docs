@@ -1750,7 +1750,32 @@ Copy and paste the sample code below:
 
 
 
+## Banner Sizes
 
+![yellow style banner sizes](img/home1-banner-sizes.png)
+
+![blue style banner sizes](img/home2-banner-sizes.png)
+
+
+## Display Sale badget & custom badges
+
+![product badges](img/product-card-badges.png)
+
+### Sale badges
+
+You need to input both **Sale Price** and **Retail Price** in your product:
+
+![edit product sale prices](img/edit-product-sale-price.png)
+
+In **Theme Editor** > **Products** > **Product Sale Badges**, choose to display product Sale badge:
+
+![enable badges on theme editor](img/theme-editor-badges.png)
+
+### Custom badges
+
+To display custom badges, enable custom badges option in Theme Editor. Edit your product, input custom field `__badge` and input badget text in the custom field value:
+
+![edit product badges in custom fields](img/edit-product-custom-badges.png)
 
 
 

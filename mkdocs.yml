@@ -4,6 +4,7 @@ pages:
 - Install the theme: installation.md
 - Quick Start Guide: quickstart.md
 - Customization: customization.md
+- FAQs: faqs.md
 - Help & Support: support.md
 theme: readthedocs
 use_directory_urls: false
