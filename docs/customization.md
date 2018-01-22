@@ -1235,10 +1235,22 @@ To customize color of the slideshow's elements, look into section __Carousel__ i
 
 To hide the slideshow on homepage, uncheck on the checkbox __Show Carousel__ in section __Carousel__ of the Theme Editor.
 
+### Show videos on carousel
+
+To display YouTube video on Homepage Carousel, go to Theme Editor > Carousel > input your YouTube video ID in input fields as showing below:
+
+![Edit carousel videos](img/theme-editor-edit-carousel-videos.png)
+
+**Video 1** will be put on 1st slide, **Video 3** will be put on 3rd slide and so on.
+
+**_Note: you much upload images on slides at position 1 and position 3 in order to display video on these slides._**
+
+Example how slides added for displaying videos:
+
+![example editing carousel for showing videos](img/edit-carousel-for-videos.png)
 
 
-
-
+**Height/Width ratio percent** is percent of your video's height divide video's width, for example your video size is 1920x1080, input `56.25%` to this field.
 
 
 ## 3 Banners on Homepage
