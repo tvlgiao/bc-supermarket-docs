@@ -1756,6 +1756,8 @@ Copy and paste the sample code below:
 
 ![blue style banner sizes](img/home2-banner-sizes.png)
 
+![product page banner sizes](img/product-page-banner-sizes.png)
+
 
 ## Display Sale badget & custom badges
 
