@@ -52,3 +52,38 @@ Add this custom CSS to **Storefront** > **Footer Script**:
 }
 </style>
 ```
+
+## Change active tabs & remove other tabs in products by category block
+
+![Change active tabs of products by category](img/change-active-tabs-of-products-by-category.png)
+
+By default, the theme display Bestselling tab active by default, if you want to make other tab active by default and/or hide other tabs, follow instruction below to edit the theme source code.
+
+Make a copy of your theme in order to edit the theme source code:
+
+![Make a copy](img/make-a-copy.png)
+
+Then click on **Edit Theme Files**. In the editor, edit file `templates\components\papa-supermarket\category\ajax-products-by-category-sorting-tabs.html`:
+
+![edit file ajax products by cateegory sorting tabs](img/edit-file-ajax-products-by-cateegory-sorting-tabs.png)
+
+Edit as screenshot:
+
+![edit-file-to-change-active-tab-of-products-by-category-1](img/edit-file-to-change-active-tab-of-products-by-category-1.png)
+
+![edit-file-to-change-active-tab-of-products-by-category-2](img/edit-file-to-change-active-tab-of-products-by-category-2.png)
+
+In the next version, we will add new feature allow customize this in Theme Editor.
+
+
+
+## My products by category with sorting tabs block is not rendering on homepage?
+
+![products-by-category-is-not-rendering](img/products-by-category-is-not-rendering.png)
+
+If you already configured **Number of Categories** in Theme Editor but it's still not appearing, it's probably your categories have no products. To bypass this case to display products in sub-categories, you will need to edit theme source code. Edit file `templates/components/emthemes-modez/section/section.html`
+
+Delete 2 line as screenshot below:
+
+![edit-file-to-show-products-by-category-in-empty-category](img/edit-file-to-show-products-by-category-in-empty-category.png)
+
