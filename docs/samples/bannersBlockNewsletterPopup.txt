@@ -1,0 +1,8 @@
+<div id="emthemesModezBannersBlockNewsletterPopup" class="newsletterPopup">
+<div class="newsletterPopup-image"><img src="{{ img_src }}" alt="{{ img_alt }}" /></div>
+<div class="newsletterPopup-content">
+<h3 class="newsletterPopup-heading">{{ heading }}</h3>
+<div class="newsletterPopup-description">{{ desc }}</div>
+<div id="newsletterPopup-form-placeholder" class="newsletterPopup-form"><span class="u-hiddenVisually" style="color: red;">FORM SHOWS HERE - DO NOT DELETE THIS RED LINE</span></div>
+</div>
+</div>

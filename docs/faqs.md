@@ -21,8 +21,15 @@ Add this custom CSS to **Storefront** > **Footer Script**:
 .addthis_button_facebook_like.icon--facebook_like > svg {
     display: none;
 }
+
+.addthis_button_facebook_like.icon--facebook_like {
+	width: 60px !important;
+	overflow: hidden !important;
+}
 </style>
 ```
+
+
 ## Limit length of product name display on products grid
 
 ![Limit number of lines of product name on product grids](img/limit-product-name-lines.png)
@@ -87,3 +94,57 @@ Delete 2 line as screenshot below:
 
 ![edit-file-to-show-products-by-category-in-empty-category](img/edit-file-to-show-products-by-category-in-empty-category.png)
 
+
+## Make main image & thumbnails on product details page uniform
+
+Add the code below to Footer Script:
+
+```html
+<style>
+.productView-imageCarousel-nav-item.slick-slide {
+    position: relative;
+}
+
+.productView-imageCarousel-nav-item.slick-slide:before {
+    display: block;
+    content: ' ';
+    height: 0;
+    padding-bottom: 113.8%; /* height/width */
+}
+
+.productView-imageCarousel-nav-item img {
+    max-height: 100%;
+    max-width: calc(100% - 10px);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.productView-imageCarousel-main {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 550px) {
+    .productView-imageCarousel-main {
+        max-width: 500px;
+    }
+}
+
+.productView-imageCarousel-main-item > a {
+    position: relative;
+    display: block;
+    height: 0;
+    padding-top: 113.8%; /* height/width */
+}
+
+.productView-imageCarousel-main-item > a img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 100%;
+}
+</style>
+```

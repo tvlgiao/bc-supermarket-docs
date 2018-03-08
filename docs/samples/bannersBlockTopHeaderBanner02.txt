@@ -1,0 +1,6 @@
+<ul class="navUser-section emthemesModezBannersBlockTopHeaderBanner02">
+<li class="navUser-item"><a class="navUser-action" href="{{ link1_url }}">{{ link1_title | escapeHTML }}</a></li>
+<li class="navUser-item"><a class="navUser-action" href="{{ link2_url }}">{{ link2_title | escapeHTML }}</a></li>
+<li class="navUser-item"><a class="navUser-action" href="{{ link3_url }}">{{ link3_title | escapeHTML }}</a></li>
+<li class="navUser-item"><a class="navUser-action" href="{{ link4_url }}">{{ link4_title | escapeHTML }}</a></li>
+</ul>

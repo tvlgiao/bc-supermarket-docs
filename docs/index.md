@@ -1,10 +1,10 @@
-# User Guide - BigCommerce Theme Supermarket
+# Supermarket BigCommerce Theme Documentation
 
-Theme Version: 1.0.2 (2017-06-28)
+Theme Version: 1.3.0 (2018-03-06)
 
-Theme designed and developed by [papathemes](https://papathemes.com) 
+Theme designed and developed by [Papathemes](https://papathemes.com) 
 
-## User Guide Contents
+## Documentation Contents
 
 * [Install the theme](installation.md)
 * [Quick Start Guide](quickstart.md)

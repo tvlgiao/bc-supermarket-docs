@@ -1,4 +1,18 @@
-angular.module("app", ['hljs']);
+var app = angular.module("app", ['hljs']);
+
+app.filter('escapeHTML', function () {
+  return function (text, startIndex, endIndex) {
+    if (text) {
+      return text.
+        replace(/&/g, '&amp;').
+        replace(/</g, '&lt;').
+        replace(/>/g, '&gt;').
+        replace(/'/g, '&#39;').
+        replace(/"/g, '&quot;');
+    }
+    return '';
+  };
+});
 
 $(function() {
   $('[data-clipboard-target]').tooltip({
