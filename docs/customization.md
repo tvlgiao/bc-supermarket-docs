@@ -1623,7 +1623,7 @@ To show custom banner image per products by category block, tick on option **Sho
 
 ![theme-editor-show-banner-on-products-by-category](img/theme-editor-show-banner-on-products-by-category.png)
 
-Then go to **Storefront** > **Image Manager**, upload your banner images with appropriated name: `home-category-banner-{i}.jpg` where `{i}` is replaced by category order starting from 1.
+Then go to **Storefront** > **Image Manager**, upload your banner images with appropriated name: `products-by-category-{i}.jpg` where `{i}` is replaced by category order starting from 1.
 
 
 
@@ -2109,6 +2109,32 @@ Copy and paste the sample code below:
 - __Show on Page__: `Search Results Page`
 - __Visible__: Checked
 - __Location__: `Top of Page`
+
+
+
+## Product Page - Custom Tabs
+
+To add custom tabs and product page, edit your product description, click on HTML button to switch on HTML editor mode:
+
+![edit-product-custom-tabs](img/edit-product-custom-tabs.png)
+
+Copy and paste custom HTML code below into end of product description HTML content:
+```html
+<div data-custom-tab>
+<p data-custom-tab-title>Custom Tab 1</p>
+<p>Tab 1 content etc...</p>
+</div>
+
+<div data-custom-tab>
+<p data-custom-tab-title>Custom Tab 2</p>
+<p>Tab 2 content etc...</p>
+</div>
+```
+
+You can add many tabs as you want. replace tab title in `<p data-custom-tab-title>` and tab content below this element.
+
+
+
 
 
 ## Product Page - Shipping Date Notification (BETA)

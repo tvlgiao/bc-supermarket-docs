@@ -148,3 +148,61 @@ Add the code below to Footer Script:
 }
 </style>
 ```
+
+
+## Display tooltip when hover Compare button on product items
+
+Add custom code below into **Storefront** > **Footer Scripts**:
+
+```html
+<style>
+.card-figcaption-button--compare:hover:after {
+    content: 'Compare';
+    position: absolute;
+    padding: 4px 8px;
+    background: #fff;
+    display: inline-block;
+    font-size: 12px;
+    color: #666666;
+    bottom: calc(100% + 4px);
+    right: 0;
+    text-indent: 0;
+}
+</style>
+```
+
+
+## How to change "Image Coming Soon" default product image?
+
+Please upload your own "Coming Soon" image in **Marketing** > **Banner Manager**, then copy the image URL.
+
+Edit **Storefront** > **Footer Scripts**, add the code below:
+
+```html
+<script>
+    document.querySelectorAll("img[src*='ProductDefault.gif']").forEach(function(img) {
+        img.src = 'https://placehold.it/500x500';
+    });
+</script>
+```
+
+Replace  `https://placehold.it/500x500` by your "Coming Soon" image URL.
+
+
+## How to show "Coming Soon" default product image on product page?
+
+Display: "Coming Soon" image on product page by adding the code in **Footer Scripts**:
+
+```html
+{{#unless product.main_image}}
+<style>
+.productView-images { background: url(https://placehold.it/500x500) no-repeat center center; background-size: auto; padding-top: 100%; height: 0; }
+    
+@media (min-width: 801px) {
+.productView-images { padding-top: 50%; }
+}
+</style>
+{{/unless}}​
+```
+
+Replace  `https://placehold.it/500x500` by your "Coming Soon" image URL.
