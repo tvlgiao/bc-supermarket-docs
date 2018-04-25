@@ -206,3 +206,125 @@ Display: "Coming Soon" image on product page by adding the code in **Footer Scri
 ```
 
 Replace  `https://placehold.it/500x500` by your "Coming Soon" image URL.
+
+
+## Move maintenance notice box to top of page
+
+Add the code below into **Storefront** > **Footer Scripts**:
+
+```html
+<style>
+body {
+    padding-top: 10rem;
+}
+
+.maintenanceNotice {
+    top: 55px;
+    left: 0;
+    right: 0;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    height: 6rem;
+    font-size: 11px;
+    overflow: hidden;
+}
+
+@media (min-width: 550px) {
+    body {
+        padding-top: 8rem;
+    }
+    .maintenanceNotice {
+        height: 4rem;
+    }
+}
+
+@media (min-width: 800px) {
+    body {
+        padding-top: 4rem;
+    }
+    .maintenanceNotice {
+        top: 0;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    body {
+        padding-top: 3rem;
+    }
+    .maintenanceNotice {
+        height: 3rem;
+    }
+}
+
+.maintenanceNotice > p {
+    margin: 0;
+    padding-right: 1.5rem;
+}
+
+.maintenanceNotice > br {
+    display: none;
+}
+
+.maintenanceNotice > a {
+    padding-left: 1.5rem;
+}
+</style>
+```
+
+**Note: Remove it when you launch your store.**
+
+
+## Display sub-category name below sub-category image
+
+By the default, the theme dipslays sub-category name over image. If you don't like this style, but want to display sub-category name under image, just add custom CSS code below into **Storefront** > **Footer Scripts**:
+
+```css
+<style>
+.papaSupermarket-subcategories-image {
+    height: 0;
+    padding-top: 100%;
+    text-align: center;
+    display: block;
+    position: relative;
+}
+.papaSupermarket-subcategories-image img {
+    max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.papaSupermarket-subcategories-grid-item:hover img {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+.papaSupermarket-subcategories-image + .papaSupermarket-subcategories-name {
+    position: static;
+    transform: none;
+}
+</style>
+```
+
+## Display entire product description on mobile
+
+To optimize for mobile view, product description are collapse by default. Tap on VIEW ALL link to expand all product description.
+
+![product description on mobile](img/product-description-on-mobile.png)
+
+If you want to display entire product description by default, add the custom code below into **Storefront** > **Footer Scripts**:
+
+```html
+<style>
+@media (max-width: 800px) {
+    .productView-description-tabContent.emthemesModez-mobile-collapse-content {
+        max-height: none;
+        overflow: auto;
+    }
+
+    .productView-description-tabContent .emthemesModez-mobile-collapse-handle {
+        display: none;
+    }
+}
+</style>
+```
