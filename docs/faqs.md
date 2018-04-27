@@ -328,3 +328,39 @@ If you want to display entire product description by default, add the custom cod
 }
 </style>
 ```
+
+## Move reviews tab next to description tab on product page
+
+Edit file `templates\components\products\product-view.html`, insert the code as showing below:
+
+![edit product-view.html to move reviews tab](img/reviews-tab-edit-product-view-html.png)
+
+```html
+{{#if settings.show_product_reviews}}
+{{#if product.reviews.total '>' 0}}
+    <li class="tab">
+        <a class="tab-title" href="#tab-reviews">{{lang 'products.reviews.header' total=product.reviews.total}}</a>
+    </li>
+{{/if}}
+{{/if}}
+```
+
+```html
+{{#if settings.show_product_reviews}}
+{{#if product.reviews.total '>' 0}}
+    <div class="tab-content" id="tab-reviews" data-emthemesmodez-mobile-collapse>
+        <h2 class="page-heading">{{lang 'products.reviews.header' total=product.reviews.total}}</h2>
+        <div class="emthemesModez-mobile-collapse-content" data-emthemesmodez-mobile-collapse-content>
+            {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+        </div>
+        <a href="#" class="emthemesModez-mobile-collapse-handle" data-emthemesmodez-mobile-collapse-handle><span class="on">{{lang 'common.view_all'}}</span><span class="off">{{lang 'common.close'}}</span></a>
+    </div>
+{{/if}}
+{{/if}}
+```
+
+
+Edit file `templates\pages\product.html`, delete the code as showing below:
+
+![delete code in product.html to move reviews tab](img/reviews-tab-edit-product-html.png)
+
