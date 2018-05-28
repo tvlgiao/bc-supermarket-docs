@@ -1431,7 +1431,9 @@ Or use button below to generate the code with your own banners:
   Launch Main Menu Code Generator
 </button>
 
-
+- __Show on Page__: `Search Results Page`
+- __Visible__: Checked
+- __Location__: `Top of Page`
 
 
 

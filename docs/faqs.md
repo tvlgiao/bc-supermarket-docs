@@ -364,3 +364,171 @@ Edit file `templates\pages\product.html`, delete the code as showing below:
 
 ![delete code in product.html to move reviews tab](img/reviews-tab-edit-product-html.png)
 
+
+## Move brands list underneath products list on Brand page
+
+
+If you want to display brands list under products list on brand page, add the custom CSS below into **Storefront** > **Footer Scripts**:
+
+```html
+<style>
+@media (max-width: 800px) {
+  .papaSupermarket-page--pages-brand .page {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .papaSupermarket-page--pages-brand .page-sidebar {
+    order: 2;
+  }
+  
+  .papaSupermarket-page--pages-brand .page-content {
+    order: 1;
+  }
+
+  .emthemesModez-productsFilter {
+    position: fixed;
+    top: 100px;
+    left: 10px;
+    z-index: 100;
+  }
+  
+  .emthemesModez-productsFilter .actionBar {
+    width: 280px;
+  }
+}
+</style>
+```
+
+## Move bottom banner to under brand title on brand page
+
+Insert the custom script below into **Storefront** > **Footer Scripts**:
+
+```html
+<script>
+(function() {
+    var body = document.body || document.getElementsByTagName('body')[0];
+    if (body.className.match(/papaSupermarket-page--pages-brand/)) {
+        var banners = document.querySelectorAll('.banners--bottom');
+        var title = document.querySelectorAll('.h1.page-heading')[0];
+        for (var i = 0; i < banners.length; i++) {
+            title.parentNode.insertBefore(banners[i], title.nextSibling);
+        }
+
+        var css = '.papaSupermarket-page--pages-brand .banners--bottom { margin-top: 0; }';
+        var head = document.head || document.getElementsByTagName('head')[0];
+        var style = document.createElement('style');
+        style.type = 'text/css';
+        if (style.styleSheet){
+            style.styleSheet.cssText = css;
+        } else {
+            style.appendChild(document.createTextNode(css));
+        }
+        head.appendChild(style);
+    }
+})();
+</script>
+```
+
+
+## Display custom message above shipping options on checkout page:
+
+![display custom message above shipping options on checkout page](img/display-message-above-shipping-options-on-checkout-page.png)
+
+Insert the code below into **Scripts Manager**, Checkout page, footer location:
+
+```html
+<script>
+(function() {
+    function processCheckoutShippingOptionTips() {
+        $(function() {
+            var $tipsEl = $('#checkout-shipping-options-tips');
+            window.setInterval(function() {
+                if ($('#checkout-shipping-options-tips-clone').length === 0) {
+                    var $shippingOptionsEl = $('#checkout-shipping-options');
+                    if ($shippingOptionsEl.length > 0) {
+                        $tipsEl.clone()
+                            .attr('id', 'checkout-shipping-options-tips-clone')
+                            .show()
+                            .insertBefore($shippingOptionsEl.children('legend'));
+                    }
+                }
+            }, 500);
+        });
+    }
+
+    document.write('\
+        <div id="checkout-shipping-options-tips" style="display: none">\
+            <ul>\
+                <li>Please allow 1 to 2 business days for handling in addition to shipping time.</li>\
+                <li>Orders placed on Fridays or Holidays may not be shipped until the next business day.</li>\
+            </ul>\
+            <p>Tip: Look at USPS as a shipping option for late week orders. We ship from Rhode Island and in many cases USPS is more cost effective method and will deliver on Saturdays as opposed to other carriers in the same or less time frame.</p>\
+        </div>');
+
+    var script = document.createElement("script");
+    script.onload = processCheckoutShippingOptionTips;
+    document.currentScript.parentNode.insertBefore(script, document.currentScript);
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js';
+})();
+</script>
+```
+
+
+## Hide Sale badge for logged in users
+
+Insert the custom script below into **Storefront** > **Footer Scripts**:
+
+```html
+<!-- Hide sale label for logged in users -->
+{{#if customer}}
+    <style>
+        .sale-flag-side:not(.sale-flag-side--custom) {
+            display: none;
+        }
+    </style>
+{{/if}}
+```
+
+
+
+## Display customer group name & 'Price' label before products price
+
+Insert the custom script below into **Storefront** > **Footer Scripts**:
+
+```html
+<!-- Display customer group & 'price' label before price -->
+{{#if customer.customer_group_id}}
+    <style>
+        .customerGroup-price-label {
+            float: left;
+            margin-right: .75rem;
+            margin-top: 5px;
+        }
+        .card-customerGroup-price-label {
+            margin-right: .375rem;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $('.productView-price').prepend('<div class="customerGroup-price-label">{{{customer.customer_group_name}}} Price</div>');
+            $('.card-text .price:not(.price--rrp)').prepend('<span class="card-customerGroup-price-label">{{{customer.customer_group_name}}} Price</span>')
+        });
+    </script>
+{{/if}}
+```
+
+
+## Fix product thumbnails carousel on product page for Supermarket version 1.5.4 and older
+
+```html
+<!-- Fix product thumbnails carousel on product page for Supermarket version 1.5.4 and older -->
+{{#if page_type '===' 'product'}}
+    {{#if product.images.length '<=' theme_settings.productpage_thumbnails_count}}
+        <style>
+            .productView-imageCarousel-nav .slick-track { transform: none !important }
+        </style>
+    {{/if}}
+{{/if}}
+```
