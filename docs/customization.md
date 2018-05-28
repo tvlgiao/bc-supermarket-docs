@@ -2234,14 +2234,10 @@ To display custom badges, enable custom badges option in Theme Editor. Edit your
 
 
 
-## Add our own CSS (Sass) code
+## Add our own CSS / JavaScript code
 
-To add your own custom CSS code you can edit the file `assets/scss/_theme-custom.scss` in __Edit Theme Files__ editor:
+You can add your custom CSS by inserting into Storefront > Footer Scripts, wrapped by a `<style>` tag.
 
-![Edit file _theme-custom.scss](img/edit-file-theme-custom-css.png)
+To insert custom JS, you can insert into Footer Scripts wrapped by a `<script>` tag or insert in to Scripts Manager.
 
-__Note: __
-
-- Copy / backup this file for future theme upgrade.
-- Add custom CSS code required CSS (or Sass) programming skill. It's not recommended for new users.
 
