@@ -1,6 +1,6 @@
 # Supermarket BigCommerce Theme Documentation
 
-Theme Version: 1.3.0 (2018-03-06)
+Theme Version: 1.5.5 (2018-05-28)
 
 Theme designed and developed by [Papathemes](https://papathemes.com) 
 
