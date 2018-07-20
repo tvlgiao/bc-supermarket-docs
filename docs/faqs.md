@@ -302,6 +302,11 @@ By the default, the theme dipslays sub-category name over image. If you don't li
 .papaSupermarket-subcategories-image + .papaSupermarket-subcategories-name {
     position: static;
     transform: none;
+    background-color: transparent;
+    display: block;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
 }
 </style>
 ```
@@ -522,6 +527,8 @@ Insert the custom script below into **Storefront** > **Footer Scripts**:
 
 ## Fix product thumbnails carousel on product page for Supermarket version 1.5.4 and older
 
+Insert the custom script below into **Storefront** > **Footer Scripts**:
+
 ```html
 <!-- Fix product thumbnails carousel on product page for Supermarket version 1.5.4 and older -->
 {{#if page_type '===' 'product'}}
@@ -532,3 +539,104 @@ Insert the custom script below into **Storefront** > **Footer Scripts**:
     {{/if}}
 {{/if}}
 ```
+
+
+
+## Display product condition badge on every product card and product page main image
+
+![Product condition badge](img/product-condition-badge.jpg)
+
+Insert the custom script below into **Storefront** > **Footer Scripts**:
+
+```html
+<!-- Papathemes: display product condition badge on product cards and product details page -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(function() {
+    function product_page() {
+        var $el = $('.productView-info-value--condition');
+        var $cond_badge = $('<div class="sale-flag-side sale-flag-side--custom"><span class="sale-text">' + $el.text() + '</span></div>');
+        var $image = $('.productView-imageCarousel-main');
+        var $last_badge = $('.productView-images .sale-flag-side').last();
+        if ($last_badge.length > 0) {
+            $last_badge.before($cond_badge);
+        } else {
+            $image.after($cond_badge)
+        }
+    }
+    product_page();
+
+    
+    function request_all($scope) {
+        $('[data-emthemesmodez-cart-item-add]', $scope).each(function(i, a) {
+            var m = a.href.match(/product_id=([0-9]+)/);
+            if (m) {
+                var $card_figure = $(a).closest('.card-figure');
+                var id = m[1];
+                request_card(id, $card_figure);
+            }
+        });
+    }
+
+    function request_card(id, $card_figure) {
+        $.ajax({
+            url: '/products.php?productId=' + id,
+            headers: {
+                'stencil-options': '{"render_with":"products/quick-view"}'
+            },
+            success: function(data, status, xhr) {
+                $html = $(data);
+                $cond = $html.find('.productView-info-value--condition');
+                if ($cond.length > 0) {
+                    var $cond_badge = $('<div class="sale-flag-side sale-flag-side--custom"><span class="sale-text">' + $cond.text() + '</span></div>');
+                    var $last_badge = $card_figure.find('.sale-flag-side');
+                    if ($last_badge.length > 0) {
+                        $last_badge.after($cond_badge);
+                    } else {
+                        $card_figure.prepend($cond_badge);
+                    }
+                }
+            }
+        });
+    }
+    request_all($('body'));
+  
+    setInterval(function() {
+      $('.emthemesModez-productsByCategoryTabs-products').each(function(i, el) {
+        if (!$(el).data('conditionBadgeAdded')) {
+          $(el).data('conditionBadgeAdded', true);
+          request_all($(el));
+        }
+      });
+    }, 500);
+});
+</script>​
+```
+
+
+## Make all product card items in carousel (Related Products, Customer Also Viewed) same height
+
+Add this custom CSS into **Storefront** > **Footer Scripts**:
+
+```html
+<style>
+.productCarousel .slick-track { display: flex; align-items: stretch; }
+.productCarousel .slick-track:before,
+.productCarousel .slick-track:after { display: none; }
+.productCarousel .slick-slide { height: auto; }
+.productCarousel .card { min-height: 100%; }
+</style>
+```
+
+
+## Show Out of Stock message on product page
+
+It is a built-in feature of BigCommerce. However, some of our clients don't know how to accomplish. So we think this guide will be helpful.
+
+![Out of Stock message on product page](img/product-page-out-of-stock.jpg)
+
+Please configure **Advanced Settings** > **Inventory** as showing below:
+![Configure Inventory for Out of Stock message](img/configure-inventory-for-out-of-stock.png)
+
+Edit your product, make sure you enable tracking inventory:
+![Track product inventory](img/product-track-inventory.png)
