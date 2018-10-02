@@ -435,6 +435,25 @@ Insert the custom script below into **Storefront** > **Footer Scripts**:
 </script>
 ```
 
+## Move bottom banner up above product tabs
+
+Insert the custom script below into **Storefront** > **Footer Scripts**:
+
+```html
+<script>
+(function() {
+    var body = document.body || document.getElementsByTagName('body')[0];
+    if (body.className.match(/papaSupermarket-page--pages-home/)) {
+        var banners = document.querySelectorAll('.banners--bottom');
+        var productTabs = document.querySelectorAll('.emthemesModez-section--specialProductsTabs')[0];
+        for (var i = 0; i < banners.length; i++) {
+            productTabs.parentNode.insertBefore(banners[i], productTabs);
+        }
+    }
+})();
+</script>
+```
+
 
 ## Display custom message above shipping options on checkout page:
 
@@ -640,3 +659,133 @@ Please configure **Advanced Settings** > **Inventory** as showing below:
 
 Edit your product, make sure you enable tracking inventory:
 ![Track product inventory](img/product-track-inventory.png)
+
+## Show UPS and all options of shipping
+
+### On Checkout page for developers
+
+Edit file `checkout_express.html` in **Storefront** > **Checkout Template Files**, add the code below:
+
+```html
+<style>
+.shippingquote { display: block !important; }
+.shippingquote a[onclick*=toggle] { display:none; }
+</style>
+```
+### On estimated shipping of shopping cart page
+
+Add the custom CSS below into **Storefront** > **Footer Scripts**:
+```html
+<style>
+.estimator-form--ups { display: block !important; clip: auto !important; height: auto !important; width: auto !important; position: static !important }
+.estimator-form-toggleUPSRate { display: none }
+</style>
+```
+
+
+## Fix quick search popup cut off when the header is configured sticky
+
+Add the custom CSS below into **Storefront** > **Footer Scripts**:
+
+```html
+<style>
+[data-stickymenu] .dropdown--quickSearch .quickSearchResults { max-height: calc(100vh - 300px); overflow: auto; overflow-x: hidden }
+.is-sticky[data-stickymenu] .dropdown--quickSearch .quickSearchResults { max-height: calc(100vh - 250px) }
+[data-stickymenu] .dropdown--quickSearch .modal-close { top: -25px; right: -25px }
+</style>
+```
+
+
+## Show all product thumbnails on product page
+
+Configure Theme Editor to show up to 10 thumbnail images and add custom CSS below to **Storefront** > **Footer Scripts**:
+
+```html
+<style>
+@media (min-width: 801px) {
+    .productView-imageCarousel-nav { height: auto !important; overflow: visible !important; padding: 0 !important; }
+    .productView-imageCarousel-nav .slick-arrow { display: none }
+    .productView-imageCarousel-nav .slick-track { width: 100% !important; transform: none !important; }
+    .productView-imageCarousel-nav-item { width: 100px !important; margin-bottom: 10px !important }
+    .js .productView-imageCarousel-nav { max-height: none }
+}
+</style>
+```
+
+
+## Move Out of Stock alert to the top of product details on product page
+
+Add this custom script into **Storefront** > **Footer Scripts**:
+
+<script>
+(function () {
+    function moveAlert(from, to) {
+        var alerts = from.querySelectorAll('.alertBox.alertBox--error');
+        if (alerts) {
+            for (var i in alerts) {
+                if (typeof alerts[i] === 'object') {
+                    var alert = alerts[i];
+                    to.insertBefore(alert, to.firstChild);
+                }
+            }
+        }
+    }
+
+    var productView = document.querySelector('.productView');
+    var productViewInfo = document.querySelector('.productView-options');
+    if (productView && productViewInfo) {
+        setInterval(function () {
+            moveAlert(productViewInfo, productView);
+        }, 100);
+
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+        if (MutationObserver) {
+            var observer = new MutationObserver(function () {
+                moveAlert(productViewInfo, productView);
+            });
+            observer.observe(productViewInfo, {
+                childList: true,
+                subtree: true,
+            });
+        }
+    }
+})();
+</script>
+
+## Add background image to header
+
+Add this custom script into **Storefront** > **Footer Scripts**:
+
+<style>
+@media (min-width: 801px) {
+.emthemesModez-header-userSection { background-image: url('https://cdn8.bigcommerce.com/s-tlt0fnmxln/product_images/uploaded_images/lpgshop-logo.png?t=1535516377'); background-repeat: no-repeat; background-position: left center; background-size: contain }
+.header .header-logo-text { opacity: 0 }
+}
+</style>​​​​​​​​​​​​
+
+
+## Always show Add to Cart button on product cards
+
+Add this custom script into **Storefront** > **Footer Scripts**:
+
+```html
+<style>
+.productCarousel .card-buttons, .productGrid .card-buttons { opacity: 1; clip: auto; visibility: visible }
+.card-figcaption { opacity: 1 }
+.card-figcaption-button.quickview { opacity: 0 }
+.card:hover .card-figcaption-button.quickview { opacity: 1 }
+</style>
+```
+
+## Display phone number on header on mobile
+
+Add this custom script into **Storefront** > **Footer Scripts**:
+
+```html
+<style>
+@media(max-width:800px) {
+  .emthemesModez-header-topSection .navUser:last-child .navUser-section .navUser-item:last-child { display: block; margin-right: 50px; border: 0 } 
+}
+</style>
+```
+

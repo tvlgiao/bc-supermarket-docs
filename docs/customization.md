@@ -764,6 +764,45 @@
     </div>
   </div><!-- modal #bannersBlockStaticNavPagesModal -->
   <!-- Modal -->
+  <div class="modal fade" id="bannersBlockAdvTopHeaderModal" tabindex="-1" role="dialog" aria-labelledby="bannersBlockAdvTopHeaderModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="bannersBlockAdvTopHeaderModalLabel">Code Generator: Advanced top header banner</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+                <div class="panel-group" id="bannersBlockAdvTopHeaderAccordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="bannersBlockAdvTopHeaderBannerHeading">
+                      <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#bannersBlockAdvTopHeaderAccordion" href="#bannersBlockAdvTopHeaderBannerCollapse" aria-expanded="true" aria-controls="bannersBlockAdvTopHeaderBannerCollapse">
+                          Banner
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="bannersBlockAdvTopHeaderBannerCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="bannersBlockAdvTopHeaderBannerHeading">
+                      <div class="panel-body">
+                        <div class="form-group">
+                          <label for="bannersBlockAdvTopHeaderBannerContent">Content:</label>
+                          <textarea ng-model="banner_content" class="form-control" id="bannersBlockAdvTopHeaderBannerContent"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div hljs include="'/samples/bannersBlockAdvTopHeader.txt'" compile="true" id="bannersBlockAdvTopHeaderCode" class="highlight-code"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-clipboard-target="#bannersBlockAdvTopHeaderCode">Copy Code</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- modal #bannersBlockAdvTopHeaderModal -->
+  <!-- Modal -->
   <div class="modal fade" id="bannersBlockAfterHeaderModal" tabindex="-1" role="dialog" aria-labelledby="bannersBlockAfterHeaderModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -1264,6 +1303,45 @@ To customize colors of this section, go to admin page > __Storefront Design__ > 
 Look into the options showing below:
 
 ![Theme editor top banner](img/theme-editor-top-banner.png)
+
+
+## Advanced Top Banner
+
+![Advanced top header banner](img/home1-banner-adv-top-header.png)
+
+You can enable this banner on all pages or all other pages except homepage in **Theme Editor** > **Banners** > **Advanced top header banner**:
+
+![configure Advanced top header banner](img/theme-editor-banner-adv-top-header.png)
+
+
+
+After enabled, you can edit banner content by go to **Marketing** > **Banners**, click button **Create a Banner**. Input:
+
+- __Banner Name__: whatever you want
+- __Banner Content__: click the square button `HTML` to open HTML source code editor.
+
+Copy and paste the sample code below:
+
+```html
+<div id="emthemesModezBannersBlockAdvTopHeader" class="banners emthemesModezBannersBlockAdvTopHeader">
+<div class="banner">
+<p>Top banner display on <strong>all pages</strong> to advertise a special promotion such as: Save 20% this weekend!</p>
+</div>
+</div>
+```
+
+You can use button below to generate the code with your own content:
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockAdvTopHeaderModal">
+  Launch Banner Code Generator
+</button>
+
+- __Show on Page__: `Search Results Page`
+- __Visible__: Checked
+- __Location__: `Top of Page`
+
+
 
 
 
