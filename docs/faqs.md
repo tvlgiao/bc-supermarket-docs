@@ -789,3 +789,32 @@ Add this custom script into **Storefront** > **Footer Scripts**:
 </style>
 ```
 
+
+## Fix instagram photos display uniform
+
+Add this custom script into **Storefront** > **Footer Scripts**:
+
+```html
+<style>
+.emthemesModez-instafeed .slick-slide a {
+  padding-top: 100%;
+  content: '';
+  display: block;
+  height: 0;
+  position: relative;
+}
+
+.emthemesModez-instafeed .slick-slide img {
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
+```
+
+
+## Fix featured products on the search page display uniform
+
