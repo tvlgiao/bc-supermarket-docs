@@ -2120,6 +2120,11 @@ You can use button below to generate the code with your own banner image:
 
 
 
+## Enable Bulk Order feature
+
+Go to **Theme Editor** > **Products** > **Category pages** > tick on **Show bulk order mode**.
+
+To display bulk order layout for a specific category, edit the category and choose **Template Layout File** = `bulk-order`.
 
 
 
