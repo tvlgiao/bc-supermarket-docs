@@ -1606,6 +1606,27 @@ Example how slides added for displaying videos:
 **Height/Width ratio percent** is percent of your video's height divide video's width, for example your video size is 1920x1080, input `56.25%` to this field.
 
 
+## 2 banners beside the main carousel
+
+Enable this feature in **Theme Editor** > **Carousel** > tick on **Enable side banners?**.
+
+Create a new banner in **Storefront** > **Banners**:
+
+- Click on the `HTML` button in the editor and paste the code below into **Banner content:**
+
+```html
+<div class="papathemesHeroCarouselBanner emthemesModezBannersBlock">
+    <div><a href="#"><img src="//placehold.it/385x164" alt="385x164" /></a></div>
+    <div><a href="#"><img src="//placehold.it/385x164" alt="385x164" /></a></div>
+</div>
+```
+
+- **Show on page**: `Home Page`
+- **Location**: `Top of Page`
+
+
+
+
 ## 3 Banners on Homepage
 
 ![3 banners on homepage](img/home1-3-banners.jpg)
