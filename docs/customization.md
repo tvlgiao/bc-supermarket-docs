@@ -1562,12 +1562,22 @@ You can use button below to generate the code with your own banner image:
 
 
 
+## Banner Sizes
+
+![yellow style banner sizes](img/home1-banner-sizes.png)
+
+![blue style banner sizes](img/home2-banner-sizes.png)
+
+![product page banner sizes](img/product-page-banner-sizes.png)
 
 
 
 
 
-## Main Slideshow / Carousel
+## HOMEPAGE
+
+
+## - Main Slideshow / Carousel
 
 ![Home 1 Main Carousel](img/home1-main-carousel.jpg)
 
@@ -1606,7 +1616,7 @@ Example how slides added for displaying videos:
 **Height/Width ratio percent** is percent of your video's height divide video's width, for example your video size is 1920x1080, input `56.25%` to this field.
 
 
-## 2 banners beside the main carousel
+## - 2 banners beside the main carousel
 
 Enable this feature in **Theme Editor** > **Carousel** > tick on **Enable side banners?**.
 
@@ -1627,7 +1637,7 @@ Create a new banner in **Storefront** > **Banners**:
 
 
 
-## 3 Banners on Homepage
+## - 3 Banners on Homepage
 
 ![3 banners on homepage](img/home1-3-banners.jpg)
 
@@ -1685,7 +1695,7 @@ You can freely edit the HTML above to change banner images or link but keep the 
 
 
 
-## Featured / Bestselling / New In Product Tabs
+## - Featured / Bestselling / New In Product Tabs
 
 ![Special products tabs](img/home1-special-product-tabs.jpg)
 
@@ -1694,7 +1704,7 @@ You can configure this section in __Theme Editor__ > __Homepage__:
 ![Theme Editor Special Products Tabs](img/theme-editor-special-products-tabs.png)
 
 
-## Products By Category
+## - Products By Category
 
 ![Products by category on homepage](img/home1-products-by-category.jpg)
 
@@ -1732,7 +1742,7 @@ Then go to **Storefront** > **Image Manager**, upload your banner images with ap
 
 
 
-## Top Categories
+## - Top Categories
 
 ![Top categories on homepage](img/home1-top-categories.jpg)
 
@@ -1757,7 +1767,7 @@ Then go to **Storefront** > **Image Manager**, upload your thumbnail images with
 
 
 
-## Fullwidth Banner on Homepage
+## - Fullwidth Banner on Homepage
 
 ![fullwidth banner on homepage](img/home1-fullwidth-banner.jpg)
 
@@ -1804,7 +1814,7 @@ You can freely edit the HTML above to change banner images or link but keep the 
 
 
 
-## Brand Carousel
+## - Brand Carousel
 
 ![Brand Carousel](img/home1-brand-carousel.png)
 
@@ -1858,7 +1868,7 @@ You can freely edit the HTML above to change banner images or link but keep the 
 
 
 
-## Special Product Columns
+## - Special Product Columns
 
 
 ![Special product columns](img/home1-special-product-columns.jpg)
@@ -1872,7 +1882,7 @@ You can configure this block in Theme Editor > Homepage > Special Products Colum
 
 
 
-## Recent Posts
+## - Recent Posts
 
 To show recent posts on homepage, go to **Theme Editor** > **Homepage** > set **Recent blog posts** is number of posts you want to show up.
 
@@ -1880,7 +1890,7 @@ To show recent posts on homepage, go to **Theme Editor** > **Homepage** > set **
 
 
 
-## Instagram
+## - Instagram
 
 To show your Intagram photos on homepage, go to **Theme Editor** > **Homepage** > **Instagram**, input your **Access Token** code and **User ID**.
 
@@ -1891,7 +1901,7 @@ Choose **Number of photos** to show up.
 
 
 
-## Newsletter Popup
+## - Newsletter Popup
 
 ![theme-editor-newsletter-popup](img/theme-editor-newsletter-popup.png)
 
@@ -1930,10 +1940,10 @@ _**Note:** Don't remove `emthemesModezBannersBlockNewsletterPopup`._
 
 
 
+## FOOTER
 
 
-
-## Footer - Newsletter
+## - Newsletter
 
 ![Newsletter](img/home1-newsletter.png)
 
@@ -1942,7 +1952,7 @@ You can configure the newsletter block, show/hide or change color in __Theme Edi
 ![Configure newsletter](img/theme-editor-newsletter.png)
 
 
-## Footer - Links
+## - Links
 
 ![Footer](img/home1-footer.png)
 
@@ -1954,7 +1964,7 @@ You can also show/hide about us block, pages, categories, brands, configure numb
 
 
 
-## Footer - Payment Icons
+## - Payment Icons
 
 ![Theme editor payment icons](img/theme-editor-payment-icons.png)
 
@@ -1963,15 +1973,16 @@ To show/hide payment icons, go to Theme __Editor__ > __Payment Icons__ secitons,
 
 
 
-## Footer - Credit Links
+## - Credit Links
 
 ![Theme editor credit links](img/theme-editor-credits.png)
 
 To show/hide the credit links, go to Theme Editor > __Footer__ section, tick or untick the checkboxes as showing above.
 
+## SIDEBAR
 
 
-## Banners on the Left Sidebar
+## - Banners on the Left Sidebar
 
 ### Show a banner above Facebook Like Page block
 
@@ -2064,7 +2075,7 @@ Or you can use this tool to generate your banner & text block content:
 
 
 
-## Facebook Like Page on the Left Sidebar
+## - Facebook Like Page
 
 ![Facebook like page](img/home1-facebook-like-page.jpg)
 
@@ -2077,10 +2088,10 @@ To hide this block, just leave it empty value.
 
 
 
+## CATEGORY PAGE
 
 
-
-## Category Page - Content Top Banner
+## - Content Top Banner
 
 ![content top banner on category page](img/home1-category-page-top-banner.png)
 
@@ -2120,15 +2131,16 @@ You can use button below to generate the code with your own banner image:
 
 
 
-## Enable Bulk Order feature
+## - Bulk Order feature
 
 Go to **Theme Editor** > **Products** > **Category pages** > tick on **Show bulk order mode**.
 
 To display bulk order layout for a specific category, edit the category and choose **Template Layout File** = `bulk-order`.
 
 
+## PRODUCT PAGE
 
-## Product Page - Banners
+## - Banners
 
 ![banners on product page](img/home1-product-page-banners.png)
 
@@ -2218,7 +2230,7 @@ Copy and paste the sample code below:
 
 
 
-## Product Page - Custom Tabs
+## - Custom Tabs
 
 To add custom tabs and product page, edit your product description, click on HTML button to switch on HTML editor mode:
 
@@ -2240,10 +2252,28 @@ Copy and paste custom HTML code below into end of product description HTML conte
 You can add many tabs as you want. replace tab title in `<p data-custom-tab-title>` and tab content below this element.
 
 
+## - Frequently Bought Together
+
+![Frequently bought together feature](img/bought-together.jpg)
+
+To use display **Frequently Bought Together** feature, go to **Theme Editor** > **Products** > **Product Page** > **Show buy together**, choose position to display:
+
+![theme editor bought together](img/theme-editor-bought-together.png)
+
+### Associate "bought together" products to a specific product
+
+Edit a product, in **Custom Fields** tab, add some custom fields with name `__alsobought` and value is the "bought together" **product ID** you want to associate:
+
+![Edit product bought together](img/edit-product-bought-together.png)
+
+To find the **product ID**, edit the product, then look at the URL address box on your web browser, the number better `products/` and `/edit` is the product ID.
+
+![Find product ID](img/find-product-id.png)
 
 
 
-## Product Page - Shipping Date Notification (BETA)
+
+## - Shipping Date Notification (BETA)
 
 ![shipping-date-notification](img/shipping-date-notification.png)
 
@@ -2299,21 +2329,15 @@ $(function(e){if(e("body").hasClass("papaSupermarket-page--pages-product"))var t
 </script>
 ```
 
-## Brands Page Layout
+## BRANDS PAGE
+
+## - Brands Page Layout
 
 ![theme-editor-brands-page-layout](img/theme-editor-brands-page-layout.png)
 
 Configure the brands page layout display alphabet table and grouped by letter in **Theme Editor** > **Products** > **Brands pages** > **Layout** = `A-Z Table`. Save & Publish.
 
 
-
-## Banner Sizes
-
-![yellow style banner sizes](img/home1-banner-sizes.png)
-
-![blue style banner sizes](img/home2-banner-sizes.png)
-
-![product page banner sizes](img/product-page-banner-sizes.png)
 
 
 ## Display Sale badget & custom badges
