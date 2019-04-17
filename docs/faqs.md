@@ -777,6 +777,21 @@ Add this custom script into **Storefront** > **Footer Scripts**:
 </style>
 ```
 
+## Show Add to Cart button at the bottom of product card item
+
+Add this custom script into **Storefront** > **Footer Scripts**:
+
+```html
+<style>
+@media (min-width: 801px) {
+    .card { padding-bottom: 50px !important }
+    .card-figure { overflow: visible; position: static }
+    .card-img-container { position: relative }
+    .card-figcaption-button.quickview-alt { bottom: 0 }
+}
+</style>
+```
+
 ## Display phone number on header on mobile
 
 Add this custom script into **Storefront** > **Footer Scripts**:

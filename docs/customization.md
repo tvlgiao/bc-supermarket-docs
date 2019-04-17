@@ -2256,7 +2256,7 @@ You can add many tabs as you want. replace tab title in `<p data-custom-tab-titl
 
 ![Frequently bought together feature](img/bought-together.jpg)
 
-To use display **Frequently Bought Together** feature, go to **Theme Editor** > **Products** > **Product Page** > **Show buy together**, choose position to display:
+To display **Frequently Bought Together** feature, go to **Theme Editor** > **Products** > **Product Page** > **Show buy together**, choose position to display:
 
 ![theme editor bought together](img/theme-editor-bought-together.png)
 
@@ -2266,7 +2266,7 @@ Edit a product, in **Custom Fields** tab, add some custom fields with name `__al
 
 ![Edit product bought together](img/edit-product-bought-together.png)
 
-To find the **product ID**, edit the product, then look at the URL address box on your web browser, the number better `products/` and `/edit` is the product ID.
+To find the **product ID**, edit the product, then look at the URL address box on your web browser, the number between `products/` and `/edit` is the product ID.
 
 ![Find product ID](img/find-product-id.png)
 
@@ -2361,6 +2361,15 @@ To display custom badges, enable custom badges option in Theme Editor. Edit your
 ![edit product badges in custom fields](img/edit-product-custom-badges.png)
 
 
+## Instant Load
+
+Instant Load speeds up your store dramatically by predict and preload the pages user may view forward. It makes user navigation effectively instant in most cases. Let's preview this feature from this video:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5IbpKMMJGFU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+To enable this feature, open **Theme Editor** > **Global** > tick on **Enable Instant-Load for faster browsing pages (experiment)**.
+
+Note that this feature only works for certain pages including: _Category pages_, _product pages_, _brand pages_, _blog_ and _static web pages_.
 
 ## Add our own CSS / JavaScript code
 
