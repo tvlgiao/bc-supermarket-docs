@@ -1314,7 +1314,6 @@ You can enable this banner on all pages or all other pages except homepage in **
 ![configure Advanced top header banner](img/theme-editor-banner-adv-top-header.png)
 
 
-
 After enabled, you can edit banner content by go to **Marketing** > **Banners**, click button **Create a Banner**. Input:
 
 - __Banner Name__: whatever you want
@@ -1342,6 +1341,9 @@ You can use button below to generate the code with your own content:
 - __Location__: `Top of Page`
 
 
+Watch this video for step by step instruction:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pa8_08I3Jn0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
@@ -1576,6 +1578,14 @@ You can use button below to generate the code with your own banner image:
 
 ## HOMEPAGE
 
+## - Rearrange home page sections' content
+
+The homepage content is divided into sections. You can hide any section or rearrange the order of these sections in **Theme Editor** > **Home Page** > **Sections**.
+
+Watch this video for step by step how to hide and rearrange the sections' order.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0wILFdym2M4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## - Main Slideshow / Carousel
 
@@ -1689,7 +1699,9 @@ Click __Save__ button to finish.
 You can freely edit the HTML above to change banner images or link but keep the HTML attribute `id="emthemesModezBannersBlockHome01"` unchanged.
 
 
+Watch this video for step by step instruction:
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Yp0NXGn9lBY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
@@ -1737,8 +1749,20 @@ To show custom banner image per products by category block, tick on option **Sho
 Then go to **Storefront** > **Image Manager**, upload your banner images with appropriated name: `products-by-category-{i}.jpg` where `{i}` is replaced by category order starting from 1.
 
 
+Watch this video for step by step instruction:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0cWTw4xr_w0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
+### Display featured product items
+
+To show products sorted by _Featured_, edit the products, change the **Sort Order** value to smaller than others. By default, Sort Order value is 0, therefore you need to update the products you want to display by featured order a smaller value, negative number also works well.
+
+Please note that products by category sorted by _featured item_ are different than **featured products**. Your featured products (which are marked stars) won't show here if the **Sort Order** value is not set correctly.
+
+Watch this video for step by step instruction:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lV931JCfvEc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
