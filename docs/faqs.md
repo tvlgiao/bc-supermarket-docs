@@ -831,5 +831,37 @@ Add this custom script into **Storefront** > **Footer Scripts**:
 ```
 
 
-## Fix featured products on the search page display uniform
+## Fix Products Bought Together stop working after BigCommerce API changed
+
+If you suddenly get a problem that the products also bought together stop working on your product pages. 
+That is because BigCommerce has changed the content type of product ajax request.
+
+To workaround this issue while waiting for the fix from BigCommerce or the theme update, please follow
+this instruction.
+
+Login to your store admin panel, go to **Storefront** > **Script Manager** > click on the button **Create a Script**.
+
+Input:
+
+- **Name of Script**: `Fix Also Bought Products stop working after BC API changed` or whatever.
+- **Location of page**: `Footer`
+- **Select pages where script will be added**: `Store pages`.
+- **Script type**: `Script`.
+- **Script contents**:
+
+```html
+<script>
+window.jQuerySupermarket(document).ajaxSend((event, xhr, settings) => {
+	if (settings.url.match(/\/products\.php/)) {
+		xhr.setRequestHeader('x-requested-with', '');
+	}
+});
+</script>
+```
+
+Then click **Save** button.
+
+Your script should look like this screenshot:
+
+![Fix products also bought together](img/fix-products-bought-together-api-changed.png)
 
