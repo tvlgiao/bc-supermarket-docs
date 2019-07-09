@@ -2344,11 +2344,10 @@ _**Note:** Don't remove `emthemesModezBannersBlockAfterAddToCartButton`._
 Next, insert this custom javascript in **Storefront** > **Footer Scripts**:
 
 ```html
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"></script>
 <script>
 // <!--
-$(function(e){if(e("body").hasClass("papaSupermarket-page--pages-product"))var t=setInterval(function(){var a=e("#emthemesModezBannersBlockAfterAddToCartButton");if(a.length>0){clearInterval(t);var i=a.find("[data-deadline-time]");if(i.length>0){var n=parseInt(i.data("deadline-time"),10),r=parseInt(i.data("shipping-day"),10),s=[];i.data("blackout-dates").split(",").forEach(function(e){var t=e.split("-");s.push(t)});var d=parseInt(i.data("time-offset"),10),g=new Date;g.setTime(g.getTime()+60*d*60*1e3),g.getUTCHours()>=n&&g.setTime(g.getTime()+864e5);var p,o=!1;do{if((p=!1)||0!=g.getUTCDay()||(p=!0),p||6!=g.getUTCDay()||o||(p=!0),!p)for(var l in s)if(s[l][0]==g.getUTCMonth()+1&&s[l][1]==g.getUTCDate()){p=!0;break}(r>0||p)&&g.setTime(g.getTime()+864e5),p||(r--,o=!0)}while(r>=0||p);g.setTime(g.getTime()-60*d*60*1e3);var m=e("[data-shipping-date]");m.length>0&&m.html(g.toString(m.data("shipping-date")))}}},1e3)});
+window.jQuerySupermarket(function(e){function t(){if(e("body").hasClass("papaSupermarket-page--pages-product"))var t=setInterval(function(){var a=e("#emthemesModezBannersBlockAfterAddToCartButton");if(a.length>0){clearInterval(t);var i=a.find("[data-deadline-time]");if(i.length>0){var n=parseInt(i.data("deadline-time"),10),r=parseInt(i.data("shipping-day"),10),d=[];i.data("blackout-dates").split(",").forEach(function(e){var t=e.split("-");d.push(t)});var s=parseInt(i.data("time-offset"),10),o=new Date;o.setTime(o.getTime()+60*s*60*1e3),o.getUTCHours()>=n&&o.setTime(o.getTime()+864e5);var p,g=!1;do{if((p=!1)||0!=o.getUTCDay()||(p=!0),p||6!=o.getUTCDay()||g||(p=!0),!p)for(var l in d)if(d[l][0]==o.getUTCMonth()+1&&d[l][1]==o.getUTCDate()){p=!0;break}(r>0||p)&&o.setTime(o.getTime()+864e5),p||(r--,g=!0)}while(r>=0||p);o.setTime(o.getTime()-60*s*60*1e3);var m=e("[data-shipping-date]");m.length>0&&m.html(o.toString(m.data("shipping-date")))}}},1e3)}t(),e("body").on("loaded.instantload",t)});
 // -->
 </script>
 ```
