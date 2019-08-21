@@ -1,7 +1,5 @@
 # Supermarket BigCommerce Theme Documentation
 
-Theme Version: 4.1.0
-
 Theme designed and developed by [Papathemes](https://papathemes.com) 
 
 ## Documentation Contents

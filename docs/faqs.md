@@ -865,3 +865,16 @@ Your script should look like this screenshot:
 
 ![Fix products also bought together](img/fix-products-bought-together-api-changed.png)
 
+
+
+## Fix the main product image carousel show next image cropped
+
+This issue may appears when upgrade theme from version 4.1 to 4.2. To fix it, just increase the main image size from 608x608 to 734x734 or bigger. Go to **Theme Editor** > **Products** > **Image Sizes** > set **Main product images** = `Specify dimensions` and set **Max width** = `734`, **Max height** = `734`.
+
+![Fix product image carousel in version 4.2](img/fix-main-product-image-carousel-ver4-2.jpg)
+
+## Fix the popular brands not show enough items as configured in the footer
+
+From version 4.2, we added an option to support show/hide popular brands in the sidebar. The popular brands in the footer may not work properly because your theme settings still stores the old variable. To fix this, go to **Theme Editor** > **Products** > **Category pages** > set **Show shop by brands on** = any value; Footer > **Main Footer** > **Show brands** = any value.
+
+![Fix popular brands in the footer in version 4.2](img/fix-popular-brands-in-footer-ver4-2.jpg)
