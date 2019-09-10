@@ -60,6 +60,17 @@ Add this custom CSS to **Storefront** > **Footer Script**:
 </style>
 ```
 
+## Hide the category images on category pages
+
+Add the code below to **Storefront** > **Footer Script**:
+
+```html
+<style>
+.emthemesModez-categoryPage-mainImage { display: none !important }
+</style>
+```
+
+
 ## Change active tabs & remove other tabs in products by category block
 
 ![Change active tabs of products by category](img/change-active-tabs-of-products-by-category.png)
@@ -878,3 +889,52 @@ This issue may appears when upgrade theme from version 4.1 to 4.2. To fix it, ju
 From version 4.2, we added an option to support show/hide popular brands in the sidebar. The popular brands in the footer may not work properly because your theme settings still stores the old variable. To fix this, go to **Theme Editor** > **Products** > **Category pages** > set **Show shop by brands on** = any value; Footer > **Main Footer** > **Show brands** = any value.
 
 ![Fix popular brands in the footer in version 4.2](img/fix-popular-brands-in-footer-ver4-2.jpg)
+
+
+## Show all thumbnails as grid in product detail pages
+
+Add the custom code below to Storefront > Footer Scripts:
+
+```html
+<style>
+.productView-imageCarousel-nav .slick-track { transform: none !important; width: 100% !important; }
+.productView-imageCarousel-nav-item { width: calc(25% - 10px) !important; margin: 5px !important; }
+.productView-imageCarousel-nav .slick-arrow { display: none }
+</style>
+```
+
+
+## Add custom labels on the main menu items
+
+![custom labels on nav items](img/custom-labels-on-nav-item.png)
+
+Add the custom code below to **Storefront** > **Footer Scripts**:
+
+```html
+<style>
+@media (min-width: 801px) {
+.navPages-container .navPages > .navPages-list > .navPages-item:nth-child(5) a:after {
+  content: "New";
+  font-size: 9px;
+  position: absolute;
+  top: -2px;
+  right: 0;
+  background: #167ac6;
+  color: white;
+  padding: 0 4px;
+}
+.navPages-container .navPages > .navPages-list > .navPages-item:nth-child(6) a:after {
+  content: "Hot";
+  font-size: 9px;
+  position: absolute;
+  top: -2px;
+  right: 0;
+  background: red;
+  color: white;
+  padding: 0 4px;
+}
+}
+</style>​
+```
+
+Update `nth-child(5)` and `nth-child(6)` coresponding your menu item order number.
