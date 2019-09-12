@@ -938,3 +938,39 @@ Add the custom code below to **Storefront** > **Footer Scripts**:
 ```
 
 Update `nth-child(5)` and `nth-child(6)` coresponding your menu item order number.
+
+
+## Move sub-pages menu to the right sidebar
+
+Add the custom code below to **Storefront** > **Scripts Manager**, at **Footer** position:
+
+```html
+<script>
+(function($) {
+    var $subpages = $('.page-sidebar .navList--aside .sidebarBlock--navList');
+    var $rightSidebar = $('<div class="page-sidebar page-sidebar--right"></div>');
+    if ($subpages.length > 0) {
+        $rightSidebar.append($subpages);
+        $('.page-sidebar').after($rightSidebar);
+    }
+})(window.jQuerySupermarket || window.$);
+</script>
+```
+
+
+## How to use animated GIF logo
+
+Add the custom code below to **Storefront** > **Script Manager**, choose position = Footer and show on all storefront pages:
+
+```html
+<script>
+(function() {
+    var els = document.getElementsByClassName('header-logo-image');
+    for (var i in els) {
+        var el = els[i];
+        el.src = el.src.replace(/^.*\/([^\/]+)$/, '/product_images/$1');
+    }
+})();
+</script>
+```
+
