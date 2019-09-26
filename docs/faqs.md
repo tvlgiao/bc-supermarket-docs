@@ -974,3 +974,88 @@ Add the custom code below to **Storefront** > **Script Manager**, choose positio
 </script>
 ```
 
+
+## Hide the active page title on the breacrumbs
+
+If you want to hide the active page title or the last item link on the breadcrumbs, add the code below to **Storefront** > **Footer Scripts**:
+
+```html
+<style>
+.breadcrumb.is-active { display: none }
+</style>
+```
+
+
+
+## Fix review link anchor jump to content hidden by the sticky header
+
+Add the custom code below to **Storefront** > **Script Manager**, location = Footer, page = all storefront pages:
+
+```html
+<script>
+(function($) {
+    $('.productView-reviewLink a').not('[data-reveal-id]').on('click', function() {
+        $('html, body').animate({scrollTop: $('#product-reviews').offset().top - 200}, 500);
+    });
+})(window.jQuerySupermarket || window.jQuery);
+</script>
+```
+
+
+
+
+
+
+## Display the main carousel's content overlay the image on mobile like  on desktop
+
+Add the custom code below to **Storefront** > **Footer Scripts**:
+
+```html
+<style>
+@media (max-width: 800px) {
+    .heroCarousel-content {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 8px 16px;
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .heroCarousel-title {
+        font-size: 16px;
+        background-color: rgba(0, 0, 0, .6);
+        padding: 2px 4px;
+        margin: 0 auto;
+    }
+
+    .heroCarousel-description {
+        font-size: 12px;
+        background-color: rgba(0, 0, 0, .6);
+        padding: 2px 4px;
+        margin: 4px auto 0;
+    }
+
+    .heroCarousel-action {
+        padding: 4px 8px;
+        font-size: 12px;
+        margin: 4px auto 0;
+    }
+}
+</style>
+```
+
+
+## Fix the phone number link on the top header bar
+
+The phone number link which has `tel:` attribute requires to specify the country code in order to make it callable. To fix this issue, add the custom code below to **Storefront** > **Script Manager**, **location** = `footer`, **page** = `all storefront pages`:
+
+```html
+<script>
+(function($) {
+    $('.emthemesModez-header-topSection a[href^="tel:"]').attr('href', 'tel:+12186510200');
+})(window.jQuerySupermarket || window.jQuery);
+</script>
+```
+
