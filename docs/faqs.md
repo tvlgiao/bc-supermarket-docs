@@ -1101,4 +1101,4 @@ Add the code below to **Storefront** > **Scripts Manager**, choose **Location** 
     });
 })(window.jQuerySupermarket || window.jQuery);
 </script>
-
+```
