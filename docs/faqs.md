@@ -1049,13 +1049,56 @@ Add the custom code below to **Storefront** > **Footer Scripts**:
 
 ## Fix the phone number link on the top header bar
 
-The phone number link which has `tel:` attribute requires to specify the country code in order to make it callable. To fix this issue, add the custom code below to **Storefront** > **Script Manager**, **location** = `footer`, **page** = `all storefront pages`:
+The phone number link which has `tel:` attribute requires to specify the country code in order to make it callable. To fix this issue, add the custom code below to **Storefront** > **Script Manager**, **location** = `footer`, **page** = `all storefront pages`.
+Update `+11231231234` by your phone number. `+1` is dialing code of USA.
 
 ```html
 <script>
 (function($) {
-    $('.emthemesModez-header-topSection a[href^="tel:"]').attr('href', 'tel:+12186510200');
+    $('.emthemesModez-header-topSection a[href^="tel:"]').attr('href', 'tel:+11231231234');
 })(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
+
+## Add custom CSS to Checkout Page
+
+Add the custom code below to **Storefront** > **Script Manager**, **Location** = `Footer`, **Page** = `Checkout Pages`:
+
+```html
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = 'INSERT YOUR CUSTOM CSS HERE';
+    document.head.appendChild(style);
+})();
+</script>
+```
+
+
+## Fix cart quantity counter shouldn't count child products
+
+By default, BigCommerce API returns cart quantity include the parent products and the child products (products used in product pick-list option). If think it's incorrect, take a look at the code below to make it only counts the parent products.
+
+Add the code below to **Storefront** > **Scripts Manager**, choose **Location** = `Footer`, **Page** == `All Storefront Pages`:
+
+```html
+<script>
+(function($) {
+    $(document).ajaxComplete(function(event, xhr, options) {
+        if (!options.url || options.url.indexOf('api/storefront/cart') === -1 || !xhr.responseJSON || xhr.responseJSON.length === 0) {
+            return;
+        }
+        var cart = xhr.responseJSON[0];
+        var lineItemQuantities = [
+            cart.lineItems.physicalItems,
+            cart.lineItems.digitalItems,
+            cart.lineItems.customItems,
+        ].reduce((a, b) => a.concat(b))
+            .reduce((accumulator, item) => accumulator + (item.parentId ? item.quantity : 0));
+        var giftCertificateQuantity = cart.lineItems.giftCertificates.length;
+        quantity = lineItemQuantities + giftCertificateQuantity;
+        $('body').trigger('cart-quantity-update', quantity);
+    });
+})(window.jQuerySupermarket || window.jQuery);
+</script>
 
