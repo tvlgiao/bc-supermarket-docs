@@ -1114,3 +1114,4 @@ Add the code below to **Storefront** > **Scripts Manager**, choose **Location** 
     $('input[data-search-quick]').attr('placeholder', 'Search by product name,sku and keyword');
 })(window.jQuerySupermarket || window.jQuery);
 </script>
+```
