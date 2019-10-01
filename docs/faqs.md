@@ -1102,3 +1102,15 @@ Add the code below to **Storefront** > **Scripts Manager**, choose **Location** 
 })(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
+
+
+## Change the placeholder text of the search input box
+
+Add the code below to **Storefront** > **Scripts Manager**, choose **Location** = `Footer`, **Page** == `All Storefront Pages`:
+
+```html
+<script>
+(function($) {
+    $('input[data-search-quick]').attr('placeholder', 'Search by product name,sku and keyword');
+})(window.jQuerySupermarket || window.jQuery);
+</script>
