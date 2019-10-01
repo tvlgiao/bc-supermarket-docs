@@ -1093,11 +1093,16 @@ Add the code below to **Storefront** > **Scripts Manager**, choose **Location** 
             cart.lineItems.physicalItems,
             cart.lineItems.digitalItems,
             cart.lineItems.customItems,
-        ].reduce((a, b) => a.concat(b))
-            .reduce((accumulator, item) => accumulator + (item.parentId ? item.quantity : 0));
+        ].reduce(function(a, b) {
+            return a.concat(b);
+        }).reduce(function(total, item) {
+            return (typeof total == 'object' ? total.quantity : total) + (item.parentId ? 0 : item.quantity);
+        });
         var giftCertificateQuantity = cart.lineItems.giftCertificates.length;
-        quantity = lineItemQuantities + giftCertificateQuantity;
-        $('body').trigger('cart-quantity-update', quantity);
+        var quantity = lineItemQuantities + giftCertificateQuantity;
+        setTimeout(function() {
+        	$('body').trigger('cart-quantity-update', quantity);
+        }, 200);
     });
 })(window.jQuerySupermarket || window.jQuery);
 </script>
