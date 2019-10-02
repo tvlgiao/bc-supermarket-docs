@@ -1120,3 +1120,28 @@ Add the code below to **Storefront** > **Scripts Manager**, choose **Location** 
 })(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
+
+
+
+## Change the wording "You can only purchase a maximum of 1..." in the popup message.
+
+
+![change the wording "You can only purchase a maximum of 1"](img/change-wording-maximum-purchase-popup-message.png)
+
+Add the code below to **Storefront** > **Scripts Manager**, choose **Location** = `Footer`, **Page** == `All Storefront Pages`:
+
+
+```html
+<script>
+(function($) {
+    $('#alert-modal').on('opened.fndtn.reveal', function(event) {
+        var $el = $(event.target).find('.modal-content > span');
+        if ($el.length > 0) {
+            var msg = $el.html().replace('You can only purchase a maximum of 1', 'You already have one in your shopping cart');
+            $el.html(msg);
+        }
+    });
+})(window.jQuerySupermarket || window.chiarajQuery || window.jQuery);
+</script>
+```
+
