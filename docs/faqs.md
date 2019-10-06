@@ -1155,4 +1155,20 @@ Add the code below to **Storefront** > **Scripts Manager**, choose **Location** 
     $('.sidebarBlock .productList[data-product-type=new]').closest('.sidebarBlock').remove();
 })(window.jQuerySupermarket || window.jQuery);
 </script>
+```
 
+## Fix social bookmarks doesn't work properly when Instant-Load feature is enabled
+
+Add the code below to **Storefront** > **Scripts Manager**, choose **Location** = `Footer`, **Page** == `All Storefront Pages`:
+
+```html
+<script>
+(function($) {
+    $('body').on('loaded.instantload', function() {
+        if (window.addthis) {
+            window.addthis.toolbox('.addthis_toolbox');
+        }
+    });
+})(window.jQuerySupermarket || window.jQuery);
+</script>
+```
