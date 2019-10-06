@@ -1145,3 +1145,14 @@ Add the code below to **Storefront** > **Scripts Manager**, choose **Location** 
 </script>
 ```
 
+## Remove the new products on the left sidebar of blog pages
+
+Add the code below to **Storefront** > **Scripts Manager**, choose **Location** = `Footer`, **Page** == `All Storefront Pages`:
+
+```html
+<script>
+(function($) {
+    $('.sidebarBlock .productList[data-product-type=new]').closest('.sidebarBlock').remove();
+})(window.jQuerySupermarket || window.jQuery);
+</script>
+
