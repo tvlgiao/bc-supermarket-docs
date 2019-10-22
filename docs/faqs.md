@@ -1172,3 +1172,44 @@ Add the code below to **Storefront** > **Scripts Manager**, choose **Location** 
 })(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
+
+## Move product description show under the price
+
+Add the code below to **Storefront** > **Scripts Manager**, choose **Location** = `Footer`, **Page** == `All Storefront Pages`:
+
+```html
+<script>
+(function($) {
+    function main() {
+        $('.productView').first().find('.productView-price').first().after($('#tab-description .productView-description-tabContent').html());
+        $('.productView').first().find('.productView-description').hide();
+    }
+    $(document).ready(main);
+    $('body').on('loaded.instantload', main);
+})(window.jQuerySupermarket || window.jQuery);
+</script>
+```
+
+
+## Fix product main images loading slow on product page
+
+If your original image is large or it's PNG format, in some cases the image appears very slow because the LQIP image processing function of BigCommerce takes time to process if it is not cached before. There may be an issue with BigCommerce's LQIP image compression function.
+
+While waiting for the fix from BigCommerce, you can insert the following code into **Storefront** > **Scripts Manager**, choose **location** = `footer`, **page** = `all storefront pages` to disable LQIP for the product main images:
+
+```html
+<script>
+(function($) {
+    function main() {
+        console.log('Fix product main images.');
+        $('.productView-imageCarousel-main-item img')
+            .removeAttr('srcset')
+            .removeAttr('data-srcset');
+    }
+
+    $(document).ready(main);
+    $('body').on('loaded.instantload', main);
+    $('#modal').on('opened.fndtn.reveal', main);
+})(window.jQuerySupermarket || window.jQuery);
+</script>
+```
