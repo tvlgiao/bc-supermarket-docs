@@ -1213,3 +1213,32 @@ While waiting for the fix from BigCommerce, you can insert the following code in
 })(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
+
+
+## Use animated GIF images on Home Page Carousel
+
+Add the code below to **Storefront** > **Scripts Manager**, choose **Location** = `Footer`, **Page** == `All Storefront Pages`:
+
+```html
+<script>
+(function($) {
+    function main() {
+        $('.heroCarousel-image').each(function(i, el) {
+            var $el = $(el);
+            var url = $el.attr('src').replace(/^(.+\/.+\.bigcommerce\.com\/s-[^\/]+)\/.+\/([^\/]+)$/, '$1/product_images/theme_images/$2?imbypass=on');
+
+            $el.removeAttr('data-srcset').removeAttr('srcset');
+
+            if ($el.hasClass('lazyload')) {
+                $el.attr('data-src', url);
+            } else {
+                $el.attr('src', url);
+            }
+        });
+            
+    }
+    $(document).ready(main);
+    $('body').on('loaded.instantload', main);
+})(window.jQuerySupermarket || window.jQuery);
+</script>
+```
