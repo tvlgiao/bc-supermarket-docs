@@ -1193,9 +1193,11 @@ Add the code below to **Storefront** > **Scripts Manager**, choose **Location** 
 
 ## Fix product main images loading slow on product page
 
-If your original image is large or it's PNG format, in some cases the image appears very slow because the LQIP image processing function of BigCommerce takes time to process if it is not cached before. There may be an issue with BigCommerce's LQIP image compression function.
+If your original product image uploaded is PNG format and its size is too large, BigCommerce will need time to convert the image into WEBP format that is optimized for web. Especially with the new LQIP algorithm that supports better responsiveness for mobile and retina screen, it will take longer processing time for the original image in PNG format and large size.
 
-While waiting for the fix from BigCommerce, you can insert the following code into **Storefront** > **Scripts Manager**, choose **location** = `footer`, **page** = `all storefront pages` to disable LQIP for the product main images:
+This problem usually occurs on the **product page** and product **quick-view**. To fix this, you can disable the LQIP compression feature, using the old image conversion method.
+
+You can insert the following code into **Storefront** > **Scripts Manager**, choose **location** = `footer`, **page** = `all storefront pages` to disable LQIP feature on the product page and quick-view:
 
 ```html
 <script>
@@ -1211,7 +1213,7 @@ While waiting for the fix from BigCommerce, you can insert the following code in
     $(document).ready(main);
     $('body').on('loaded.instantload', main);
     $(document).ajaxComplete(function(event, resp, options) {
-        if (options.headers['stencil-options'] && options.headers['stencil-options'].match('quick-view')) {
+        if (options.headers['stencil-options'] && options.headers['stencil-options'].match(/quick-view/)) {
             main();
         }
     });
