@@ -1206,10 +1206,15 @@ While waiting for the fix from BigCommerce, you can insert the following code in
             .removeAttr('srcset')
             .removeAttr('data-srcset');
     }
+    main();
 
     $(document).ready(main);
     $('body').on('loaded.instantload', main);
-    $('#modal').on('opened.fndtn.reveal', main);
+    $(document).ajaxComplete(function(event, resp, options) {
+        if (options.headers['stencil-options'] && options.headers['stencil-options'].match('quick-view')) {
+            main();
+        }
+    });
 })(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
