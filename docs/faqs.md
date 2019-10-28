@@ -1259,8 +1259,11 @@ Add the code below to **Storefront** > **Scripts Manager**, choose **Location** 
 Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
 
 - **Location on page** = `Footer`
-- **Select pages where script will be added** = `All pages`
-- **Script type** = `Script`
+- **Select pages where script will be added** = `Store pages`
+- **Script type** = `All pages`
+
+
+Enter the script below to **Scripts contents**: 
 
 ```html
 <script>
@@ -1273,5 +1276,33 @@ Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
         }
         
     })(window.jQuerySupermarket || window.jQuery);
+</script>
+```
+
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Checkout`
+- **Script type** = `Script`
+
+
+Enter the script below to **Scripts contents**: 
+
+
+```html
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+(function($) {
+    var $img = $('#logoImage'); 
+    var src = $img.attr('src');
+    var s = src.replace(/stencil\/[^\/]+\//, 'stencil/***/');
+                        console.log(s);
+    $img.attr('srcset', src + ' 1x, ' + s.replace('***', '640w') + ' 2x');
+    
+})(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
