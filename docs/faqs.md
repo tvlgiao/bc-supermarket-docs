@@ -856,7 +856,7 @@ Input:
 
 - **Name of Script**: `Fix Also Bought Products stop working after BC API changed` or whatever.
 - **Location of page**: `Footer`
-- **Select pages where script will be added**: `Store pages`.
+- **Select pages where script will be added**: `Storefront pages`.
 - **Script type**: `Script`.
 - **Script contents**:
 
@@ -893,7 +893,7 @@ From version 4.2, we added an option to support show/hide popular brands in the 
 
 ## Show all thumbnails as grid in product detail pages
 
-Add the custom code below to Storefront > Footer Scripts:
+Add the custom code below to **Storefront** > **Footer Scripts**:
 
 ```html
 <style>
@@ -942,7 +942,13 @@ Update `nth-child(5)` and `nth-child(6)` coresponding your menu item order numbe
 
 ## Move sub-pages menu to the right sidebar
 
-Add the custom code below to **Storefront** > **Scripts Manager**, at **Footer** position:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
 <script>
@@ -960,7 +966,13 @@ Add the custom code below to **Storefront** > **Scripts Manager**, at **Footer**
 
 ## How to use animated GIF logo
 
-Add the custom code below to **Storefront** > **Script Manager**, choose position = Footer and show on all storefront pages:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
 <script>
@@ -989,7 +1001,13 @@ If you want to hide the active page title or the last item link on the breadcrum
 
 ## Fix review link anchor jump to content hidden by the sticky header
 
-Add the custom code below to **Storefront** > **Script Manager**, location = Footer, page = all storefront pages:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
 <script>
@@ -1049,8 +1067,15 @@ Add the custom code below to **Storefront** > **Footer Scripts**:
 
 ## Fix the phone number link on the top header bar
 
-The phone number link which has `tel:` attribute requires to specify the country code in order to make it callable. To fix this issue, add the custom code below to **Storefront** > **Script Manager**, **location** = `footer`, **page** = `all storefront pages`.
-Update `+11231231234` by your phone number. `+1` is dialing code of USA.
+The phone number link which has `tel:` attribute requires to specify the country code in order to make it callable. 
+
+To fix this issue, go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents** and update `+11231231234` by your phone number. `+1` is dialing code of USA:
 
 ```html
 <script>
@@ -1062,7 +1087,13 @@ Update `+11231231234` by your phone number. `+1` is dialing code of USA.
 
 ## Add custom CSS to Checkout Page
 
-Add the custom code below to **Storefront** > **Script Manager**, **Location** = `Footer`, **Page** = `Checkout Pages`:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Checkout`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
 <script>
@@ -1079,7 +1110,13 @@ Add the custom code below to **Storefront** > **Script Manager**, **Location** =
 
 By default, BigCommerce API returns cart quantity include the parent products and the child products (products used in product pick-list option). If think it's incorrect, take a look at the code below to make it only counts the parent products.
 
-Add the code below to **Storefront** > **Scripts Manager**, choose **Location** = `Footer`, **Page** == `All Storefront Pages`:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
 <script>
@@ -1111,7 +1148,13 @@ Add the code below to **Storefront** > **Scripts Manager**, choose **Location** 
 
 ## Change the placeholder text of the search input box
 
-Add the code below to **Storefront** > **Scripts Manager**, choose **Location** = `Footer`, **Page** == `All Storefront Pages`:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
 <script>
@@ -1128,7 +1171,13 @@ Add the code below to **Storefront** > **Scripts Manager**, choose **Location** 
 
 ![change the wording "You can only purchase a maximum of 1"](img/change-wording-maximum-purchase-popup-message.png)
 
-Add the code below to **Storefront** > **Scripts Manager**, choose **Location** = `Footer`, **Page** == `All Storefront Pages`:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 
 ```html
@@ -1147,7 +1196,13 @@ Add the code below to **Storefront** > **Scripts Manager**, choose **Location** 
 
 ## Remove the new products on the left sidebar of blog pages
 
-Add the code below to **Storefront** > **Scripts Manager**, choose **Location** = `Footer`, **Page** == `All Storefront Pages`:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
 <script>
@@ -1159,7 +1214,13 @@ Add the code below to **Storefront** > **Scripts Manager**, choose **Location** 
 
 ## Fix social bookmarks doesn't work properly when Instant-Load feature is enabled
 
-Add the code below to **Storefront** > **Scripts Manager**, choose **Location** = `Footer`, **Page** == `All Storefront Pages`:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
 <script>
@@ -1175,7 +1236,13 @@ Add the code below to **Storefront** > **Scripts Manager**, choose **Location** 
 
 ## Move product description show under the price
 
-Add the code below to **Storefront** > **Scripts Manager**, choose **Location** = `Footer`, **Page** == `All Storefront Pages`:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
 <script>
@@ -1197,7 +1264,13 @@ If your original product image uploaded is PNG format and its size is too large,
 
 This problem usually occurs on the **product page** and product **quick-view**. To fix this, you can disable the LQIP compression feature, using the old image conversion method.
 
-You can insert the following code into **Storefront** > **Scripts Manager**, choose **location** = `footer`, **page** = `all storefront pages` to disable LQIP feature on the product page and quick-view:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
 <script>
@@ -1227,7 +1300,14 @@ You can insert the following code into **Storefront** > **Scripts Manager**, cho
 
 ## Use animated GIF images on Home Page Carousel
 
-Add the code below to **Storefront** > **Scripts Manager**, choose **Location** = `Footer`, **Page** == `All Storefront Pages`:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+
+Enter the script below to **Scripts contents**: 
 
 ```html
 <script>
