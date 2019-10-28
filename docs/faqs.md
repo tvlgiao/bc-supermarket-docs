@@ -1202,9 +1202,9 @@ You can insert the following code into **Storefront** > **Scripts Manager**, cho
 ```html
 <script>
 (function($) {
-    function main() {
+    function main($scope) {
         console.log('Fix product main images.');
-        $('.productView-imageCarousel-main-item img')
+        $('.productView-imageCarousel-main-item img', $scope)
             .removeAttr('srcset')
             .removeAttr('data-srcset');
     }
@@ -1212,9 +1212,12 @@ You can insert the following code into **Storefront** > **Scripts Manager**, cho
 
     $(document).ready(main);
     $('body').on('loaded.instantload', main);
+    $('#modal').on('opened.fndtn.reveal', function() {
+        setTimeout(main, 1000);
+    });
     $(document).ajaxComplete(function(event, resp, options) {
         if (options.headers['stencil-options'] && options.headers['stencil-options'].match(/quick-view/)) {
-            main();
+            setTimeout(main, 1000);
         }
     });
 })(window.jQuerySupermarket || window.jQuery);
@@ -1247,5 +1250,28 @@ Add the code below to **Storefront** > **Scripts Manager**, choose **Location** 
     $(document).ready(main);
     $('body').on('loaded.instantload', main);
 })(window.jQuerySupermarket || window.jQuery);
+</script>
+```
+
+
+## Make the header logo sharper on Retina screens
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+```html
+<script>
+    (function($) {
+        var $img = $('.header-logo-image');
+        if ($img.length > 0) {
+            var src = $img.attr('src');
+            var s = src.replace(/stencil\/[^\/]+\//, 'stencil/***/');
+            $img.attr('srcset', src + ' 1x, ' + s.replace('***', '640w') + ' 2x');
+        }
+        
+    })(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
