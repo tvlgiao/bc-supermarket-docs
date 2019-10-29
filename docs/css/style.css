@@ -1,3 +1,7 @@
+body {
+	font-family: 'Roboto', sans-serif;
+}
+
 p { 
 	margin-bottom: 1rem;
 }
@@ -55,4 +59,34 @@ pre code {
 
 .panel-title a {
 	display: block;
+}
+
+@media (min-width: 992px) {
+	.bs-sidebar.affix {
+		bottom: 0;
+		overflow: auto;
+	}
+}
+
+.bs-sidebar .main {
+	text-transform: uppercase;
+}
+
+.bs-sidebar .nav li > a {
+	line-height: 1.35;
+}
+
+.bs-sidebar .nav .nav {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.bs-sidebar .nav .nav > li > a {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.bs-sidebar .nav .nav .nav > li > a {
+	padding-left: 60px;
+	font-size: 85%;
 }

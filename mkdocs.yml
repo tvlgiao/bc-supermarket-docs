@@ -1,32 +1,26 @@
-site_name: "BigCommerce Theme Supermarket - User Guide"
+site_name: "BigCommerce Supermarket Theme Guide"
 pages:
 - Home: index.md
-- Install the theme: installation.md
-- Quick Start Guide: quickstart.md
+- Installation: installation.md
+- Quick Start: quickstart.md
 - Customization: customization.md
 - FAQs: faqs.md
-- Help & Support: support.md
-theme: readthedocs
+- Support: https://papathemes.kayako.com/conversation/new/1
+theme:
+  name: bootstrap
+  custom_dir: 'custom_theme/'
+  navigation_depth: 3
 use_directory_urls: false
 
 extra_css:
-  - https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
-  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css
   - css/style.css
 
 extra_javascript:
-  - https://use.fontawesome.com/540034d990.js
-  - https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js
-  - https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js
-  - https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js
-  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js
-  - https://cdnjs.cloudflare.com/ajax/libs/angular-highlightjs/0.7.1/angular-highlightjs.js
-  - https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js
   - js/main.js
 
 markdown_extensions:
 - toc:
-    permalink: True
+    permalink: false
     separator: "-"
 - sane_lists
 - extra

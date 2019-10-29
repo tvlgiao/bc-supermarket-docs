@@ -1256,11 +1256,16 @@ This page will explain all configuration available and how to edit each section 
 
 
 
-## Use Fixed Vertical Menu layout across the whole site
+## Left Navigation layout vs. Default layout
 
 ![fixed vertical menu layout](img/home1-left-sidebar.jpg)
 
-You can enable this layout in __Theme Editor__ > __Global__ > __Layout__, choose `Left Sidebar`:
+Theme supports 2 different layouts across the entire site:
+
+1. **Fixed Left Sidebar layout**
+2. **Default layout**
+
+You can configure the layout in **Theme Editor** > **Global** > **Layout**:
 
 ![Theme editor layout](img/theme-editor-layout.png)
 
@@ -1268,20 +1273,20 @@ You can enable this layout in __Theme Editor__ > __Global__ > __Layout__, choose
 
 
 
-## Vertical mega menu vs. Slide down menu
+## Vertical Mega Menu vs. Slide Down Msenu
 
-__Note: slide down menu only works with Fixed vertical menu layout.__
+**Note: the slide-down menu only works with the `Fixed Left Sidebar` layout.**
 
 
-__Mega menu__ (default):
+**Mega Menu**:
 
 ![Mega menu](img/home1-mega-menu.jpg)
 
-__Slide down menu__:
+**Slide Down Menu**:
 
 ![Slidedown menu](img/home1-slidedown-menu.jpg)
 
-You can switch the default mega menu to slide down menu in **Theme Editor** > **Header** > tick to **Showing sub-categories vertical**:
+You can switch the mega menu to slide down menu in **Theme Editor** > **Header** > tick to **Showing sub-categories vertical**:
 
 ![subcategories vertical menu](img/theme-editor-subcategories-vertical-menu.png)
 
@@ -1292,15 +1297,15 @@ You can switch the default mega menu to slide down menu in **Theme Editor** > **
 
 ![Top Banner](img/home1-top-banner.png)
 
-The top banner can be showed / edited in admin page > __Marketing__ > __Banners__. When you add / edit remember to choose __Location__ is __Top of Page__.
+Create or edit the top banner in __Marketing__ > __Banners__. Remember to choose __Location__ = `Top of Page`.
 
 ### Colors Customization
 
-To customize colors of this section, go to admin page > __Storefront Design__ > __My Themes__, click button __Customize__ of the current theme to open the Theme Editor. 
+To customize this banner's colors, go to __Storefront Design__ > __My Themes__, click __Customize__ button of the current theme to open **Theme Editor**. 
 
 ![Click customize theme](img/click-customize-theme.png)
 
-Look into the options showing below:
+Find the options below:
 
 ![Theme editor top banner](img/theme-editor-top-banner.png)
 
@@ -1309,17 +1314,12 @@ Look into the options showing below:
 
 ![Advanced top header banner](img/home1-banner-adv-top-header.png)
 
-You can enable this banner on all pages or all other pages except homepage in **Theme Editor** > **Banners** > **Advanced top header banner**:
+You can show the top banner on all pages or on all other page exclude the homepage. Go to **Theme Editor** > **Banners** > choose **Advanced top header banner**:
 
 ![configure Advanced top header banner](img/theme-editor-banner-adv-top-header.png)
 
 
-After enabled, you can edit banner content by go to **Marketing** > **Banners**, click button **Create a Banner**. Input:
-
-- __Banner Name__: whatever you want
-- __Banner Content__: click the square button `HTML` to open HTML source code editor.
-
-Copy and paste the sample code below:
+Edit the top banner's content in **Marketing** > **Banners**, click button **Create a Banner**. In **Banner Content** box, click the square `HTML` button to open **HTML source code editor**, copy and paste the sample code below:
 
 ```html
 <div id="emthemesModezBannersBlockAdvTopHeader" class="banners emthemesModezBannersBlockAdvTopHeader">
@@ -1329,19 +1329,23 @@ Copy and paste the sample code below:
 </div>
 ```
 
-You can use button below to generate the code with your own content:
+Or click the button below to generate the code with your custom content:
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockAdvTopHeaderModal">
   Launch Banner Code Generator
 </button>
 
+Other fields should be configured as below:
+
 - __Show on Page__: `Search Results Page`
 - __Visible__: Checked
 - __Location__: `Top of Page`
 
 
-Watch this video for step by step instruction:
+### Tutorial video
+
+Also check out the tutorial video below:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/pa8_08I3Jn0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -1350,7 +1354,9 @@ Watch this video for step by step instruction:
 ## Header
 
 ### Header Styles
-This theme support 3 different header styles:
+
+Theme supports 3 different header styles:
+
 - Logo at left
 - Logo at center
 - Logo at right
@@ -1361,7 +1367,7 @@ This theme support 3 different header styles:
 
 ![Header Logo at right](img/home1-header-right.png)
 
-To configure, open the __Theme Editor__, scroll down to section __Logo__, click to expand the logo options. Choose a certain option of __Logo position__, then click __Refresh__ button appear after.
+To configure it, open the __Theme Editor__, scroll down to __Logo__ section, click to expand Logo options, choose __Logo position__ as you wish.
 
 ![Change logo position](img/change-logo-position.png)
 
@@ -1370,9 +1376,9 @@ To configure, open the __Theme Editor__, scroll down to section __Logo__, click 
 
 ![Welcome text](img/home1-welcome-text.png)
 
-This welcome text can be showed/hide in the __Theme Editor__ > __Header__ > __Show welcome text__:
+The welcome text can be showed in __Theme Editor__ > __Header__ > tick on __Show welcome text__
 
-![Toggle show/ide welcome text](img/theme-editor-show-welcome-text.png)
+![Toggle show/hide welcome text](img/theme-editor-show-welcome-text.png)
 
 You can edit the text in the language file `lang/en.json` in __Edit Theme Files__:
 
@@ -1381,57 +1387,58 @@ You can edit the text in the language file `lang/en.json` in __Edit Theme Files_
 
 
 ### Phone Number & Store Address
+
 ![Header info text](img/home1-infobar.png)
 
-Store address and phone number are pulled out from your store profile. You can edit it in __Store Setup__ > __Store Profile__:
+Your store address and phone number are pulled out from **Store Profile**. You can edit it in __Store Setup__ > __Store Profile__:
 
 ![Edit Store Address and Phone](img/edit-store-address-phone.png)
 
 
-### Promotion Content on Top Left of Header
+### Promotion content on the header left
 
 ![Promotion content on top left of header](img/promo-text-on-top-left-header.png)
 
-To display custom content at this position, go to **Theme Editor** > **Header**, tick on **Show custom content after welcome text**, save & publish:
+To display the custom text at this position, go to **Theme Editor** > **Header**, tick on **Show custom content after welcome text**, save & publish:
 
 ![Theme editor - show custom content after welcome text](img/theme-editor-show-promo-text-on-top-left-header.png)
 
-Then, create a new banner content in **Marketing** > **Banners** as showing below:
+Then create a new banner content in **Marketing** > **Banners** as below screenshot:
 
 ![Edit banner Promo Text on top left of header](img/edit-banner-promo-text-on-top-left-header.png)
 
-**Banner Content**: Click button HTML to open HTML Source Editor and input sample content below:
+**Banner Content**: Click the **HTML** button to open **HTML Source Editor** and input the sample content below:
 
 ```html
 <div class="emthemesModezBannersBlockTopHeaderBanner01"><strong>WE PROVIDE HIGH QUALITY PRODUCTS, GREAT SERVICE AND QUICK SHIPPING</strong></div>
 ```
 
-Or use button below to generate HTML code with your custom content:
+Or click on the button below to generate the HTML code with your custom content:
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockTopHeaderBanner01Modal">
   Launch Banner Code Generator
 </button>
 
-_**Note:** Don't remove `emthemesModezBannersBlockTopHeaderBanner01`._
+_**Note:** DO NOT remove `emthemesModezBannersBlockTopHeaderBanner01`._
 
 - **Show on Page**: `Search Results Page`
 - **Location**: `Top of Page`
 
 
-### Custom Links on Top Right of Header
+### Custom Links on the header right
 
 ![Custom Links on Top Right of Header](img/custom-links-on-top-right-header.png)
 
-To display custom content at this position, go to **Theme Editor** > **Header** > **Top Bar**, tick on **Show extra links**, save & publish:
+To display the custom links at this position, go to **Theme Editor** > **Header** > **Top Bar**, tick on **Show extra links**, save & publish:
 
 ![theme-editor-show-extra-links-topbar](img/theme-editor-show-extra-links-topbar.png)
 
-Then, create a new banner content in **Marketing** > **Banners** as showing below:
+Then create a new banner content in **Marketing** > **Banners** as showing below:
 
 ![Edit banner custom links on top right of header](img/edit-banner-topbar-custom-links.png)
 
-**Banner Content**: Click button HTML to open HTML Source Editor and input sample content below:
+**Banner Content**: Click to the **HTML** button to open **HTML Source Editor** and input the sample content below:
 
 ```html
 <ul class="navUser-section emthemesModezBannersBlockTopHeaderBanner02">
@@ -1442,14 +1449,14 @@ Then, create a new banner content in **Marketing** > **Banners** as showing belo
 </ul>
 ```
 
-Or use button below to generate HTML code with your custom content:
+Or click on the button below to generate the HTML code with your custom links:
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockTopHeaderBanner02Modal">
   Launch Banner Code Generator
 </button>
 
-_**Note:** Don't remove `emthemesModezBannersBlockTopHeaderBanner02`._
+_**Note:** DO NOT remove `emthemesModezBannersBlockTopHeaderBanner02`._
 
 - **Show on Page**: `Search Results Page`
 - **Location**: `Top of Page`
@@ -1459,40 +1466,40 @@ _**Note:** Don't remove `emthemesModezBannersBlockTopHeaderBanner02`._
 
 ![Social media icons on header](img/home1-header-social-icons.png)
 
-This social media icons group can be turned on/off in __Theme Editor__ > __Social Media Icons__ > __Placement__ > __Top/Right__:
+The social media icons group can be turned on/off in __Theme Editor__ > __Social Media Icons__ > __Placement__ > __Top/Right__:
 
 ![Configure social icons on header](img/theme-editor-social-icons-top.png)
 
-To configure your social media links, go to admin page > __Storefront Design__ > __Design Options__ > __Social Media__ section:
+To configure your social media links, go to __Storefront Design__ > __Design Options__ > __Social Media__ section:
 
 ![Edit social media links](img/edit-social-media-icons.png)
 
 
 ### Colors Customization
 
-To customize colors of the header section, look into the options showing below in the Theme Editor:
+To customize the header's colors, find the options showing below in Theme Editor:
 
 ![Theme editor header](img/theme-editor-header.png)
 
 
-## Main Menu
+## Main Navigation
 
 ![Main menu](img/home1-main-menu.jpg)
 
-This menu automatically show your web page links if visible.
+The main navigation automatically shows your web page links if it's visible.
 
-You can hide this menu bar completely or enable custom content, custom links in this posible in **Theme Editor** > **Header** > **Page Navigation**:
+You can show or hide the web page links, or just show some custom links or custom text by editing the options in Theme Editor in **Theme Editor** > **Header** > **Page Navigation**:
 
 ![theme editor page navigation](img/theme-editor-page-navigation.png)
 
-- **Hide Content Pages in Main Menu**: if checked will hide all this menu bar completely.
-- **Use manual links in Main Menu**: if checked will allow you enter custom content or custom links in **Marketing** > **Banners**. Use this tool below to generate your own links.
+- **Hide Content Pages in Main Menu**: if checked, it will hide all web page links completely.
+- **Use manual links in Main Menu**: if checked, it will allow you to show custom links or custom text by creating a specific banner in **Marketing** > **Banners**. Use the tool below to generate banner HTML code with your custom links.
 
-### Manually input links in Main Menu
+### How to your custom links in Main Navigation
 
-Theme allow you input your own links manually in this menu area. First tick on the check box **Use manual links in Main Menu** in **Theme Editor**.
+Theme allows you to input your custom links manually in the main navigation area. First, tick on **Use manual links in Main Menu** checkout in **Theme Editor**.
 
-Go to **Marketing** > **Banners**, click button **Create a Banner**. In field **Banner Content**, click button HTML to open **HTML Source Editor**, input sample content below:
+Go to **Marketing** > **Banners**, click **Create a Banner** button. In **Banner Content** field, click on **HTML** button to open **HTML Source Editor**, input the sample content below:
 
 ```html
 <ul id="emthemesModezBannersBlockStaticNavPages" class="navPages-list">
@@ -1504,12 +1511,15 @@ Go to **Marketing** > **Banners**, click button **Create a Banner**. In field **
 </ul>
 ```
 
-Or use button below to generate the code with your own banners:
+Or click on the button below to generate the code with your custom links:
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockStaticNavPagesModal">
   Launch Main Menu Code Generator
 </button>
+
+
+Remember to choose other fields as below:
 
 - __Show on Page__: `Search Results Page`
 - __Visible__: Checked
@@ -1518,20 +1528,20 @@ Or use button below to generate the code with your own banners:
 
 
 
-## Banner below header
+## Banner below Header
 
 ![banner below header](img/home1-banner-below-header.png)
 
-You can enable this banner on all pages or all other pages except homepage in **Theme Editor** > **Banners** > **Banner after header**:
+You can enable this banner across all pages or on all other pages except Home Page in **Theme Editor** > **Banners** > **Banner after header**:
 
 ![configure banner after header](img/theme-editor-banner-after-header.png)
 
 
 
-After enabled, you can edit banner content by go to **Marketing** > **Banners**, click button **Create a Banner**. Input:
+After enabled, you can edit banner content by go to **Marketing** > **Banners**, click **Create a Banner** button. Input the fields as below:
 
-- __Banner Name__: whatever you want
-- __Banner Content__: click the square button `HTML` to open HTML source code editor.
+- __Banner Name__: whatever.
+- __Banner Content__: click the **HTML** button to open **HTML source code editor**.
 
 Copy and paste the sample code below:
 
@@ -1549,12 +1559,14 @@ Copy and paste the sample code below:
 </div>
 ```
 
-You can use button below to generate the code with your own banner image:
+Or use the button below to generate the code with your own banner image:
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockAfterHeaderModal">
   Launch Banner Code Generator
 </button>
+
+Remember to choose other fields as below:
 
 - __Show on Page__: `Search Results Page`
 - __Visible__: Checked
@@ -1576,63 +1588,66 @@ You can use button below to generate the code with your own banner image:
 
 
 
-## HOMEPAGE
+## Home Page
 
-## - Rearrange home page sections' content
+### Rearrange Home Page Sections
 
-The homepage content is divided into sections. You can hide any section or rearrange the order of these sections in **Theme Editor** > **Home Page** > **Sections**.
+The home page content is divided into sections. You can show or hide any section or rearrange the sections' order in **Theme Editor** > **Home Page** > **Sections**.
 
-Watch this video for step by step how to hide and rearrange the sections' order.
+
+#### Tutorial video
+
+Watch this video for how to hide and rearrange the sections' order.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0wILFdym2M4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-## - Main Slideshow / Carousel
+### Home Page Carousels
 
 ![Home 1 Main Carousel](img/home1-main-carousel.jpg)
 
-### Edit the slideshow
+#### Edit the carousel
 
-Edit the slideshow in admin page > __Storefront Design__ > __Design Options__:
+Edit the home page carousel in __Storefront Design__ > __Design Options__:
 
 ![Edit homepage carousel](img/edit-homepage-carousel.png)
 
 
-### Colors Customization
+#### Colors customization
 
-To customize color of the slideshow's elements, look into section __Carousel__ in the Theme Editor:
+To customize the carousel colors, find __Carousel__ section in the Theme Editor:
 
 ![Theme editor carousel](img/theme-editor-carousel.png)
 
-### Hide the slideshow
+#### Hide the carousel
 
-To hide the slideshow on homepage, uncheck on the checkbox __Show Carousel__ in section __Carousel__ of the Theme Editor.
+To hide the main carousel on Home Page, uncheck __Show Carousel__ checkbox in __Carousel__ section of Theme Editor.
 
-### Show videos on carousel
+#### Show videos on the carousel
 
-To display YouTube video on Homepage Carousel, go to Theme Editor > Carousel > input your YouTube video ID in input fields as showing below:
+To display YouTube videos on Home Page Carousel, go to **Theme Editor** > **Carousel** > input your _YouTube video ID_ in the input fields as showing below:
 
 ![Edit carousel videos](img/theme-editor-edit-carousel-videos.png)
 
-**Video 1** will be put on 1st slide, **Video 3** will be put on 3rd slide and so on.
+**Video 1** will be put on the first slide, **Video 3** will be put on the 3rd slide and so on.
 
-**_Note: you much upload images on slides at position 1 and position 3 in order to display video on these slides._**
+**_Note: you much upload images on the slides at position 1 and position 3 in order to display videos on these slides._**
 
-Example how slides added for displaying videos:
+Example how to display videos on slide 1 and slide 3:
 
 ![example editing carousel for showing videos](img/edit-carousel-for-videos.png)
 
 
-**Height/Width ratio percent** is percent of your video's height divide video's width, for example your video size is 1920x1080, input `56.25%` to this field.
+**Height/Width ratio percent** is percent of your video height divide width, for example the size of video is 1920x1080, then input `56.25%` into this field.
 
 
-## - 2 banners beside the main carousel
+### 2 banners beside the carousel
 
-Enable this feature in **Theme Editor** > **Carousel** > tick on **Enable side banners?**.
+Enable in **Theme Editor** > **Carousel** > tick on **Enable side banners?**.
 
 Create a new banner in **Storefront** > **Banners**:
 
-- Click on the `HTML` button in the editor and paste the code below into **Banner content:**
+- Click on `HTML` button in the editor and paste the code below into **Banner content:**
 
 ```html
 <div class="papathemesHeroCarouselBanner emthemesModezBannersBlock">
@@ -1647,11 +1662,11 @@ Create a new banner in **Storefront** > **Banners**:
 
 
 
-## - 3 Banners on Homepage
+### 3 Banners on Home Page
 
 ![3 banners on homepage](img/home1-3-banners.jpg)
 
-To show these banners on homepage, from your admin page > __Marketing__ > __Banners __> click button __Create a Banner__. In field __Banner Content__, click button HTML to open __HTML Source Editor__, input content below:
+To show these banners on homepage, go to __Marketing__ > __Banners__ > click __Create a Banner__ button. In __Banner Content__ editor, click **HTML** button to open __HTML Source Editor__, input them sample content below:
 
 ```html
 <div id="emthemesModezBannersBlockHome01" class="emthemesModez-section  emthemesModez-section--banners-3x">
@@ -1674,7 +1689,7 @@ To show these banners on homepage, from your admin page > __Marketing__ > __Bann
 </div>
 ```
 
-Or use button below to generate the code with your own banners:
+Or click on the button below to generate the code with your own banners:
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockHome01Modal">
@@ -1682,24 +1697,24 @@ Or use button below to generate the code with your own banners:
 </button>
 
 
-
-
 ![Edit homepage 3 banners](img/edit-home1-3-banners.png)
 
-Then click __Update__ button to go back previous screen.
+Then click __Update__ button to go back the previous screen.
 
-Choose __Show on Page__ is __Home Page__.
+Choose __Show on Page__ = __Home Page__.
 
-Choose __Location__ is __Top of Page__.
+Choose __Location__ = __Top of Page__.
 
 ![Show on Page & Location](img/edit-banner-show-on-page-location.png)
 
 Click __Save__ button to finish.
 
-You can freely edit the HTML above to change banner images or link but keep the HTML attribute `id="emthemesModezBannersBlockHome01"` unchanged.
+You can freely edit the HTML above to change banner images or links but keep the HTML attribute `id="emthemesModezBannersBlockHome01"` unchanged.
 
 
-Watch this video for step by step instruction:
+#### Tutorial video
+
+Watch the video below for step by step instruction:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Yp0NXGn9lBY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -1707,7 +1722,7 @@ Watch this video for step by step instruction:
 
 
 
-## - Featured / Bestselling / New In Product Tabs
+### Featured / Bestselling / New  Products Tabs
 
 ![Special products tabs](img/home1-special-product-tabs.jpg)
 
@@ -1716,86 +1731,86 @@ You can configure this section in __Theme Editor__ > __Homepage__:
 ![Theme Editor Special Products Tabs](img/theme-editor-special-products-tabs.png)
 
 
-## - Products By Category
+### Products By Categories
 
 ![Products by category on homepage](img/home1-products-by-category.jpg)
 
-This section will show products by category. You can choose number of categories to display products. Categories are sorted by order specified in __Product Categories__ admin manager.
+This section will show products organized categories. You can choose number of categories to display products. Categories are sorted by the order specified in __Product Categories__ in admin manager.
 
 
-### Hot Categories
+#### Hot Categories
 
-The __Hot Categories__ appears on the right is sub-categories of the current category.
+__Hot Categories__ appears on the right is the sub-categories of the current category.
 
 ![Hot categories](img/home1-products-by-category-hot-categories.png)
 
 
 
-### Configuration 
+#### Configuration 
 
 To configure this section, go to __Theme Editor__ > __Homepage__ > __Products by Category with Sorting Tabs__:
 
 ![Configure products by category](img/theme-editor-products-by-category.png)
 
 
-### Show Banner per Category
+#### Show Banner per Category
 
 ![products-by-category-banner](img/products-by-category-banner.png)
 
-To show custom banner image per products by category block, tick on option **Show banner** in **Theme Editor** > **Homepage** > **Products by Category with Sorting Tabs**:
+To show the banner image per products by category block, tick on option **Show banner** in **Theme Editor** > **Homepage** > **Products by Category with Sorting Tabs**:
 
 ![theme-editor-show-banner-on-products-by-category](img/theme-editor-show-banner-on-products-by-category.png)
 
-Then go to **Storefront** > **Image Manager**, upload your banner images with appropriated name: `products-by-category-{i}.jpg` where `{i}` is replaced by category order starting from 1.
+Then go to **Storefront** > **Image Manager**, upload your banner image with name following this rule: `products-by-category-{i}` where `{i}` is replaced by category order starting from 1. The banner image format must be **jpg**, it means the image on your computer must be `products-by-category-1.jpg` if it's used for the first category. All letters must be lower case.
 
 
-Watch this video for step by step instruction:
+**Watch this tutorial video:**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0cWTw4xr_w0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-### Display featured product items
+#### Display featured product items
 
 To show products sorted by _Featured_, edit the products, change the **Sort Order** value to smaller than others. By default, Sort Order value is 0, therefore you need to update the products you want to display by featured order a smaller value, negative number also works well.
 
 Please note that products by category sorted by _featured item_ are different than **featured products**. Your featured products (which are marked stars) won't show here if the **Sort Order** value is not set correctly.
 
-Watch this video for step by step instruction:
+**Watch this video for step by step instruction:**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lV931JCfvEc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
-## - Top Categories
+### Top Categories
 
 ![Top categories on homepage](img/home1-top-categories.jpg)
 
-This block show top categories and child categories sorted by order in Product Categories manager.
+This block show top categories and its sub-categories sorted by the order set in Product Categories manager.
 
 
-### Configuration 
+#### Configuration 
 
 You can configure number of categories to display in __Theme Editor__ > __Homepage__ > __Top Categories__:
 
 ![Configure Top Categories](img/theme-editor-top-categories.png)
 
 
-### Show Thumbnails
+#### Show Thumbnails
 
 ![theme-editor-show-thumbnails-of-top-categories](img/theme-editor-show-thumbnails-of-top-categories.png)
 
-To show thumbnail images beside each category, tick on option **Show thumbnails** in **Theme Editor** > **Homepage** > **Top Categories Of This Month**.
+To show thumbnail images beside each category, tick on **Show thumbnails** in **Theme Editor** > **Homepage** > **Top Categories Of This Month**.
 
-Then go to **Storefront** > **Image Manager**, upload your thumbnail images with appropriated name: `categories-list-thumbnail-{i}.jpg` where `{i}` is replaced by category order starting from 1.
-
-
+Then go to **Storefront** > **Image Manager**, upload your thumbnail images with appropriated name: `categories-list-thumbnail-{i}` where `{i}` is replaced by category order starting from 1. The thumbnail image format must be **jpg**, it means the image on your computer must be `categories-list-thumbnail-1.jpg` if it's used for the first category. All letters must be lower case.
 
 
-## - Fullwidth Banner on Homepage
+
+
+### Fullwidth Banner on Home Page
 
 ![fullwidth banner on homepage](img/home1-fullwidth-banner.jpg)
 
-To show these banners on homepage, from your admin page > __Marketing__ > __Banners __> click button __Create a Banner__. In field __Banner Content__, click button HTML to open __HTML Source Editor__, input content below:
+To show this banner on Home Page, Go to __Marketing__ > __Banners__ > click __Create a Banner__ button. In __Banner Content__ editor, click **HTML** button to open __HTML Source Editor__, input the sample content below:
 
 ```html
 <div id="emthemesModezBannersBlockHome02" class="emthemesModez-section  emthemesModez-section--banners-one">
@@ -1812,7 +1827,7 @@ To show these banners on homepage, from your admin page > __Marketing__ > __Bann
 </div>
 ```
 
-Or use button below to generate the code with your own banners:
+Or click on the button below to generate the code with your own banners:
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockHome02Modal">
@@ -1822,28 +1837,28 @@ Or use button below to generate the code with your own banners:
 
 ![Edit homepage fullwidth banner](img/edit-home1-fullwidth-banner.png)
 
-Then click __Update__ button to go back previous screen.
+Then click __Update__ button to go back the previous screen.
 
-Choose __Show on Page__ is __Home Page__.
+Choose __Show on Page__ = __Home Page__.
 
-Choose __Location__ is __Top of Page__.
+Choose __Location__ = __Top of Page__.
 
 ![Show on Page & Location](img/edit-banner-show-on-page-location.png)
 
 Click __Save__ button to finish.
 
-You can freely edit the HTML above to change banner images or link but keep the HTML attribute `id="emthemesModezBannersBlockHome02"` unchanged.
+You can freely edit the HTML code above to change banner images or links but keep the HTML attribute `id="emthemesModezBannersBlockHome02"` unchanged.
 
 
 
 
 
-## - Brand Carousel
+### Brand Carousel
 
 ![Brand Carousel](img/home1-brand-carousel.png)
 
 
-To show this carousel on homepage, from your admin page > __Marketing__ > __Banners __> click button __Create a Banner__. In field __Banner Content__, click button HTML to open __HTML Source Editor__, input content below:
+To show this carousel on Home Page, go to __Marketing__ > __Banners__ > click __Create a Banner__ button. In __Banner Content__ editor, click **HTML** button to open __HTML Source Editor__, input the sample content below:
 
 ```html
 <div id="emthemesModezBannersBlockHome03" class="emthemesModez-brandCarousel-container" data-section-type="brands-logo">
@@ -1862,7 +1877,7 @@ To show this carousel on homepage, from your admin page > __Marketing__ > __Bann
 </div>
 ```
 
-Or use button below to generate the code:
+Or click on the button below to generate the code:
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockHome03Modal">
@@ -1873,17 +1888,17 @@ Or use button below to generate the code:
 
 ![Edit homepage fullwidth banner](img/edit-home1-fullwidth-banner.png)
 
-Then click __Update__ button to go back previous screen.
+Then click __Update__ button to go back the previous screen.
 
-Choose __Show on Page__ is __Home Page__.
+Choose __Show on Page__ = __Home Page__.
 
-Choose __Location__ is __Top of Page__.
+Choose __Location__ = __Top of Page__.
 
 ![Show on Page & Location](img/edit-banner-show-on-page-location.png)
 
 Click __Save__ button to finish.
 
-You can freely edit the HTML above to change banner images or link but keep the HTML attribute `id="emthemesModezBannersBlockHome03"` unchanged.
+You can freely edit the HTML above to change banner images or links but keep the HTML attribute `id="emthemesModezBannersBlockHome03"` unchanged.
 
 
 
@@ -1892,31 +1907,31 @@ You can freely edit the HTML above to change banner images or link but keep the 
 
 
 
-## - Special Product Columns
+### Special Products Columns
 
 
 ![Special product columns](img/home1-special-product-columns.jpg)
 
-This block show bestselling products, featured products, new products in columns.
+This section shows bestselling products, featured products and new products in 3 columns.
 
-You can configure this block in Theme Editor > Homepage > Special Products Columns:
+You can configure this section in **Theme Editor** > **Homepage** > **Special Products Columns**:
 
 ![Configure special products columns](img/theme-editor-special-products-columns.png)
 
 
 
 
-## - Recent Posts
+### Recent Posts
 
-To show recent posts on homepage, go to **Theme Editor** > **Homepage** > set **Recent blog posts** is number of posts you want to show up.
-
-
+To show Recent Posts section on Home Page, go to **Theme Editor** > **Homepage** > set **Recent blog posts** = number of posts to show up.
 
 
 
-## - Instagram
 
-To show your Intagram photos on homepage, go to **Theme Editor** > **Homepage** > **Instagram**, input your **Access Token** code and **User ID**.
+
+### Instagram
+
+To show your Intagram photos on Home Page, go to **Theme Editor** > **Homepage** > **Instagram**, input your **Access Token** code and **User ID**.
 
 - To retrieve your Access Token, use this tool <http://bit.ly/2Cm0I1O>
 - To retrieve your User ID, use this tool <http://bit.ly/2Et7ULx>
@@ -1925,17 +1940,17 @@ Choose **Number of photos** to show up.
 
 
 
-## - Newsletter Popup
+### Newsletter Popup
 
 ![theme-editor-newsletter-popup](img/theme-editor-newsletter-popup.png)
 
 To configure Newsletter Popup, go to **Theme Editor** > **Newsletter Popup**.
 
-To edit content of popup, add a new banner in **Marketing** > **Banners**:
+To edit the popup content, create a new banner in **Marketing** > **Banners**:
 
 ![edit-banner-newsletter-popup](img/edit-banner-newsletter-popup.png)
 
-**Banner Content**: Click button HTML to open HTML Source Editor and input sample content below:
+**Banner Content**: Click **HTML** button to open **HTML Source Editor** and input the sample content below:
 
 ```html
 <div id="emthemesModezBannersBlockNewsletterPopup" class="newsletterPopup">
@@ -1948,14 +1963,14 @@ To edit content of popup, add a new banner in **Marketing** > **Banners**:
 </div>
 ```
 
-Or use button below to generate HTML code with your custom content:
+Or click on the button below to generate HTML code with your custom content:
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockNewsletterPopupModal">
   Launch Banner Code Generator
 </button>
 
-_**Note:** Don't remove `emthemesModezBannersBlockNewsletterPopup`._
+_**Note:** DO NOT remove `emthemesModezBannersBlockNewsletterPopup`._
 
 - **Show on Page**: `Search Results Page`
 - **Location**: `Top of Page`
@@ -1964,19 +1979,19 @@ _**Note:** Don't remove `emthemesModezBannersBlockNewsletterPopup`._
 
 
 
-## FOOTER
+## Footer
 
 
-## - Newsletter
+### Newsletter
 
 ![Newsletter](img/home1-newsletter.png)
 
-You can configure the newsletter block, show/hide or change color in __Theme Editor__ > __Footer__ > __Newsletter__:
+You can configure the newsletter block, show/hide or change colors in __Theme Editor__ > __Footer__ > __Newsletter__:
 
 ![Configure newsletter](img/theme-editor-newsletter.png)
 
 
-## - Links
+### Links
 
 ![Footer](img/home1-footer.png)
 
@@ -1984,42 +1999,43 @@ You can change colors in __Theme Editor__ > __Footer__:
 
 ![Theme editor main footer](img/theme-editor-main-footer.png)
 
-You can also show/hide about us block, pages, categories, brands, configure number of links to show.
+You can also show/hide About Us block, Pages, Categories, Brands, or configure number of links to show.
 
 
 
-## - Payment Icons
+### Payment Icons
 
 ![Theme editor payment icons](img/theme-editor-payment-icons.png)
 
-To show/hide payment icons, go to Theme __Editor__ > __Payment Icons__ secitons, check or uncheck any icons you want to show or hide.
+To show/hide the payment icons, go to __Theme Editor__ > __Payment Icons__ seciton, tick on any icons you want to show.
 
 
 
 
-## - Credit Links
+### Credit Links
 
 ![Theme editor credit links](img/theme-editor-credits.png)
 
-To show/hide the credit links, go to Theme Editor > __Footer__ section, tick or untick the checkboxes as showing above.
-
-## SIDEBAR
+To show/hide the credit links, go to **Theme Editor** > __Footer__ section, tick on the checkboxes as showing above.
 
 
-## - Banners on the Left Sidebar
+## Sidebar
 
-### Show a banner above Facebook Like Page block
+
+### Banners on Left Sidebar
+
+#### Show a banner above Facebook Like Page block
 
 ![sidebar banner 1](img/home1-sidebar-banner1.jpg)
 
-To show this banner, go to Marketing > Banners, click button __Create a Banner__. Input:
+To show this banner, go to **Marketing** > **Banners**, click __Create a Banner__ button. Input:
 
 - __Banner Name__: whatever you want
-- __Banner Content__: click the square button `HTML` to open HTML source code editor.
+- __Banner Content__: click on `HTML` button to open **HTML source code editor**.
 
 Copy and paste the sample code below:
 
-```
+```html
 <div class="sidebarBlock sidebarBlock--banner emthemesModezBannersBlockSidebar01">
 <div class="emthemesModez-bannersContainer">
 <div class="emthemesModez-banner">
@@ -2029,7 +2045,7 @@ Copy and paste the sample code below:
 </div>
 ```
 
-Or you can use this tool to generate your banner content:
+Or click on the button below generate your own banner content:
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockSidebarImgModal">
@@ -2041,18 +2057,18 @@ Or you can use this tool to generate your banner content:
 - __Location__: `Top of Page`
 
 
-### Show banners & text block below Facebook Like Page block
+#### Show banners & text block below Facebook Like Page block
 
 ![sidebar banner 2](img/home1-sidebar-banner2.jpg)
 
-To show this banner and the text block, go to Marketing > Banners, click button __Create a Banner__. Input:
+To show this banner and text block, go to **Marketing** > **Banners**, click __Create a Banner__ button. Input:
 
 - __Banner Name__: whatever you want
-- __Banner Content__: click the square button `HTML` to open HTML source code editor.
+- __Banner Content__: click `HTML` button to open **HTML source code editor**.
 
 Copy and paste the sample code below:
 
-```
+```html
 <!-- Banner -->
 <div class="sidebarBlock sidebarBlock--banner emthemesModezBannersBlockSidebar02">
 <div class="emthemesModez-bannersContainer">
@@ -2082,7 +2098,7 @@ Copy and paste the sample code below:
 </div>
 ```
 
-Or you can use this tool to generate your banner & text block content:
+Or click on the button below to generate your own banner & text block content:
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockSidebarImgModal">
@@ -2092,6 +2108,8 @@ Or you can use this tool to generate your banner & text block content:
   Launch Text Block Code Generator
 </button>
 
+Remember to choose:
+
 - __Show on Page__: `Search Results Page`
 - __Visible__: Checked
 - __Location__: `Top of Page`
@@ -2099,32 +2117,32 @@ Or you can use this tool to generate your banner & text block content:
 
 
 
-## - Facebook Like Page
+### Facebook Like Page
 
 ![Facebook like page](img/home1-facebook-like-page.jpg)
 
 You can show your own Facebook Like Page block or hide it completely. 
 
-From __Theme Editor__ > __Social Media Icons__ > Enter your facebook page name in __Facebook page__ field. For example if your Facebook page URL is <https://www.facebook.com/papathemes/> you should only input `papathemes`.
+From __Theme Editor__ > __Social Media Icons__ > Enter your facebook page name in __Facebook page__ field. For example if your Facebook page URL is <https://www.facebook.com/papathemes/>, ONLY input `papathemes`.
 
-To hide this block, just leave it empty value.
-
-
+To hide this block, just leave it empty.
 
 
-## CATEGORY PAGE
 
 
-## - Content Top Banner
+## Category Page
+
+
+### Content Top Banner
 
 ![content top banner on category page](img/home1-category-page-top-banner.png)
 
 You can enable this banner on all category pages in **Theme Editor** > **Banners** > **Top banner on category page** set to `Show`.
 
-After enabled, you can edit banner content by go to **Marketing** > **Banners**, click button **Create a Banner**. Input:
+After enabled, you can edit the banner content by go to **Marketing** > **Banners**, click button **Create a Banner**. Input:
 
 - __Banner Name__: whatever you want
-- __Banner Content__: click the square button `HTML` to open HTML source code editor.
+- __Banner Content__: click `HTML` button to **open HTML source code editor**.
 
 Copy and paste the sample code below:
 
@@ -2142,12 +2160,14 @@ Copy and paste the sample code below:
 </div>
 ```
 
-You can use button below to generate the code with your own banner image:
+Or click on the button below to generate the code with your own banner image:
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bannersBlockBeforeCategoryModal">
   Launch Banner Code Generator
 </button>
+
+Remember to choose:
 
 - __Show on Page__: `Search Results Page`
 - __Visible__: Checked
@@ -2155,34 +2175,34 @@ You can use button below to generate the code with your own banner image:
 
 
 
-## - Bulk Order feature
+### Bulk Order feature
 
 Go to **Theme Editor** > **Products** > **Category pages** > tick on **Show bulk order mode**.
 
-To display bulk order layout for a specific category, edit the category and choose **Template Layout File** = `bulk-order`.
+To display Bulk Order layout for a specific category, edit the category and choose **Template Layout File** = `bulk-order`.
 
 
-## PRODUCT PAGE
+## Product Page
 
-## - Banners
+### Banners
 
 ![banners on product page](img/home1-product-page-banners.png)
 
-Theme supports various banner positions on product pages. You can enable these banner position in **Theme Editor** > **Banners**:
+Theme supports various banner positions on the product pages. You can enable it in **Theme Editor** > **Banners**:
 
 - **Banner below ratings on product page**
 - **Banner below Add To Cart button on product page**
 - **Banner above description tabs on product page**
 
 
-After enabled, you can edit banner content by go to **Marketing** > **Banners**, click button **Create a Banner**. Input:
+After enabled, you can edit the banner content by go to **Marketing** > **Banners**, click button **Create a Banner**. Input:
 
 - __Banner Name__: whatever you want
-- __Banner Content__: click the square button `HTML` to open HTML source code editor.
+- __Banner Content__: click `HTML` button to open **HTML source code editor**.
 
 Copy and paste the sample code below:
 
-**For banner below ratings:**
+**For Banner below Ratings:**
 
 ```html
 <div id="emthemesModezBannersBlockAfterRating" class="emthemesModezBannersBlockAfterRating">
@@ -2204,7 +2224,7 @@ Copy and paste the sample code below:
 </button>
 
 
-**For banner below Add to Cart button:**
+**For Banner below Add to Cart button:**
 
 ```html
 <div id="emthemesModezBannersBlockAfterAddToCartButton" class="emthemesModezBannersBlockAfterAddToCartButton">
@@ -2226,7 +2246,7 @@ Copy and paste the sample code below:
 </button>
 
 
-**For banner above description tabs:**
+**For Banner above Description Tabs:**
 
 ```html
 <div id="emthemesModezBannersBlockBeforeDescription" class="emthemesModezBannersBlockBeforeDescription">
@@ -2247,6 +2267,7 @@ Copy and paste the sample code below:
   Launch Banner Code Generator
 </button>
 
+Remember to choose:
 
 - __Show on Page__: `Search Results Page`
 - __Visible__: Checked
@@ -2254,13 +2275,14 @@ Copy and paste the sample code below:
 
 
 
-## - Custom Tabs
+### Custom Tabs
 
-To add custom tabs and product page, edit your product description, click on HTML button to switch on HTML editor mode:
+To add the custom tabs and product pages, edit your product description, click on **HTML** button to switch on **HTML editor mode**:
 
 ![edit-product-custom-tabs](img/edit-product-custom-tabs.png)
 
-Copy and paste custom HTML code below into end of product description HTML content:
+Copy and paste sample HTML code below at the end of product description HTML content:
+
 ```html
 <div data-custom-tab>
 <p data-custom-tab-title>Custom Tab 1</p>
@@ -2273,10 +2295,10 @@ Copy and paste custom HTML code below into end of product description HTML conte
 </div>
 ```
 
-You can add many tabs as you want. replace tab title in `<p data-custom-tab-title>` and tab content below this element.
+You can add many tabs as you want. Replace the tab title in `<p data-custom-tab-title>` and the tab content below tab title.
 
 
-## - Frequently Bought Together
+### Frequently Bought Together
 
 ![Frequently bought together feature](img/bought-together.jpg)
 
@@ -2284,9 +2306,9 @@ To display **Frequently Bought Together** feature, go to **Theme Editor** > **Pr
 
 ![theme editor bought together](img/theme-editor-bought-together.png)
 
-### Associate "bought together" products to a specific product
+#### Associate "bought together" products to a specific product
 
-Edit a product, in **Custom Fields** tab, add some custom fields with name `__alsobought` and value is the "bought together" **product ID** you want to associate:
+Then, edit a product, in **Custom Fields** tab, add some custom fields with name `__alsobought` and value is the "bought together" **product ID** you want to associate:
 
 ![Edit product bought together](img/edit-product-bought-together.png)
 
@@ -2297,7 +2319,7 @@ To find the **product ID**, edit the product, then look at the URL address box o
 
 
 
-## - Shipping Date Notification (BETA)
+### Shipping Date Notification (BETA)
 
 ![shipping-date-notification](img/shipping-date-notification.png)
 
@@ -2341,7 +2363,7 @@ _**Note:** Don't remove `emthemesModezBannersBlockAfterAddToCartButton`._
 - **Location**: `Top of Page`
 
 
-Next, insert this custom javascript in **Storefront** > **Footer Scripts**:
+Next, insert the custom javascript below to **Storefront** > **Footer Scripts**:
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"></script>
@@ -2352,13 +2374,14 @@ window.jQuerySupermarket(function(e){function t(){if(e("body").hasClass("papaSup
 </script>
 ```
 
-## BRANDS PAGE
 
-## - Brands Page Layout
+## Brands Page
+
+### Brands Page Layout
 
 ![theme-editor-brands-page-layout](img/theme-editor-brands-page-layout.png)
 
-Configure the brands page layout display alphabet table and grouped by letter in **Theme Editor** > **Products** > **Brands pages** > **Layout** = `A-Z Table`. Save & Publish.
+Configure Brands Page layout to display alphabet table and grouped by letter in **Theme Editor** > **Products** > **Brands pages** > **Layout** = `A-Z Table`. Save & Publish.
 
 
 
@@ -2369,7 +2392,7 @@ Configure the brands page layout display alphabet table and grouped by letter in
 
 ### Sale badges
 
-You need to input both **Sale Price** and **Retail Price** in your product:
+You need to input both **Sale Price** and **Retail Price** of product:
 
 ![edit product sale prices](img/edit-product-sale-price.png)
 
@@ -2377,27 +2400,28 @@ In **Theme Editor** > **Products** > **Product Sale Badges**, choose to display 
 
 ![enable badges on theme editor](img/theme-editor-badges.png)
 
-### Custom badges
+### Custom Badges
 
-To display custom badges, enable custom badges option in Theme Editor. Edit your product, input custom field `__badge` and input badget text in the custom field value:
+To display the custom badges, enable **Custom Badges** option in **Theme Editor**. Edit your product, add a custom field with name = `__badge` and value is the custom badget content.
 
 ![edit product badges in custom fields](img/edit-product-custom-badges.png)
 
 
 ## Instant Load
 
-Instant Load speeds up your store dramatically by predict and preload the pages user may view forward. It makes user navigation effectively instant in most cases. Let's preview this feature from this video:
+Instant Load can speed up your store dramatically by predict and preload the pages user may view forward. It makes user navigation effectively instant in most cases. Let's preview this feature in this video:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5IbpKMMJGFU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-To enable this feature, open **Theme Editor** > **Global** > tick on **Enable Instant-Load for faster browsing pages (experiment)**.
+To enable this feature in **Theme Editor** > **Global** > tick on **Enable Instant-Load for faster browsing pages (experiment)**.
 
-Note that this feature only works for certain pages including: _Category pages_, _product pages_, _brand pages_, _blog_ and _static web pages_.
+Note that this feature only works for certain pages such as: _Category pages_, _product pages_, _brand pages_, _blog_ and _static web pages_. Other pages will be loaded as normal.
 
 ## Add our own CSS / JavaScript code
 
-You can add your custom CSS by inserting into Storefront > Footer Scripts, wrapped by a `<style>` tag.
+You can add your custom CSS by inserting to  **Storefront** > **Footer Scripts**, wrapped by a `<style> </style>` tag.
 
-To insert custom JS, you can insert into Footer Scripts wrapped by a `<script>` tag or insert in to Scripts Manager.
+To add custom JavaScript, you can insert to **Footer Scripts** wrapped by a `<script> </script>` tag or create a new script in **Scripts Manager**.
+
 
 
