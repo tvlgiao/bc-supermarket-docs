@@ -1420,3 +1420,41 @@ Enter the script below to **Scripts contents**:
     })(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
+
+
+## Apply a coupon code automatically on the cart page
+
+If you want to apply a coupon code automatically when it is passed to the cart page URL, for example: `/cart.php?coupon=YOUR-COUPON-CODE`.
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+    (function($) {
+        function main() {
+            var m;
+            if (m = window.location.search.match(/coupon=([^&]+)/)) {
+                var coupon = m[1];
+                stencilUtils.api.cart.applyCode(coupon, function(error, response) {
+                    if (error || response.data.errors) {
+                        return;
+                    }
+                    var url = window.location.href.replace(/[?&]?coupon=[^&]+/, '');
+                    window.location = url;
+                });
+            }
+        }
+
+        $(document).ready(main);
+        $('body').on('loaded.instantload', main);
+    })(window.jQuerySupermarket || window.jQuery);
+</script>
+```
+
+
