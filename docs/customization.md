@@ -1254,43 +1254,18 @@ This page will explain all configuration available and how to edit each section 
 ![Homepage of Default Style](img/home1.jpg)
 
 
-
-
-## Left Navigation layout vs. Default layout
+## Layout
 
 ![fixed vertical menu layout](img/home1-left-sidebar.jpg)
 
 Theme supports 2 different layouts across the entire site:
 
-1. **Fixed Left Sidebar layout**
-2. **Default layout**
+1. **Fixed Left Sidebar layout** - Sidebar always appears on most of pages.
+2. **Default layout** - Sidebar appears only on the pages required, such as category pages, brands, search pages.
 
 You can configure the layout in **Theme Editor** > **Global** > **Layout**:
 
 ![Theme editor layout](img/theme-editor-layout.png)
-
-
-
-
-
-## Vertical Mega Menu vs. Slide Down Msenu
-
-**Note: the slide-down menu only works with the `Fixed Left Sidebar` layout.**
-
-
-**Mega Menu**:
-
-![Mega menu](img/home1-mega-menu.jpg)
-
-**Slide Down Menu**:
-
-![Slidedown menu](img/home1-slidedown-menu.jpg)
-
-You can switch the mega menu to slide down menu in **Theme Editor** > **Header** > tick to **Showing sub-categories vertical**:
-
-![subcategories vertical menu](img/theme-editor-subcategories-vertical-menu.png)
-
-
 
 
 ## Top Banner
@@ -1310,7 +1285,7 @@ Find the options below:
 ![Theme editor top banner](img/theme-editor-top-banner.png)
 
 
-## Advanced Top Banner
+### Advanced Top Banner
 
 ![Advanced top header banner](img/home1-banner-adv-top-header.png)
 
@@ -1343,7 +1318,7 @@ Other fields should be configured as below:
 - __Location__: `Top of Page`
 
 
-### Tutorial video
+#### Tutorial video
 
 Also check out the tutorial video below:
 
@@ -1495,7 +1470,42 @@ You can show or hide the web page links, or just show some custom links or custo
 - **Hide Content Pages in Main Menu**: if checked, it will hide all web page links completely.
 - **Use manual links in Main Menu**: if checked, it will allow you to show custom links or custom text by creating a specific banner in **Marketing** > **Banners**. Use the tool below to generate banner HTML code with your custom links.
 
-### How to your custom links in Main Navigation
+
+
+
+### Vertical Mega Menu vs. Slide Down Msenu
+
+**Note: the slide-down menu only works with the `Fixed Left Sidebar` layout.**
+
+
+**Mega Menu**:
+
+![Mega menu](img/home1-mega-menu.jpg)
+
+**Slide Down Menu**:
+
+![Slidedown menu](img/home1-slidedown-menu.jpg)
+
+You can switch the mega menu to slide down menu in **Theme Editor** > **Header** > tick to **Showing sub-categories vertical**:
+
+![subcategories vertical menu](img/theme-editor-subcategories-vertical-menu.png)
+
+
+### Show all top categories menu horizontally
+
+![horizontal category menu](img/horizontal-category-menu.png)
+
+To display all top categories menu horizontally instead of displaying in the dropdown "Categories" item, go to **Theme Editor** > **Header** > **Main navigation** > set **Show categories** = `Horizontal`.
+
+
+### Use flyout menu
+
+![flyout menu](img/flyout-menu.png)
+
+Enable in **Theme Editor** > **Header** > **Main navigation** > tick on **Use flyout menu instead of mega menu**.
+
+
+### Show custom links in Main Navigation
 
 Theme allows you to input your custom links manually in the main navigation area. First, tick on **Use manual links in Main Menu** checkout in **Theme Editor**.
 
@@ -1656,20 +1666,6 @@ Remember to choose other fields as below:
 
 
 
-
-
-## Banner Sizes
-
-![yellow style banner sizes](img/home1-banner-sizes.png)
-
-![blue style banner sizes](img/home2-banner-sizes.png)
-
-![product page banner sizes](img/product-page-banner-sizes.png)
-
-
-
-
-
 ## Home Page
 
 ### Rearrange Home Page Sections
@@ -1813,6 +1809,12 @@ You can configure this section in __Theme Editor__ > __Homepage__:
 ![Theme Editor Special Products Tabs](img/theme-editor-special-products-tabs.png)
 
 
+#### Optimize for loading speed (Coming soon in version 4.5.0)
+
+Showing many products may affects to your website loading speed. In order to optimize the loading speed (TTFB - Time to first byte) while still loading many products, you can configure value of **Show more products when the page loaded** lower, for example `4` and set **Show more products when scrolling to the viewport** higher, for example `8`. As a result, when opening the home page, 4 products will be displayed immediately, when scrolling down to this section, additional 8 products will be loaded and displayed next.
+
+In addition, **Show Load More button** option allows displaying a Load More button that when clicked will load and display more products. The maximium number of products that can be displayed is 25 for new products, 100 for bestselling and featured.
+
 ### Products By Categories
 
 ![Products by category on homepage](img/home1-products-by-category.jpg)
@@ -1820,19 +1822,22 @@ You can configure this section in __Theme Editor__ > __Homepage__:
 This section will show products organized categories. You can choose number of categories to display products. Categories are sorted by the order specified in __Product Categories__ in admin manager.
 
 
-#### Hot Categories
-
-__Hot Categories__ appears on the right is the sub-categories of the current category.
-
-![Hot categories](img/home1-products-by-category-hot-categories.png)
-
-
-
 #### Configuration 
 
 To configure this section, go to __Theme Editor__ > __Homepage__ > __Products by Category with Sorting Tabs__:
 
 ![Configure products by category](img/theme-editor-products-by-category.png)
+
+
+#### Optimize for execution time (Coming soon in version 4.5.0)
+
+By default, all products will be loaded and displayed when opening the page. At a result, it takes a longer execution time that can affect your site's Page Speed score. To avoid this, you can select **Only load when scrolling to the viewport** option, the products won't loaded until user scrolls down to this area.
+
+#### Specify which categories to display
+
+By default, the product categories displayed are the top categories in the order in which they are sorted on the main navigation. You can limit number of categories to display by setting **Number of Categories** option. 
+
+You can manually specify which categories should be displayed by setting the categories ID to **Category ID** box, separated by comma. For example: `200,221,254,275`. Check instruction [How to find the category ID](https://solidcommerce.zendesk.com/hc/en-us/articles/215722843-Finding-Bigcommerce-Category-Names-and-ID-Numbers#automark4). Note that **Number of Categories** will be ignored if you choose to display categories manually.
 
 
 #### Show Banner per Category
@@ -1850,6 +1855,12 @@ Then go to **Storefront** > **Image Manager**, upload your banner image with nam
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0cWTw4xr_w0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+
+#### Hot Categories
+
+__Hot Categories__ appears on the right is the sub-categories of the current category.
+
+![Hot categories](img/home1-products-by-category-hot-categories.png)
 
 #### Display featured product items
 
@@ -2259,12 +2270,50 @@ Remember to choose:
 
 ### Bulk Order feature
 
-Go to **Theme Editor** > **Products** > **Category pages** > tick on **Show bulk order mode**.
+![Bulk Order](img/bulk-order.png)
+
+This feature allows to display products in any category as table layout. Customer can quickly choose and add the selected products to cart at the same time. It's ideal for wholesale and large stores. 
+
+Enable it in **Theme Editor** > **Products** > **Category pages** > tick on **Show bulk order mode**.
 
 To display Bulk Order layout for a specific category, edit the category and choose **Template Layout File** = `bulk-order`.
 
 
+### Search in Category feature (Coming soon in version 4.5.0)
+
+![quick search in category](img/theme-editor-search-in-category.png)
+
+This feature allows to quickly search products on the current category. 
+
+Enable this feature in **Theme Editor** > **Products** > **Category page** > **Show quick search in category** = `Show`.
+
+
+
 ## Product Page
+
+
+
+### Display Sale badget & custom badges
+
+![product badges](img/product-card-badges.png)
+
+#### Sale badges
+
+You need to input both **Sale Price** and **Retail Price** of product:
+
+![edit product sale prices](img/edit-product-sale-price.png)
+
+In **Theme Editor** > **Products** > **Product Sale Badges**, choose to display product Sale badge:
+
+![enable badges on theme editor](img/theme-editor-badges.png)
+
+#### Custom Badges
+
+To display the custom badges, enable **Custom Badges** option in **Theme Editor**. Edit your product, add a custom field with name = `__badge` and value is the custom badget content.
+
+![edit product badges in custom fields](img/edit-product-custom-badges.png)
+
+
 
 ### Banners
 
@@ -2467,28 +2516,6 @@ Configure Brands Page layout to display alphabet table and grouped by letter in 
 
 
 
-
-## Display Sale badget & custom badges
-
-![product badges](img/product-card-badges.png)
-
-### Sale badges
-
-You need to input both **Sale Price** and **Retail Price** of product:
-
-![edit product sale prices](img/edit-product-sale-price.png)
-
-In **Theme Editor** > **Products** > **Product Sale Badges**, choose to display product Sale badge:
-
-![enable badges on theme editor](img/theme-editor-badges.png)
-
-### Custom Badges
-
-To display the custom badges, enable **Custom Badges** option in **Theme Editor**. Edit your product, add a custom field with name = `__badge` and value is the custom badget content.
-
-![edit product badges in custom fields](img/edit-product-custom-badges.png)
-
-
 ## Instant Load
 
 Instant Load can speed up your store dramatically by predict and preload the pages user may view forward. It makes user navigation effectively instant in most cases. Let's preview this feature in this video:
@@ -2498,6 +2525,19 @@ Instant Load can speed up your store dramatically by predict and preload the pag
 To enable this feature in **Theme Editor** > **Global** > tick on **Enable Instant-Load for faster browsing pages (experiment)**.
 
 Note that this feature only works for certain pages such as: _Category pages_, _product pages_, _brand pages_, _blog_ and _static web pages_. Other pages will be loaded as normal.
+
+
+
+## Banner Sizes
+
+![yellow style banner sizes](img/home1-banner-sizes.png)
+
+![blue style banner sizes](img/home2-banner-sizes.png)
+
+![product page banner sizes](img/product-page-banner-sizes.png)
+
+
+
 
 ## Add our own CSS / JavaScript code
 

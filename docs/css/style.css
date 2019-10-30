@@ -90,3 +90,7 @@ pre code {
 	padding-left: 60px;
 	font-size: 85%;
 }
+
+body > main.container {
+	min-height: calc(100vh - 150px);
+}
