@@ -1340,7 +1340,7 @@ Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
 
 - **Location on page** = `Footer`
 - **Select pages where script will be added** = `Store pages`
-- **Script type** = `All pages`
+- **Script type** = `Script`
 
 
 Enter the script below to **Scripts contents**: 
@@ -1384,5 +1384,39 @@ Enter the script below to **Scripts contents**:
     $img.attr('srcset', src + ' 1x, ' + s.replace('***', '640w') + ' 2x');
     
 })(window.jQuerySupermarket || window.jQuery);
+</script>
+```
+
+
+## Automatically add quotation marks to make the quick search more accurately
+
+**Question:** What changes have to be made to the quick search code for it to automatically add "quotations" to the keyword being entered in the search bar so that searches are more exact.
+
+**Answer:**
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+    (function($) {
+        function main() {
+            stencilUtils.api.search._oldSearch = stencilUtils.api.search.search;
+            stencilUtils.api.search.search = function(query, params, callback) {
+                if (params && params.template && params.template == 'search/quick-results') {
+                    return this._oldSearch('"' + query + '"', params, callback);
+                } else {
+                    return this._oldSearch(query, params, callback);
+                }
+            };
+        }
+        $(document).ready(main);
+        $('body').on('loaded.instantload', main);
+    })(window.jQuerySupermarket || window.jQuery);
 </script>
 ```

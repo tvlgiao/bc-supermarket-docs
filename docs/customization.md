@@ -1526,6 +1526,88 @@ Remember to choose other fields as below:
 - __Location__: `Top of Page`
 
 
+### Show banners on Mega Menu (Coming soon in version 4.5.0)
+
+![Mega Menu Banners](img/megamenu-banners.png)
+
+You can show custom banners on Mega Menu. Enable this feature in **Theme Editor** > **Header** > **Main Navigation** > tick on **Show banners on Mega Menu**. Click **Save** then **Publish**.
+
+Then go to **Marketing** > **Banners**, click **Create a Banner** button. In Banner Content editor, click on small **HTML** button to open **HTML Source Editor**. Input the sample content below:
+
+```html
+<p>--- Banner for the 1st mega menu: ---</p>
+<div class="navPage-subMenu-rightBanners" id="emthemesModezBannersBlockMegaMenuRight0">
+    <p><a href="#"><img src="//via.placeholder.com/500x300" alt="500x300"></a></p>
+    <p><a href="#"><img src="//via.placeholder.com/500x300" alt="500x300"></a></p>
+    <p><a href="#"><img src="//via.placeholder.com/500x300" alt="500x300"></a></p>
+</div>
+<div class="navPage-subMenu-bottomBanners" id="emthemesModezBannersBlockMegaMenuBottom0">
+    <p class="row">
+        <a class="column" href="#"><img src="//via.placeholder.com/300x200" alt="300x200"></a>
+        <a class="column" href="#"><img src="//via.placeholder.com/300x200" alt="300x200"></a>
+        <a class="column" href="#"><img src="//via.placeholder.com/300x200" alt="300x200"></a>
+        <a class="column" href="#"><img src="//via.placeholder.com/300x200" alt="300x200"></a>
+    </p>
+    <p class="row">
+        <a class="column" href="#"><img src="//via.placeholder.com/300x200" alt="300x200"></a>
+        <a class="column" href="#"><img src="//via.placeholder.com/300x200" alt="300x200"></a>
+        <a class="column" href="#"><img src="//via.placeholder.com/300x200" alt="300x200"></a>
+        <a class="column" href="#"><img src="//via.placeholder.com/300x200" alt="300x200"></a>
+    </p>
+</div>
+
+<p>--- Banner for the 2nd mega menu: ---</p>
+<div class="navPage-subMenu-rightBanners" id="emthemesModezBannersBlockMegaMenuRight1">
+    <p><a href="#"><img src="//via.placeholder.com/500x300" alt="500x400"></a></p>
+    <p><a href="#"><img src="//via.placeholder.com/500x300" alt="500x100"></a></p>
+</div>
+<div class="navPage-subMenu-bottomBanners" id="emthemesModezBannersBlockMegaMenuBottom1">
+    <p class="row">
+        <a class="column" href="#"><img src="//via.placeholder.com/300x200" alt="400x200"></a>
+        <a class="column" href="#"><img src="//via.placeholder.com/300x200" alt="400x200"></a>
+        <a class="column" href="#"><img src="//via.placeholder.com/300x200" alt="400x200"></a>
+    </p>
+    <p class="row">
+        <a class="column" href="#"><img src="//via.placeholder.com/300x200" alt="300x200"></a>
+        <a class="column" href="#"><img src="//via.placeholder.com/300x200" alt="300x200"></a>
+        <a class="column" href="#"><img src="//via.placeholder.com/300x200" alt="300x200"></a>
+        <a class="column" href="#"><img src="//via.placeholder.com/300x200" alt="300x200"></a>
+    </p>
+</div>
+
+<p>--- Banner for the 3rd mega menu: ---</p>
+<div class="navPage-subMenu-rightBanners" id="emthemesModezBannersBlockMegaMenuRight2">
+    <p class="row"><a class="column" href="#"><img src="//via.placeholder.com/500x300" alt="500x800"></a></p>
+</div>
+<div class="navPage-subMenu-bottomBanners" id="emthemesModezBannersBlockMegaMenuBottom2">
+    <p class="row">
+        <a class="column" href="#"><img src="//via.placeholder.com/300x200" alt="300x300"></a>
+        <a class="column" href="#"><img src="//via.placeholder.com/300x200" alt="300x300"></a>
+        <a class="column" href="#"><img src="//via.placeholder.com/300x200" alt="300x300"></a>
+    </p>
+</div>
+```
+
+Please note the `div` elements ID:
+
+- `emthemesModezBannersBlockMegaMenuRight0`: All HTML inside this element will display on the **right** side of the **first mega menu**.
+- `emthemesModezBannersBlockMegaMenuBottom0`: All HTML inside this element will display on the **bottom** of the **first mega menu**.
+- `emthemesModezBannersBlockMegaMenuRight1`: All HTML inside this element will display on the **right** side of the **second mega menu**.
+- `emthemesModezBannersBlockMegaMenuBottom2`: All HTML inside this element will display on the **bottom** of the **second mega menu**.
+- `emthemesModezBannersBlockMegaMenuRight2`: All HTML inside this element will display on the **right** side of the **third mega menu**.
+- `emthemesModezBannersBlockMegaMenuBottom2`: All HTML inside this element will display on the **bottom** of the **third mega menu**.
+
+You can do the same to add more banners to other mega menus.
+
+Also note `column` and `row` classes which allow you to style the banner images into rows and columns.
+
+Remember to choose:
+
+- **Show on Page** = `Search Results Page`
+- **Visible** = Yes
+- **Location** = `Top of Page`
+
+
 
 
 ## Banner below Header
