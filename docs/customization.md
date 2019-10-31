@@ -2292,6 +2292,12 @@ Enable this feature in **Theme Editor** > **Products** > **Category page** > **S
 ## Product Page
 
 
+### Responsive main product images
+
+To display the main product images automatically changing quality according to screen size, and especially displaying high quality images for retina displays, you can enable this feature in the **Theme Editor** > **Products** > **Product page** > tick on **Responsive main product images**.
+
+**Note:** If your original image is larger than 10Mb or it's PNG format, you should NOT enable this feature because it will take more time to generate many different size images, which affect the speed of image display.
+
 
 ### Display Sale badget & custom badges
 
