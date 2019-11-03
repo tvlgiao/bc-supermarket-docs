@@ -6,7 +6,6 @@ Theme designed and developed by [Papathemes](https://papathemes.com)
 
 ## Table of Contents
 
-* [Installation](installation.md)
 * [Quick Start](quickstart.md)
 * [Customization](customization.md)
 * [FAQs](faqs.md)
