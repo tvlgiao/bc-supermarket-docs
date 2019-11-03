@@ -1457,4 +1457,29 @@ Enter the script below to **Scripts contents**:
 </script>
 ```
 
+## Fix product variant image changed slow when selecting product option
 
+From Cornerstone 4.0, BigCommerce supports responsive image using \<img> `srcset` attribute which allows the browser to download different image depending on user's screen size. This function consumes a lot of time to generate many different size images, specially if your original product images are high quality and large sizes.
+
+For workaround, you can install the custom script below to disable this feature, so that BigCommerce only generates the main product image one size.
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store pages`
+- **Script type** = `Script`
+
+
+```html
+<script>
+(function() {
+    var getSrcsetOld = stencilUtils.tools.imageSrcset.getSrcset;
+    stencilUtils.tools.imageSrcset.getSrcset = function(url, sizes) {
+        if (!sizes) {
+            sizes = {'1x': '608x608'};
+        }
+        return getSrcsetOld(url, sizes);
+    }
+})();
+</script>
+```
