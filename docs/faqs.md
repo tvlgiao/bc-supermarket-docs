@@ -1414,6 +1414,14 @@ Enter the script below to **Scripts contents**:
                     return this._oldSearch(query, params, callback);
                 }
             };
+
+            $('form[action*="search.php"]').on('submit', function() {
+                var $el = $(event.target).find('input[name=search_query]');
+                var s = $el.val().trim();
+                if (!s.match(/^['"]/)) {
+                    $el.val('"' + s + '"');
+                }
+            });
         }
         $(document).ready(main);
         $('body').on('loaded.instantload', main);
@@ -1459,7 +1467,7 @@ Enter the script below to **Scripts contents**:
 
 ## Fix product variant image changed slow when selecting product option
 
-From Cornerstone 4.0, BigCommerce supports responsive image using \<img> `srcset` attribute which allows the browser to download different image depending on user's screen size. This function consumes a lot of time to generate many different size images, specially if your original product images are high quality and large sizes.
+From Cornerstone 4.0, BigCommerce supports responsive image using `<img>` `srcset` attribute which allows the browser to download different image depending on user's screen size. This function consumes a lot of time to generate many different size images, specially if your original product images are high quality and large sizes.
 
 For workaround, you can install the custom script below to disable this feature, so that BigCommerce only generates the main product image one size.
 
