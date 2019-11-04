@@ -1491,3 +1491,15 @@ Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
 })();
 </script>
 ```
+
+## Make Homepage Carousel fade in/out instead of sliding right to left
+
+Go to **Storefront** > **Footer Script**, insert the custom script below:
+
+```html
+<style>
+.js .slick-initialized.heroCarousel .slick-track { width: 100% !important; transform: none !important; position: relative; }
+.js .slick-initialized.heroCarousel .slick-slide { z-index: 1; opacity: 0 !important; top: 0; left: 0; position: absolute; transition: opacity .5s ease-in; }
+.js .slick-initialized.heroCarousel .slick-active { z-index: 2 !important; opacity: 1 !important; position: relative; }
+</style>
+```
