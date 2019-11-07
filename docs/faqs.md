@@ -1580,5 +1580,5 @@ Enter the example script below to **Scripts contents**:
 
 In the example above, we translated `Postal Code` to `Zip/Postal Code`, `Shipping` to `Delivery`. We also translate the message on the order confirmation page to insert our email `order@papathemes.com` and phone number `111-111-1111`.
 
-
+For a full list of the translation keys, check and download the language file in this guide: https://developer.bigcommerce.com/stencil-docs/localization/multi-language-checkout#browsing-hidden-translation-keys
 
