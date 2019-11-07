@@ -986,6 +986,32 @@ Enter the script below to **Scripts contents**:
 </script>
 ```
 
+## Use SVG logo
+
+Upload your SVG logo in **Storefront** > **Images Manager** and copy the image URL.
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+    var els = document.getElementsByClassName('header-logo-image');
+    for (var i in els) {
+        var el = els[i];
+        el.src = 'YOUR-SVG-LOGO-URL';
+    }
+})();
+</script>
+```
+
+Replace `YOUR-SVG-LOGO-URL` by your logo URL.
+
 
 ## Hide the active page title on the breacrumbs
 
@@ -1477,6 +1503,7 @@ Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
 - **Select pages where script will be added** = `Store pages`
 - **Script type** = `Script`
 
+Enter the script below to **Scripts contents**: 
 
 ```html
 <script>
@@ -1498,8 +1525,60 @@ Go to **Storefront** > **Footer Script**, insert the custom script below:
 
 ```html
 <style>
+.heroCarousel-container { width: 100% }
 .js .slick-initialized.heroCarousel .slick-track { width: 100% !important; transform: none !important; position: relative; }
 .js .slick-initialized.heroCarousel .slick-slide { z-index: 1; opacity: 0 !important; top: 0; left: 0; position: absolute; transition: opacity .5s ease-in; }
 .js .slick-initialized.heroCarousel .slick-active { z-index: 2 !important; opacity: 1 !important; position: relative; }
 </style>
 ```
+
+
+## Display phone number on the header on mobile
+
+Go to **Storefront** > **Footer Script**, insert the custom script below:
+
+```html
+<style>
+@media (max-width:800px) {
+  .emthemesModez-header-topSection .navUser:last-child { position: absolute; left: 0; top: 55px; width: 100%; transform: none }
+  .emthemesModez-header-topSection .navUser:last-child .navUser-section { display: block; float: none;  }
+  .emthemesModez-header-topSection .navUser:last-child .navUser-item:last-child { display:block;  text-align: center; width: 100%; background: black; height: 34px; }
+  body { padding-top: 89px }
+}
+</style>
+```
+
+## Translate language in Optimized Checkout Page and Order Confirmation Page without editing theme files.
+
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Head`
+- **Select pages where script will be added** = `Checkout` for the checkout page or `Order Confirmation` for the order confirmation page.
+- **Script type** = `Script`
+
+Enter the example script below to **Scripts contents**: 
+
+```html
+<script>
+    window.language = {"locale":"en","locales":{},"translations":{
+        "optimized_checkout": {
+            "address": {
+                "postal_code_label": "Zip/Postal Code"
+            },
+            "shipping": {
+                "shipping_heading": "Delivery"
+            },
+            "order_confirmation": {
+                "order_with_support_number_text": "An email will be sent containing information about your purchase. If you have any questions about your purchase, email us at <a ng-href=\"mailto:order@papathemes.com?Subject=Order {orderNumber}\" target=\"_top\">order@papathemes.com</a> or call us at <a href=\"tel://+1 111-111-1111\">111-111-1111</a>.",
+                "order_without_support_number_text": "An email will be sent containing information about your purchase. If you have any questions about your purchase, email us at <a ng-href=\"mailto:order@papathemes.com?Subject=Order {orderNumber}\" target=\"_top\">order@papathemes.com</a>."
+            }
+        }
+    }};
+</script>
+```
+
+In the example above, we translated `Postal Code` to `Zip/Postal Code`, `Shipping` to `Delivery`. We also translate the message on the order confirmation page to insert our email `order@papathemes.com` and phone number `111-111-1111`.
+
+
+
