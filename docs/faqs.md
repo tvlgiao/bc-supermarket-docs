@@ -1582,3 +1582,43 @@ In the example above, we translated `Postal Code` to `Zip/Postal Code`, `Shippin
 
 For a full list of the translation keys, check and download the language file in this guide: https://developer.bigcommerce.com/stencil-docs/localization/multi-language-checkout#browsing-hidden-translation-keys
 
+
+## Show sold out products at bottom of product category page or at the end of in products grid
+
+Using the custom script below to show out of stock products at the end of products grid.
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+    (function($) {
+        function addCss() {
+            $('head').append(''
+                + '<style>'
+                + '.product { order: 1 }'
+                + '.product--outstock { order: 2 }'
+                + '</style>'
+            );
+        }
+        function main() {
+            $('.productGrid .product').each(function(i, el) {
+                const $el = $(el);
+                if ($el.find('.card-figcaption-button.quickview-alt, .card-figcaption-button[href*="/cart.php?action=add"]').length === 0) {
+                    $el.addClass('product--outstock');
+                }
+            });
+        }
+        $(document).ready(function() {
+            addCss();
+            main();
+        });
+        $('body').on('loaded.instantload', main);
+    })(window.jQuerySupermarket || window.jQuery);
+</script>
+```
