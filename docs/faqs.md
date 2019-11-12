@@ -1700,3 +1700,41 @@ For example your CSS file name is `custom.css` and you upload to folder `content
 
 
 
+## Move the bottom banners to the top of content on Category Page
+
+![move-bottom-banner-to-top-on-category-page](img/move-bottom-banner-to-top-on-category-page.png)
+
+Create a banner in **Marketing** > **Bannners**:
+
+- **Show on Page** = `For a Specific Category`
+- **Visible** = `Yes`
+- **Location** = `Bottom of Page`
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function($) {
+    function main() {
+        if ($('body').hasClass('papaSupermarket-pageType--category')) {
+            $('.banners[data-banner-location=bottom]').children().insertAfter('.breadcrumbs');   
+        }
+    }
+    $(document).ready(main);
+    $('body').on('loaded.instantload', main);
+})(window.jQuerySupermarket || window.jQuery);
+</script>
+```
+
+**Note:** This solution doesn't work when **Instant-Load** feature is enabled in the current version. We will fix it in the next version.
+
+
+
+
+
