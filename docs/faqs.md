@@ -1665,3 +1665,38 @@ Add the custom CSS below to **Storefront** > **Footer Scripts**:
 </style>
 ```
 
+## Add the external CSS file to your theme
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var el = document.createElement('link');
+    el.rel = "stylesheet";
+    el.src = "/PATH-TO-YOUR-CSS-FILE/FILE-NAME.css";
+    document.head.appendChild(el);
+})();
+</script>
+```
+
+Replace `/PATH-TO-YOUR-CSS-FILE/FILE-NAME.css` with your external CSS file URL.
+
+### Host your external CSS file with BigCommerce CDN to take advantage of BigCommerce's cache system to optimize page load speed
+
+Upload your external CSS file to your  [BigCommerce store WebDAV](https://support.bigcommerce.com/s/article/File-Access-WebDAV). We recommend to upload in folder `content/`.
+
+Find your store CDN URL by opening your website, right click View page source (`Ctrl + U` on Chrome). Find (`Ctrl + F`) string `data-stencil-stylesheet`, the string `https://cdn11.bigcommerce.com/s-c14n6tful3/` in href attribute start with `https://cdn...` end with `s-....../` is your store CDN URL:
+
+![find-your-store-cdn](img/find-your-store-cdn.png)
+
+For example your CSS file name is `custom.css` and you upload to folder `content/` via WebDAV, its URL is `https://cdn11.bigcommerce.com/s-c14n6tful3/content/custom.css`
+
+
+
