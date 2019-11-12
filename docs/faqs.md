@@ -1448,6 +1448,18 @@ Enter the script below to **Scripts contents**:
                     $el.val('"' + s + '"');
                 }
             });
+
+            // Without jQuery:
+            // var els = document.querySelectorAll('form[action*="search.php"]');
+            // for (var i = 0; i < els.length; i++) {
+            //     els[i].addEventListener('submit', function(event) {
+            //        var input = event.target.querySelectorAll('input[name=search_query]')[0];
+            //        var s = input.value.trim();
+            //        if (!s.match(/^['"]/)) {
+            //            input.value = '"' + s + '"';
+            //         }
+            //     });
+            // }
         }
         $(document).ready(main);
         $('body').on('loaded.instantload', main);
@@ -1622,3 +1634,34 @@ Enter the script below to **Scripts contents**:
     })(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
+
+
+
+## Make the pagination standing out
+
+![custom-css-pagination](img/custom-css-pagination.png)
+
+Add the custom CSS below to **Storefront** > **Footer Scripts**:
+
+
+```html
+<style>
+.pagination-item .pagination-link {
+  font-size: 16px;
+  font-weight: bold;
+  min-width: 40px;
+}
+
+.pagination-item,
+.pagination-item.pagination-item--current {
+  border-color: #f0790b;
+  border-radius: 4px;
+}
+.pagination-item--current .pagination-link,
+.pagination-item--current .pagination-link:hover{
+  background: #f0790b;
+  color: #fff;
+}
+</style>
+```
+
