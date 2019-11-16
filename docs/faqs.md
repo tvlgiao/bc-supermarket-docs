@@ -1738,3 +1738,15 @@ Enter the script below to **Scripts contents**:
 
 
 
+## Move Add to Cart button in Recently Viewed Products not overlap the price
+
+Add the CSS script below to **Storefront** > **Footer Scripts**:
+
+```html
+<style>
+@media (min-width: 801px) {
+  .listItem-body { padding-bottom: 40px !important }
+  .listItem-buttons { min-width: 200px; left: auto !important; right: 0 !important }
+}
+</style>
+```
