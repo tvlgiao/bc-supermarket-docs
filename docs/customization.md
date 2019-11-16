@@ -1536,7 +1536,7 @@ Remember to choose other fields as below:
 - __Location__: `Top of Page`
 
 
-### Show banners on Mega Menu (Coming soon in version 4.5.0)
+### Show banners on Mega Menu
 
 ![Mega Menu Banners](img/megamenu-banners.png)
 
@@ -1809,7 +1809,7 @@ You can configure this section in __Theme Editor__ > __Homepage__:
 ![Theme Editor Special Products Tabs](img/theme-editor-special-products-tabs.png)
 
 
-#### Optimize for loading speed (Coming soon in version 4.5.0)
+#### Optimize for loading speed
 
 Showing many products may affects to your website loading speed. In order to optimize the loading speed (TTFB - Time to first byte) while still loading many products, you can configure value of **Show more products when the page loaded** lower, for example `4` and set **Show more products when scrolling to the viewport** higher, for example `8`. As a result, when opening the home page, 4 products will be displayed immediately, when scrolling down to this section, additional 8 products will be loaded and displayed next.
 
@@ -1829,7 +1829,7 @@ To configure this section, go to __Theme Editor__ > __Homepage__ > __Products by
 ![Configure products by category](img/theme-editor-products-by-category.png)
 
 
-#### Optimize for execution time (Coming soon in version 4.5.0)
+#### Optimize for execution time
 
 By default, all products will be loaded and displayed when opening the page. At a result, it takes a longer execution time that can affect your site's Page Speed score. To avoid this, you can select **Only load when scrolling to the viewport** option, the products won't loaded until user scrolls down to this area.
 
@@ -2279,7 +2279,7 @@ Enable it in **Theme Editor** > **Products** > **Category pages** > tick on **Sh
 To display Bulk Order layout for a specific category, edit the category and choose **Template Layout File** = `bulk-order`.
 
 
-### Search in Category feature (Coming soon in version 4.5.0)
+### Search in Category feature
 
 ![quick search in category](img/theme-editor-search-in-category.png)
 
@@ -2287,6 +2287,14 @@ This feature allows to quickly search products on the current category.
 
 Enable this feature in **Theme Editor** > **Products** > **Category page** > **Show quick search in category** = `Show`.
 
+
+### Sub-Category Thumbnails
+
+![show-subcategories-grid](img/show-subcategories-grid.png)
+
+Theme supports displaying sub-category thumbnails. Enable this feature in **Theme Editor** > **Products** > **Category pages**, tick **Show subcategories grid**. The thumbnails are the sub-category images.
+
+If you only use the category images for these thumbnails, and hide it on the category pages, see the instruction [Hide the category images on category pages](faqs.md#hide-the-category-images-on-category-pages)
 
 
 ## Product Page
