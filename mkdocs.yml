@@ -3,6 +3,9 @@ pages:
 - Home: index.md
 - Quick Start: quickstart.md
 - Customization: customization.md
+- Child Themes:
+  - Wholesale: wholesale-theme.md
+  - MIWFurinture: miwfurinture-theme.md
 - FAQs: faqs.md
 - Support: https://papathemes.kayako.com/conversation/new/1
 theme:
