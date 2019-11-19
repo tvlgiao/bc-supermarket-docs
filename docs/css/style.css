@@ -94,3 +94,6 @@ pre code {
 body > main.container {
 	min-height: calc(100vh - 150px);
 }
+.wy-nav-content {
+	max-width: inherit;
+}
