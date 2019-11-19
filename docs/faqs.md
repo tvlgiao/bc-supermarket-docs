@@ -1482,24 +1482,62 @@ Enter the script below to **Scripts contents**:
 
 ```html
 <script>
-    (function($) {
-        function main() {
-            var m;
-            if (m = window.location.search.match(/coupon=([^&]+)/)) {
-                var coupon = m[1];
-                stencilUtils.api.cart.applyCode(coupon, function(error, response) {
-                    if (error || response.data.errors) {
-                        return;
-                    }
-                    var url = window.location.href.replace(/[?&]?coupon=[^&]+/, '');
-                    window.location = url;
-                });
-            }
+(function($) {
+    var scriptLoading = 0;
+
+    function addScript(fn) {
+        scriptLoading++;
+        var el = document.createElement('script');
+        el.src = fn;
+        el.onload = function() { scriptLoading--; };
+        document.head.appendChild(el);
+    }
+
+    if (typeof $ == 'undefined') {
+        addScript('https://code.jquery.com/jquery-3.4.1.min.js');
+    }
+    if (typeof stencilUtils == 'undefined') {
+        addScript('https://cdn.jsdelivr.net/npm/@bigcommerce/stencil-utils@4.2.0/dist/stencil-utils.min.js');
+    }
+    if (typeof Cookies == 'undefined') {
+        addScript('https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js');
+    }
+
+    function ready() {
+        // console.log('ready is called');
+        var couponcode = Cookies.get('couponcode');
+
+        if (m = window.location.search.match(/coupon=([^&]+)/)) {
+            couponcode = m[1];
+            Cookies.set('couponcode', couponcode);
         }
 
-        $(document).ready(main);
-        $('body').on('loaded.instantload', main);
-    })(window.jQuerySupermarket || window.jQuery);
+        stencilUtils.api.cart.getCartQuantity({}, function(_, quantity) {
+            // console.log(quantity);
+
+            if (quantity > 0) {
+                stencilUtils.api.cart.applyCode(couponcode, function(error, response) {
+                    Cookies.remove('couponcode');
+                });
+            }
+        });
+    }
+
+    function main() {
+        $(document).ready(ready);
+        $('body').on('loaded.instantload', ready);
+        stencilUtils.hooks.on('cart-item-add', function() {
+            setTimeout(ready, 500);
+        });
+    }
+
+    var i = setInterval(function() {
+        if (scriptLoading === 0) {
+            clearInterval(i);
+            main();
+        }
+    }, 100);
+})(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
 
