@@ -103,3 +103,7 @@ body > main.container {
 		width: 22%;
 	}
 }
+
+.wy-nav-content {
+	max-width: inherit;
+}
