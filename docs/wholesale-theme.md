@@ -42,6 +42,49 @@ Configure New Products, Featured Products, Bestselling Products showing on the h
 
 ![banner content html source editor](img/wholesale-product.png)
 
+## 2 Banners on Home Page
+
+![Wholesale 2 Banners Section](img/sections/wholesale-two-banner-sale.png)
+
+To show these banners on homepage, go to **Marketing** > **Banners** > click **Create a Banner** button. In **Banner Content** editor, click **HTML** button to open **HTML Source Editor**, input them sample content below:
+
+```
+<div id="emthemesModezBannersBlockHome01" class="emthemesModez-section  emthemesModez-section--banners-2x">
+    <div class="emthemesModez-section-inner">
+        <div class="emthemesModez-bannersContainer emthemesModez-bannersContainer--half-style1 
+            emthemesModez-bannersContainer--half-style1-1">
+            <div class="emthemesModez-banner">
+                <div class="emthemesModez-banner-container">
+                    <a href="#">
+                        <img class="emthemesModez-banner-image" src="https://cdn11.bigcommerce.com/s-jda6rmgufj/product_images/uploaded_images/banner-sale1.png?t=1559703922&amp;_ga=2.79681428.105014080.1559554243-1703059024.1550805396" alt="Sample banner 1" />
+                    </a>
+                </div>
+            </div>
+            <div class="emthemesModez-banner">
+                <div class="emthemesModez-banner-container">
+                    <a href="#">
+                        <img class="emthemesModez-banner-image" src="https://cdn11.bigcommerce.com/s-jda6rmgufj/product_images/uploaded_images/banner-sale2.png?t=1559703923&amp;_ga=2.135197617.105014080.1559554243-1703059024.1550805396" alt="Sample banner 2" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+![banner content html source editor](img/edit-home1-two-banner.png)
+
+Then click **Update** button to go back the previous screen.
+
+Choose **Show on Page** = **Home Page**.
+
+Choose **Location** = **Top of Page**.
+
+![banner content html source editor](img/edit-banner-show-on-page-location.png)
+
+Click **Save** button to finish.
+
+
 ## Fullwidth Banner on Home Page
 
 ![Wholesale Product Section](img/sections/wholesale-full-width-banner.png)
