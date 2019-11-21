@@ -187,13 +187,38 @@ Add custom code below into **Storefront** > **Footer Scripts**:
 
 Please upload your own "Coming Soon" image in **Marketing** > **Banner Manager**, then copy the image URL.
 
-Edit **Storefront** > **Footer Scripts**, add the code below:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
 <script>
-    document.querySelectorAll("img[src*='ProductDefault.gif']").forEach(function(img) {
-        img.src = 'https://placehold.it/500x500';
+(function($) {
+    var YOUR_COMINGSOON_IMG = '//placehold.it/500x500'; // <-- PUT YOUR COMING SOON IMAGE HERE
+
+    function replaceImg($scope) {
+        $('img[src*="ProductDefault.gif"]', $scope).attr('src', YOUR_COMINGSOON_IMG);
+    }
+    replaceImg();
+
+    const observer = new MutationObserver(function(mutationsList, observer) {
+        for (var i in mutationsList) {
+            var mutation = mutationsList[i];
+            if (mutation.type === 'childList') {
+                replaceImg(mutation.addedNodes);
+            }
+        }
     });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    var style = document.createElement('style');
+    style.innerHTML = 'img[src*="ProductDefault.gif"] { visibility: hidden }';
+    document.head.appendChild(style);
+})(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
 

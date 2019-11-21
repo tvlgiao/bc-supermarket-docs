@@ -24,7 +24,6 @@ h4 {
 	margin: 4.5rem 0 1.5rem;
 }
 
-
 .rst-content .section ul.fa-ul {
 	list-style: none;
 }
@@ -94,6 +93,17 @@ pre code {
 body > main.container {
 	min-height: calc(100vh - 150px);
 }
+
+@media (min-width: 1200px) {
+	.container {
+		width: 100%;
+	}
+
+	.bs-sidebar.affix-bottom, .bs-sidebar.affix {
+		width: 22%;
+	}
+}
+
 .wy-nav-content {
 	max-width: inherit;
 }

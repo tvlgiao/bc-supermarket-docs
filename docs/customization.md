@@ -1665,6 +1665,52 @@ Remember to choose other fields as below:
 - __Location__: `Top of Page`
 
 
+### 3 offer banners below the header
+
+![3-offer-banners-below-header](img/3-offer-banners-below-header.png)
+
+Go to **Theme Editor** > **Banners** > **Banner after header** > choose **Show on all pages**.
+
+Create a new banner in **Marketing** > **Banners**, In the content editor, click HTML button to open **HTML Source Editor**, input the HTML below:
+
+```html
+<div id="emthemesModezBannersBlockAfterHeader" class="container emthemesModezBannersBlockAfterHeader supermarket-3promo" data-css="
+        .supermarket-3promo .column { padding-top: .75rem; padding-bottom: .75rem }
+        .supermarket-3promo .column + .column { border-top: 1px solid #ccc }
+        .supermarket-3promo .column img { margin-right: .75rem }
+        .papaSupermarket-pageType--default .supermarket-3promo ~ .body .page-content { margin-top: 0 }
+        @media (min-width: 551px) {
+            .supermarket-3promo { text-align: center }
+            .supermarket-3promo .column + .column { border-top: 0; position: relative; }
+            .supermarket-3promo .column + .column:before { content: ''; width: 0; height: calc(100% - 1.5rem); top: .75rem; left: 0; border-left: 1px solid #ccc; position: absolute; }
+        }
+">
+  <div class="row">
+    <div class="column medium-4"><img src="https://placehold.it/50x30" alt="" /><strong>FREE SHIPPING ON ORDER OVER $150+</strong></div>
+    <div class="column medium-4"><img src="https://placehold.it/50x30" alt="" /><strong>DISCOUNT UP TO 30% FOR GOLD MEMBER</strong></div>
+    <div class="column medium-4"><img src="https://placehold.it/50x30" alt="" /><strong>12PM EST - EXPRESS SHIPPING CUT OFF</strong></div>
+  </div>
+  <script type="text/javascript">// <![CDATA[
+    (function() {
+      var style = document.createElement('style');
+      style.innerHTML = document.querySelectorAll('.supermarket-3promo')[0].getAttribute('data-css');
+      document.head.appendChild(style);
+    })();
+  // ]]></script>
+</div>
+```
+
+Edit the icon images and the paragraphs as you want.
+
+Choose other fields as below:
+
+- __Show on Page__: `Search Results Page`
+- __Visible__: Checked
+- __Location__: `Top of Page`
+
+
+
+
 
 ## Home Page
 
