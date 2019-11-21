@@ -72,67 +72,34 @@ You can select the sections displayed on the homepage (maximum 11 sections) in *
 
 ![Furniture Featured Categories Section](img/sections/furniture-featured-categories-section.png)
 
-To edit content and images of banners, Open the link below on your web browser: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
 
-Chooes the tab __Furniture Featured Categories Section__ and Enter all required info on the form.
+Chooes __Furniture Featured Categories__ tab, fill in the form and follow the instruction on that page to create banner.
 
 ![banner content html source editor](img/furniture-featured-categories-section-code.png)
 
-- Create a new banner in __Marketing__ > __Banners__ > click __Create a Banner__ button.
-- Click button __HTML__ in __Banner Content__ editor to show __HTML Source Editor__.
-- Copy and paste the code above to __HTML Source Editor__. Then click __Update__ button:
-
-![banner content html source editor](img/banner-content-html-source-editor.jpg)
-
-Set Show on __Page = Home Page__ and __Location = Top of Page__:
-
-![config banner show on home](img/config-banner-show-on-home.jpg)
-
-Click **Save** button to finish.
 
 ## --- Furniture Listlink Banner Right Section
 
 ![Furniture Listlink Banner Right Section](img/sections/furniture-listlink-banner-right-section.png)
 
-To edit content and images of banners, Open the link below on your web browser: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
 
-Chooes the tab __Furniture Listlink Banner Right Section__ and Enter all required info on the form.
+Chooes __Furniture Listlink Banner Right__ tab, fill in the form and follow the instruction on that page to create banner.
 
 ![banner content html source editor](img/furniture-listlink-banner-right-section-code.png)
 
-- Create a new banner in __Marketing__ > __Banners__ > click __Create a Banner__ button.
-- Click button __HTML__ in __Banner Content__ editor to show __HTML Source Editor__.
-- Copy and paste the code above to __HTML Source Editor__. Then click __Update__ button:
-
-![banner content html source editor](img/banner-content-html-source-editor.jpg)
-
-Set Show on __Page = Home Page__ and __Location = Top of Page__:
-
-![config banner show on home](img/config-banner-show-on-home.jpg)
-
-Click **Save** button to finish.
 
 ## --- Furniture Listlink Banner Left Section
 
 ![Furniture Listlink Banner Left Section](img/sections/furniture-listlink-banner-left-section.png)
 
-To edit content and images of banners, Open the link below on your web browser: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
 
-Chooes the tab __Furniture Listlink Banner Left Section__ and Enter all required info on the form.
+Chooes __Furniture Listlink Banner Left__ tab, fill in the form and follow the instruction on that page to create banner.
 
 ![banner content html source editor](img/furniture-listlink-banner-left-section-code.png)
 
-- Create a new banner in __Marketing__ > __Banners__ > click __Create a Banner__ button.
-- Click button __HTML__ in __Banner Content__ editor to show __HTML Source Editor__.
-- Copy and paste the code above to __HTML Source Editor__. Then click __Update__ button:
-
-![banner content html source editor](img/banner-content-html-source-editor.jpg)
-
-Set Show on __Page = Home Page__ and __Location = Top of Page__:
-
-![config banner show on home](img/config-banner-show-on-home.jpg)
-
-Click **Save** button to finish.
 
 ## --- Furniture Daily Deals Section
 
@@ -148,23 +115,11 @@ You can configure this section in **Theme Editor** > **Homepage** > **Daily Deal
 
 ![Furniture Banner Sale Section](img/sections/furniture-banner-sale-section.png)
 
-To edit content and images of banners, Open the link below on your web browser: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
 
-Chooes the tab __Furniture Banner Sale Section__ and Enter all required info on the form.
-
-- Create a new banner in __Marketing__ > __Banners__ > click __Create a Banner__ button.
-- Click button __HTML__ in __Banner Content__ editor to show __HTML Source Editor__.
-- Copy and paste the code above to __HTML Source Editor__. Then click __Update__ button:
+Chooes __Furniture Banner Sale__ tab, fill in the form and follow the instruction on that page to create banner.
 
 ![banner content html source editor](img/furniture-banner-sale-section-code.png)
-
-![banner content html source editor](img/banner-content-html-source-editor.jpg)
-
-Set Show on __Page = Home Page__ and __Location = Top of Page__:
-
-![config banner show on home](img/config-banner-show-on-home.jpg)
-
-Click **Save** button to finish.
 
 
 
@@ -257,7 +212,9 @@ Set Show on __Page = Home Page__ and __Location = Bottom of Page__:
 
 Click **Save** button to finish.
 
-You can freely edit the HTML above to change banner images or links but keep the HTML attribute `data-local-banner-position="furnisima-pbcst1"` unchanged.
+You can freely edit the HTML above to change banner images or links but keep the HTML attribute `data-local-banner-position="furnisima-pbcst1"`, or change `1` with numbers in the order `2,3...n` corresponding to the order of block product by categories.
+
+![config banner show on home](img/furnisima-pbcst-custom.png)
 
 ## --- Furniture Recent Posts Section
 
@@ -269,67 +226,34 @@ To show Recent Posts section on **Home Page**, go to **Theme Editor** > **Homepa
 
 ![Furniture Top Brands Section](img/sections/furniture-top-brands-section.png)
 
-To edit content and images of banners, Open the link below on your web browser: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
 
-Chooes the tab __Furniture Top Brands Section__ and Enter all required info on the form.
+Chooes __Furniture Top Brands__ tab, fill in the form and follow the instruction on that page to create banner.
 
 ![banner content html source editor](img/furniture-top-brands-section-code.png)
 
-- Create a new banner in __Marketing__ > __Banners__ > click __Create a Banner__ button.
-- Click button __HTML__ in __Banner Content__ editor to show __HTML Source Editor__.
-- Copy and paste the code above to __HTML Source Editor__. Then click __Update__ button:
-
-![banner content html source editor](img/banner-content-html-source-editor.jpg)
-
-Set Show on __Page = Home Page__ and __Location = Top of Page__:
-
-![config banner show on home](img/config-banner-show-on-home.jpg)
-
-Click **Save** button to finish.
 
 ## --- Furniture Live Help Section
 
 ![Furniture Top Brands Section](img/sections/furniture-live-help-section.png)
 
-To edit content and images of banners, Open the link below on your web browser: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
 
-Chooes the tab __Furniture Live Help Section__ and Enter all required info on the form.
+Chooes __Furniture Live Help__ tab, fill in the form and follow the instruction on that page to create banner.
 
 ![banner content html source editor](img/furniture-live-help-section-code.png)
 
-- Create a new banner in __Marketing__ > __Banners__ > click __Create a Banner__ button.
-- Click button __HTML__ in __Banner Content__ editor to show __HTML Source Editor__.
-- Copy and paste the code above to __HTML Source Editor__. Then click __Update__ button:
-
-![banner content html source editor](img/banner-content-html-source-editor.jpg)
-
-Set Show on __Page = Home Page__ and __Location = Top of Page__:
-
-![config banner show on home](img/config-banner-show-on-home.jpg)
-
-Click **Save** button to finish.
 
 ## --- Furniture Support Info Section
 
 ![Furniture Support Info Section](img/sections/furniture-support-info-section.png)
 
-To edit content and images of banners, Open the link below on your web browser: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
 
-Chooes the tab __Furniture Live Help Section__ and Enter all required info on the form.
+Chooes __Furniture Live Help__ tab, fill in the form and follow the instruction on that page to create banner.
 
 ![banner content html source editor](img/furniture-support-info-section-code.png)
 
-- Create a new banner in __Marketing__ > __Banners__ > click __Create a Banner__ button.
-- Click button __HTML__ in __Banner Content__ editor to show __HTML Source Editor__.
-- Copy and paste the code above to __HTML Source Editor__. Then click __Update__ button:
-
-![banner content html source editor](img/banner-content-html-source-editor.jpg)
-
-Set Show on __Page = Home Page__ and __Location = Top of Page__:
-
-![config banner show on home](img/config-banner-show-on-home.jpg)
-
-Click **Save** button to finish.
 
 ## --- Furniture Instagram Section
 
@@ -337,9 +261,11 @@ Click **Save** button to finish.
 
 To show your Intagram photos on Home Page, go to **Theme Editor** > **Homepage** > **Instagram**, input your **Access Token** code and **User ID**.
 
-To retrieve your Access Token, use this tool [https://bit.ly/2Cm0I1O/](https://bit.ly/2Cm0I1O/)
+To retrieve your Access Token, use this tool [https://bit.ly/2Cm0I1O](https://bit.ly/2Cm0I1O)
 
-To retrieve your User ID, use this tool [https://bit.ly/2Et7ULx/](https://bit.ly/2Et7ULx/)
+![Furniture Instagram Section](img/instagram-custom.png)
+
+Here you can configure access token and number of photos.
 
 Choose **Number of photos** to show up.
 

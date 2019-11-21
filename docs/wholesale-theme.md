@@ -17,8 +17,7 @@ You can select the sections displayed on the homepage (maximum 11 sections) in *
 * **section4": "featured_products**
 * **section5": "bc_banner_home_2**
 * **section6": "popular_products**
-* **section7": "bc_banner_home_3**
-* **section8": "products_by_category_sorting_tabs**
+* **section7": "products_by_category_sorting_tabs**
 
 ## --- Wholesale Top Categories Section
 
