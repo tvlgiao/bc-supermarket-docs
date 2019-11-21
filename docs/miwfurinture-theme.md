@@ -1,4 +1,48 @@
-# Home Page Section
+# Home Page
+
+## -- LINK BELOW HEADER
+
+![Homepage Sections Manager](img/homepage-link-below-header.png)
+
+You can enable this banner across all pages or on all other pages except Home Page in **Theme Editor** > **Banners** > **Link after header**:
+
+![config banner show on home](img/config-link-below-header.png)
+
+After enabled, you can edit banner content by go to **Marketing** > **Banners**, click **Create a Banner** button. Input the fields as below:
+
+_ **Banner Name**: whatever.
+_ **Banner Content**: click the HTML button to open HTML source code editor.
+
+Copy and paste the sample code below:
+
+```
+<div id="emthemesModezBannersBlockAfterHeader" class="emthemesModezBannersBlockAfterHeader">
+    <div class="container">
+        <div class="sale-list">
+            <div class="sale-list__item">
+                <a class="sale-list__link" title="" href="#">game day furniture sale</a>
+            </div>
+            <div class="sale-list__item">
+                <a class="sale-list__link" title="" href="#">the entryway sale</a>
+            </div>
+            <div class="sale-list__item">
+                <a class="sale-list__link" title="" href="#">the white sale</a>
+            </div>
+            <div class="sale-list__item">
+                <a class="sale-list__link" title="" href="#">outdoor warm-up sale</a>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+Set Show on __Page = Home Page__ and __Location = Top of Page__:
+
+![config banner show on home](img/config-banner-show-on-home.jpg)
+
+Click **Save** button to finish.
+
+
 
 ## -- Sections Manager
 
