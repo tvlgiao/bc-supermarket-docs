@@ -1537,18 +1537,26 @@ Enter the script below to **Scripts contents**:
             Cookies.set('couponcode', couponcode);
         }
 
-        stencilUtils.api.cart.getCartQuantity({}, function(_, quantity) {
-            // console.log(quantity);
+        if (couponcode) {
+            stencilUtils.api.cart.getCartQuantity({}, function(_, quantity) {
+                // console.log(quantity);
 
-            if (quantity > 0) {
-                stencilUtils.api.cart.applyCode(couponcode, function(error, response) {
-                    Cookies.remove('couponcode');
-                });
-            }
-        });
+                if (quantity > 0) {
+                    stencilUtils.api.cart.applyCode(couponcode, function(error, response) {
+                        Cookies.remove('couponcode');
+                        if (window.location.pathname.match(/^\/cart\.php/)) {
+                            window.location.reload();
+                        }
+                    });
+                }
+            });
+        }
     }
 
     function main() {
+        if (typeof $ == 'undefined') {
+            $ = window.jQuery;
+        }
         $(document).ready(ready);
         $('body').on('loaded.instantload', ready);
         stencilUtils.hooks.on('cart-item-add', function() {
@@ -1813,3 +1821,25 @@ Add the CSS script below to **Storefront** > **Footer Scripts**:
 }
 </style>
 ```
+
+
+## Fix price styling in Shipping Method section of Checkout page
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Checkout`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+
+```html
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = '.shippingOptionLabel .shippingOption-price { min-width: 10rem; max-width: 10rem }';
+    document.head.appendChild(style);
+})();
+</script>
+
