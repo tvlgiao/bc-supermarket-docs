@@ -1842,4 +1842,20 @@ Enter the script below to **Scripts contents**:
     document.head.appendChild(style);
 })();
 </script>
+```
 
+## Show Mega Menu on Homepage and Slide-down Menu on other pages
+
+1. Tick on **Showing sub-category vertical** in **Theme Editor** > **Header** > **Main navigation**.
+2. Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Head`
+- **Select pages where script will be added** = `Store pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+
+```html
+<script>/* {{#if page_type '===' 'default'}}{{merge theme_settings subcategories_menu_vertical=false}}{{/if}} */</script>
+```
