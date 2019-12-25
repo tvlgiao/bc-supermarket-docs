@@ -1859,3 +1859,36 @@ Enter the script below to **Scripts contents**:
 ```html
 <script>/* {{#if page_type '===' 'default'}}{{merge theme_settings subcategories_menu_vertical=false}}{{/if}} */</script>
 ```
+
+
+
+##  Uncheck "My Billing address is the same as my Delivery address" on Checkout page
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Checkout`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var done = false;
+    var timer = setInterval(function() {
+        if (done) {
+            clearInterval(timer);
+            return;
+        }
+        var el = document.getElementById('sameAsBilling');
+        if (el) {
+            if (el.checked) {
+                el.click();
+            }
+            done = true;
+        }
+    }, 500);
+})();
+</script>
+```
