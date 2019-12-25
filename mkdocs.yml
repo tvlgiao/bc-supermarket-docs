@@ -6,10 +6,12 @@ pages:
 - Child Themes:
   - Wholesale: wholesale-theme.md
   - MIWFurinture: miwfurinture-theme.md
+  - Soundsima: soundsima-theme.md
+  - Beauty: beauty-theme.md
 - FAQs: faqs.md
 - Support: https://papathemes.kayako.com/conversation/new/1
 theme:
-  name: bootstrap
+  name: mkdocs
   custom_dir: 'custom_theme/'
   navigation_depth: 3
 use_directory_urls: false
