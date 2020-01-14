@@ -192,6 +192,9 @@
           </div>
         </footer>
 
+      {%- block before_scripts %}
+      {% endblock %}
+      
       {%- block scripts %}
         <script>
             var base_url = {{ base_url | tojson }},
