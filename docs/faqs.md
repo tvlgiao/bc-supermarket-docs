@@ -1892,3 +1892,25 @@ Enter the script below to **Scripts contents**:
 })();
 </script>
 ```
+
+
+## Sort Popular Brands on the sidebar by alphabet
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+    (function($) {
+        var $li = $('#brands-navList li:not(:last-child)').sort(function(a, b) {
+            return $(a).find('a').attr('title').localeCompare($(b).find('a').attr('title'));
+        });
+        $('#brands-navList').prepend($li);
+    })(window.jQuerySupermarket || window.jQuery);
+</script>
+```
