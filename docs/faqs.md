@@ -1914,3 +1914,36 @@ Enter the script below to **Scripts contents**:
     })(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
+
+
+
+## Move Popular Brands block on the left sidebar to the right sidebar
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+    (function($) {
+        function ready() {
+            var $sidebar = $('<div class="page-sidebar page-sidebar--right custom"></div>').insertBefore('.page-content');
+            var $brandsBlock = $('.page-sidebar .sidebarBlock--brands').first().appendTo($sidebar);
+
+            if ($brandsBlock.length === 0) {
+                $.get('/cart.php', null, function(resp) {
+                    $(resp).find('.sidebarBlock--brands').appendTo($sidebar);
+                });
+            }
+        }
+        $(document).ready(ready);
+        $('body').on('loaded.instantload', ready);
+
+        $('<style />').html('.page-sidebar--right.custom { padding-left: 0; padding-right: 1.125rem }').appendTo('head');
+    })(window.jQuerySupermarket || window.jQuery);
+</script>
+```
