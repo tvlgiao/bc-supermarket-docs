@@ -1947,3 +1947,34 @@ Enter the script below to **Scripts contents**:
     })(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
+
+Fix 2 banners beside the main carousel on home page display wrong in version 4.5.2
+
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+    (function() {
+        var css = document.createElement('style');
+        css.innerHTML = '@media (min-width: 801px) {'
+            + '.heroCarousel-container--hasBanners { flex-wrap: nowrap; }'
+            + '.heroCarousel-container--hasBanners .heroCarousel { min-width: auto; *width: auto; }'
+            + '.heroCarousel-banners { width: auto; max-width: 385px; }'
+            + '.heroCarousel-container:not(.heroCarousel-container--hasBanners) .heroCarousel-banners { display: none }'
+            + '}';
+        document.head.appendChild(css);
+		window.addEventListener('DOMContentLoaded', function() {   
+            if (document.querySelector('.heroCarousel-banners')) {
+                document.querySelector('.heroCarousel-container').classList.add('heroCarousel-container--hasBanners');
+            }
+        });
+    })();
+</script>
+```
