@@ -60,7 +60,7 @@ Chooes __Headphones Banner Parallax__ tab, fill in the form and follow the instr
 
 ![Headphones Product Sale Off Section](img/sections/headphones-product-sale-off-section.png)
 
-Configure New Products Sale Off showing on the home page in **Theme Editor** > **Products**:
+Configure New Products Sale Off showing on the home page in **Manage** > **Products**:
 
 ![banner content html source editor](img/headphones-product-sale-off-section-code.png)
 
