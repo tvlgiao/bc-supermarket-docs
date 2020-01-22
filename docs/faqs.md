@@ -1948,7 +1948,7 @@ Enter the script below to **Scripts contents**:
 </script>
 ```
 
-Fix 2 banners beside the main carousel on home page display wrong in version 4.5.2
+## Fix 2 banners beside the main carousel on home page display wrong in version 4.5.2
 
 
 Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
@@ -1976,5 +1976,135 @@ Enter the script below to **Scripts contents**:
             }
         });
     })();
+</script>
+```
+
+
+## Display product stock number under every product card items
+
+1. Go to **Advanced Settings** > **Inventory**, set **Stock level display** = `Show stock levels`.
+
+2. Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/in-view@0.6.1/dist/in-view.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/javascript-debounce@1.0.1/dist/javascript-debounce.min.js"></script>
+<script>
+    (function($) {
+        function main() {
+            var $card = $('.card');
+
+            //
+            // Request stock number
+            //
+            var update = debounce(function() {
+                $card.each(function(i, el) {
+                    const $scope = $(el);
+                    if ($scope.data('stockLoaded') || !inView.is(el)) {
+                        return;
+                    }
+                    var id = $scope.find('.quickview[data-product-id]').data('productId');
+                    stencilUtils.api.product.getById(id, { template: 'products/quick-view' }, function(err, resp) {
+                        if (err || resp.error) {
+                            return;
+                        }
+                        var stock = $(resp).find('[data-product-stock]').html().trim();
+                        if (stock) {
+                            $scope.find('.card-body').append('<div class="card-text cart-text--stock">Current Stock: <span class="value">' + stock + '</span></div>');
+                        }
+                    });
+                    $scope.data('stockLoaded', true);
+                    $card = $card.not($scope);
+                });
+            }, 200);
+
+            //
+            // Bind events and call at initial
+            //
+            $(window).on('scroll resize load', update);
+            update();
+
+            //
+            // Watch DOM changes
+            //
+            const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+            if (MutationObserver) {
+                var mo = new MutationObserver(function(mutations) {
+                    for (var i in mutations) {
+                        if (mutations[i].type === 'childList' && mutations[i].addedNodes) {
+                            $card = $card.add($(mutations[i].addedNodes).find('.card'));
+                            update();
+                        }
+                    }
+                });
+                mo.observe(document.documentElement, {
+                    childList: true,
+                    subtree: true,
+                });
+            }
+
+            //
+            // Add custom CSS
+            //
+            var css = '<style>'
+                    + '.cart-text--stock .value { font-weight: bold; color: #000 }'
+                    + '</style>';
+            $('head').append(css);
+        }
+        $(document).ready(main);
+    })(window.jQuerySupermarket || window.jQuery);
+</script>
+```
+
+
+## Move the first paragraph of product description to under the product rating and product info to under product options
+
+![product-page-short-description](img/product-page-short-description.jpg)
+
+![product-page-product-info-under-options](img/product-page-product-info-under-options.jpg)
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+```html
+<script>
+    (function($) {
+        function load($scope) {
+            // Move the first paragraph of product description to below the product rating
+            var $p = $('.productView-description-tabContent > p').first();
+            if ($p.length > 0) {
+                $('<div class="productView-sortDescription"></div>').append($p).insertAfter($('.productView-rating', $scope));
+            }
+
+            // Move the product info to below the product options
+            $('.productView-info', $scope).insertAfter($('.productView-options', $scope));
+
+        }
+
+        $(document).ready(function() {
+            if ($('body').hasClass('papaSupermarket-pageType--product')) {
+                load();
+            }
+        })
+        
+        $('body').on('loaded.instantload', function() {
+            if ($('body').hasClass('papaSupermarket-pageType--product')) {
+                load();
+            }
+        });
+
+        $('body').on('loaded.quickview', function(product) {
+            load(product.$scope);
+        });
+    })(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
