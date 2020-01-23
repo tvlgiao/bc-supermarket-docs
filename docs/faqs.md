@@ -2075,6 +2075,8 @@ Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
 - **Select pages where script will be added** = `Store Pages`
 - **Script type** = `Script`
 
+Enter the script below to **Scripts contents**: 
+
 ```html
 <script>
     (function($) {
@@ -2119,6 +2121,8 @@ Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
 - **Select pages where script will be added** = `Store Pages`
 - **Script type** = `Script`
 
+Enter the script below to **Scripts contents**: 
+
 ```html
 <script>
     (function($) {
@@ -2132,5 +2136,26 @@ Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
         $(document).ready(main);
         $('body').on('loaded.instantload', main);
     })(window.jQuerySupermarket || window.jQuery);
+</script>
+```
+
+
+## Hide "There are no products listed under this category" on the category page
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+    (function() {
+        var css = document.createElement('style');
+        css.innerHTML = '#product-listing-container > p:first-child { display: none }';
+        document.head.appendChild(css);
+    })();
 </script>
 ```
