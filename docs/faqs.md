@@ -2159,3 +2159,32 @@ Enter the script below to **Scripts contents**:
     })();
 </script>
 ```
+
+
+## Change the welcome message on the top header for logged in users
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+    {{#if customer}}
+        (function($) {
+            function main() {
+                $('.navUser--storeInfo .navUser-item')
+                    .first()
+                    .find('span')
+                    .html('Hi {{customer.name}}');
+            }
+            $(document).ready(main);
+            $('body').on('loaded.instantload', main);
+        })(window.jQuerySupermarket || window.jQuery);
+    {{/if}}
+</script>
+```
+
