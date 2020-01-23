@@ -2108,3 +2108,29 @@ Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
     })(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
+
+
+## Show the original category image on the category page in v4.5.2
+
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+```html
+<script>
+    (function($) {
+        function main() {
+            var $img = $('.emthemesModez-categoryPage-mainImage img[srcset]');
+            if ($img.length > 0) {
+                $img.attr('src', $img.attr('src').replace(/stencil\/[^\/]+\//, 'stencil/original/'))
+                	.attr('srcset', '')
+            }
+        }
+        $(document).ready(main);
+        $('body').on('loaded.instantload', main);
+    })(window.jQuerySupermarket || window.jQuery);
+</script>
+```
