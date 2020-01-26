@@ -2188,3 +2188,37 @@ Enter the script below to **Scripts contents**:
 </script>
 ```
 
+
+## Move the release date (pre-order message) to under the Add to Cart button on PDP
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+(function($) {
+    function css() {
+        $('<style/>')
+            .html('.productView-options > p { font-weight: bold; color: red }')
+            .appendTo('head');
+    }
+    function main($scope) {
+        var $el = $('.productView-options > p', $scope).first();
+        if ($el.length > 0) {
+            $el.parent().append($el);
+        }
+    }
+    main();
+    css();
+    $('body').on('loaded.instantload', main);
+    $('body').on('loaded.quickview', function(event, product) {
+        main(product.$scope);
+    });
+})(window.jQuerySupermarket || window.jQuery);
+```
+
+
