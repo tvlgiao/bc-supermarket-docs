@@ -2200,6 +2200,7 @@ Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
 Enter the script below to **Scripts contents**: 
 
 ```html
+<script>
 (function($) {
     function css() {
         $('<style/>')
@@ -2219,6 +2220,27 @@ Enter the script below to **Scripts contents**:
         main(product.$scope);
     });
 })(window.jQuerySupermarket || window.jQuery);
+</script>
 ```
 
 
+
+## Add custom text after the copyright text in the footer
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var el = document.createElement('span');
+    el.innerHTML = ' All product names, logos, and brands are property of their respective owners. All company, product and service names used in this website are for identification purposes only. Use of these names, logos, and brands does not imply endorsement.';
+    document.querySelector('.footer-copyright .powered-by').appendChild(el);
+})();
+</script>
+```
