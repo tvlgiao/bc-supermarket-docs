@@ -2244,3 +2244,25 @@ Enter the script below to **Scripts contents**:
 })();
 </script>
 ```
+
+## Integrate PartFinder app to display below the header
+
+Display PartFinder app: https://www.bigcommerce.com/apps/partfinder-targeted-product-search/ below header across the site.
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var el = document.createElement('div');
+    el.id = 'pf-embed-container';
+    document.querySelector('[data-content-region="header_bottom"]').appendChild(el);
+})();
+</script>
+```
