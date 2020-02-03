@@ -2267,3 +2267,54 @@ Enter the script below to **Scripts contents**:
 </script>
 ```
 
+
+## Add custom links to Footer > Navigate column
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    document.querySelector('.footer-info .footer-info-col:nth-child(2) .footer-info-list').innerHTML += ''
+        + '<li><a href="/privacy-policy">Privacy Policy</a></li>'
+        + '<li><a href="/suppliers">Suppliers</a></li>'
+})();
+</script>
+```
+
+Change your own links by editting lines:
+
+```html
++ '<li><a href="/privacy-policy">Privacy Policy</a></li>'
++ '<li><a href="/suppliers">Suppliers</a></li>'
+```
+
+Or duplicate it to add more links.
+
+
+## Hide Shipping Estimation on the cart page
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var css = document.createElement('style');
+    css.innerHTML = '.cart-total--shippingEstimator { display: none }';
+    document.head.appendChild(css);
+})();
+</script>
+```
+
