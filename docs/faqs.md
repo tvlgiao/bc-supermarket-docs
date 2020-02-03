@@ -2318,3 +2318,22 @@ Enter the script below to **Scripts contents**:
 </script>
 ```
 
+## Hide Refine By block on the left sidebar
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var css = document.createElement('style');
+    css.innerHTML = '.facetedSearch-toggle, #facetedSearch { display: none }';
+    document.head.appendChild(css);
+})();
+</script>
+```
