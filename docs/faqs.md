@@ -2421,3 +2421,24 @@ Enter the script below to **Scripts contents**:
 ```
 
 Change `max-width: 300px; max-height: 300px;` by the width and height of images you want.
+
+
+## Hide UPC and MPN on the product page
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var css = document.createElement('style');
+    css.innerHTML = '.productView-info-name--upc, .productView-info-value--upc, .productView-info-name--mpn, .productView-info-value--mpn { display: none }';
+    document.head.appendChild(css);
+})();
+</script>
+```
