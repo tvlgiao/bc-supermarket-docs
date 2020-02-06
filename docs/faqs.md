@@ -2398,3 +2398,26 @@ Enter the script below to **Scripts contents**:
 })();
 </script>
 ```
+
+## Display product main images with fixed size
+
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var css = document.createElement('style');
+    css.innerHTML = '.productView-imageCarousel-main { max-width: 300px; max-height: 300px; margin: 0 auto; }';
+    document.head.appendChild(css);
+})();
+</script>
+```
+
+Change `max-width: 300px; max-height: 300px;` by the width and height of images you want.
