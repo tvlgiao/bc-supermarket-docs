@@ -2337,3 +2337,64 @@ Enter the script below to **Scripts contents**:
 })();
 </script>
 ```
+
+## Limit the main navigation level up to 3 on mobile
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    function main() {
+        var els = document.querySelectorAll('.navPage-childList-action.has-subMenu');
+        for (var i = 0; i < els.length; i++) {
+            var el = els[i];
+            el.addEventListener('click', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                window.location =el.href;
+            });
+        }
+
+        var css = document.createElement('style');
+        css.innerHTML = '@media (max-width: 800px) {'
+            + '.navPage-childList-action.has-subMenu .navPages-action-moreIcon { display: none }'
+            + '.navPage-childList .navPage-childList { display: none }'
+            + '}';
+        document.head.appendChild(css);
+    }
+    window.addEventListener('DOMContentLoaded', main);
+})();
+</script>
+```
+
+
+## Move Paypal Checkout button display under Amazon Pay button on the cart page
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var css = document.createElement('style');
+    css.innerHTML = ''
+        + '.cart-additionalCheckoutButtons { display: flex; flex-direction: column }'
+        + '.cart-additionalCheckoutButtons .CheckoutButton { order: 1 }'
+        + '.cart-additionalCheckoutButtons .AmazonPaymentsCheckout { order: 1 }'
+        + '.cart-additionalCheckoutButtons .PayPalExpressCheckout { order: 2 }';
+    document.head.appendChild(css);
+})();
+</script>
+```
