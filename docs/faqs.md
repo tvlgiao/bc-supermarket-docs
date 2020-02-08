@@ -2354,11 +2354,10 @@ Enter the script below to **Scripts contents**:
     function main() {
         var els = document.querySelectorAll('.navPage-childList-action.has-subMenu');
         for (var i = 0; i < els.length; i++) {
-            var el = els[i];
-            el.addEventListener('click', function(e) {
+            els[i].addEventListener('click', function(e) {
                 e.stopPropagation();
                 e.preventDefault();
-                window.location =el.href;
+                window.location = e.target.href;
             });
         }
 
@@ -2369,6 +2368,7 @@ Enter the script below to **Scripts contents**:
             + '}';
         document.head.appendChild(css);
     }
+    // main();
     window.addEventListener('DOMContentLoaded', main);
 })();
 </script>
@@ -2442,3 +2442,30 @@ Enter the script below to **Scripts contents**:
 })();
 </script>
 ```
+
+## Fix product images on Featured / Bestselling / New columns uniform on mobile
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var css = document.createElement('style');
+    css.innerHTML = '@media (max-width: 801px) {'
+        + '.listItem-figure { padding-top: 100%; margin-bottom: .75rem }'
+        + '.listItem-image { position: absolute; left: 0; top: 0; bottom: 0; right: 0; max-height: 100%; margin: 0 auto; object-fit: contain; }'
+        + '.listItem-content { display: flex; flex-direction: column }'
+        + '.listItem-actions { order: 1; margin-bottom: .75rem  }'
+        + '.listItem-details { order: 2 }'
+        + '}';
+    document.head.appendChild(css);
+})();
+</script>
+```
+
