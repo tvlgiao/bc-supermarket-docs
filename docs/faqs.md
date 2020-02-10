@@ -2489,3 +2489,31 @@ Enter the script below to **Scripts contents**:
 })();
 </script>
 ```
+
+
+## Customize the main navigation full width
+
+![customize-main-nav-full-width](img/customize-main-nav-full-width.png)
+
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var css = document.createElement('style');
+    css.innerHTML = ''
+        + '@media (min-width: 801px) {'
+        + '.navPages-container .container { width: auto; max-width: none; padding: 0 }'
+        + '.navPages { max-width: none; text-align: center }'
+        + '}';
+    document.head.appendChild(css);
+})();
+</script>
+```
