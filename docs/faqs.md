@@ -2517,3 +2517,24 @@ Enter the script below to **Scripts contents**:
 })();
 </script>
 ```
+
+
+## Hide the default image when hover the product card
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var css = document.createElement('style');
+    css.innerHTML = '.card-image ~ .card-image { background-color: #fff; height: 100% }';
+    document.head.appendChild(css);
+})();
+</script>
+```
