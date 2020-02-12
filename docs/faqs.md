@@ -2538,3 +2538,136 @@ Enter the script below to **Scripts contents**:
 })();
 </script>
 ```
+
+
+## Display YouTube videos as the alternate images on PDP
+
+![custom-script-bulk-product-videos](img/custom-script-bulk-product-videos.png)
+
+**Question:**
+
+We are trying to get a youtube video to be in the alternate image spots on our products. We have 3 videos that we show for 3 separate categories.
+Is it possible to have these videos applied in bulk to the products in those categories?
+
+**Answer:**
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+    (function(vidsByCat, $) {
+        var css = document.createElement('style');
+        css.innerHTML = ''
+            + '.productView-imageCarousel-main-item iframe { position: absolute; top: 0; bottom: 0; left: 0; width: 100%; max-width: 100%; max-height: 100%; margin: auto }'
+            + '.productView-imageCarousel-nav-item svg { position: absolute; width: 40px; height: 40px; top: 0; left: 0; right: 0; bottom: 0; margin: auto; fill: rgba(255,0,0,0.8) }';
+        document.head.appendChild(css);
+
+        var icon = '<svg viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M31.6634051,8.8527593 C31.6634051,8.8527593 31.3509198,6.64879843 30.3919217,5.67824658 C29.1757339,4.40441487 27.8125088,4.39809002 27.1873503,4.32353816 C22.7118278,4 15.9983092,4 15.9983092,4 L15.984407,4 C15.984407,4 9.27104501,4 4.79536595,4.32353816 C4.17017613,4.39809002 2.80745205,4.40441487 1.59082583,5.67824658 C0.631890411,6.64879843 0.319843444,8.8527593 0.319843444,8.8527593 C0.319843444,8.8527593 0,11.4409393 0,14.0290881 L0,16.4554834 C0,19.0436008 0.319843444,21.6317495 0.319843444,21.6317495 C0.319843444,21.6317495 0.631890411,23.8357417 1.59082583,24.8062935 C2.80745205,26.0801566 4.40557339,26.0398591 5.11736986,26.1733699 C7.67602348,26.4187241 15.9913894,26.4946536 15.9913894,26.4946536 C15.9913894,26.4946536 22.7118278,26.4845401 27.1873503,26.1610333 C27.8125088,26.0864501 29.1757339,26.0801566 30.3919217,24.8062935 C31.3509198,23.8357417 31.6634051,21.6317495 31.6634051,21.6317495 C31.6634051,21.6317495 31.9827789,19.0436008 31.9827789,16.4554834 L31.9827789,14.0290881 C31.9827789,11.4409393 31.6634051,8.8527593 31.6634051,8.8527593 Z M12.6895342,19.39582 L12.6880626,10.4095186 L21.3299413,14.9183249 L12.6895342,19.39582 Z" id="Imported-Layers"></path></svg>';
+
+        function process($scope, category, useJS) {
+            if (category && vidsByCat[category]) {
+                var $thumbs = $();
+                var $mains = $();
+                for (var i = 0; i < vidsByCat[category].length; i++) {
+                    var vid = vidsByCat[category][i];
+                    var thumbUrl = 'https://img.youtube.com/vi/' + vid + '/maxresdefault.jpg';
+                    var mainIframe = '<iframe id="ytplayer" type="text/html" width="720" height="405" src="https://www.youtube.com/embed/' + vid + '?controls=0&enablejsapi=1&modestbranding=1&playsinline=1&iv_load_policy=3&showinfo=0&wmode=transparent&rel=0&fs=0" frameborder="0" allowfullscreen>';
+                    $thumbs = $thumbs.add($('<li class="productView-imageCarousel-nav-item"><img src="' + thumbUrl + '" alt="" />' + icon + '</li>'));
+                    $mains = $mains.add($('<li class="productView-imageCarousel-main-item">' + mainIframe + '</li>'));
+                }
+
+                if (useJS) {
+                    var $nav = $scope.find('[data-image-gallery-nav]');
+                    var $main = $scope.find('[data-image-gallery-main]');
+                    var idx = $nav.slick('slickCurrentSlide');
+                    $thumbs.each(function(i, el) {
+                        $nav.slick('slickAdd', el, idx + i);
+                    });
+                    $mains.each(function(i, el) {
+                        $main.slick('slickAdd', el, idx + i);
+                    });
+                } else {
+                    $scope.find('[data-image-gallery-nav] .slick-current').after($thumbs);
+                    $scope.find('[data-image-gallery-main] .slick-current').after($mains);
+                }
+            }
+
+        }
+
+        $(document).ready(function() {
+            var $scope = $('.productView [data-also-bought-parent-scope]');
+            if ($scope.length > 0) {
+                var category = {{{JSONstringify (first product.category)}}};
+                process($scope, category);
+            }
+        });
+
+        $('body').on('loaded.instantload', function(event, resp) {
+            var $scope = $('.productView [data-also-bought-parent-scope]');
+            if ($scope.length > 0) {
+                var category = $('.breadcrumbs .breadcrumb.is-active').prev().find('[itemprop="name"]').text();
+                process($scope, category);
+            }
+        });
+
+        $('body').on('loaded.quickview', function(event, product) {
+            var productId = product.$scope.find('[name=product_id]').val();
+            stencilUtils.api.product.getById(productId, { template: 'common/breadcrumbs' }, function(err, resp) {
+                if (err) {
+                    return;
+                }
+                var category = $(resp).find('.breadcrumb.is-active').prev().find('[itemprop="name"]').text();
+                process(product.$scope, category, true);
+            });
+        });
+    })({
+        'Sports & Entertainment': [
+            'DF3saLvmGow',
+            'h27hXL5Pemg'
+        ],
+        'Beauty & Health': [
+            '_m1Je_BYdrQ',
+            'l9Iug7n1uFA'
+        ]
+    },
+    window.jQuerySupermarket || window.jQuery);
+</script>
+```
+
+**Configure the videos coresponding to each category:**
+
+Edit these lines in the script above:
+
+```
+'Sports & Entertainment': [
+    'DF3saLvmGow',
+    'h27hXL5Pemg'
+],
+'Beauty & Health': [
+    '_m1Je_BYdrQ',
+    'l9Iug7n1uFA'
+]
+```
+
+Where `Sports & Entertainment` is the category name with case-sensity. `DF3saLvmGow` and `h27hXL5Pemg` are the YouTube videos code to display for this category.
+
+`Beauty & Health` is a different category name. `_m1Je_BYdrQ` and `l9Iug7n1uFA` are other YouTube videos code for this category.
+
+You can add more categories and videos if you want.
+
+To find the YouTube video code, view the video, click Share button and copy the code next to `https://youtu.be/`, see this screenshot:
+
+![get-youtube-video-code](img/get-youtube-video-code.png)
+
+
+
+
+
+ 
+
