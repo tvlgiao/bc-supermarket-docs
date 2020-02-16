@@ -2670,4 +2670,43 @@ To find the YouTube video code, view the video, click Share button and copy the 
 
 
  
+## Display your custom social icons on the header
+
+```html
+<script>
+(function() {
+    document.querySelector('.navPages .navPages-socials').innerHTML = ''
+        + '<a href="https://www.facebook.com/SupremeAudio" target="_blank"><img src="https://cdn10.bigcommerce.com/s-agur2fw3/content/images/facebook-40.png" alt="Facebook logo" width="40" height="40"></a>&nbsp;'
+        + '<a href="https://www.instagram.com/SupremeAudioNH/" target="_blank"><img src="https://cdn10.bigcommerce.com/s-agur2fw3/content/images/instagram-40.png" alt="Instagram logo" width="40" height="40"></a>&nbsp;'
+        + '<a href="https://www.pinterest.com/SupremeAudio/pins/" target="_blank"><img src="https://cdn10.bigcommerce.com/s-agur2fw3/content/images/pinterest-40.png" alt="Pinterest logo" width="40" height="40"></a>&nbsp;'
+        + '<a href="https://www.twitter.com/supremeaudionh/" target="_blank"><img src="https://cdn10.bigcommerce.com/s-agur2fw3/content/images/twitter-40.png" alt="Twitter logo" width="40" height="40"></a>&nbsp;'
+        + '<a href="https://www.linkedin.com/company/1010604/" target="_blank"><img src="https://cdn10.bigcommerce.com/s-agur2fw3/content/images/linkedin-40.png" alt="LinkedIn logo" width="40" height="40"></a>&nbsp;'
+        + '<a href="https://www.youtube.com/user/SupremeAudioInc" target="_blank"><img src="https://cdn10.bigcommerce.com/s-agur2fw3/content/images/youtube-40.png" alt="YouTube logo" width="40" height="40"></a>';
+})();
+</script>
+```
+
+
+
+## Display another phone number on the footer
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var li = document.createElement('li');
+    li.innerHTML = '<i class="fa fa-li fa-phone"></i><a href="tel:01 1234 5678">Call us at 01 1234 5678</a>';
+    document.querySelector('.footer-info-col--about > ul:nth-child(2)').appendChild(li);
+})();
+</script>
+```
+
+Replace the sample phone number `01 1234 5678` by yours.
 
