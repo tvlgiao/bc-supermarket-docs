@@ -2710,3 +2710,32 @@ Enter the script below to **Scripts contents**:
 
 Replace the sample phone number `01 1234 5678` by yours.
 
+
+## Move Bulk Discount Rates table to below the quantity box
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function($) {
+    function process($scope) {
+        $scope.find('.productView-info-bulkPricing').insertBefore($scope.find('form[data-cart-item-add]').first().find('> .form-action'));
+    }
+    process($('.productView'));
+
+    $('body').on('loaded.quickview', function() {
+        process($('.productView--quickView'));
+    });
+
+    $('body').on('loaded.instantload', function() {
+        process($('.productView'));
+    });
+})(window.jQuerySupermarket);
+</script>
+```
