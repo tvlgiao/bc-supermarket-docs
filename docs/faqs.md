@@ -2711,6 +2711,33 @@ Enter the script below to **Scripts contents**:
 Replace the sample phone number `01 1234 5678` by yours.
 
 
+## Display another contact details in the footer
+
+To display additional address and phone number in the footer, go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var ul = document.createElement('ul');
+    ul.setAttribute('class', 'fa-ul');
+    ul.innerHTML = ''
+        + '<li><i class="fa fa-li fa-map-marker"></i><address>Your address line 1<br> Your address line 2</address></li>'
+        + '<li><i class="fa fa-li fa-phone"></i><a href="tel:01 1234 5678">Call us at 01 1234 5678</a></li>';
+    var el = document.querySelector('.footer-info-col--about');
+    el.insertBefore(ul, el.querySelector('.socialLinks'));
+})();
+</script>
+```
+
+Replace `Your address line 1<br> Your address line 2` and `01 1234 5678` by your address and phone number.
+
+
 ## Move Bulk Discount Rates table to below the quantity box
 
 Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
