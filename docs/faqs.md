@@ -2876,3 +2876,48 @@ Enter the script below to **Scripts contents**:
     })();
 </script>
 ```
+
+
+## Center the logo on mobile
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+    (function() {
+        var css = document.createElement('style');
+        css.innerHTML = '.header-logo--left .header-logo-image { right: 0 }';
+        document.head.appendChild(css);
+    })();
+</script>
+```
+
+
+## Make products pick list images bigger
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+    (function() {
+        var css = document.createElement('style');
+        css.innerHTML = '.productOptions-list-item-figure { width: 200px }'
+        	+ '.productOptions-list-item-image { width: 100% }';
+        document.head.appendChild(css);
+    })();
+</script>
+```
+
+You can change image width in `width: 200px` as you want.
