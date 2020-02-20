@@ -2564,11 +2564,32 @@ Enter the script below to **Scripts contents**:
     (function(vidsByCat, $) {
         var css = document.createElement('style');
         css.innerHTML = ''
-            + '.productView-imageCarousel-main-item iframe { position: absolute; top: 0; bottom: 0; left: 0; width: 100%; max-width: 100%; max-height: 100%; margin: auto }'
+            + '.productView-imageCarousel-main-item iframe { position: absolute; top: 0; bottom: 0; left: 0; width: 100%; max-width: 100%; max-height: 100%; margin: auto; pointer-events: none }'
             + '.productView-imageCarousel-nav-item svg { position: absolute; width: 40px; height: 40px; top: 0; left: 0; right: 0; bottom: 0; margin: auto; fill: rgba(255,0,0,0.8) }';
         document.head.appendChild(css);
 
         var icon = '<svg viewBox="0 0 32 32" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M31.6634051,8.8527593 C31.6634051,8.8527593 31.3509198,6.64879843 30.3919217,5.67824658 C29.1757339,4.40441487 27.8125088,4.39809002 27.1873503,4.32353816 C22.7118278,4 15.9983092,4 15.9983092,4 L15.984407,4 C15.984407,4 9.27104501,4 4.79536595,4.32353816 C4.17017613,4.39809002 2.80745205,4.40441487 1.59082583,5.67824658 C0.631890411,6.64879843 0.319843444,8.8527593 0.319843444,8.8527593 C0.319843444,8.8527593 0,11.4409393 0,14.0290881 L0,16.4554834 C0,19.0436008 0.319843444,21.6317495 0.319843444,21.6317495 C0.319843444,21.6317495 0.631890411,23.8357417 1.59082583,24.8062935 C2.80745205,26.0801566 4.40557339,26.0398591 5.11736986,26.1733699 C7.67602348,26.4187241 15.9913894,26.4946536 15.9913894,26.4946536 C15.9913894,26.4946536 22.7118278,26.4845401 27.1873503,26.1610333 C27.8125088,26.0864501 29.1757339,26.0801566 30.3919217,24.8062935 C31.3509198,23.8357417 31.6634051,21.6317495 31.6634051,21.6317495 C31.6634051,21.6317495 31.9827789,19.0436008 31.9827789,16.4554834 L31.9827789,14.0290881 C31.9827789,11.4409393 31.6634051,8.8527593 31.6634051,8.8527593 Z M12.6895342,19.39582 L12.6880626,10.4095186 L21.3299413,14.9183249 L12.6895342,19.39582 Z" id="Imported-Layers"></path></svg>';
+
+        // Load Youtube API
+        (function() {
+            var tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        })();
+
+        function YTAPIReady(callback) {
+            var i = 0;
+            var t = setInterval(function() {
+                if (window.YT && window.YT.Player) {
+                    clearInterval(t);
+                    return callback();
+                }
+                if (i++ > 100) {
+                    clearInterval(t);
+                }
+            }, 100);
+        }
 
         function process($scope, category, useJS) {
             if (category && vidsByCat[category]) {
@@ -2577,9 +2598,51 @@ Enter the script below to **Scripts contents**:
                 for (var i = 0; i < vidsByCat[category].length; i++) {
                     var vid = vidsByCat[category][i];
                     var thumbUrl = 'https://img.youtube.com/vi/' + vid + '/maxresdefault.jpg';
-                    var mainIframe = '<iframe id="ytplayer" type="text/html" width="720" height="405" src="https://www.youtube.com/embed/' + vid + '?controls=0&enablejsapi=1&modestbranding=1&playsinline=1&iv_load_policy=3&showinfo=0&wmode=transparent&rel=0&fs=0" frameborder="0" allowfullscreen>';
-                    $thumbs = $thumbs.add($('<li class="productView-imageCarousel-nav-item"><img src="' + thumbUrl + '" alt="" />' + icon + '</li>'));
-                    $mains = $mains.add($('<li class="productView-imageCarousel-main-item">' + mainIframe + '</li>'));
+                    // var mainIframe = '<iframe id="ytplayer" type="text/html" width="720" height="405" src="https://www.youtube.com/embed/' + vid + '?controls=0&enablejsapi=1&modestbranding=1&playsinline=1&iv_load_policy=3&showinfo=0&wmode=transparent&rel=0&fs=0" frameborder="0" allowfullscreen>';
+                    var $slide = $('<li class="productView-imageCarousel-main-item"></li>');
+                    var  ytid = 'ytplayer_' + $scope.find('input[name=product_id]').val() + '_' + i;
+
+                    $thumbs = $thumbs.add($('<li class="productView-imageCarousel-nav-item"><img src="' + thumbUrl + '" alt="" />' + icon + '</li>'));                   
+                    $mains = $mains.add($slide);
+
+                    YTAPIReady((function($slide, ytid) {
+                        $slide.append('<div id="' + ytid + '"></div>');
+
+                        var player = new YT.Player(ytid, {
+                            height: '720',
+                            width: '405',
+                            videoId: vid,
+                            wmode: 'transparent',
+                            playerVars: {
+                                controls: 1,
+                                disablekb: 1,
+                                enablejsapi: 1,
+                                fs: 0,
+                                rel: 0,
+                                showinfo: 0,
+                                iv_load_policy: 3,
+                                modestbranding: 1,
+                                wmode: 'transparent'
+                            },
+                            events: {
+                                onStateChange: function(event) {
+                                    if (event.data == YT.PlayerState.PLAYING) {
+                                        $slide.css('pointer-events', 'none');
+                                        $(player.getIframe()).css('pointer-events', 'all');
+                                    } else if (event.data == YT.PlayerState.ENDED || event.data == YT.PlayerState.PAUSED) {
+                                        $slide.css('pointer-events', '');
+                                        $(player.getIframe()).css('pointer-events', '');
+                                    }
+                                }
+                            }
+                        });
+                        $slide.on('click', function(event) {
+                            event.preventDefault();
+                            if (player.getPlayerState() != YT.PlayerState.PLAYING) {
+                                player.playVideo();
+                            }
+                        });
+                    }).bind(null, $slide, ytid));
                 }
 
                 if (useJS) {
@@ -2762,6 +2825,31 @@ Enter the script below to **Scripts contents**:
 
     $('body').on('loaded.instantload', function() {
         process($('.productView'));
+    });
+})(window.jQuerySupermarket);
+</script>
+```
+
+
+## Collapse subcategories list on category pages on mobile by default
+
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function($) {
+    $(document).ready(function() {
+        var o = $('[data-collapsible="#categories-navList"]').data('collapsibleInstance');
+        if (o) {
+            o.close();
+        }
     });
 })(window.jQuerySupermarket);
 </script>
