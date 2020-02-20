@@ -2854,3 +2854,25 @@ Enter the script below to **Scripts contents**:
 })(window.jQuerySupermarket);
 </script>
 ```
+
+
+
+## Hide PayPal Express Checkout buttons
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+    (function() {
+        var css = document.createElement('style');
+        css.innerHTML = '.PayPalExpressCheckout { display: none !important }';
+        document.head.appendChild(css);
+    })();
+</script>
+```
