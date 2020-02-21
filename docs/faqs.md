@@ -2925,7 +2925,7 @@ You can change image width in `width: 200px` as you want.
 
 
 
-## Stop Lazy Load of the main product images on PDP
+## Disable Lazy Load of the main product images on PDP
 
 If you want to stop Lazy Load of the main product images on the product pages so that the images on the carousel display faster when changing slides.
 
