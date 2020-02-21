@@ -2921,3 +2921,40 @@ Enter the script below to **Scripts contents**:
 ```
 
 You can change image width in `width: 200px` as you want.
+
+
+
+
+## Stop Lazy Load of the main product images on PDP
+
+If you want to stop Lazy Load of the main product images on the product pages so that the images on the carousel display faster when changing slides.
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function($) {
+    function stopLazyLoadProductMainImages($scope) {
+        $scope.find('[data-image-gallery-main] img[data-lazy]').each(function(i, el) {
+           var $el = $(el);
+           $el.prop('src', $el.data('lazy')).removeAttr('data-lazy');
+        });
+    }
+    $(document).ready(function() {
+        stopLazyLoadProductMainImages($('body'));
+    });
+    $('body').on('loaded.quickview', function() {
+        stopLazyLoadProductMainImages($('.modal-body.quickView'));
+    });
+    $('body').on('loaded.instantload', function() {
+        stopLazyLoadProductMainImages($('body'));
+    });
+})(window.jQuerySupermarket)
+</script>
+```
