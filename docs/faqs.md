@@ -2845,12 +2845,12 @@ Enter the script below to **Scripts contents**:
 ```html
 <script>
 (function($) {
-    $(document).ready(function() {
-        var o = $('[data-collapsible="#categories-navList"]').data('collapsibleInstance');
-        if (o) {
-            o.close();
-        }
-    });
+    $('[data-collapsible="#categories-navList"]')
+        .removeClass('is-open')
+    	.prop('aria-expanded', false);
+    $('#categories-navList')
+        .removeClass('is-open')
+        .prop('aria-hidden', true);
 })(window.jQuerySupermarket);
 </script>
 ```
@@ -2956,5 +2956,28 @@ Enter the script below to **Scripts contents**:
         stopLazyLoadProductMainImages($('body'));
     });
 })(window.jQuerySupermarket)
+</script>
+```
+
+
+
+
+## Hide Go to Top button
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var css = document.createElement('style');
+    css.innerHTML = '#scrollToTopFloatingButton { display: none }';
+    document.head.appendChild(css);
+})();
 </script>
 ```
