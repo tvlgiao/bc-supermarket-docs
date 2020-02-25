@@ -2981,3 +2981,27 @@ Enter the script below to **Scripts contents**:
 })();
 </script>
 ```
+
+
+## Hide Sub-Categories column in Products by Category sections
+
+![hide-subcategories-in-products-by-category-block](img/hide-subcategories-in-products-by-category-block.jpg)
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var css = document.createElement('style');
+    css.innerHTML = '.emthemesModez-productsByCategoryTabs-details-sub { display: none !important }';
+    document.head.appendChild(css);
+})();
+</script>
+```
+
