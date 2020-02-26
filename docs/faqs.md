@@ -3005,3 +3005,60 @@ Enter the script below to **Scripts contents**:
 </script>
 ```
 
+
+## Display your Instagram photo feeds on home page
+
+The old Instagram API has been retired from Oct 15 2019. We've built another tool: https://papathemes.com/embed-instagram-photos-on-bigcommerce-shopify-wordpress/
+
+Please use this tool to generate the custom code snippet. For example your generated code is:
+
+```html
+<script>!function(){var e=document.createElement("script");e.defer=!0,e.src="https://papathemes.s3.amazonaws.com/instagramapp/assets/js/embed-1.0.1.js",e.onload=function(){PapathemesInstagramApp.init({account_id:"XXXXXXXXXXXXXXXXXXXX",element_id:"papainstagram-render",limit:"12",preset:"grid"})},document.body.appendChild(e)}();</script>
+```
+
+Copy the generated code without the begin `<script>` and the end `</script>` tags.
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    {{#if page_type '==' 'default'}}
+    document.querySelector('#instafeed-carousel').innerHTML = '<div id="papainstagram-render"></div>';
+
+    // COPY YOUR GENERATED CODE HERE WITHOUT THE < SCRIPT > TAG
+    
+    // END OF COPY.
+    {{/if}}
+})();
+</script>
+```
+
+Paste your generated code without `<script>` `</script>` between 2 lines:
+```js
+// COPY YOUR GENERATED CODE HERE WITHOUT THE < SCRIPT > TAG
+
+// END OF COPY.
+```
+
+The final example result should look like below:
+
+```html
+<script>
+(function() {
+    {{#if page_type '==' 'default'}}
+    document.querySelector('#instafeed-carousel').innerHTML = '<div id="papainstagram-render"></div>';
+
+    // COPY YOUR GENERATED CODE HERE WITHOUT THE < SCRIPT > TAG
+    !function(){var e=document.createElement("script");e.defer=!0,e.src="https://papathemes.s3.amazonaws.com/instagramapp/assets/js/embed-1.0.1.js",e.onload=function(){PapathemesInstagramApp.init({account_id:"XXXXXXXXXXXXXXXXXXXX",element_id:"papainstagram-render",limit:"12",preset:"grid"})},document.body.appendChild(e)}();
+    // ----------------------------------------------------------
+    {{/if}}
+})();
+</script>
+```
