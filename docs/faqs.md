@@ -3062,3 +3062,53 @@ The final example result should look like below:
 })();
 </script>
 ```
+
+
+## Add Read More button on the category description and brand description
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function($) {
+    function main() {
+        var $content = $('.papaSupermarket-categoryPage-description');
+
+        if ($content.length === 0) {
+            return;
+        }
+
+        if ($content.is('[data-emthemesmodez-mobile-collapse-content]')) {
+            return;
+        }
+        
+        $content.addClass('emthemesModez-mobile-collapse-content')
+                .attr('data-emthemesmodez-mobile-collapse-content', true);
+
+        var $container = $('<div class="dts-more-container" data-emthemesmodez-mobile-collapse></div>')
+                .insertBefore($content)
+                .append($content);
+
+        var $toggler = $('<a href="#" class="emthemesModez-mobile-collapse-handle" data-emthemesmodez-mobile-collapse-handle=""><span class="on">Read More</span><span class="off">Close</span></a>')
+                .appendTo($container);
+
+        var $style = $('<style>'
+            + '.dts-more-container { margin-bottom: 1.5rem }'
+            + '.dts-more-container .emthemesModez-mobile-collapse-content { max-height: 150px; overflow: hidden }'
+            + '.dts-more-container .emthemesModez-mobile-collapse-content.is-active { max-height: none; overflow: visible; overflow-y: auto }'
+            + '.dts-more-container .emthemesModez-mobile-collapse-handle { display: flex }'
+            + '</style>')
+            .appendTo('head');
+    }
+
+    main();
+    $('body').on('loaded.instantload', main);
+})(window.jQuerySupermarket || window.jQuery);
+</script>
+```
