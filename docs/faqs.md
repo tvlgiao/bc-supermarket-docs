@@ -3112,3 +3112,25 @@ Enter the script below to **Scripts contents**:
 })(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
+
+## Hide number of products on the pagination bar on category pages
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+    (function() {
+        var css = document.createElement('style');
+        css.innerHTML = '.pagination-info { display: none }';
+        document.head.appendChild(css);
+    })();
+</script>
+```
+
+
