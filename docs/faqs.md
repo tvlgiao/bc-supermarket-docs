@@ -3133,4 +3133,30 @@ Enter the script below to **Scripts contents**:
 </script>
 ```
 
+## Display Affirm logo in the footer payment icons
 
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var img = document.createElement('img');
+    img.src = 'data:image/gif;base64,R0lGODlhZAA8AOZvADMzM8zMzBAQELa2toODg1NTU+vr66urqwAAAKmpqURERPDw8P///3V1daenp2ZmZlhYWJmZmRUVFRsbGw8PD93d3YqKitvb21ZWVg4ODh8fH6+vr+jo6BkZGYaGhnh4eO/v73l5eUlJSX5+fhQUFBISEhEREePj40dHR3d3d4CAgCQkJISEhNra2urq6kZGRqqqqiIiIhYWFoKCgq6urt7e3nR0dLu7u1BQULy8vO3t7XZ2duXl5b6+vrKysqysrCEhIfHx8d/f37i4uL29vVVVVUhISBoaGkpKSre3t7S0tNzc3BwcHCAgIFJSUrOzsxMTE+7u7hcXF7q6uoGBgR4eHkNDQyMjI3p6euHh4U9PT+Li4lRUVHt7e+zs7K2trefn5+np6bCwsEVFRVdXV0FBQUtLS7GxsYWFhebm5uTk5IeHh6ioqODg4B0dHf///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAG8ALAAAAABkADwAAAf/gG8XBRQIhoeIiYqLjI2Oj5CRCBQFS28VJZKam5ydmyUVGJ6jpKWbGAKmqqusGayvsLGys7S1tre4ubq7vL2+v8DBwoxuABAPyMhGAMO8EBEtDNLT1DoBFszNswARLtTf4NIBDdqv3OHo4S4p5aYs6BdKESPIIREwAfBI7Z0A+d8BHqxwJGBMhHAR+Gl6AC5CNkkUHlQAWEihoxDfiDzs1OBbDQ0WGY349kGVP2ocUoVExHDago2mDk6rsfLQC2pLJsRSQc1HTQTU1EiYZYHag5U0qIGkNYRaJlsSAABwpagJgBiJFFCDcCvMtDO1RPwTh+NQiLEclJAwNFYMLgDU/2CyavnNjKGk4AxxoabyVo5pN2TBBRfAUEdwRxGMXaNrArUjsQ5Q26GFQLYF0wIWiNABwWBpnXWNtRGrzbTEhz4zwIrISYDXCXd9LgwrbiIR06LwOzFNriOpAxlRY516WhpSGqT+9i11aCKZDFA3kvFgA2ZxHpwjwHBgA7UeCcKHH8vgQIIDaAyFMH+AzKEIB2BsQCDBuzSuBMx/GRohiLQWJRnywFgRXMHSNLExIsMO6eiQDXTpoMMBWwgeEpcQtvFwGnnS0ICAZOBUUZw4vhmSQoQMGGAIhCh+oyICA0xDwCH/uADCNxSiyOE0AxxCwTQniNCIYwyAYMEyANDFQP8RCKAQAYQJWPBkBBb4QM2UicUozYw5TpPFkz0q9k0EH+zYQwos6mRIDac54kESUDxXoYXTLDUiAxMmoiUDXIo5zQ+KkMdVlwzMtyI1KByyJzmbaDDWAYcIYBsiBUzzIiJ79jnWpYiMRZuA1ISGgKTTvPDeNCpEgkQESXDIRqSTHlKpNJwakimN08ywyFgjHCjNCYncKI0Cp0qjqyMRgJGOA7D2lsisKSpya5fS4SqNdHR9aoiwDBB7qDSpMgIEhpn9MMNYzBpCqjQwQVsrjDJaG92u05B2SLaJXNftIQlMgwUjTHiaqCF/SZPuqLEa4q608VJLrzSMgipOvtN46+f/vIu8Mw0ThxBpcLPsPmspw1vKW22XESOALyL6WmyANAsMqggM1MhgSAnkHbwuA+2OrGfDF598ccorH9KyIR1kVqKSAVARgRff6JwwAgv/XLLDgU5DdGYUD2vIZ1OoqUgGLErDgQfTQKouNWUkUsQ0QShywzQeHHJBm1lLE6DEDGgLVKl8J8gIEd9UYNU0TxxiAjUW881A3gwkqOG1DzPQ673TbJEINUIi0BTlj1jRRQQslIUACVIBAAQiqctlQuuKrJA6ZF+nvpYirUuBCOqpJ9I6VbD/JPzwxBdv/PHIJ6/88sz/UlHzrYgCPSsYVGDC9KqYUMEbLRSAPSkFXPBGASAAOw==';
+    img.alt = 'Affirm';
+
+    var span = document.createElement('span');
+    span.className = 'footer-payment-icon';
+    span.style = "display:inline-flex;align-items:center";
+    span.appendChild(img);
+
+    var el = document.querySelector('.footer-payment-icons');
+    el.appendChild(span);
+})();
+</script>
+```
