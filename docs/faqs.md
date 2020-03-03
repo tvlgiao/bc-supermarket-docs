@@ -3171,3 +3171,25 @@ Enter the script below to **Scripts contents**:
 })();
 </script>
 ```
+
+
+
+## Hide "Subscribe to our newsletter" on the checkout page
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Checkout Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var css = document.createElement('style');
+    css.innerHTML = '#shouldSubscribe, #shouldSubscribe + label { display: none !important }';
+    document.head.appendChild(css);
+})();
+</script>
+```
