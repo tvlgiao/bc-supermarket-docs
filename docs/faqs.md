@@ -62,12 +62,23 @@ Add this custom CSS to **Storefront** > **Footer Script**:
 
 ## Hide the category images on category pages
 
-Add the code below to **Storefront** > **Footer Script**:
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
 
 ```html
-<style>
-.emthemesModez-categoryPage-mainImage { display: none !important }
-</style>
+<script>
+    (function() {
+        var css = document.createElement('style');
+        css.innerHTML = '.emthemesModez-categoryPage-mainImage { display: none !important }';
+        document.head.appendChild(css);
+    })();
+</script>
 ```
 
 
