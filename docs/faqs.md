@@ -3193,3 +3193,33 @@ Enter the script below to **Scripts contents**:
 })();
 </script>
 ```
+
+
+## Move Warranty tab to the last
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+    (function($) {
+        function ready($scope) {
+            $('.productView-description .tab--warranty, .productView-description #tab-warranty', $scope).each(function(i, el) {
+                $(el).appendTo($(el).parent());
+            });
+        }
+        ready();
+        $('body').on('loaded.instantload', function() {
+            ready();
+        });
+        $('body').on('loaded.quickview', function(event, product) {
+            ready($(product.$scope));
+        });
+    })(window.jQuerySupermarket);
+</script>
+```
