@@ -72,7 +72,7 @@ You can select the sections displayed on the homepage (maximum 11 sections) in *
 
 ![Furniture Featured Categories Section](img/sections/furniture-featured-categories-section.png)
 
-To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-furnisima-builder.papathemes.com/](https://bc-furnisima-builder.papathemes.com/)
 
 Chooes __Furniture Featured Categories__ tab, fill in the form and follow the instruction on that page to create banner.
 
@@ -83,7 +83,7 @@ Chooes __Furniture Featured Categories__ tab, fill in the form and follow the in
 
 ![Furniture Listlink Banner Right Section](img/sections/furniture-listlink-banner-right-section.png)
 
-To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-furnisima-builder.papathemes.com/](https://bc-furnisima-builder.papathemes.com/)
 
 Chooes __Furniture Listlink Banner Right__ tab, fill in the form and follow the instruction on that page to create banner.
 
@@ -94,7 +94,7 @@ Chooes __Furniture Listlink Banner Right__ tab, fill in the form and follow the 
 
 ![Furniture Listlink Banner Left Section](img/sections/furniture-listlink-banner-left-section.png)
 
-To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-furnisima-builder.papathemes.com/](https://bc-furnisima-builder.papathemes.com/)
 
 Chooes __Furniture Listlink Banner Left__ tab, fill in the form and follow the instruction on that page to create banner.
 
@@ -115,7 +115,7 @@ You can configure this section in **Theme Editor** > **Homepage** > **Daily Deal
 
 ![Furniture Banner Sale Section](img/sections/furniture-banner-sale-section.png)
 
-To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-furnisima-builder.papathemes.com/](https://bc-furnisima-builder.papathemes.com/)
 
 Chooes __Furniture Banner Sale__ tab, fill in the form and follow the instruction on that page to create banner.
 
@@ -226,7 +226,7 @@ To show Recent Posts section on **Home Page**, go to **Theme Editor** > **Homepa
 
 ![Furniture Top Brands Section](img/sections/furniture-top-brands-section.png)
 
-To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-furnisima-builder.papathemes.com/](https://bc-furnisima-builder.papathemes.com/)
 
 Chooes __Furniture Top Brands__ tab, fill in the form and follow the instruction on that page to create banner.
 
@@ -237,7 +237,7 @@ Chooes __Furniture Top Brands__ tab, fill in the form and follow the instruction
 
 ![Furniture Top Brands Section](img/sections/furniture-live-help-section.png)
 
-To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-furnisima-builder.papathemes.com/](https://bc-furnisima-builder.papathemes.com/)
 
 Chooes __Furniture Live Help__ tab, fill in the form and follow the instruction on that page to create banner.
 
@@ -248,7 +248,7 @@ Chooes __Furniture Live Help__ tab, fill in the form and follow the instruction 
 
 ![Furniture Support Info Section](img/sections/furniture-support-info-section.png)
 
-To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-furnisima-builder.papathemes.com/](https://bc-furnisima-builder.papathemes.com/)
 
 Chooes __Furniture Live Help__ tab, fill in the form and follow the instruction on that page to create banner.
 

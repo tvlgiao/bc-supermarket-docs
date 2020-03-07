@@ -24,7 +24,7 @@ You can select the sections displayed on the homepage (maximum 11 sections) in *
 
 ![Headphones Top Banner Section](img/sections/headphones-top-banner-section.png)
 
-To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-furnisima-builder.papathemes.com/](https://bc-furnisima-builder.papathemes.com/)
 
 Chooes __Headphones Top Banner__ tab, fill in the form and follow the instruction on that page to create banner.
 
@@ -50,7 +50,7 @@ Configure New Products, Featured Products, Bestselling Products showing on the h
 
 ![Headphones Banner Parallax Section](img/sections/headphones-banner-parallax-section.png)
 
-To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-furnisima-builder.papathemes.com/](https://bc-furnisima-builder.papathemes.com/)
 
 Chooes __Headphones Banner Parallax__ tab, fill in the form and follow the instruction on that page to create banner.
 
@@ -68,7 +68,7 @@ Configure New Products Sale Off showing on the home page in **Manage** > **Produ
 
 ![Headphones Banner Sale Section](img/sections/headphones-banner-sale-section.png)
 
-To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-furnisima-builder.papathemes.com/](https://bc-furnisima-builder.papathemes.com/)
 
 Chooes __Headphones Banner Sale__ tab, fill in the form and follow the instruction on that page to create banner.
 
@@ -99,7 +99,7 @@ You can manually specify which categories should be displayed by setting the cat
 
 ![Headphones Reviews Slider Section](img/sections/headphones-reviews-slider-section.png)
 
-To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-furnisima-builder.papathemes.com/](https://bc-furnisima-builder.papathemes.com/)
 
 Chooes __Headphones Reviews Slider__ tab, fill in the form and follow the instruction on that page to create banner.
 
@@ -115,7 +115,7 @@ To show Recent Posts section on **Home Page**, go to **Theme Editor** > **Homepa
 
 ![Headphones Support Info Section](img/sections/furniture-support-info-section.png)
 
-To edit content and images in this block, open the builder tool: [https://bc-feellio-builder.papathemes.com/](https://bc-feellio-builder.papathemes.com/)
+To edit content and images in this block, open the builder tool: [https://bc-furnisima-builder.papathemes.com/](https://bc-furnisima-builder.papathemes.com/)
 
 Chooes __Furniture Live Help__ tab, fill in the form and follow the instruction on that page to create banner.
 
