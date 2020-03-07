@@ -3223,3 +3223,68 @@ Enter the script below to **Scripts contents**:
     })(window.jQuerySupermarket);
 </script>
 ```
+
+## Limit number of sub categories in the mega menu with View All link
+
+![limit-subcategories-in-mega-menu](img/limit-subcategories-in-mega-menu.png)
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+    (function($) {
+        var MAX_ITEMS = 5;
+        var MORE_TEXT = 'View All';
+        var LESS_TEXT = 'Collapse';
+
+        
+        $('<style/>').html(''
+            + '@media (max-width: 800px) {'
+            + '.navPage-childList-item--more, .navPage-childList-item--less { display: none }'
+            + '}'
+            + '@media (min-width: 801px) {'
+            + '.navPage-childList-item--more a, .navPage-childList-item--less a { font-size: small; text-decoration: underline }'
+            + '.navPage-childList-item--more.is-open { display: none }'
+            + '.navPage-childList-item--more:not(.is-open) ~ .navPage-childList-item { display: none }'
+            + '}')
+            .appendTo('head');
+
+        function ready() {
+            $('.navPage-childList').each(function(i, el) {
+                var $el =  $(el);
+                if ($el.data('modShowMore')) {
+                    return;
+                }
+                $el.data('modShowMore', true);
+                if ($el.children().length > MAX_ITEMS) {
+                    $('<li class="navPage-childList-item navPage-childList-item--more"><a class="navPage-childList-action navPages-action" href="#">' + MORE_TEXT + '</a></li>')
+                        .insertAfter($el.children().eq(MAX_ITEMS));
+                    $('<li class="navPage-childList-item navPage-childList-item--less"><a class="navPage-childList-action navPages-action" href="#">' + LESS_TEXT + '</a></li>')
+                        .appendTo($el);
+
+                    var $toggle = $el.children('.navPage-childList-item--more, .navPage-childList-item--less');
+                    console.log($toggle.children('a'));
+                    $toggle.children('a').on('click', function(event) {
+                        event.preventDefault();
+                        $toggle.toggleClass('is-open');
+                    });
+                }
+            });
+        }
+        
+        $(document).ready(ready);
+        $('body').on('loaded.instantload', ready);
+    })(window.jQuerySupermarket);
+</script>
+```
+
+Edit `MAX_ITEMS`, `MORE_TEXT`, `LESS_TEXT` values to change the maximum number of subcategories to show, View All link text, and Collapse link text.
+
+
+
