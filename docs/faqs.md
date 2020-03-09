@@ -1147,6 +1147,28 @@ Enter the script below to **Scripts contents** and update `+11231231234` by your
 </script>
 ```
 
+## Add custom CSS to all pages
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = 'INSERT YOUR CUSTOM CSS HERE';
+    document.head.appendChild(style);
+})();
+</script>
+```
+
+
+
 ## Add custom CSS to Checkout Page
 
 Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
