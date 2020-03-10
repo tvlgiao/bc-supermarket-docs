@@ -1,4 +1,11 @@
-# Home Page
+<div class="alert alert-info">
+    <span class="glyphicon glyphicon-save" aria-hidden="true"></span> Login to <strong><a href="https://themestore.papathemes.com/bigcommerce" target="_blank">PapaThemes Store</a></strong> to download this child theme for free when you've already purchased Supermarket theme.
+</div>
+<div class="alert alert-warning">
+    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> This free child theme has limited techical support. We'll try to answer your questions about this theme, but we're not committed to answer all and fix all bugs of this theme.
+</div>
+
+# Sima Beauty Theme
 
 ## -- Sections Manager
 

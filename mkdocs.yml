@@ -29,5 +29,6 @@ markdown_extensions:
 - sane_lists
 - extra
 - fenced_code
+- admonition
 
 google_analytics: ['UA-241859-16', 'tvlgiao.github.io']

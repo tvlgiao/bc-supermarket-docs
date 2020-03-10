@@ -107,3 +107,64 @@ body > main.container {
 .wy-nav-content {
 	max-width: inherit;
 }
+
+
+/* https://github.com/mkdocs/mkdocs-bootswatch/blob/master/mkdocs_bootswatch/cosmo/css/base.css */
+
+/* Style the admonitions. */
+
+.admonition {
+    margin-bottom: 1rem;
+    border: 1px solid rgba(0,0,0,0.125);
+}
+
+.admonition > .admonition-title {
+    margin: 0;
+    padding: 0.75rem 1rem;
+    background: rgba(0,0,0,0.03);
+    border-bottom: 1px solid rgba(0,0,0,0.125);
+    font-size: 1rem;
+}
+
+.admonition > * {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.admonition > *:not(.admonition-title):first-of-type,
+.admonition > .admonition-title + * {
+    margin-top: 1rem;
+}
+
+.admonition > *:last-child {
+    margin-bottom: 1rem;
+}
+
+/* Style each kind of admonition. */
+
+.admonition.note, .admonition.note > .admonition-title {
+    border-color: #3db5d8;
+}
+
+.admonition.note > .admonition-title {
+    background: #5bc0de;
+    color: #fff;
+}
+
+.admonition.warning, .admonition.warning > .admonition-title {
+    border-color: #d08002;
+}
+
+.admonition.warning > .admonition-title {
+    background: #e99002;
+    color: #fff;
+}
+
+.admonition.danger, .admonition.danger > .admonition-title {
+    border-color: #ea2f10;
+}
+
+.admonition.danger > .admonition-title {
+    background: #f04124;
+    color: #fff;
+}
