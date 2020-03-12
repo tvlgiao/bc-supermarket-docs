@@ -3245,3 +3245,32 @@ Enter the script below to **Scripts contents**:
     })(window.jQuerySupermarket);
 </script>
 ```
+
+## Use flyout menu for certain categories
+
+If you are using the mega menu style but want to use the flyout menu for some categories, for example the second and third categories.
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function($) {
+    function ready() {
+        const $el = $('.navPages-list--categories').children(':nth-child(2), :nth-child(3)');
+        $el.find('.navPage-subMenu').addClass('navPage-subMenu--standard');
+        $el.find('.navPage-childList').addClass('navPage-childList--standard');
+    }
+    $(document).ready(ready);
+    $('body').on('loaded.instantload', ready);
+})(window.jQuerySupermarket);
+</script>
+```
+
+Edit `:nth-child(2), :nth-child(3)` for different categories.
+
