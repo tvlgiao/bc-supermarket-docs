@@ -3262,7 +3262,7 @@ Enter the script below to **Scripts contents**:
 <script>
 (function($) {
     function ready() {
-        const $el = $('.navPages-list--categories').children(':nth-child(2), :nth-child(3)');
+        var $el = $('.navPages-list--categories').children(':nth-child(2), :nth-child(3)');
         $el.find('.navPage-subMenu').addClass('navPage-subMenu--standard');
         $el.find('.navPage-childList').addClass('navPage-childList--standard');
     }
@@ -3273,4 +3273,26 @@ Enter the script below to **Scripts contents**:
 ```
 
 Edit `:nth-child(2), :nth-child(3)` for different categories.
+
+
+## Show Availability on the cart page and checkout page
+
+1. Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script data="application/json" id="PAPATHEMESSHOWAVAILABILITY_cartId" data-instantload-body-dynamic>{{{JSONstringify cart_id}}}</script>
+<script data="application/json" id="PAPATHEMESSHOWAVAILABILITY_cartItems" data-instantload-body-dynamic>{{{JSONstringify cart.items}}}</script>
+<script src="//papathemes.com/content/supermarket/addon.show-availability.js" async></script>
+```
+
+2. Create another script as the same but set:
+
+- **Select pages where script will be added** = `Checkout Page`
+
 
