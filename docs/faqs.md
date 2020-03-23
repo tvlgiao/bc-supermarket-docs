@@ -3299,7 +3299,9 @@ Enter the script below to **Scripts contents**:
 
 ## Display a custom message on the cart page
 
-Display a custom message on the cart page for a specific customer group. ![custom-message-on-cart-page](img/custom-message-on-cart-page.png)
+![custom-message-on-cart-page](img/custom-message-on-cart-page.png)
+
+Display a custom message on the cart page for a specific customer group.
 
 Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
 
