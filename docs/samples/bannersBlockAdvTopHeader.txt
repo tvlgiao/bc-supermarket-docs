@@ -1,5 +1,0 @@
-<div id="emthemesModezBannersBlockAdvTopHeader" class="banners emthemesModezBannersBlockAdvTopHeader">
-<div class="banner">
-{{ banner_content }}
-</div>
-</div>

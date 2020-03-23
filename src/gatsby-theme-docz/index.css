@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+
+[data-testid="main-container"] .container {
+    max-width: none;
+    padding: 0;
+}
+
+.alert .material-icons {
+    vertical-align: middle;
+}
+
+.playground-wapper [data-testid="playground"] {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.playground-wapper [data-testid="playground"] > div:first-child {
+    margin-top: 10px;
+}
+
+.playground-wapper [data-testid="playground"] > div:first-child > div:last-child {
+    bottom: auto;
+    top: -30px;
+}
+
+.playground-wapper [data-testid="playground"] > div:nth-child(2) {
+    border-top: 1px solid var(--theme-ui-colors-border,#CED4DE);
+}
+
+.card-header > * {
+    margin-bottom: 0;
+}
+
+.SupermarketMegaMenu .playground-wapper [data-testid="live-preview"] { max-height: 300px; overflow: auto }

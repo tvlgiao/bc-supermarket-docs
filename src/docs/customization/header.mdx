@@ -1,0 +1,179 @@
+---
+name: Header
+route: /customization/header
+menu: Customization
+---
+
+import {
+    LeftHeaderContentBuilderComponent,
+    RightHeaderContentBuilderComponent,
+    BannerBelowHeaderBuilderComponent,
+    ThreeBannersBelowHeaderBuilderComponent
+} from '@tvlgiao/bc-supermarket-builder-components'
+
+
+# Header
+
+## Header Styles
+
+Theme supports 3 different header styles:
+
+- Logo at left
+- Logo at center
+- Logo at right
+
+![Header Logo at left](../img/home1-header-left.png)
+
+![Header Logo at center](../img/home1-header-center.png)
+
+![Header Logo at right](../img/home1-header-right.png)
+
+To configure it, open the __Theme Editor__, scroll down to __Logo__ section, click to expand Logo options, choose __Logo position__ as you wish.
+
+![Change logo position](../img/change-logo-position.png)
+
+
+## Welcome Text
+
+![Welcome text](../img/home1-welcome-text.png)
+
+The welcome text can be showed in __Theme Editor__ > __Header__ > tick on __Show welcome text__
+
+![Toggle show/hide welcome text](../img/theme-editor-show-welcome-text.png)
+
+You can edit the text in the language file `lang/en.json` in __Edit Theme Files__:
+
+![Edit language for welcome text](../img/edit-language-welcome-text.png)
+
+
+
+## Phone Number & Store Address
+
+![Header info text](../img/home1-infobar.png)
+
+Your store address and phone number are pulled out from **Store Profile**. You can edit it in __Store Setup__ > __Store Profile__:
+
+![Edit Store Address and Phone](../img/edit-store-address-phone.png)
+
+
+## Promotion content on the header left
+
+![Promotion content on top left of header](../img/promo-text-on-top-left-header.png)
+
+To display the custom text at this position, go to **Theme Editor** > **Header**, tick on **Show custom content after welcome text**, save & publish:
+
+![Theme editor - show custom content after welcome text](../img/theme-editor-show-promo-text-on-top-left-header.png)
+
+Then create a new banner content in **Marketing** > **Banners** as below screenshot:
+
+![Edit banner Promo Text on top left of header](../img/edit-banner-promo-text-on-top-left-header.png)
+
+**Banner Content**: Click the **HTML** button to open **HTML Source Editor**.
+
+Use the editor below to generate HTML. Click **Export HTML** button, copy & paste the generated HTML to **HTML Source Editor**.
+
+<!-- <SupermarketTopHeaderBanner01 /> -->
+
+<LeftHeaderContentBuilderComponent />
+
+_**Note:** DO NOT remove `emthemesModezBannersBlockTopHeaderBanner01`._
+
+- **Show on Page**: `Search Results Page`
+- **Location**: `Top of Page`
+
+
+## Custom Links on the header right
+
+![Custom Links on Top Right of Header](../img/custom-links-on-top-right-header.png)
+
+To display the custom links at this position, go to **Theme Editor** > **Header** > **Top Bar**, tick on **Show extra links**, save & publish:
+
+![theme-editor-show-extra-links-topbar](../img/theme-editor-show-extra-links-topbar.png)
+
+Then create a new banner content in **Marketing** > **Banners** as showing below:
+
+![Edit banner custom links on top right of header](../img/edit-banner-topbar-custom-links.png)
+
+**Banner Content**: Click to the **HTML** button to open **HTML Source Editor**.
+
+Use the editor below to generate HTML. Click **Export HTML** button, copy & paste the generated HTML to **HTML Source Editor**.
+
+<!-- <SupermarketTopHeaderBanner02 /> -->
+
+<RightHeaderContentBuilderComponent />
+
+_**Note:** DO NOT remove `emthemesModezBannersBlockTopHeaderBanner02`._
+
+- **Show on Page**: `Search Results Page`
+- **Location**: `Top of Page`
+
+
+## Social Media Icons
+
+![Social media icons on header](../img/home1-header-social-icons.png)
+
+The social media icons group can be turned on/off in __Theme Editor__ > __Social Media Icons__ > __Placement__ > __Top/Right__:
+
+![Configure social icons on header](../img/theme-editor-social-icons-top.png)
+
+To configure your social media links, go to __Storefront Design__ > __Design Options__ > __Social Media__ section:
+
+![Edit social media links](../img/edit-social-media-icons.png)
+
+
+## Colors Customization
+
+To customize the header's colors, find the options showing below in Theme Editor:
+
+![Theme editor header](../img/theme-editor-header.png)
+
+
+
+## Banner below Header
+
+![banner below header](../img/home1-banner-below-header.png)
+
+You can enable this banner across all pages or on all other pages except Home Page in **Theme Editor** > **Banners** > **Banner after header**:
+
+![configure banner after header](../img/theme-editor-banner-after-header.png)
+
+
+
+After enabled, you can edit banner content by go to **Marketing** > **Banners**, click **Create a Banner** button. Input the fields as below:
+
+- __Banner Name__: whatever.
+- __Banner Content__: click the **HTML** button to open **HTML Source Editor**.
+
+Use the editor below to generate HTML. Click **Export HTML** button, copy & paste the generated HTML to **HTML Source Editor**.
+
+<BannerBelowHeaderBuilderComponent />
+
+Remember to choose other fields as below:
+
+- __Show on Page__: `Search Results Page`
+- __Visible__: Checked
+- __Location__: `Top of Page`
+
+
+
+
+## 3 offer banners below the header
+
+![3-offer-banners-below-header](../img/3-offer-banners-below-header.png)
+
+Go to **Theme Editor** > **Banners** > **Banner after header** > choose **Show on all pages**.
+
+Create a new banner in **Marketing** > **Banners**, In the content editor, click HTML button to open **HTML Source Editor**.
+
+Use the editor below to generate HTML. Click **Export HTML** button, copy & paste the generated HTML to **HTML Source Editor**.
+
+<ThreeBannersBelowHeaderBuilderComponent />
+
+Choose other fields as below:
+
+- __Show on Page__: `Search Results Page`
+- __Visible__: Checked
+- __Location__: `Top of Page`
+
+
+
