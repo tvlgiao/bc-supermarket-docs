@@ -1,5 +1,9 @@
 export default {
   title: 'BigCommerce Supermarket Theme Documentation',
+  ghPages: {
+    repo: 'https://github.com/tvlgiao/bc-supermarket-docs.git',
+    history: false,
+  },
   themeConfig: {
     // fontSizes: [10, 12, 14, 16, 20, 24, 32, 48],
     fontSizes: [10, 12, 14, 18, 24, 32, 48, 60],
@@ -50,5 +54,5 @@ export default {
     'FAQs',
     { name: 'Support', href: 'https://papathemes.kayako.com/conversation/new/1' }
   ],
-  ignore: ['README.md']
+  ignore: ['README.md'],
 }

@@ -3276,3 +3276,48 @@ Enter the script below to **Scripts contents**:
 - **Select pages where script will be added** = `Checkout Page`
 
 
+
+## Display a custom message on the cart page
+
+![custom-message-on-cart-page](img/custom-message-on-cart-page.png)
+
+Display a custom message on the cart page for a specific customer group.
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+{{#if customer.customer_group_name '===' 'YOUR CUSTOMER GROUP NAME'}}
+(function($) {
+    var css = document.createElement('style');
+    css.innerHTML = '.cart-customMessage {}';
+    document.head.appendChild(css);
+    var el = document.createElement('div');
+    el.setAttribute('class', 'cart-customMessage');
+    el.innerHTML = 'ADD YOUR CUSTOM MESSAGE HERE';
+    document.querySelector('[data-cart-totals]').appendChild(el);
+})();
+{{/if}}
+</script>
+```
+
+Edit:
+
+- `YOUR CUSTOMER GROUP NAME`: your customer group name
+- `ADD YOUR CUSTOM MESSAGE HERE`: your custom message
+
+If you want to display the message for all customers, remove 2 lines:
+
+```
+{{#if customer.customer_group_name '===' 'YOUR CUSTOMER GROUP NAME'}}
+...
+{{/if}}
+```
+
+

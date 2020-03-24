@@ -11,12 +11,17 @@
   "scripts": {
     "dev": "docz dev",
     "build": "docz build",
-    "serve": "docz serve"
+    "serve": "docz serve",
+    "deploy": "npm run build && babel-node gh-pages.js"
   },
   "dependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.0",
     "@tvlgiao/bc-supermarket-builder-components": "^0.1.6",
     "clone": "^2.1.2",
-    "docz": "latest",
+    "docz": "^2.2.0",
+    "gh-pages": "^2.2.0",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
