@@ -1,7 +1,7 @@
 {
   "name": "bigcommerce-supermarket-theme-documentation",
   "private": true,
-  "version": "2.0.0-rc.41",
+  "version": "1.0.1",
   "license": "MIT",
   "files": [
     "src/",
@@ -18,7 +18,7 @@
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.0",
-    "@tvlgiao/bc-supermarket-builder-components": "^0.1.6",
+    "@tvlgiao/bc-supermarket-builder-components": "^0.1.9",
     "clone": "^2.1.2",
     "docz": "^2.2.0",
     "gh-pages": "^2.2.0",
