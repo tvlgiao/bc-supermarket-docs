@@ -3338,3 +3338,40 @@ Enter the script below to **Scripts contents**:
 })(window.jQuerySupermarket);
 </script>
 ```
+
+## Improve web page's style for print
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+var style = document.createElement('style');
+style.innerHTML = ''
+    + '@media print {'
+    + 'body { padding: 0 }'
+    + '.header { position: static; box-shadow: none }'
+    + '.header .navUser-action[href^="tel:"] { position: absolute; top: -45px; right: 100px }'
+    + '.is-sticky { position: static }'
+    + '.is-sticky + .papathemes-stickymenu-placeholder { display: none }'
+    + '.emthemesModez-quickSearch--mobileOnly { display: none }'
+    + '.emthemesModez-mobile-collapse-content { max-height: none }'
+    + '.emthemesModez-mobile-collapse-handle { display: none }'
+    + '#scrollToTopFloatingButton { display: none }'
+    + '.productView-detailsWrapper:after { content: ""; display: block; clear:both }'
+    + '.productView-detailsWrapper .productView-beforeAlsoBought { display: block; }'
+    + '.productView-detailsWrapper .productView-images { width: 50%; }'
+    + '.productView-detailsWrapper .productView-details { width: 50%; float: right; }'
+    + '.productView-imageCarousel-main-item { max-width: 350px; max-height: 350px; margin: 0; }'
+    + '.page-sidebar { display: none }'
+    + '}';
+document.head.appendChild(style);
+})();
+</script>
+```
