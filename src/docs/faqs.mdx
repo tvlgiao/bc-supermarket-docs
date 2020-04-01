@@ -3375,3 +3375,32 @@ document.head.appendChild(style);
 })();
 </script>
 ```
+
+
+## Increase the header height and logo height on mobile
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+    var height = '70px';
+    var style = document.createElement('style');
+    style.innerHTML = ''
+        + '@media screen and (max-width: 800px) {'
+        + 'body { padding-top: ' + height + ' }'
+        + '.header { min-height: ' + height + ' }'
+        + '.header-logo-image-container:after { padding-bottom: ' + height + '}'
+        + '.header-logo-image, .header-logo-image-unknown-size { max-height: ' + height + ' }'
+        + '.navPages-container.is-open { padding-top: ' + height + ' }'
+        + '}';
+    document.head.appendChild(style);
+})();
+</script>
+```
