@@ -3407,3 +3407,60 @@ Enter the script below to **Scripts contents**:
 
 Edit line `var height = '70px';`, change `70px` by your desired height.
 
+
+
+## Display Pay by PO payment method for certain customers on the checkout page
+
+1. Login to your admin page, go to **Advanced Settings** > **Account Signup Form** > in **Account Signup Fields** tab, click **Create a New Field**.
+
+Enter **Field Name** = `Pay by PO Allowed` Allowed and List of **Values** = `Yes`.
+
+![add-customer-field-pay-by-po](img/add-customer-field-pay-by-po.png)
+
+2. Go to **Advanced Settings** > **Account Signup Form** > in **Address Fields** tab, click **Create a New Field**.
+
+Enter **Field Name** = `PO Number`.
+
+![create-po-number-custom-field](img/create-po-number-custom-field.png)
+
+3. Go to **Store Setup** > **Payments** > in **Offline Payment Methods** section, enable one of these offline payment methods.
+
+![enable-offline-payment-methods](img/enable-offline-payment-methods.png)
+
+Rename one of these offline payment methods to Pay by PO. For example, we will rename Money Order. Click on **Money Order Settings** tab, enter `Pay by PO` in **Display Name** field.
+
+![rename-money-order-to-pay-by-po](img/rename-money-order-to-pay-by-po.png)
+
+3. Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Checkout`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script data="application/json" id="PAPATHEMESPAYBYPO_cartId">{{{JSONstringify cart_id}}}</script>
+<script data="application/json" id="PAPATHEMESPAYBYPO_config">
+{
+    "customerFieldPayByPOLabel": "Pay by PO Allowed",
+    "customerFieldPayByPOValue": "Yes",
+    "payByPOPaymentMethodName": "Pay by PO",
+    "poNumberField": "PO Number"
+}
+</script>
+<script src="//cdn11.bigcommerce.com/s-c14n6tful3/content/paybypo/pay-by-po.public.js" async></script>
+```
+
+You can configure the field name and the payment method name but make sure it matches exactly and is case-sensitive:
+
+```json
+"customerFieldPayByPOLabel": "Pay by PO Allowed",
+"customerFieldPayByPOValue": "Yes",
+"payByPOPaymentMethodName": "Pay by PO",
+"poNumberField": "PO Number"
+```
+
+**Pay by PO** should show up when your customer logged in and has **Pay by PO Allowed** checked:
+
+![pay-by-po-payment-method](img/pay-by-po-payment-method.png)
