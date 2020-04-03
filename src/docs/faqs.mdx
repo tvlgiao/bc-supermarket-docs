@@ -299,39 +299,31 @@ body {
 **Note: Remove it when you launch your store.**
 
 
-## Display sub-category name below sub-category image
+## Display the sub-category name below the sub-category image
 
-By the default, the theme dipslays sub-category name over image. If you don't like this style, but want to display sub-category name under image, just add custom CSS code below into **Storefront** > **Footer Scripts**:
+By the default, the theme dipslays sub-category name over the category image. If you don't like this style, but want to display sub-category name under. 
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
 
 ```html
-<style>
-.papaSupermarket-subcategories-image {
-    height: 0;
-    padding-top: 100%;
-    text-align: center;
-    display: block;
-    position: relative;
-}
-.papaSupermarket-subcategories-image img {
-    max-height: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.papaSupermarket-subcategories-grid-item:hover img {
-    transform: translate(-50%, -50%) scale(1.2);
-}
-.papaSupermarket-subcategories-image + .papaSupermarket-subcategories-name {
-    position: static;
-    transform: none;
-    background-color: transparent;
-    display: block;
-    text-align: center;
-    padding-left: 0;
-    padding-right: 0;
-}
-</style>
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = ''
+    + '.papaSupermarket-subcategories-image { height: 0; padding-top: 100%; text-align: center; display: block; position: relative; }'
+    + '.papaSupermarket-subcategories-image img { max-height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }'
+    + '.papaSupermarket-subcategories-grid-item:hover img { transform: translate(-50%, -50%) scale(1.2); }'
+    + '.papaSupermarket-subcategories-image + .papaSupermarket-subcategories-name { position: static; transform: none; background-color: transparent; display: block; text-align: center; padding-left: 0; padding-right: 0; }'
+    + '';
+    document.head.appendChild(style);
+})();
+</script>
 ```
 
 ## Display entire product description on mobile
