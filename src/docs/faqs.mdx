@@ -3512,3 +3512,52 @@ Enter the script below to **Scripts contents**:
 })(window.jQuerySupermarket);
 </script>
 ```
+
+
+
+## Change Bulk Price table to Buy XX+ and Save $XX.XX each
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function($) {
+    function debounce(func, wait, immediate) {
+        var timeout;
+        return function() {
+            var context = this, args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    };
+    function main() {
+        $('.productView-bulkPricing-table').each(function(i, table) {
+            if (!$(table).data('modified')) {
+                $(table).data('modified', true);
+                $(table).find('tr').each(function(j, tr) {
+                    var $td;
+                    $td = $(tr).find('td').first();
+                    $td.html($td.html().replace(/(Buy [^\s]+).+$/i, '$1+'));
+                    $td = $(tr).find('td').last();
+                    $td.html($td.html().replace(/and get (.+) off/i, 'and SAVE $1 each'))
+                });
+            }
+        });
+    }
+    main();
+    (new MutationObserver(debounce(main, 300))).observe(document.body, { childList: true, subtree: true });
+})(window.jQuerySupermarket);
+</script>
+```
