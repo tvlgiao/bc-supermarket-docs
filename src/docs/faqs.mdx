@@ -1956,7 +1956,7 @@ Enter the script below to **Scripts contents**:
         $(document).ready(ready);
         $('body').on('loaded.instantload', ready);
 
-        $('<style />').html('.page-sidebar--right.custom { padding-left: 0; padding-right: 1.125rem }').appendTo('head');
+        $('<style />').html('.page-sidebar--right.custom { padding-left: 0; padding-right: 1.125rem } @media (min-width: 801px) { .page-sidebar--advancedSearch { width: 20% } }').appendTo('head');
     })(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
@@ -3464,3 +3464,59 @@ You can configure the field name and the payment method name but make sure it ma
 **Pay by PO** should show up when your customer logged in and has **Pay by PO Allowed** checked:
 
 ![pay-by-po-payment-method](img/pay-by-po-payment-method.png)
+
+
+## Tweak Brands Carousel to display more images on desktop and mobile
+
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function($) {
+    function main() {
+        $('[data-emthemesmodez-brand-carousel]')
+            .removeAttr('data-emthemesmodez-brand-carousel')
+            .slick({
+                dots: false,
+                infinite: false,
+                mobileFirst: true,
+                slidesToShow: 4,
+                slidesToScroll: 2,
+                responsive: [
+                    {
+                        breakpoint: 1260,
+                        settings: {
+                            slidesToScroll: 2,
+                            slidesToShow: 10
+                        }
+                    },
+                    {
+                        breakpoint: 800,
+                        settings: {
+                            slidesToScroll: 2,
+                            slidesToShow: 8
+                        }
+                    },
+                    {
+                        breakpoint: 550,
+                        settings: {
+                            slidesToScroll: 2,
+                            slidesToShow: 6
+                        }
+                    }
+                ]
+            });
+    }
+
+    main();
+    $('body').on('loaded.instantload', main);
+})(window.jQuerySupermarket);
+</script>
+```
