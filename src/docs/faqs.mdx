@@ -961,12 +961,16 @@ Enter the script below to **Scripts contents**:
 ```html
 <script>
 (function($) {
-    var $subpages = $('.page-sidebar .navList--aside .sidebarBlock--navList');
-    var $rightSidebar = $('<div class="page-sidebar page-sidebar--right"></div>');
-    if ($subpages.length > 0) {
-        $rightSidebar.append($subpages);
-        $('.page-sidebar').after($rightSidebar);
+    function load() {
+        var $subpages = $('.page-sidebar .navList--aside .sidebarBlock--navList:not(.sidebarBlock--brands)');
+        var $rightSidebar = $('<div class="page-sidebar page-sidebar--right"></div>');
+        if ($subpages.length > 0) {
+            $rightSidebar.append($subpages);
+            $('.page-sidebar').after($rightSidebar);
+        }
     }
+    load();
+    $('body').on('loaded.instantload', load);
 })(window.jQuerySupermarket || window.$);
 </script>
 ```
@@ -1550,7 +1554,7 @@ Enter the script below to **Scripts contents**:
                     stencilUtils.api.cart.applyCode(couponcode, function(error, response) {
                         Cookies.remove('couponcode');
                         if (window.location.pathname.match(/^\/cart\.php/)) {
-                            window.location.reload();
+                            window.location = '/cart.php';
                         }
                     });
                 }
@@ -3559,5 +3563,29 @@ Enter the script below to **Scripts contents**:
     main();
     (new MutationObserver(debounce(main, 300))).observe(document.body, { childList: true, subtree: true });
 })(window.jQuerySupermarket);
+</script>
+```
+
+## Make all categories and subcategories expanded by default on the sidebar
+
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+    (function($) {
+        function main() {
+            $('.sidebarBlock .navPages-list [data-collapsible]').not('.is-open').trigger('click');
+        }
+
+        $(document).ready(main);
+        $('body').on('loaded.instantload', main);
+    })(window.jQuerySupermarket);
 </script>
 ```
