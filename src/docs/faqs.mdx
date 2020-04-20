@@ -3606,6 +3606,7 @@ Enter the script below to **Scripts contents**:
     function css() {
         var style = document.createElement('style');
         style.innerHTML = '.papaSupermarket-pageType--page .page-sidebar { display: none !important }';
+        document.head.appendChild(style);
     }
 
     function main() {
@@ -3621,6 +3622,64 @@ Enter the script below to **Scripts contents**:
         debouncedMain();
         $('body').on('loaded.instantload', debouncedMain);
     });
+})(window.jQuerySupermarket);
+</script>
+```
+
+## Display content below product image
+
+![content-below-product-image](img/content-below-product-image.png)
+
+
+Edit your product, in **Description** field, click **HTML** button to open **HTML Source Editor**.
+
+Input your custom content HTML to display under the product image, wrap the custom content HTML by a DIV tag as below:
+
+```html
+<div data-below-image>
+... Your custom HTML here ...
+</div>
+```
+
+![edit-product-description-below-image](img/edit-product-description-below-image.png)
+
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function($) {
+    function css() {
+        var style = document.createElement('style');
+        style.innerHTML = '[data-below-image] { margin-top: 1.5rem }';
+        document.head.appendChild(style);
+    }
+
+    function main() {
+        $('.productView').each(function(i, el) {
+            $productView = $(el);
+            if (!$productView.data('descBelowImageLoaded')) {
+                $productView.data('descBelowImageLoaded', true);
+                $content = $productView.find('[data-below-image]');
+                $productView.find('.productView-images').first().append($content);
+            }
+        });
+    }
+
+    css();
+
+    $(document).ready(function() {
+        main();
+        $('body').on('loaded.instantload', main);
+        $('body').on('loaded.quickview', main);
+    });
+    
 })(window.jQuerySupermarket);
 </script>
 ```
