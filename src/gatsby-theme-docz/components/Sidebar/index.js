@@ -20,7 +20,7 @@ export const Sidebar = React.forwardRef((props, ref) => {
   }
   useEffect(() => {
     if (ref.current && currentDocRef.current) {
-      ref.current.scrollTo(0, currentDocRef.current.offsetTop)
+      ref.current.scrollTo && ref.current.scrollTo(0, currentDocRef.current.offsetTop) // Fix IE
     }
   }, [])
   return (

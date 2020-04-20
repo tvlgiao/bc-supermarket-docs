@@ -1,3 +1,6 @@
+import "react-app-polyfill/ie11";
+import "react-app-polyfill/stable";
+
 export default {
   title: 'BigCommerce Supermarket Theme Documentation',
   ghPages: {
