@@ -3591,7 +3591,7 @@ Enter the script below to **Scripts contents**:
 
 ## Hide the left sidebar for all static web pages
 
-- **Location on page** = `Header`
+- **Location on page** = `Footer`
 - **Select pages where script will be added** = `All Pages`
 - **Script type** = `Script`
 
@@ -3683,3 +3683,54 @@ Enter the script below to **Scripts contents**:
 })(window.jQuerySupermarket);
 </script>
 ```
+
+
+
+## Display a banner at bottom of all pages
+
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+    (function() {
+        var div = document.createElement('div');
+        div.className = 'container';
+        div.innerHTML = '<div data-emthemesmodez-remote-banner="emthemesModezBannersBlockBeforeFooter"></div>';
+        document.body.insertBefore(div, document.body.querySelector('footer.footer'));
+    })();
+</script>
+```
+
+Then create a new banner in **Marketing** > **Banners** > click **Create a Banner** button.
+
+In **Banner Content** field, click **HTML** button to open **HTML Source Editor**:
+
+Enter a example content below:
+
+```html
+<div class="emthemesModezBannersBlockBeforeFooter">
+
+<p>Example banner before footer displays on all pages:</p>
+<p><img src="//via.placeholder.com/800x80" alt="800x80" /></p>
+
+</div>
+```
+
+Freely edit your custom content inside `<div class="emthemesModezBannersBlockBeforeFooter"> ... </div>`.
+
+**IMPORTANT:** Other fields must be configured as below:
+
+- __Show on Page__: `Search Results Page`
+- __Visible__: Checked
+- __Location__: `Top of Page`
+
+
+
+
