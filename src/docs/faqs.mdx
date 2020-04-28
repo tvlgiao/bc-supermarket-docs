@@ -1760,7 +1760,7 @@ Enter the script below to **Scripts contents**:
 (function() {
     var el = document.createElement('link');
     el.rel = "stylesheet";
-    el.src = "/PATH-TO-YOUR-CSS-FILE/FILE-NAME.css";
+    el.href = "/PATH-TO-YOUR-CSS-FILE/FILE-NAME.css";
     document.head.appendChild(el);
 })();
 </script>
@@ -3686,6 +3686,74 @@ Enter the script below to **Scripts contents**:
 
 
 
+## Display custom content above product description
+
+![content-above-description](img/content-above-description.png)
+
+Edit your product, in **Description** field, click **HTML** button to open **HTML Source Editor**.
+
+Input your custom content HTML to display under the product image, wrap the custom content HTML by a DIV tag as below:
+
+```html
+<div data-above-description>
+    Your custom HTML here ...<br/>
+    Example:<br/>
+    <div class="_row">
+        <div class="_col"><img src="//via.placeholder.com/200x200" alt="200x200" /></div>
+        <div class="_col"><img src="//via.placeholder.com/200x200" alt="200x200" /></div>
+        <div class="_col"><img src="//via.placeholder.com/200x200" alt="200x200" /></div>
+        <div class="_col"><img src="//via.placeholder.com/200x200" alt="200x200" /></div>
+        <div class="_col"><img src="//via.placeholder.com/200x200" alt="200x200" /></div>
+    </div>
+</div>
+```
+
+![edit-content-above-description](img/edit-content-above-description.png)
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function($) {
+    function css() {
+        var style = document.createElement('style');
+        style.innerHTML = '[data-above-description] { margin-top: 1.5rem }'
+            + '[data-above-description] ._row { display: flex; justify-content: center }'
+            + '[data-above-description] ._col { padding: 0 .25rem }';
+        document.head.appendChild(style);
+    }
+
+    function main() {
+        $('.productView').each(function(i, el) {
+            $productView = $(el);
+            if (!$productView.data('contentAboveDescLoaded')) {
+                $productView.data('contentAboveDescLoaded', true);
+                $content = $productView.find('[data-above-description]').show();
+                $productView.find('.productView-description').first().before($content);
+            }
+        });
+    }
+
+    css();
+
+    $(document).ready(function() {
+        main();
+        $('body').on('loaded.instantload', main);
+        $('body').on('loaded.quickview', main);
+    });
+})(window.jQuerySupermarket);
+</script>
+```
+
+
+
+
 ## Display a banner at bottom of all pages
 
 
@@ -3730,7 +3798,6 @@ Freely edit your custom content inside `<div class="emthemesModezBannersBlockBef
 - __Show on Page__: `Search Results Page`
 - __Visible__: Checked
 - __Location__: `Top of Page`
-
 
 
 
