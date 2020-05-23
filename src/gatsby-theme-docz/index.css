@@ -33,3 +33,5 @@
 }
 
 .SupermarketMegaMenu .playground-wapper [data-testid="live-preview"] { max-height: 300px; overflow: auto }
+
+[data-testid="sidebar"] a[href*="/chiara"] { display: none !important }
