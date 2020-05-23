@@ -1186,20 +1186,24 @@ Enter the script below to **Scripts contents**:
             return;
         }
         var cart = xhr.responseJSON[0];
+        //console.log(cart);
         var lineItemQuantities = [
             cart.lineItems.physicalItems,
             cart.lineItems.digitalItems,
-            cart.lineItems.customItems,
+            cart.lineItems.customItems
         ].reduce(function(a, b) {
             return a.concat(b);
-        }).reduce(function(total, item) {
+        }, []).reduce(function(total, item) {
             return (typeof total == 'object' ? total.quantity : total) + (item.parentId ? 0 : item.quantity);
-        });
+        }, 0);
         var giftCertificateQuantity = cart.lineItems.giftCertificates.length;
         var quantity = lineItemQuantities + giftCertificateQuantity;
-        setTimeout(function() {
-        	$('body').trigger('cart-quantity-update', quantity);
-        }, 200);
+        //console.log(quantity);
+        if (isNaN(quantity)) {
+            setTimeout(function() {
+                $('body').trigger('cart-quantity-update', quantity);
+            }, 200);
+        }
     });
 })(window.jQuerySupermarket || window.jQuery);
 </script>
@@ -3564,6 +3568,110 @@ Enter the script below to **Scripts contents**:
 </script>
 ```
 
+
+## Improve Bulk Price table to display both price & percent and price changed when quantity updated
+
+![improve-bulk-price-table](img/improve-bulk-price-table.png)
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function($) {
+    function debounce(n,t,u){var e;return function(){var i=this,o=arguments,a=u&&!e;clearTimeout(e),e=setTimeout(function(){e=null,u||n.apply(i,o)},t),a&&n.apply(i,o)}}
+    function main() {
+        $('.productView-bulkPricing-table').each(function(i, table) {
+            var $table = $(table);
+            if ($table.data('modified')) {
+                return;
+            }
+            $table.data('modified', true);
+
+            var bulk = [];
+            var $price = $table.closest('.productView').find('[data-product-price-without-tax]').first().hide();
+            var $priceClone = $price.clone().insertAfter($price).addClass('_clone').show();
+            var $qty = $table.closest('.productView').find('[data-quantity-change] input');
+
+            $table.find('tr').each(function(j, tr) {
+                var $td;
+                $td = $(tr).find('td').first();
+
+                var item;
+                var m = $td.html().match(/([0-9]+).+([0-9]+|above)/);
+                if (m) {
+                    item = {
+                        min: Number(m[1]) || 0,
+                        max: m[2] !== 'above' ? Number(m[2]) : null
+                    };
+                }
+
+                $td.html($td.html().replace(/Buy ([0-9]+) - ([0-9]+)/i, '$1 - $2'));
+                $td.html($td.html().replace(/Buy ([0-9]+) or above/i, '$1+'));
+                
+                $td = $(tr).find('td').last();
+
+                m = $td.html().match(/([0-9]+)%/)
+                if (m && item) {
+                    item.percent = Number(m[1]);
+                    bulk.push(item);
+                }
+
+                $td.html($td.html().replace(/and get ([0-9]+)% off/i, '<span class="_price" data-percent="$1"></span> ($1% of each)'));
+            });
+
+            var updateBulkPrice = function() {
+                var priceTxt = $price.html();
+                var price = Number(priceTxt.replace(/[^0-9,.]/, ''));
+
+                $table.find('._price').each(function(j, el) {
+                    var $el = $(el);
+                    var bulkPrice = (price * (100 - Number($el.data('percent'))) / 100).toFixed(2);
+                    var bulkPriceTxt = priceTxt.replace(/[0-9.,]+/, bulkPrice);
+                    $el.html($price.html().replace(/[0-9.,]+/, bulkPrice));
+                });
+            };
+
+            var updatePrice = function() {
+                var qty = Number($qty.val());
+                for (var j = 0; j < bulk.length; j++) {
+                    if (qty >= bulk[j].min && (qty <= bulk[j].max || !bulk[j].max)) {
+                        var percent = bulk[j].percent;
+                        var priceTxt = $price.html();
+                        var price = Number(priceTxt.replace(/[^0-9,.]/, ''));
+                        var bulkPrice = (price * qty * (100 - percent) / 100).toFixed(2);
+                        var bulkPriceTxt = priceTxt.replace(/[0-9.,]+/, bulkPrice);
+                        $priceClone.html(bulkPriceTxt);
+                    }
+                }
+            }
+
+
+            var priceEl = $price.get(0);
+            (new MutationObserver(debounce(function() {
+                updatePrice();
+                updateBulkPrice();
+            }, 200))).observe(priceEl, { attributes: true, childList: true });
+            
+            $qty.on('change', updatePrice);
+            $table.closest('.productView').find('[data-quantity-change] button').on('click', updatePrice);
+
+            updateBulkPrice();
+        });
+    }
+
+    main();
+    (new MutationObserver(debounce(main, 300))).observe(document.body, { childList: true, subtree: true });
+})(window.jQuerySupermarket);
+</script>
+```
+
+
 ## Make all categories and subcategories expanded by default on the sidebar
 
 
@@ -3800,4 +3908,107 @@ Freely edit your custom content inside `<div class="emthemesModezBannersBlockBef
 - __Location__: `Top of Page`
 
 
+## Display category links and brand links manually in the footer
 
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function($) {
+    var categoryLinks = [
+        ['Electronics', '/electronics/'],
+        ['Electrical', '/electrical/'],
+        ['Hardware', '/hardware/'],
+        ['Hydraulic/Pneumatic', '/hydraulic-pneumatic/'],
+        ['Instrumentation', '/instrumentation-1/'],
+        ['Mechanical', '/mechanical/'],
+        ['Motor', '/motor/']
+    ];
+
+    var brandLinks = [
+        ['ALLEN-BRADLEY (ROCKWELL AUTOMATION INC)', '/allen-bradley-rockwell-automation-inc/'],
+        ['HONEYWELL INTERNATIONAL INC', '/honeywell-international-inc/'],
+        ['GE (GENERAL ELECTRIC CO)', '/ge-general-electric-co/'],
+        ['SIEMENS CORP', '/siemens-corp/'],
+        ['FANUC AMERICA CORP', '/fanuc-america-corp/'],
+        ['EATON', '/eaton/'],
+        ['GENERAL ELECTRIC', '/general-electric/'],
+        ['View All', '/brands/']
+    ];
+
+    $('.footer-info-col[data-section-type="footer-categories"] .footer-info-list').empty()
+        .append(function() {
+            return categoryLinks.map(function(item) {
+                return $('<li/>').append($('<a/>').attr('href', item[1]).html(item[0]));
+            });
+        });
+    $('.footer-info-col[data-section-type="footer-brands"] .footer-info-list').empty()
+        .append(function() {
+            return brandLinks.map(function(item) {
+                return $('<li/>').append($('<a/>').attr('href', item[1]).html(item[0]));
+            });
+        });
+})(window.jQuerySupermarket);
+</script>
+```
+
+Edit the category links in this variable:
+
+```js
+    var categoryLinks = [
+        ['Electronics', '/electronics/'],
+        ['Electrical', '/electrical/'],
+        ['Hardware', '/hardware/'],
+        ['Hydraulic/Pneumatic', '/hydraulic-pneumatic/'],
+        ['Instrumentation', '/instrumentation-1/'],
+        ['Mechanical', '/mechanical/'],
+        ['Motor', '/motor/']
+    ];
+```
+
+Edit the brand links in this variable:
+
+```js
+    var brandLinks = [
+        ['ALLEN-BRADLEY (ROCKWELL AUTOMATION INC)', '/allen-bradley-rockwell-automation-inc/'],
+        ['HONEYWELL INTERNATIONAL INC', '/honeywell-international-inc/'],
+        ['GE (GENERAL ELECTRIC CO)', '/ge-general-electric-co/'],
+        ['SIEMENS CORP', '/siemens-corp/'],
+        ['FANUC AMERICA CORP', '/fanuc-america-corp/'],
+        ['EATON', '/eaton/'],
+        ['GENERAL ELECTRIC', '/general-electric/'],
+        ['View All', '/brands/']
+    ];
+```
+
+
+
+## Fix product image not sticky properly on small screen 1024px
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = ''
+    + '@media (min-width: 801px) and (max-width: 1260px) {'
+    + '.productView:after { display: none; }'
+    + '.productView-descriptionWrapper { display: block; clear: both }'
+    + '}';
+    document.head.appendChild(style);
+})();
+</script>
+```
