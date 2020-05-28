@@ -3593,7 +3593,7 @@ Enter the script below to **Scripts contents**:
             }
             $table.data('modified', true);
 
-            var bulk = [];
+            var bulk = [{ min: 0, max: 0, percent: 0 }];
             var $price = $table.closest('.productView').find('[data-product-price-without-tax]').first().hide();
             var $priceClone = $price.clone().insertAfter($price).addClass('_clone').show();
             var $qty = $table.closest('.productView').find('[data-quantity-change] input');
@@ -3651,7 +3651,6 @@ Enter the script below to **Scripts contents**:
                 }
             }
 
-
             var priceEl = $price.get(0);
             (new MutationObserver(debounce(function() {
                 updatePrice();
@@ -3659,7 +3658,7 @@ Enter the script below to **Scripts contents**:
             }, 200))).observe(priceEl, { attributes: true, childList: true });
             
             $qty.on('change', updatePrice);
-            $table.closest('.productView').find('[data-quantity-change] button').on('click', updatePrice);
+            $table.closest('.productView').find('[data-quantity-change] button').on('click', debounce(updatePrice, 300));
 
             updateBulkPrice();
         });
@@ -4010,5 +4009,67 @@ Enter the script below to **Scripts contents**:
     + '}';
     document.head.appendChild(style);
 })();
+</script>
+```
+
+
+## Limit sub-categories shown on the left sidebar
+
+![limit-subcategories-on-the-sidebar](img/limit-subcategories-on-the-sidebar.png)
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+    (function($) {
+        var LIMIT = 10;
+
+        function css() {
+            var style = document.createElement('style');
+            style.innerHTML = '.navList-item._moreless:not(._active) ._less { display: none }'
+                + '.navList-item._moreless._active ._more { display: none }';
+            document.head.appendChild(style);
+        }
+
+        function main() {
+            $('#categories-navList').each(function(i, navListEl) {
+                var $navList = $(navListEl);
+                if ($navList.data('limitCategorySidebar')) {
+                    return;
+                }
+                $navList.data('limitCategorySidebar', true);
+
+                var $moreItems = $navList.children().eq(LIMIT).nextAll();
+                if ($moreItems.length > 0) {
+                    var $a = $('<a class="navList-action" href="#"><span class="_more">Show More</span><span class="_less">Show Less</span></a>');
+                    var $li = $('<li class="navList-item _moreless"></li>').append($a);
+
+                    $navList.append($li);
+                    $moreItems.hide();
+
+                    $a.on('click', function(event) {
+                        event.preventDefault();
+                        $li.toggleClass('_active');
+
+                        if ($li.hasClass('_active')) {
+                            $moreItems.show();
+                        } else {
+                            $moreItems.hide();
+                        }
+                    });
+                }
+            })
+        }
+
+        css();
+        main();
+        $('body').on('loaded.instantload', main);
+    })(window.jQuerySupermarket);
 </script>
 ```
