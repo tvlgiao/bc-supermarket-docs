@@ -36,6 +36,62 @@ To display the custom badges, enable **Custom Badges** option in **Theme Editor*
 
 ![edit product badges in custom fields](../img/edit-product-custom-badges.png)
 
+### Custom image badge
+
+![custom-image-badge](img/custom-image-badge.png)
+
+Enable **Custom Badges** option in **Theme Editor**.
+
+Upload a badge image in **Storefront** > **Image Manager**, for example: 
+
+![upload-badge-image-in-image-manager](img/upload-badge-image-in-image-manager.jpg)
+
+Then click on the image to open the image on a new browser tab. Copy the image file name from your browser address bar:
+
+![copy-badge-image-file-name](img/copy-badge-image-file-name.png)
+
+In this example, the image file name is `low-everyday-price.png`.
+
+Edit your product and create a custom field with name = `__badge` and value = `image:low-everyday-price.png` where `low-everyday-price.png` is the example image file name uploaded above.
+
+![edit-product-custom-image-badge](img/edit-product-custom-image-badge.png)
+
+Go to **Storefront** > **Script Manager**, click **Create a Script** button to insert the custom script.
+
+Enter:
+
+- **Name of script** = `Custom image product badge`
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store pages`
+- **Script category** = `Essential`
+- **Script type** = `Script`
+
+Enter **Script contents**:
+
+```html
+<script>
+(function($) {
+    function debounce(n,t,u){var e;return function(){var i=this,o=arguments,a=u&&!e;clearTimeout(e),e=setTimeout(function(){e=null,u||n.apply(i,o)},t),a&&n.apply(i,o)}}
+
+    function main() {
+        $('.sale-flag-side--custom:not(.imageBadgeLoaded)').each(function(i, el) {
+            var $el = $(el);
+            $el.addClass('imageBadgeLoaded');
+            var s = $el.text().trim();
+            if (s.indexOf('img:') === 0) {
+                var $img = $('<img/>')
+                    .attr('alt', s)
+                    .attr('src', s.replace('img:', '/product_images/uploaded_images/'));
+                $el.html('').append($img).css({ 'background-color': 'transparent', 'padding': '0' });
+            }
+        });
+    }
+
+    main();
+    (new MutationObserver(debounce(main, 300))).observe(document.body, { childList: true, subtree: true });
+})(window.jQuerySupermarket);
+</script>
+```
 
 
 ## Banners
