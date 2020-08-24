@@ -813,14 +813,25 @@ Add this custom script into **Storefront** > **Footer Scripts**:
 
 ## Display phone number on header on mobile
 
-Add this custom script into **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
-<style>
-@media(max-width:800px) {
-  .emthemesModez-header-topSection .navUser:last-child .navUser-section .navUser-item:last-child { display: block; margin-right: 50px; border: 0 } 
-}
-</style>
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = ''
+    + '@media(max-width:800px) {'
+    + '.emthemesModez-header-topSection .navUser:last-child .navUser-section .navUser-item:last-child { display: block; margin-right: 50px; border: 0 } '
+    + '}';
+    document.head.appendChild(style);
+})();
+</script>
 ```
 
 
@@ -4147,4 +4158,117 @@ Enter the script below to **Scripts contents**:
 
 Upload your badge image in Storefront > Image Manager. Replace `/product_images/uploaded_images/low-everyday-price.png` by your badge image URL.
 
+
+## DNS Prefetch and custom CSS for Page Speed Optimization
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+    (function() {
+        var css = document.createElement('style');
+        css.innerHTML = '.emthemesModez-sections-group { display: block; min-height: 150px }'
+        	+ '@media (max-width: 800px) { .heroCarousel-content { padding-top: 80px; padding-bottom: 100px } }';
+        document.head.appendChild(css);
+        
+        function addLink(rel, href, as, crossOrigin) {
+            var link = document.createElement('link');
+            link.rel = rel;
+            link.href = href;
+            if (crossOrigin) {
+                link.crossOrigin = crossOrigin;
+            }
+            if (as) {
+                link.as = as;
+            }
+            document.head.appendChild(link);
+        }
+        addLink('https://staticw2.yotpo.com', 'dns-prefetch preconnect', '', true);
+        addLink('https://ssl.google-analytics.com', 'dns-prefetch preconnect', '', true);
+        addLink('https://stats.g.doubleclick.net', 'dns-prefetch preconnect', '', true);
+        addLink('https://www.facebook.com', 'dns-prefetch preconnect', '', true);
+        addLink('https://connect.facebook.net', 'dns-prefetch preconnect', '', true);
+        addLink('https://www.google-analytics.com', 'dns-prefetch preconnect', '', true);
+
+        // Edit and uncomment below lines to preload the carousel first image
+        // addLink('https://cdn11.bigcommerce.com/s-5neyv67my8/images/stencil/1920w/carousel/13/fire_extinguishers_1.png?c=1', 'preload', 'image');
+        // addLink('https://cdn11.bigcommerce.com/s-5neyv67my8/images/stencil/980w/carousel/13/fire_extinguishers_1.png?c=1', 'preload', 'image');        // addLink('https://cdn11.bigcommerce.com/s-5neyv67my8/images/stencil/640w/carousel/13/fire_extinguishers_1.png?c=1', 'preload', 'image');
+        
+    })();
+</script>
+```
+
+## Align prices evenly on all product cards
+
+![Align product cards evenly](img/align-product-card-evenly.jpg)
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+var style = document.createElement('style');
+style.innerHTML = ''
++ '.card { display: grid; grid-template-columns: 100%; grid-template-rows: min-content auto }'
++ '.card-body { display: grid; grid-template-rows: auto min-content min-content min-content; }'
++ '.card-title { grid-row: 1 / 2; }'
++ '.card-text--brand { grid-row: 2 / 3; }'
++ '.card-text--price { grid-row: 3 / 4; }';
+document.head.appendChild(style);
+})();
+</script>
+```
+
+
+## Display asterisks (*) beside the required fields
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Checkout Page`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function($) {
+    function debounce(n,t,u){var e;return function(){var i=this,o=arguments,a=u&&!e;clearTimeout(e),e=setTimeout(function(){e=null,u||n.apply(i,o)},t),a&&n.apply(i,o)}}
+
+    function main() {
+        var els = document.querySelectorAll('.form-label.optimizedCheckout-form-label:first-child:not(._addedAsterisk)');
+        for (var i = 0; i < els.length; i++) {
+            var el = els[i];
+            el.classList.add('_addedAsterisk');
+            if (!el.querySelector('.optimizedCheckout-contentSecondary')) {
+                var span = document.createElement('span');
+                span.className = '_required';
+                span.innerHTML = '*';
+                span.title = 'Required';
+                el.appendChild(span);
+            }
+        }
+    }
+
+    main();
+    (new MutationObserver(debounce(main, 300))).observe(document.body, { childList: true, subtree: true });
+
+    var style = document.createElement('style');
+    style.innerHTML = '.form-label ._required { margin-left: .25rem; color: red }';
+    document.head.appendChild(style);
+})();
+</script>
+```
 
