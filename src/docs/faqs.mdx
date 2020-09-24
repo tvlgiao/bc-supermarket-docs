@@ -4272,3 +4272,114 @@ Enter the script below to **Scripts contents**:
 </script>
 ```
 
+## Show "you save" price = regular price - sale price
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function($) {
+    function debounce(n,t,u){var e;return function(){var i=this,o=arguments,a=u&&!e;clearTimeout(e),e=setTimeout(function(){e=null,u||n.apply(i,o)},t),a&&n.apply(i,o)}}
+
+    function main() {
+        $('.productView-price').each(function(i, el) {
+            var $el = $(el);
+            if ($el.hasClass('_fixedSavePrice')) {
+                return;
+            }
+            $el.addClass('_fixedSavePrice');
+
+            var $priceWithoutTax = $('[data-product-price-without-tax]', $el).first();
+            var $nonSalePriceWithoutTax = $('[data-product-non-sale-price-without-tax]', $el).first();
+            var $priceWithTax = $('[data-product-price-with-tax]', $el).first();
+            var $nonSalePriceWithTax = $('[data-product-non-sale-price-with-tax]', $el).first();
+            var $savingSection = $('.price-section--saving', $el);
+            var $saved = $('[data-product-price-saved]', $el);
+
+            const update = function() {
+                var priceWithoutTax = parseFloat($priceWithoutTax.text().replace(/[^0-9\.]/g, ''));
+                var nonSalePriceWithoutTax = parseFloat($nonSalePriceWithoutTax.text().replace(/[^0-9\.]/g, ''));
+                var savedPriceWithoutTax = (nonSalePriceWithoutTax - priceWithoutTax).toFixed(2);
+                var priceWithTax = parseFloat($priceWithTax.text().replace(/[^0-9\.]/g, ''));
+                var nonSalePriceWithTax = parseFloat($nonSalePriceWithTax.text().replace(/[^0-9\.]/g, ''));
+                var savedPriceWithTax = (nonSalePriceWithTax - priceWithTax).toFixed(2);
+                
+                if (savedPriceWithoutTax && !isNaN(savedPriceWithoutTax)) {
+                    $savingSection.show();
+                    $saved.html('$' + savedPriceWithoutTax);
+                } else if (savedPriceWithTax && !isNaN(savedPriceWithTax)) {
+                    $savingSection.show();
+                    $saved.html('$' + savedPriceWithTax);
+                } else {
+                    $savingSection.hide();
+                    $saved.html('');
+                }
+            };
+
+            update();
+
+            if ($priceWithoutTax.length > 0) {
+                (new MutationObserver(update)).observe($priceWithoutTax.get(0), { childList: true });
+            }
+            if ($nonSalePriceWithoutTax.length > 0) {
+                (new MutationObserver(update)).observe($nonSalePriceWithoutTax.get(0), { childList: true });
+            }
+            if ($priceWithTax.length > 0) {
+                (new MutationObserver(update)).observe($priceWithTax.get(0), { childList: true });
+            }
+            if ($nonSalePriceWithTax.length > 0) {
+                (new MutationObserver(update)).observe($nonSalePriceWithTax.get(0), { childList: true });
+            }
+            
+        });
+    }
+
+    main();
+    (new MutationObserver(debounce(main, 300))).observe(document.body, { childList: true, subtree: true });
+})(window.jQueryTheme || window.jQuerySupermarket);
+</script>
+```
+
+## Make the search form sticky on mobile
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+var style = document.createElement('style');
+style.innerHTML = '@media (max-width: 800px) {'
+    + 'body { padding-top: 115px }'
+    + '.emthemesModez-quickSearch--mobileOnly { position: fixed; top: 55px; width: 100%; z-index: 45; border-bottom: 1px solid #ddd }'
+    + '}';
+document.head.appendChild(style);
+})();
+</script>
+```
+
+## Display Bulk Pricing table on every product cards
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script src="//papathemes.com/content/supermarket/addon.product-card-bulk-price.js" async></script>
+```
+
