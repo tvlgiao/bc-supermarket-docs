@@ -3605,72 +3605,62 @@ Enter the script below to **Scripts contents**:
                 return;
             }
             $table.data('modified', true);
-
             var bulk = [{ min: 0, max: 0, percent: 0 }];
             var $price = $table.closest('.productView').find('[data-product-price-without-tax]').first().hide();
             var $priceClone = $price.clone().insertAfter($price).addClass('_clone').show();
             var $qty = $table.closest('.productView').find('[data-quantity-change] input');
-
             $table.find('tr').each(function(j, tr) {
                 var $td;
                 $td = $(tr).find('td').first();
-
                 var item;
-                var m = $td.html().match(/([0-9]+).+([0-9]+|above)/);
+                var m = $td.text().match(/([0-9]+).+([0-9]+|above)/);
                 if (m) {
                     item = {
                         min: Number(m[1]) || 0,
                         max: m[2] !== 'above' ? Number(m[2]) : null
                     };
                 }
-
                 $td.html($td.html().replace(/Buy ([0-9]+) - ([0-9]+)/i, '$1 - $2'));
                 $td.html($td.html().replace(/Buy ([0-9]+) or above/i, '$1+'));
                 
                 $td = $(tr).find('td').last();
-
-                m = $td.html().match(/([0-9]+)%/)
+                m = $td.text().match(/([0-9]+)%/)
                 if (m && item) {
                     item.percent = Number(m[1]);
                     bulk.push(item);
                 }
-
                 $td.html($td.html().replace(/and get ([0-9]+)% off/i, '<span class="_price" data-percent="$1"></span> ($1% of each)'));
             });
-
             var updateBulkPrice = function() {
-                var priceTxt = $price.html();
-                var price = Number(priceTxt.replace(/[^0-9,.]/, ''));
-
+                var priceTxt = $price.text();
+                var price = Number(priceTxt.replace(/[^0-9,.]/g, ''));
                 $table.find('._price').each(function(j, el) {
                     var $el = $(el);
                     var bulkPrice = (price * (100 - Number($el.data('percent'))) / 100).toFixed(2);
                     var bulkPriceTxt = priceTxt.replace(/[0-9.,]+/, bulkPrice);
-                    $el.html($price.html().replace(/[0-9.,]+/, bulkPrice));
+                    $el.html($price.text().replace(/[0-9.,]+/, bulkPrice));
                 });
             };
-
             var updatePrice = function() {
                 var qty = Number($qty.val());
                 for (var j = 0; j < bulk.length; j++) {
                     if (qty >= bulk[j].min && (qty <= bulk[j].max || !bulk[j].max)) {
                         var percent = bulk[j].percent;
-                        var priceTxt = $price.html();
-                        var price = Number(priceTxt.replace(/[^0-9,.]/, ''));
+                        var priceTxt = $price.text();
+                        var price = Number(priceTxt.replace(/[^0-9,.]/g, ''));
                         var bulkPrice = (price * qty * (100 - percent) / 100).toFixed(2);
                         var bulkPriceTxt = priceTxt.replace(/[0-9.,]+/, bulkPrice);
                         $priceClone.html(bulkPriceTxt);
                     }
                 }
             };
-
             var showBulkOptions = function() {
                 var $field = $('<div class="form-field form-field--bulk"></div>');
                 $field.append('<label class="form-label form-label--alternate form-label--inlineSmall">Bulk savings</label>');
                 for (var j = 1; j < bulk.length; j++) {
                     var percent = bulk[j].percent;
-                    var priceTxt = $price.html();
-                    var price = Number(priceTxt.replace(/[^0-9,.]/, ''));
+                    var priceTxt = $price.text();
+                    var price = Number(priceTxt.replace(/[^0-9,.]/g, ''));
                     var bulkPrice = (price * (100 - percent) / 100).toFixed(2);
                     var bulkPriceTxt = priceTxt.replace(/[0-9.,]+/, bulkPrice);
                     var uid = uniqid();
@@ -3682,7 +3672,6 @@ Enter the script below to **Scripts contents**:
                    $qty.val($(event.target).val()).trigger('change');
                 });
             };
-
             var priceEl = $price.get(0);
             (new MutationObserver(debounce(function() {
                 updatePrice();
@@ -3692,14 +3681,12 @@ Enter the script below to **Scripts contents**:
             
             $qty.on('change', updatePrice);
             $table.closest('.productView').find('[data-quantity-change] button').on('click', debounce(updatePrice, 300));
-
             updateBulkPrice();
             showBulkOptions();
         });
     }
     main();
     (new MutationObserver(debounce(main, 300))).observe(document.body, { childList: true, subtree: true });
-
     var style = document.createElement('style');
     style.innerHTML = '.productView-options .form-field--bulk .form-option-variant { text-align: center }'
         + '.productView-options .form-field--bulk ._price { display: block; font-weight: bold }';
@@ -4382,4 +4369,68 @@ Enter the script below to **Scripts contents**:
 ```html
 <script src="//papathemes.com/content/supermarket/addon.product-card-bulk-price.js" async></script>
 ```
+
+
+## Hide Additional Information tab on PDP when it is empty
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+    var el = document.querySelector('.productView-addition-table');
+    if (el && el.innerText.trim() === '') {
+        document.querySelector('.tab-title[href="#tab-addition"]').style = 'display:none !important';
+        document.querySelector('#tab-addition').style = 'display:none !important';
+    }
+})();
+</script>
+```
+
+## Install Google Survey Opt-In script to the order confirmation page
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Order Confirmation`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<!-- BEGIN GCR Opt-in Module Code -->
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.5.0/dist/fetch.umd.min.js" defer></script>
+<script src="https://apis.google.com/js/platform.js?onload=renderOptIn" async defer></script>
+<script>    
+    window.renderOptIn = function() {
+        window.gapi.load('surveyoptin', function() {
+            var orderId = '{{checkout.order.id}}';
+            fetch('/api/storefront/orders/' + orderId).then(function(resp) {
+                return resp.json();
+            }).then(function(data) {
+                var email = data.billingAddress.email;
+                var countryCode = data.billingAddress.countryCode;
+                var deliveryDate = (new Date((new Date()).getTime() + 86400000)).toISOString().split('T')[0];
+                window.gapi.surveyoptin.render(
+                {
+                    "merchant_id": "123456789",
+                    "order_id": orderId,
+                    "email": email,
+                    "delivery_country": countryCode,
+                    "estimated_delivery_date": deliveryDate,
+                });
+            });
+        });
+    }
+</script>
+<!-- END GCR Opt-in Module Code -->
+```
+
+Replace the Merchant ID in line `"merchant_id": "123456789",` by yours.
 
