@@ -150,23 +150,33 @@ Add the code below to Footer Script:
 
 ## Display tooltip when hover Compare button on product items
 
-Add custom code below into **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
-<style>
-.card-figcaption-button--compare:hover:after {
-    content: 'Compare';
-    position: absolute;
-    padding: 4px 8px;
-    background: #fff;
-    display: inline-block;
-    font-size: 12px;
-    color: #666666;
-    bottom: calc(100% + 4px);
-    right: 0;
-    text-indent: 0;
-}
-</style>
+<script>
+    (function() {
+        var css = document.createElement('style');
+        css.innerHTML = '.card-figcaption-button--compare:hover:after {'
+        + 'content: "Compare";'
+        + 'position: absolute;'
+        + 'padding: 4px 8px;'
+        + 'background: #fff;'
+        + 'display: inline-block;'
+        + 'font-size: 12px;'
+        + 'color: #666666;'
+        + 'bottom: calc(100% + 4px);'
+        + 'right: 0;'
+        + 'text-indent: 0;'
+        + '}';
+        document.head.appendChild(css);
+    })();
+</script>
 ```
 
 
@@ -650,16 +660,27 @@ $(function() {
 
 ## Make all product card items in carousel (Related Products, Customer Also Viewed) same height
 
-Add this custom CSS into **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
 
 ```html
-<style>
-.productCarousel .slick-track { display: flex; align-items: stretch; }
-.productCarousel .slick-track:before,
-.productCarousel .slick-track:after { display: none; }
-.productCarousel .slick-slide { height: auto; }
-.productCarousel .card { min-height: 100%; }
-</style>
+<script>
+    (function() {
+        var css = document.createElement('style');
+        css.innerHTML = ''
+            + '.productCarousel .slick-track { display: flex; align-items: stretch; }'
+            + '.productCarousel .slick-track:before,'
+            + '.productCarousel .slick-track:after { display: none; }'
+            + '.productCarousel .slick-slide { height: auto; }'
+            + '.productCarousel .card { min-height: 100%; }'
+        ;document.head.appendChild(css);
+    })();
+</script>
 ```
 
 
@@ -771,30 +792,52 @@ Add this custom script into **Storefront** > **Footer Scripts**:
 
 ## Add background image to header
 
-Add this custom script into **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
 
 ```html
-<style>
-@media (min-width: 801px) {
-.emthemesModez-header-userSection { background-image: url('https://cdn8.bigcommerce.com/s-tlt0fnmxln/product_images/uploaded_images/lpgshop-logo.png?t=1535516377'); background-repeat: no-repeat; background-position: left center; background-size: contain }
-.header .header-logo-text { opacity: 0 }
-}
-</style>​​​​​​​​​​​​
+<script>
+    (function() {
+        var css = document.createElement('style');
+        css.innerHTML = ''
+            + '@media (min-width: 801px) {'
+            + '.emthemesModez-header-userSection { background-image: url("https://cdn8.bigcommerce.com/s-tlt0fnmxln/product_images/uploaded_images/lpgshop-logo.png?t=1535516377"); background-repeat: no-repeat; background-position: left center; background-size: contain }'
+            + '.header .header-logo-text { opacity: 0 }'
+            + '}'
+        ;document.head.appendChild(css);
+    })();
+</script>
 ```
-
 
 ## Always show Add to Cart button on product cards
 
-Add this custom script into **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
 
 ```html
-<style>
-.productCarousel .card-buttons, .productGrid .card-buttons { opacity: 1; clip: auto; visibility: visible }
-.card-figcaption { opacity: 1 }
-.card-figcaption-button.quickview { opacity: 0 }
-.card:hover .card-figcaption-button.quickview { opacity: 1 }
-</style>
+<script>
+    (function() {
+        var css = document.createElement('style');
+        css.innerHTML = ''
+            + '.productCarousel .card-buttons, .productGrid .card-buttons { opacity: 1; clip: auto; visibility: visible }'
+            + '.card-figcaption { opacity: 1 }'
+            + '.card-figcaption-button.quickview { opacity: 0 }'
+            + '.card:hover .card-figcaption-button.quickview { opacity: 1 }'
+        ;document.head.appendChild(css);
+    })();
+</script>
 ```
+
 
 ## Show Add to Cart button at the bottom of product card item
 
@@ -912,14 +955,25 @@ From version 4.2, we added an option to support show/hide popular brands in the 
 
 ## Show all thumbnails as grid in product detail pages
 
-Add the custom code below to **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
 
 ```html
-<style>
-.productView-imageCarousel-nav .slick-track { transform: none !important; width: 100% !important; }
-.productView-imageCarousel-nav-item { width: calc(25% - 10px) !important; margin: 5px !important; }
-.productView-imageCarousel-nav .slick-arrow { display: none }
-</style>
+<script>
+    (function() {
+        var css = document.createElement('style');
+        css.innerHTML = ''
+            + '.productView-imageCarousel-nav .slick-track { transform: none !important; width: 100% !important; }'
+            + '.productView-imageCarousel-nav-item { width: calc(25% - 10px) !important; margin: 5px !important; }'
+            + '.productView-imageCarousel-nav .slick-arrow { display: none }'
+        ;document.head.appendChild(css);
+    })();
+</script>
 ```
 
 
@@ -1642,18 +1696,28 @@ Go to **Storefront** > **Footer Script**, insert the custom script below:
 
 ## Display phone number on the header on mobile
 
-Go to **Storefront** > **Footer Script**, insert the custom script below:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
 
 ```html
-<style>
-@media (max-width:800px) {
-  .emthemesModez-header-topSection .navUser:last-child { position: absolute; left: 0; top: 55px; width: 100%; transform: none }
-  .emthemesModez-header-topSection .navUser:last-child .navUser-section { display: block; float: none;  }
-  .emthemesModez-header-topSection .navUser:last-child .navUser-item:last-child { display:block;  text-align: center; width: 100%; background: black; height: 34px; }
-  body { padding-top: 89px }
-}
-</style>
+<script>
+    (function() {
+        var css = document.createElement('style');
+        css.innerHTML = ''
+            + '.emthemesModez-header-topSection .navUser:last-child { position: absolute; left: 0; top: 55px; width: 100%; transform: none }'
+            + '.emthemesModez-header-topSection .navUser:last-child .navUser-section { display: block; float: none;  }'
+            + '.emthemesModez-header-topSection .navUser:last-child .navUser-item:last-child { display:block;  text-align: center; width: 100%; background: black; height: 34px; }'
+            + 'body { padding-top: 89px }'
+        ;document.head.appendChild(css);
+    })();
+</script>
 ```
+
 
 ## Translate language in Optimized Checkout Page and Order Confirmation Page without editing theme files.
 
@@ -1736,29 +1800,27 @@ Enter the script below to **Scripts contents**:
 
 ![custom-css-pagination](img/custom-css-pagination.png)
 
-Add the custom CSS below to **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
 
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
 
 ```html
-<style>
-.pagination-item .pagination-link {
-  font-size: 16px;
-  font-weight: bold;
-  min-width: 40px;
-}
-
-.pagination-item,
-.pagination-item.pagination-item--current {
-  border-color: #f0790b;
-  border-radius: 4px;
-}
-.pagination-item--current .pagination-link,
-.pagination-item--current .pagination-link:hover{
-  background: #f0790b;
-  color: #fff;
-}
-</style>
+<script>
+    (function() {
+        var css = document.createElement('style');
+        css.innerHTML = ''
+        + '.pagination-item .pagination-link { font-size: 16px; font-weight: bold; min-width: 40px; }'
+        + '.pagination-item, .pagination-item.pagination-item--current { border-color: #f0790b; border-radius: 4px; }'
+        + '.pagination-item--current .pagination-link, .pagination-item--current .pagination-link:hover { background: #f0790b; color: #fff; }'
+        ;document.head.appendChild(css);
+    })();
+</script>
 ```
+
 
 ## Add the external CSS file to your theme
 
@@ -1835,15 +1897,26 @@ Enter the script below to **Scripts contents**:
 
 ## Move Add to Cart button in Recently Viewed Products not overlap the price
 
-Add the CSS script below to **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
 
 ```html
-<style>
-@media (min-width: 801px) {
-  .listItem-body { padding-bottom: 40px !important }
-  .listItem-buttons { min-width: 200px; left: auto !important; right: 0 !important }
-}
-</style>
+<script>
+    (function() {
+        var css = document.createElement('style');
+        css.innerHTML = ''
+            + '@media (min-width: 801px) {'
+            + '.listItem-body { padding-bottom: 40px !important }'
+            + '.listItem-buttons { min-width: 200px; left: auto !important; right: 0 !important }'
+            + '}'
+        ;document.head.appendChild(css);
+    })();
+</script>
 ```
 
 
