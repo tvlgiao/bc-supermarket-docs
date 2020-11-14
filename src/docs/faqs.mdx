@@ -3607,6 +3607,65 @@ Enter the script below to **Scripts contents**:
 
 
 
+## Tweaks Brands Carousel autoplay
+
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function($) {
+    function main() {
+        $('[data-emthemesmodez-brand-carousel]')
+            .removeAttr('data-emthemesmodez-brand-carousel')
+            .slick({
+                dots: false,
+                infinite: true,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                mobileFirst: true,
+                slidesToShow: 4,
+                slidesToScroll: 2,
+                responsive: [
+                    {
+                        breakpoint: 1260,
+                        settings: {
+                            slidesToScroll: 2,
+                            slidesToShow: 5
+                        }
+                    },
+                    {
+                        breakpoint: 800,
+                        settings: {
+                            slidesToScroll: 2,
+                            slidesToShow: 5
+                        }
+                    },
+                    {
+                        breakpoint: 550,
+                        settings: {
+                            slidesToScroll: 2,
+                            slidesToShow: 3
+                        }
+                    }
+                ]
+            });
+    }
+
+    main();
+    $('body').on('loaded.instantload', main);
+})(window.jQuerySupermarket);
+</script>
+```
+
+
+
 ## Change Bulk Price table to Buy XX+ and Save $XX.XX each
 
 Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
@@ -4506,4 +4565,20 @@ Enter the script below to **Scripts contents**:
 ```
 
 Replace the Merchant ID in line `"merchant_id": "123456789",` by yours.
+
+
+
+## Fix page auto scrolled down when opened
+
+Currently there is a problem with Facebook SDK which causes anonymous user cannot view your Facebook page for example: https://www.facebook.com/AlFlahertys/
+screenshot: http://prntscr.com/vj2vko and the page automatically scrolled down to the Facebook Chat Box.
+
+To fix this issue, please try to disable Facebook Chat Box in **Theme Editor** > **Social Media Icons** > **Facebook page**, Clear your facebook page name.
+Screenshot: http://prntscr.com/vj3gk2
+
+
+
+
+
+
 
