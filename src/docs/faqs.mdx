@@ -4571,8 +4571,24 @@ To fix this issue, please try to disable Facebook Chat Box in **Theme Editor** >
 Screenshot: http://prntscr.com/vj3gk2
 
 
+## Fix blog post alignment issue in version 4.8.0
 
 
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
 
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
 
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = '@media (min-width: 551px) { .papaSupermarket-pageType--blog .blog + .blog { margin-top: 0; padding-top: 0 } .papaSupermarket-pageType--blog .blog + .blog + .blog { padding-top: 1.5rem } }';
+    document.head.appendChild(style);
+})();
+</script>
+```
 
