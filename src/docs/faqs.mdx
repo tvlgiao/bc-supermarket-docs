@@ -1709,10 +1709,12 @@ Enter the script below to **Scripts contents**:
     (function() {
         var css = document.createElement('style');
         css.innerHTML = ''
+            + '@media (max-width: 800px) {'
             + '.emthemesModez-header-topSection .navUser:last-child { position: absolute; left: 0; top: 55px; width: 100%; transform: none }'
             + '.emthemesModez-header-topSection .navUser:last-child .navUser-section { display: block; float: none;  }'
             + '.emthemesModez-header-topSection .navUser:last-child .navUser-item:last-child { display:block;  text-align: center; width: 100%; background: black; height: 34px; }'
             + 'body { padding-top: 89px }'
+            + '}'
         ;document.head.appendChild(css);
     })();
 </script>
@@ -4549,7 +4551,7 @@ Enter the script below to **Scripts contents**:
                     "order_id": orderId,
                     "email": email,
                     "delivery_country": countryCode,
-                    "estimated_delivery_date": deliveryDate,
+                    "estimated_delivery_date": deliveryDate
                 });
             });
         });
@@ -4559,6 +4561,62 @@ Enter the script below to **Scripts contents**:
 ```
 
 Replace the Merchant ID in line `"merchant_id": "123456789",` by yours.
+
+
+## Install Pinterest Tag code to the checkout page
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Order Confirmation`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+!function(e){if(!window.pintrk){window.pintrk=function()
+{window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
+n=window.pintrk;n.queue=[],n.version="3.0";var
+t=document.createElement("script");t.async=!0,t.src=e;var
+r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}} ("https://s.pinimg.com/ct/core.js");
+</script>
+<script>
+window.initPintrkCheckout = function() {
+    var orderId = '{{checkout.order.id}}';
+    fetch('/api/storefront/orders/' + orderId).then(function(resp) {
+        return resp.json();
+    }).then(function(data) {
+        pintrk('load','2613413106157', { em: data.billingAddress.email, });
+        pintrk('page');
+        pintrk('track', 'checkout',{
+            value: data.orderAmount,
+            order_quantity: data.lineItems.physicalItems.reduce(function(_total, item) {
+                return _total + item.quantity;
+            }, 0),
+            order_id: orderId,
+            currency: data.currency.code,
+            line_items: data.lineItems.physicalItems.map(function(item) {
+                return {
+                    product_name: item.name,
+                    product_id: String(item.productId),
+                    product_price: item.salePrice, // or item.listPrice
+                    product_quantity: item.quantity
+                }
+            })
+        });
+    });
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.5.0/dist/fetch.umd.min.js" defer onload="window.initPintrkCheckout()"></script>
+```
+
+Replace `2613413106157` by your own Instagram Tag ID.
+
+Reference:
+
+- https://developers.pinterest.com/docs/ad-tools/conversion-tag/
+- https://help.pinterest.com/en/business/article/bigcommerce-and-pinterest-tag
 
 
 
@@ -4589,6 +4647,125 @@ Enter the script below to **Scripts contents**:
     style.innerHTML = '@media (min-width: 551px) { .papaSupermarket-pageType--blog .blog + .blog { margin-top: 0; padding-top: 0 } .papaSupermarket-pageType--blog .blog + .blog + .blog { padding-top: 1.5rem } }';
     document.head.appendChild(style);
 })();
+</script>
+```
+
+
+## Display a search icon on mobile
+
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+![Display search icon on mobile](img/display-search-icon-on-mobile.jpg)
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function($) {
+    $('<style></style>').html(''
+        + '@media (max-width: 800px) {'
+        + '.navUser-section { display: flex }'
+        + '.navUser-item--search { display: block }'
+        + '.navUser-item--search .navUser-action { font-size: 22px; padding: 0; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin-right: 10px; }'
+        + '.emthemesModez-header-topSection .navUser:last-child { margin-right: 85px }'
+        + '.emthemesModez-quickSearch--mobileOnly { position: fixed; left: 0; right: 0; top: 55px; z-index: 55 }'
+        + '.emthemesModez-quickSearch--mobileOnly:not(.is-open) { display: none }'
+        + '}'
+        + '@media (min-width: 801px) {'
+        + '.navUser-item--search { display: none }'
+        + '}'
+    ).appendTo('head');
+    $('.navUser-item--cart').before('<li class="navUser-item navUser-item--search"><a class="navUser-action" href="/search.php" title="Search"><i class="emthemesModez-icon-search3" aria-hidden="true"></i></a></li>');
+    $('.navUser-item--search .navUser-action').on('click', function(event) {
+        event.preventDefault();
+        var $el = $('.emthemesModez-quickSearch--mobileOnly');
+        $el.toggleClass('is-open');
+        if ($el.hasClass('is-open')) {
+            $el.find('input[name=search_query]').focus();
+        }
+    });
+})(window.jQuerySupermarket);
+</script>
+```
+
+
+## Display GeoTrust, Norton, McAfee seals on the checkout page
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Checkout Page`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script type="text/plain" id="checkout_seal_custom_css">
+    .supermarket-checkout-seal-geotrust,
+    .supermarket-checkout-seal-norton,
+    .supermarket-checkout-seal-mcafee {
+        display: block;
+        margin: 0 auto .75rem;
+        max-width: 150px;
+    }
+    
+    .supermarket-checkout-seal-geotrust {
+    	margin-top: 1.5rem;
+    }
+</script>
+<script>
+    (function() {
+        var GEOTRUST = 'https://cdn11.bigcommerce.com/s-ldjnqtv2io/product_images/uploaded_images/geotrust-250.png?t=1608291287';
+        var NORTON = 'https://cdn11.bigcommerce.com/s-ldjnqtv2io/product_images/uploaded_images/nortonseal-238.png?t=1608291287';
+        var MCAFEE = 'https://cdn11.bigcommerce.com/s-ldjnqtv2io/product_images/uploaded_images/mcafee-250.png?t=1608291288';
+
+        function debounce(n,t,u){var e;return function(){var i=this,o=arguments,a=u&&!e;clearTimeout(e),e=setTimeout(function(){e=null,u||n.apply(i,o)},t),a&&n.apply(i,o)}}
+
+        function css() {
+            var style = document.createElement('style');
+            style.innerHTML = document.getElementById('checkout_seal_custom_css').innerHTML;
+            document.head.appendChild(style);
+        }
+
+        function main() {
+            function observe() {
+                var asideEl = document.querySelector('.layout-cart:not(._checkoutSealLoaded)');
+                if (asideEl) {
+                    asideEl.classList.add('_checkoutSealLoaded');
+
+                    var img;
+
+                    img = document.createElement('img');
+                    img.src = GEOTRUST;
+                    img.alt = 'GeoTrust';
+                    img.classList.add('supermarket-checkout-seal-geotrust');
+                    asideEl.appendChild(img);
+
+                    img = document.createElement('img');
+                    img.src = NORTON;
+                    img.alt = 'Norton';
+                    img.classList.add('supermarket-checkout-seal-norton');
+                    asideEl.appendChild(img);
+
+                    img = document.createElement('img');
+                    img.src = MCAFEE;
+                    img.alt = 'McAfee';
+                    img.classList.add('supermarket-checkout-seal-mcafee');
+                    asideEl.appendChild(img);
+                }
+            }
+
+            var mo = new MutationObserver(debounce(observe, 300));
+            mo.observe(document.body, { childList: true, subtree: true });
+            observe();
+        }
+
+        css();
+        main();
+    })();
 </script>
 ```
 
