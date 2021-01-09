@@ -4583,27 +4583,72 @@ r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}} ("
 </script>
 <script>
 window.initPintrkCheckout = function() {
+    var graphqlToken = '{{settings.storefront_api.token}}';
     var orderId = '{{checkout.order.id}}';
     fetch('/api/storefront/orders/' + orderId).then(function(resp) {
         return resp.json();
     }).then(function(data) {
-        pintrk('load','2613413106157', { em: data.billingAddress.email, });
-        pintrk('page');
-        pintrk('track', 'checkout',{
-            value: data.orderAmount,
-            order_quantity: data.lineItems.physicalItems.reduce(function(_total, item) {
-                return _total + item.quantity;
-            }, 0),
-            order_id: orderId,
-            currency: data.currency.code,
-            line_items: data.lineItems.physicalItems.map(function(item) {
-                return {
-                    product_name: item.name,
-                    product_id: String(item.productId),
-                    product_price: item.salePrice, // or item.listPrice
-                    product_quantity: item.quantity
+        var productIds = data.lineItems.physicalItems.map(function(item) {
+            return item.productId;
+        });
+        fetch('/graphql', {
+            method: 'POST',
+            body: JSON.stringify({
+                query: `
+                    query {
+                        site {
+                            products (entityIds: ${JSON.stringify(productIds)}) {
+                                edges {
+                                    node {
+                                        entityId
+                                        categories {
+                                            edges {
+                                                node {
+                                                    entityId
+                                                    name
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                `
+            }),
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${graphqlToken}`
+            }
+        }).then(function(resp) {
+            return resp.json();
+        }).then(function(productsData) {
+            var categoryByProductId = productsData.data.site.products.edges.reduce(function(_categoryByProductId, edge) {
+                if (edge.node.categories.edges.length > 0) {
+                    _categoryByProductId[edge.node.entityId] = edge.node.categories.edges[0].node.name;
                 }
-            })
+                return _categoryByProductId;
+            }, {});
+            pintrk('load','INSTAGRAM_TAG_ID', { em: data.billingAddress.email });
+            pintrk('page');
+            pintrk('track', 'checkout',{
+                value: data.orderAmount,
+                order_quantity: data.lineItems.physicalItems.reduce(function(_total, item) {
+                    return _total + item.quantity;
+                }, 0),
+                order_id: orderId,
+                currency: data.currency.code,
+                line_items: data.lineItems.physicalItems.map(function(item) {
+                    return {
+                        product_name: item.name,
+                        product_id: String(item.productId),
+                        product_price: item.salePrice, // or item.listPrice
+                        product_quantity: item.quantity,
+                        product_category: categoryByProductId[item.productId] || ''
+                    }
+                })
+            });
         });
     });
 };
@@ -4611,7 +4656,7 @@ window.initPintrkCheckout = function() {
 <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.5.0/dist/fetch.umd.min.js" defer onload="window.initPintrkCheckout()"></script>
 ```
 
-Replace `2613413106157` by your own Instagram Tag ID.
+Replace `INSTAGRAM_TAG_ID` by your own Instagram Tag ID.
 
 Reference:
 
