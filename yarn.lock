@@ -2044,10 +2044,10 @@
   dependencies:
     prop-types "^15.6.2"
 
-"@tvlgiao/bc-supermarket-builder-components@^0.1.14":
-  version "0.1.14"
-  resolved "https://npm.pkg.github.com/download/@tvlgiao/bc-supermarket-builder-components/0.1.14/a7b7c4dff2c23a88a9a28ed37938aa8c20fb6e7cf55bcb2ce4af78bebde50a32#8d70c1a257a90469b9096640619dca6a31c7171a"
-  integrity sha512-57JWBaV5VqqW0AmNRblGdR3YfdFxmTc/Phnm+r3bSSn5Y21P+A/qfaZrBBEygBwm2b0JOJcjdKMBlEKyBkpS2Q==
+"@tvlgiao/bc-supermarket-builder-components@^0.1.15":
+  version "0.1.15"
+  resolved "https://npm.pkg.github.com/download/@tvlgiao/bc-supermarket-builder-components/0.1.15/74541fd53614cb6c465d5bdbe32aa61c7cd7b68710ee57a8fada3b5cddd5af87#8d81e08e878d8c8c6978e289ec6c5d70059e6ac1"
+  integrity sha512-475+FQ2GvDGgcMSEAUUwwe3QSFRYeOeVQcRmlndNqg06ndEFtym4rUMjVbAcMu6XigVDNTZA4oAUgSzt+xRsPA==
   dependencies:
     "@tinymce/tinymce-react" "^3.5.0"
     lodash "^4.17.15"
