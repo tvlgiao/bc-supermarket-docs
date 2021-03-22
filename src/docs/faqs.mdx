@@ -1694,7 +1694,7 @@ Go to **Storefront** > **Footer Script**, insert the custom script below:
 ```
 
 
-## Display phone number on the header on mobile
+## Display phone number below the header on mobile
 
 Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
 
@@ -3526,11 +3526,12 @@ Rename one of these offline payment methods to Pay by PO. For example, we will r
 Enter the script below to **Scripts contents**: 
 
 ```html
-<script data="application/json" id="PAPATHEMESPAYBYPO_cartId">{{{JSONstringify cart_id}}}</script>
-<script data="application/json" id="PAPATHEMESPAYBYPO_config">
+<script type="application/json" id="PAPATHEMESPAYBYPO_cartId">{{{JSONstringify cart_id}}}</script>
+<script type="application/json" id="PAPATHEMESPAYBYPO_config">
 {
     "customerFieldPayByPOLabel": "Pay by PO Allowed",
     "customerFieldPayByPOValue": "Yes",
+    "allowCustomerGroup": "",
     "payByPOPaymentMethodName": "Pay by PO",
     "poNumberField": "PO Number"
 }
@@ -3541,10 +3542,17 @@ Enter the script below to **Scripts contents**:
 You can configure the field name and the payment method name but make sure it matches exactly and is case-sensitive:
 
 ```json
-"customerFieldPayByPOLabel": "Pay by PO Allowed",
-"customerFieldPayByPOValue": "Yes",
-"payByPOPaymentMethodName": "Pay by PO",
-"poNumberField": "PO Number"
+    /** Empty to display for everyone */
+    "customerFieldPayByPOLabel": "Pay by PO Allowed",
+    "customerFieldPayByPOValue": "Yes",
+    /** If customerFieldPayByPOLabel empty, check check customer groups from this parameter. Seperated by commas. */
+    "allowCustomerGroup": "",
+    "payByPOPaymentMethodName": "Pay by PO",
+    "poNumberField": "PO Number"
+    "paymentMethodItemSelector": ".checkout-form .form-checklist-item",
+    "paymentMethodNameSelector": ".paymentProviderHeader-name",
+    "displayFirst": true,
+    "selectByDefault": false,
 ```
 
 **Pay by PO** should show up when your customer logged in and has **Pay by PO Allowed** checked:
@@ -4741,6 +4749,8 @@ Enter the script below to **Scripts contents**:
 
 ## Display GeoTrust, Norton, McAfee seals on the checkout page
 
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
 - **Location on page** = `Footer`
 - **Select pages where script will be added** = `Checkout Page`
 - **Script type** = `Script`
@@ -4814,3 +4824,225 @@ Enter the script below to **Scripts contents**:
 </script>
 ```
 
+
+
+## Fix Search in Category form overlaps the widget banner on mobile
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script type="text/plain" id="theme_custom_css_7a2ebf16511edf48">
+    @media (max-width: 800px) {
+        .papaSupermarket-pageType--category .page-content { position: relative; }
+        .categoryPage-searchInCategory-form.noFaceted.noDesc { position: absolute; top: 0; width: calc(100vw - 60px); }
+    }
+</script>
+<script>
+    (function() {
+        var style = document.createElement('style');
+        style.innerHTML = document.getElementById('theme_custom_css_7a2ebf16511edf48').innerHTML;
+        document.head.appendChild(style);
+    })();
+</script>
+```
+
+## Improve Cookie Consent banner appearance
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script type="text/plain" id="theme_custom_css_462afd41f4a3bc05">
+#consent-manager {
+  left: 80px !important;
+  right: 80px !important;
+  bottom: 20px !important;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+}
+#consent-manager p {
+  font-size: 12px;
+}
+#consent-manager button {
+  height: auto;
+  padding: 8px;
+  font-size: 12px;
+}
+#consent-manager button:first-child {
+  margin-left: 0;
+}
+
+#consent-manager > div > div {
+  padding: 8px;
+}
+#consent-manager > div > div > div {
+  margin-top: -8px !important;
+}
+
+#consent-manager > div > div > div > div {
+  margin-top: 8px;
+}
+
+@media (min-width: 801px) {
+  #consent-manager {
+    left: 150px !important;
+    right: 150px !important;
+  }
+  #consent-manager > div > div {
+    padding-left: 16px;
+  }
+}
+
+#consent-manager-update-banner {
+    position: static !important;
+    height: auto !important;
+}
+</script>
+<script>
+    (function() {
+        var style = document.createElement('style');
+        style.innerHTML = document.getElementById('theme_custom_css_462afd41f4a3bc05').innerHTML;
+        document.head.appendChild(style);
+    })();
+</script>
+```
+
+### Center and bigger popup on desktop:
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script type="text/plain" id="theme_custom_css_6d3189e10293c9de">
+#consent-manager {
+  left: 80px !important;
+  right: 80px !important;
+  bottom: 20px !important;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+}
+#consent-manager p {
+  font-size: 12px;
+}
+#consent-manager button {
+  height: auto;
+  padding: 8px;
+  font-size: 12px;
+}
+#consent-manager button:first-child {
+  margin-left: 0;
+}
+
+#consent-manager > div > div {
+  padding: 8px;
+}
+#consent-manager > div > div > div {
+  margin-top: -8px !important;
+}
+
+#consent-manager > div > div > div > div {
+  margin-top: 8px;
+}
+
+#consent-manager-update-banner {
+    position: static !important;
+    height: auto !important;
+}
+
+@media (min-width: 801px) {
+  #consent-manager {
+    width: 650px;
+    margin: auto;
+    top: 50%;
+    bottom: auto !important;
+    transform: translateY(-50%);
+    
+    
+  }
+  #consent-manager p {
+    font-size: 16px
+  }
+  #consent-manager button {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+  #consent-manager > div > div {
+    padding: 8px 32px 32px; 
+  }
+  #consent-manager > div > div > div > div {
+    margin-top: 24px;
+  }
+}
+
+</script>
+<script>
+    (function() {
+        var style = document.createElement('style');
+        style.innerHTML = document.getElementById('theme_custom_css_6d3189e10293c9de').innerHTML;
+        document.head.appendChild(style);
+    })();
+</script>
+```
+
+
+## Display Coupon / Gift Certificate box and on the checkout page
+
+```html
+<script type="text/plain" id="checkout_custom_css_fa54d0f8486ce216">
+    .optimizedCheckout-form-input[name="redeemableCode"] {
+        border: 2px solid #476bef;
+    }
+</script>
+<script>
+    (function() {
+        function debounce(n,t,u){var e;return function(){var i=this,o=arguments,a=u&&!e;clearTimeout(e),e=setTimeout(function(){e=null,u||n.apply(i,o)},t),a&&n.apply(i,o)}}
+
+        function css() {
+            var style = document.createElement('style');
+            style.innerHTML = document.getElementById('checkout_custom_css_fa54d0f8486ce216').innerHTML;
+            document.head.appendChild(style);
+        }
+
+        function main() {
+            function observe() {
+                var els = document.querySelectorAll('.redeemable-label:not(._checkoutCouponBoxLoaded)');
+                for (var i = 0; i < els.length; i++) {
+                    var el = els[0];
+                    el.classList.add('_checkoutCouponBoxLoaded');
+                    if (!el.parentNode.querySelector('[data-test="redeemable-collapsable"]')) {
+                        el.click();
+                    }
+                }
+            }
+
+            var mo = new MutationObserver(debounce(observe, 300));
+            mo.observe(document.body, { childList: true, subtree: true });
+            debounce(observe, 1000)();
+        }
+
+        css();
+        main();
+    })();
+</script>
+```
+
+## Display AfterPay "or 4 interest-free installments" message
+
+Folow this guide: https://developers.afterpay.com/afterpay-online/docs/javascript-library
+
+
+## Display Klarna "4 interest-free payments of" on-site message
+
+Reference: https://developers.klarna.com/documentation/on-site-messaging/customization/
