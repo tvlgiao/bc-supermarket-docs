@@ -5050,7 +5050,7 @@ Reference: https://developers.klarna.com/documentation/on-site-messaging/customi
 
 ## Display all cart items in the dropdown cart preview
 
-Edit file **templates/components/common/cart-preview.html**, change line: `{{#each (limit cart.items 4)}}` to `{{#each cart.items 4}}`.
+Edit file **templates/components/common/cart-preview.html**, change line: `{{#each (limit cart.items 4)}}` to `{{#each cart.items}}`.
 
 Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
 
