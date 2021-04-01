@@ -5046,3 +5046,26 @@ Folow this guide: https://developers.afterpay.com/afterpay-online/docs/javascrip
 ## Display Klarna "4 interest-free payments of" on-site message
 
 Reference: https://developers.klarna.com/documentation/on-site-messaging/customization/
+
+
+## Display all cart items in the dropdown cart preview
+
+Edit file **templates/components/common/cart-preview.html**, change line: `{{#each (limit cart.items 4)}}` to `{{#each cart.items 4}}`.
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- Location on page = `Footer`
+- Select pages where script will be added = `All Pages`
+- Script type = `Script`
+
+Enter the script below to Scripts contents:
+
+```html
+<script>
+(function() {
+var style = document.createElement('style');
+style.innerHTML = '.previewCartList { display: block; max-height: calc(100vh - 200px); overflow: auto; }';
+document.head.appendChild(style);
+})();
+</script>
+```
