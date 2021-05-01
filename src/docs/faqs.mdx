@@ -10,15 +10,28 @@ route: /faqs
 
 ![Limit number of lines of product name on product grids](img/limit-product-name-lines.png)
 
-Add this custom CSS to **Storefront** > **Footer Script**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```css
-<style>
+<script id="theme_custom_css_cef1288b7b7e1fac">
 .card-title {
     max-height: 3.75rem;
     overflow: hidden;
 }
-</style>
+</script>
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_cef1288b7b7e1fac').innerHTML;
+    document.head.appendChild(style);
+})();
+</script>
 ```
 
 It will limit maximum 3 lines. Set `max-height: 2.5rem` to limit maximum 2 lines.
@@ -26,14 +39,27 @@ It will limit maximum 3 lines. Set `max-height: 2.5rem` to limit maximum 2 lines
 
 ## Hide category name on category page
 
-Add this custom CSS to **Storefront** > **Footer Script**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```css
-<style>
+<script id="theme_custom_css_7b6c1f362f735ab5">
 .papaSupermarket-page--pages-category .page-heading--desktopOnly {
     display: none;
 }
-</style>
+</script>
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_7b6c1f362f735ab5').innerHTML;
+    document.head.appendChild(style);
+})();
+</script>
 ```
 
 ## Hide the category images on category pages
@@ -95,10 +121,16 @@ Delete 2 line as screenshot below:
 
 ## Make main image & thumbnails on product details page uniform
 
-Add the code below to Footer Script:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
-<style>
+<script id="theme_custom_css_ac2423c77b8d0206">
 .productView-imageCarousel-nav-item.slick-slide {
     position: relative;
 }
@@ -144,7 +176,14 @@ Add the code below to Footer Script:
     transform: translateX(-50%);
     max-height: 100%;
 }
-</style>
+</script>
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_ac2423c77b8d0206').innerHTML;
+    document.head.appendChild(style);
+})();
+</script>
 ```
 
 
@@ -224,18 +263,31 @@ Replace  `https://placehold.it/500x500` by your "Coming Soon" image URL.
 
 ## How to show "Coming Soon" default product image on product page?
 
-Display: "Coming Soon" image on product page by adding the code in **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
-{{#unless product.main_image}}
-<style>
+<script id="theme_custom_css_ad518d0a007a0be2">
 .productView-images { background: url(https://placehold.it/500x500) no-repeat center center; background-size: auto; padding-top: 100%; height: 0; }
     
 @media (min-width: 801px) {
 .productView-images { padding-top: 50%; }
 }
-</style>
+</script>
+<script>
+{{#unless product.main_image}}
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_ad518d0a007a0be2').innerHTML;
+    document.head.appendChild(style);
+})();
 {{/unless}}​
+</script>
 ```
 
 Replace  `https://placehold.it/500x500` by your "Coming Soon" image URL.
@@ -243,10 +295,16 @@ Replace  `https://placehold.it/500x500` by your "Coming Soon" image URL.
 
 ## Move maintenance notice box to top of page
 
-Add the code below into **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
-<style>
+<script id="theme_custom_css_8a47a1451ed693c2">
 body {
     padding-top: 10rem;
 }
@@ -303,7 +361,14 @@ body {
 .maintenanceNotice > a {
     padding-left: 1.5rem;
 }
-</style>
+</script>
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_8a47a1451ed693c2').innerHTML;
+    document.head.appendChild(style);
+})();
+</script>
 ```
 
 **Note: Remove it when you launch your store.**
@@ -342,10 +407,19 @@ To optimize for mobile view, product description are collapse by default. Tap on
 
 ![product description on mobile](img/product-description-on-mobile.png)
 
-If you want to display entire product description by default, add the custom code below into **Storefront** > **Footer Scripts**:
+If you want to display entire product description by default, 
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
 
 ```html
-<style>
+<script id="theme_custom_css_bacb3edbb02b3fdd">
 @media (max-width: 800px) {
     .productView-description-tabContent.emthemesModez-mobile-collapse-content {
         max-height: none;
@@ -356,7 +430,14 @@ If you want to display entire product description by default, add the custom cod
         display: none;
     }
 }
-</style>
+</script>
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_bacb3edbb02b3fdd').innerHTML;
+    document.head.appendChild(style);
+})();
+</script>
 ```
 
 ## Move reviews tab next to description tab on product page
@@ -398,10 +479,18 @@ Edit file `templates\pages\product.html`, delete the code as showing below:
 ## Move brands list underneath products list on Brand page
 
 
-If you want to display brands list under products list on brand page, add the custom CSS below into **Storefront** > **Footer Scripts**:
+If you want to display brands list under products list on brand page, 
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
-<style>
+<script id="theme_custom_css_33271177168f914f">
 @media (max-width: 800px) {
   .papaSupermarket-page--pages-brand .page {
     display: flex;
@@ -427,12 +516,25 @@ If you want to display brands list under products list on brand page, add the cu
     width: 280px;
   }
 }
-</style>
+</script>
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_33271177168f914f').innerHTML;
+    document.head.appendChild(style);
+})();
+</script>
 ```
 
 ## Move bottom banner to under brand title on brand page
 
-Insert the custom script below into **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
 <script>
@@ -462,7 +564,13 @@ Insert the custom script below into **Storefront** > **Footer Scripts**:
 
 ## Move bottom banner up above product tabs
 
-Insert the custom script below into **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
 <script>
@@ -526,62 +634,95 @@ Insert the code below into **Scripts Manager**, Checkout page, footer location:
 
 ## Hide Sale badge for logged in users
 
-Insert the custom script below into **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
 
 ```html
-<!-- Hide sale label for logged in users -->
+<script id="theme_custom_css_e73470ed35aef4e8">
+.sale-flag-side:not(.sale-flag-side--custom) {
+    display: none;
+}
+</script>
+<script>
 {{#if customer}}
-    <style>
-        .sale-flag-side:not(.sale-flag-side--custom) {
-            display: none;
-        }
-    </style>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_e73470ed35aef4e8').innerHTML;
+    document.head.appendChild(style);
+})();
 {{/if}}
+</script>
 ```
 
 
 
 ## Display customer group name & 'Price' label before products price
 
-Insert the custom script below into **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
-<!-- Display customer group & 'price' label before price -->
+<script id="theme_custom_css_f9854f5538bb2352">
+.customerGroup-price-label {
+    float: left;
+    margin-right: .75rem;
+    margin-top: 5px;
+}
+.card-customerGroup-price-label {
+    margin-right: .375rem;
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
 {{#if customer.customer_group_id}}
-    <style>
-        .customerGroup-price-label {
-            float: left;
-            margin-right: .75rem;
-            margin-top: 5px;
-        }
-        .card-customerGroup-price-label {
-            margin-right: .375rem;
-        }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        $(function() {
-            $('.productView-price').prepend('<div class="customerGroup-price-label">{{{customer.customer_group_name}}} Price</div>');
-            $('.card-text .price:not(.price--rrp)').prepend('<span class="card-customerGroup-price-label">{{{customer.customer_group_name}}} Price</span>')
-        });
-    </script>
+$(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_f9854f5538bb2352').innerHTML;
+    document.head.appendChild(style);
+    $('.productView-price').prepend('<div class="customerGroup-price-label">{{{customer.customer_group_name}}} Price</div>');
+    $('.card-text .price:not(.price--rrp)').prepend('<span class="card-customerGroup-price-label">{{{customer.customer_group_name}}} Price</span>');
+});
 {{/if}}
+</script>
 ```
 
 
 ## Fix product thumbnails carousel on product page for Supermarket version 1.5.4 and older
 
-Insert the custom script below into **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
-<!-- Fix product thumbnails carousel on product page for Supermarket version 1.5.4 and older -->
+<script id="theme_custom_css_4451e5b7fafe22d6">
+.productView-imageCarousel-nav .slick-track { transform: none !important }
+</script>
+<script>
 {{#if page_type '===' 'product'}}
-    {{#if product.images.length '<=' theme_settings.productpage_thumbnails_count}}
-        <style>
-            .productView-imageCarousel-nav .slick-track { transform: none !important }
-        </style>
-    {{/if}}
+{{#if product.images.length '<=' theme_settings.productpage_thumbnails_count}}
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_4451e5b7fafe22d6').innerHTML;
+    document.head.appendChild(style);
+})();
 {{/if}}
+{{/if}}
+</script>
 ```
 
 
@@ -590,7 +731,13 @@ Insert the custom script below into **Storefront** > **Footer Scripts**:
 
 ![Product condition badge](img/product-condition-badge.jpg)
 
-Insert the custom script below into **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
 <!-- Papathemes: display product condition badge on product cards and product details page -->
@@ -710,34 +857,69 @@ Edit file `checkout_express.html` in **Storefront** > **Checkout Template Files*
 ```
 ### On estimated shipping of shopping cart page
 
-Add the custom CSS below into **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
 ```html
-<style>
+<script id="theme_custom_css_960cfc517f197627">
 .estimator-form--ups { display: block !important; clip: auto !important; height: auto !important; width: auto !important; position: static !important }
 .estimator-form-toggleUPSRate { display: none }
-</style>
+</script>
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_960cfc517f197627').innerHTML;
+    document.head.appendChild(style);
+})();
+</script>
 ```
 
 
 ## Fix quick search popup cut off when the header is configured sticky
 
-Add the custom CSS below into **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
-<style>
+<script id="theme_custom_css_bcf3cedefb470bf6">
 [data-stickymenu] .dropdown--quickSearch .quickSearchResults { max-height: calc(100vh - 300px); overflow: auto; overflow-x: hidden }
 .is-sticky[data-stickymenu] .dropdown--quickSearch .quickSearchResults { max-height: calc(100vh - 250px) }
 [data-stickymenu] .dropdown--quickSearch .modal-close { top: -25px; right: -25px }
-</style>
+</script>
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_bcf3cedefb470bf6').innerHTML;
+    document.head.appendChild(style);
+})();
+</script>
 ```
 
 
 ## Show all product thumbnails on product page
 
-Configure Theme Editor to show up to 10 thumbnail images and add custom CSS below to **Storefront** > **Footer Scripts**:
+Configure Theme Editor to show up to 10 thumbnail images and 
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
-<style>
+<script id="theme_custom_css_91043ec741c0ca95">
 @media (min-width: 801px) {
     .productView-imageCarousel-nav { height: auto !important; overflow: visible !important; padding: 0 !important; }
     .productView-imageCarousel-nav .slick-arrow { display: none }
@@ -745,13 +927,26 @@ Configure Theme Editor to show up to 10 thumbnail images and add custom CSS belo
     .productView-imageCarousel-nav-item { width: 100px !important; margin-bottom: 10px !important }
     .js .productView-imageCarousel-nav { max-height: none }
 }
-</style>
+</script>
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_91043ec741c0ca95').innerHTML;
+    document.head.appendChild(style);
+})();
+</script>
 ```
 
 
 ## Move Out of Stock alert to the top of product details on product page
 
-Add this custom script into **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
 <script>
@@ -841,17 +1036,30 @@ Enter the script below to **Scripts contents**:
 
 ## Show Add to Cart button at the bottom of product card item
 
-Add this custom script into **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
-<style>
+<script id="theme_custom_css_cf872f8ef5540cc5">
 @media (min-width: 801px) {
     .card { padding-bottom: 50px !important }
     .card-figure { overflow: visible; position: static }
     .card-img-container { position: relative }
     .card-figcaption-button.quickview-alt { bottom: 0 }
 }
-</style>
+</script>
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_cf872f8ef5540cc5').innerHTML;
+    document.head.appendChild(style);
+})();
+</script>
 ```
 
 ## Display phone number on header on mobile
@@ -880,10 +1088,16 @@ Enter the script below to **Scripts contents**:
 
 ## Fix instagram photos display uniform
 
-Add this custom script into **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
-<style>
+<script id="theme_custom_css_645b7c2a8feb6ed0">
 .emthemesModez-instafeed .slick-slide a {
   padding-top: 100%;
   content: '';
@@ -900,7 +1114,14 @@ Add this custom script into **Storefront** > **Footer Scripts**:
   width: 100%;
   height: 100%;
 }
-</style>
+</script>
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_645b7c2a8feb6ed0').innerHTML;
+    document.head.appendChild(style);
+})();
+</script>
 ```
 
 
@@ -981,10 +1202,16 @@ Enter the script below to **Scripts contents**:
 
 ![custom labels on nav items](img/custom-labels-on-nav-item.png)
 
-Add the custom code below to **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
-<style>
+​<script id="theme_custom_css_c63e8abf31b2a73f">
 @media (min-width: 801px) {
 .navPages-container .navPages > .navPages-list > .navPages-item:nth-child(5) a:after {
   content: "New";
@@ -1007,7 +1234,14 @@ Add the custom code below to **Storefront** > **Footer Scripts**:
   padding: 0 4px;
 }
 }
-</style>​
+</script>
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_c63e8abf31b2a73f').innerHTML;
+    document.head.appendChild(style);
+})();
+</script>
 ```
 
 Update `nth-child(5)` and `nth-child(6)` coresponding your menu item order number.
@@ -1092,12 +1326,27 @@ Replace `YOUR-SVG-LOGO-URL` by your logo URL.
 
 ## Hide the active page title on the breacrumbs
 
-If you want to hide the active page title or the last item link on the breadcrumbs, add the code below to **Storefront** > **Footer Scripts**:
+If you want to hide the active page title or the last item link on the breadcrumbs, 
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
-<style>
+<script id="theme_custom_css_cbdb22470b125a7a">
 .breadcrumb.is-active { display: none }
-</style>
+</script>
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_cbdb22470b125a7a').innerHTML;
+    document.head.appendChild(style);
+})();
+</script>
 ```
 
 
@@ -1129,10 +1378,16 @@ Enter the script below to **Scripts contents**:
 
 ## Display the main carousel's content overlay the image on mobile like  on desktop
 
-Add the custom code below to **Storefront** > **Footer Scripts**:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
-<style>
+<script id="theme_custom_css_f836111e78526e0f">
 @media (max-width: 800px) {
     .heroCarousel-content {
         position: absolute;
@@ -1164,7 +1419,14 @@ Add the custom code below to **Storefront** > **Footer Scripts**:
         margin: 4px auto 0;
     }
 }
-</style>
+</script>
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_f836111e78526e0f').innerHTML;
+    document.head.appendChild(style);
+})();
+</script>
 ```
 
 
@@ -1682,15 +1944,28 @@ Enter the script below to **Scripts contents**:
 
 ## Make Homepage Carousel fade in/out instead of sliding right to left
 
-Go to **Storefront** > **Footer Script**, insert the custom script below:
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
 
 ```html
-<style>
+<script id="theme_custom_css_b6b4a9a8b24f85b7">
 .heroCarousel-container { width: 100% }
 .js .slick-initialized.heroCarousel .slick-track { width: 100% !important; transform: none !important; position: relative; }
 .js .slick-initialized.heroCarousel .slick-slide { z-index: 1; opacity: 0 !important; top: 0; left: 0; position: absolute; transition: opacity .5s ease-in; }
 .js .slick-initialized.heroCarousel .slick-active { z-index: 2 !important; opacity: 1 !important; position: relative; }
-</style>
+</script>
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = document.getElementById('theme_custom_css_b6b4a9a8b24f85b7').innerHTML;
+    document.head.appendChild(style);
+})();
+</script>
 ```
 
 
