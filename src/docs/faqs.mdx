@@ -4016,16 +4016,14 @@ Enter the script below to **Scripts contents**:
     var _uniqid = 1;
     function uniqid() { return _uniqid++; }
     function main() {
-        $('.productView-bulkPricing-table').each(function(i, table) {
-            var $table = $(table);
-            if ($table.data('modified')) {
-                return;
-            }
+        $('.productView').not('._bulkPricingMod').each(function(i, productView) {
+            $productView = $(productView).addClass('_bulkPricingMod');
+            $table = $productView.find('.productView-bulkPricing-table').first();
             $table.data('modified', true);
             var bulk = [{ min: 0, max: 0, percent: 0 }];
-            var $price = $table.closest('.productView').find('[data-product-price-without-tax]').first().hide();
+            var $price = $productView.find('[data-product-price-without-tax]').first().hide();
             var $priceClone = $price.clone().insertAfter($price).addClass('_clone').show();
-            var $qty = $table.closest('.productView').find('[data-quantity-change] input');
+            var $qty = $productView.find('[data-quantity-change] input');
             $table.find('tr').each(function(j, tr) {
                 var $td;
                 $td = $(tr).find('td').first();
@@ -4072,6 +4070,7 @@ Enter the script below to **Scripts contents**:
                 }
             };
             var showBulkOptions = function() {
+                $productView.find('.form-field--bulk').remove();
                 var $field = $('<div class="form-field form-field--bulk"></div>');
                 $field.append('<label class="form-label form-label--alternate form-label--inlineSmall">Bulk savings</label>');
                 for (var j = 1; j < bulk.length; j++) {
@@ -4097,7 +4096,7 @@ Enter the script below to **Scripts contents**:
             }, 200))).observe(priceEl, { attributes: true, childList: true });
             
             $qty.on('change', updatePrice);
-            $table.closest('.productView').find('[data-quantity-change] button').on('click', debounce(updatePrice, 300));
+            $productView.find('[data-quantity-change] button').on('click', debounce(updatePrice, 300));
             updateBulkPrice();
             showBulkOptions();
         });
@@ -4109,7 +4108,6 @@ Enter the script below to **Scripts contents**:
         + '.productView-options .form-field--bulk ._price { display: block; font-weight: bold }';
     document.head.appendChild(style);
 })(window.jQuerySupermarket);
-
 </script>
 ```
 
@@ -5344,3 +5342,10 @@ document.head.appendChild(style);
 })();
 </script>
 ```
+
+
+## Add PayPal buttons to your site
+
+Check this link to get the code: https://www.paypal.com/ph/webapps/mpp/logos-buttons
+
+You can add the code to your website using BC HTML Widget.
