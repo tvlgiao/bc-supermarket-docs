@@ -4003,7 +4003,7 @@ Enter the script below to **Scripts contents**:
 
 Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
 
-- **Location on page** = `Header`
+- **Location on page** = `Footer`
 - **Select pages where script will be added** = `Store Pages`
 - **Script type** = `Script`
 
@@ -4016,14 +4016,19 @@ Enter the script below to **Scripts contents**:
     var _uniqid = 1;
     function uniqid() { return _uniqid++; }
     function main() {
-        $('.productView').not('._bulkPricingMod').each(function(i, productView) {
-            $productView = $(productView).addClass('_bulkPricingMod');
-            $table = $productView.find('.productView-bulkPricing-table').first();
+        $('.productView-bulkPricing-table').each(function(i, table) {
+            var $table = $(table);
+            if ($table.data('modified')) {
+                return;
+            }
             $table.data('modified', true);
             var bulk = [{ min: 0, max: 0, percent: 0 }];
-            var $price = $productView.find('[data-product-price-without-tax]').first().hide();
-            var $priceClone = $price.clone().insertAfter($price).addClass('_clone').show();
-            var $qty = $productView.find('[data-quantity-change] input');
+            var $price = $table.closest('.productView').find('[data-product-price-without-tax]').first().hide();
+            var $priceClone = $table.closest('.productView').find('._data-product-price-without-tax._clone');
+            if ($priceClone.length === 0) {
+                $priceClone = $price.clone().insertAfter($price).addClass('_data-product-price-without-tax _clone').show();
+            }
+            var $qty = $table.closest('.productView').find('[data-quantity-change] input');
             $table.find('tr').each(function(j, tr) {
                 var $td;
                 $td = $(tr).find('td').first();
@@ -4070,7 +4075,7 @@ Enter the script below to **Scripts contents**:
                 }
             };
             var showBulkOptions = function() {
-                $productView.find('.form-field--bulk').remove();
+                $table.closest('.productView').find('.form-field--bulk').remove();
                 var $field = $('<div class="form-field form-field--bulk"></div>');
                 $field.append('<label class="form-label form-label--alternate form-label--inlineSmall">Bulk savings</label>');
                 for (var j = 1; j < bulk.length; j++) {
@@ -4089,20 +4094,25 @@ Enter the script below to **Scripts contents**:
                 });
             };
             var priceEl = $price.get(0);
-            (new MutationObserver(debounce(function() {
+            var mo = $price.data('bulkPricingMO');
+            if (mo) {
+                mo.disconnect();
+            }
+            mo = new MutationObserver(debounce(function() {
                 updatePrice();
                 updateBulkPrice();
                 showBulkOptions();
-            }, 200))).observe(priceEl, { attributes: true, childList: true });
-            
+            }, 10));
+            mo.observe(priceEl, { attributes: true, childList: true });
+            $price.data('bulkPricingMO', mo);
             $qty.on('change', updatePrice);
-            $productView.find('[data-quantity-change] button').on('click', debounce(updatePrice, 300));
+            $table.closest('.productView').find('[data-quantity-change] button').on('click', debounce(updatePrice, 300));
             updateBulkPrice();
             showBulkOptions();
         });
     }
     main();
-    (new MutationObserver(debounce(main, 300))).observe(document.body, { childList: true, subtree: true });
+    (new MutationObserver(debounce(main, 200))).observe(document.body, { childList: true, subtree: true });
     var style = document.createElement('style');
     style.innerHTML = '.productView-options .form-field--bulk .form-option-variant { text-align: center }'
         + '.productView-options .form-field--bulk ._price { display: block; font-weight: bold }';
