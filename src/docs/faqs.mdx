@@ -1078,7 +1078,10 @@ Enter the script below to **Scripts contents**:
     var style = document.createElement('style');
     style.innerHTML = ''
     + '@media(max-width:800px) {'
-    + '.emthemesModez-header-topSection .navUser:last-child .navUser-section .navUser-item:last-child { display: block; margin-right: 50px; border: 0 } '
+    + '.emthemesModez-header-topSection .navUser { z-index: 25; right: 55px }'
+    + '.emthemesModez-header-topSection .navUser:last-child .navUser-section .navUser-item:first-child { display: block; margin-right: 0; border: 0 } '
+	+ '.emthemesModez-header-topSection .navUser:last-child .navUser-section .navUser-item:first-child .navUser-action { padding-left: 0; padding-right: 0; font-size: 14px }'
+	+ '.emthemesModez-header-topSection .navUser:last-child .navUser-section .navUser-item:first-child .navUser-item-icon { padding-right: 5px; font-size: 20px }'
     + '}';
     document.head.appendChild(style);
 })();
@@ -5354,8 +5357,79 @@ document.head.appendChild(style);
 ```
 
 
-## Add PayPal buttons to your site
+## Redirect customers to the login page if not logged in
 
-Check this link to get the code: https://www.paypal.com/ph/webapps/mpp/logos-buttons
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
 
-You can add the code to your website using BC HTML Widget.
+- Location on page = `Header`
+- Select pages where script will be added = `Store Pages`
+- Script type = `Script`
+
+Enter the script below to Scripts contents:
+
+```html
+<script>
+    {{#all (if page_type '===' 'default') (unless customer)}}
+    {{#if (merge theme_settings section1='' section2='' section3='' section4='' section5='' section6='' section7='' section8='' section9='')}}/*1*/{{/if}}
+    {{#if (merge this products=null carousel=null blog=null shop_by_brand=null)}}/*2*/{{/if}}
+    window.location = '/login.php';
+    {{/all}}
+</script>
+```
+
+
+## Add Image Cloud Zoom to product images on PDP
+
+- Location on page = `Footer`
+- Select pages where script will be added = `Store Pages`
+- Script type = `Script`
+
+```html
+<script>
+(function($) {
+    /** debounce(func, wait, immediate) */
+    function debounce(n,t,u){var e;return function(){var i=this,o=arguments,a=u&&!e;clearTimeout(e),e=setTimeout(function(){e=null,u||n.apply(i,o)},t),a&&n.apply(i,o)}}
+
+    function loadScript(src) {
+        return new Promise(function(resolve) {
+            var script = document.createElement('script');
+            script.src = src;
+            script.defer = true;
+            script.onload = function() {
+                resolve();
+            };
+            document.head.appendChild(script);
+        });
+    }
+
+
+    function init() {
+        $('.productView-imageCarousel-main-item img')
+            .not('[data-zoom-image]')
+            .each(function(i, img) {
+                var $img = $(img);
+                $img.attr('data-zoom-image', $img.closest('a').data('originalZoom'))
+                    .ezPlus();
+            });
+    }
+
+    function observe() {
+        if ($.fn.ezPlus) {
+            init();
+        } else {
+            if (!window.jQuery) {
+                window.jQuery = $;
+            }
+            loadScript('https://cdn.jsdelivr.net/gh/igorlino/elevatezoom-plus@1.2.3/src/jquery.ez-plus.js')
+                .then(init);
+        }
+    }
+
+    if (document.body.clientWidth > 800) {
+        var mo = new MutationObserver(debounce(observe, 200));
+        mo.observe(document.body, { childList: true, subtree: true });
+        observe();
+    }
+})(window.jQueryTheme || window.jQuerySupermarket || window.chiarajQuery || window.jQuery);
+</script>
+```
