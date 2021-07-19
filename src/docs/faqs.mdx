@@ -2053,7 +2053,7 @@ Enter the script below to **Scripts contents**:
             $('head').append(''
                 + '<style>'
                 + '.product { order: 1 }'
-                + '.product--outstock { order: 2 }'
+                + '.product--outstock { order: 3 }'
                 + '</style>'
             );
         }
@@ -2062,6 +2062,46 @@ Enter the script below to **Scripts contents**:
                 const $el = $(el);
                 if ($el.find('.card-figcaption-button.quickview-alt, .card-figcaption-button[href*="/cart.php?action=add"]').length === 0) {
                     $el.addClass('product--outstock');
+                }
+            });
+        }
+        $(document).ready(function() {
+            addCss();
+            main();
+        });
+        $('body').on('loaded.instantload', main);
+    })(window.jQuerySupermarket || window.jQuery);
+</script>
+```
+
+## Display non-image products last on the product lists
+
+Using the custom script below to show out of stock products at the end of products grid.
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+    (function($) {
+        function addCss() {
+            $('head').append(''
+                + '<style>'
+                + '.product { order: 1 }'
+                + '.product--noimage { order: 2 }'
+                + '</style>'
+            );
+        }
+        function main() {
+            $('.productGrid .product').each(function(i, el) {
+                const $el = $(el);
+                if ($el.find('img[src*="ProductDefault.gif"], img[data-src*="ProductDefault.gif"]').length > 0) {
+                    $el.addClass('product--noimage');
                 }
             });
         }
@@ -5380,6 +5420,8 @@ Enter the script below to Scripts contents:
 
 ## Add Image Cloud Zoom to product images on PDP
 
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
 - Location on page = `Footer`
 - Select pages where script will be added = `Store Pages`
 - Script type = `Script`
@@ -5431,5 +5473,187 @@ Enter the script below to Scripts contents:
         observe();
     }
 })(window.jQueryTheme || window.jQuerySupermarket || window.chiarajQuery || window.jQuery);
+</script>
+```
+
+
+
+## Add jQuery Zoom to product images on PDP
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- Location on page = `Footer`
+- Select pages where script will be added = `Store Pages`
+- Script type = `Script`
+
+```html
+<script>
+(function($) {
+    /** debounce(func, wait, immediate) */
+    function debounce(n,t,u){var e;return function(){var i=this,o=arguments,a=u&&!e;clearTimeout(e),e=setTimeout(function(){e=null,u||n.apply(i,o)},t),a&&n.apply(i,o)}}
+
+    function loadScript(src) {
+        return new Promise(function(resolve) {
+            var script = document.createElement('script');
+            script.src = src;
+            script.defer = true;
+            script.onload = function() {
+                resolve();
+            };
+            document.head.appendChild(script);
+        });
+    }
+
+
+    function init() {
+        $('.productView-imageCarousel-main-item a')
+            .not('[data-jquery-zoom-image]')
+            .each(function(i, a) {
+                var $a = $(a).attr('data-jquery-zoom-image', '');
+                var zoomImg = $a.data('originalZoom');
+            	$a.on('mouseenter touchstart', function() {
+                    $a.zoom({ url: zoomImg });
+                });
+            	$a.on('mouseleave touchend', function() {
+                    $a.trigger('zoom.destroy');
+                });
+            });
+    }
+
+    function observe() {
+        if ($.fn.zoom) {
+            init();
+        } else {
+            if (!window.jQuery) {
+                window.jQuery = $;
+            }
+            loadScript('https://cdn.jsdelivr.net/npm/jquery-zoom@1.7.21/jquery.zoom.min.js')
+                .then(init);
+        }
+    }
+
+    var style = document.createElement('style');
+    style.innerHTML = '[data-jquery-zoom-image] { position: absolute; top: 0; left: 0; right: 0; bottom: 0 }'
+        + '[data-jquery-zoom-image] img + img { right: auto; bottom: auto; opacity: 1 !important }';
+    document.head.appendChild(style);
+    
+    var mo = new MutationObserver(debounce(observe, 200));
+    mo.observe(document.body, { childList: true, subtree: true });
+    observe();
+})(window.jQueryTheme || window.jQuerySupermarket || window.chiarajQuery || window.jQuery);
+</script>
+```
+
+
+## Display products by category image in GIF format
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- Location on page = `Footer`
+- Select pages where script will be added = `Store Pages`
+- Script type = `Script`
+
+```html
+<script>
+{{#if page_type '===' 'default'}}
+(function($) {
+    /** debounce(func, wait, immediate) */
+    function debounce(n,t,u){var e;return function(){var i=this,o=arguments,a=u&&!e;clearTimeout(e),e=setTimeout(function(){e=null,u||n.apply(i,o)},t),a&&n.apply(i,o)}}
+
+    function observe() {
+        $('.emthemesModez-productsByCategoryTabs-details-image img').not('._gifMod').addClass('gifMod').each(function(i, el) {
+            var $el = $(el);
+            if ($el.attr('src') && $el.attr('src').match(/\.jpg/)) {
+                $el.attr('src', $el.attr('src').replace('.jpg', '.gif'));
+            }
+            if ($el.attr('data-src') && $el.attr('data-src').match(/\.jpg/)) {
+                $el.attr('data-src', $el.attr('data-src').replace('.jpg', '.gif'));
+            }
+        })
+    }
+    
+    var mo = new MutationObserver(debounce(observe, 200));
+    mo.observe(document.body, { childList: true, subtree: true });
+    observe();
+})(window.jQueryTheme || window.jQuerySupermarket || window.jQuery);
+{{/if}}
+</script>
+```
+
+## Hide Shipping Nofitication on PDP when product is out of stock or not track
+
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- Location on page = `Footer`
+- Select pages where script will be added = `Store Pages`
+- Script type = `Script`
+
+
+```html
+<script>
+(function($) {
+    /** debounce(func, wait, immediate) */
+    function debounce(n,t,u){var e;return function(){var i=this,o=arguments,a=u&&!e;clearTimeout(e),e=setTimeout(function(){e=null,u||n.apply(i,o)},t),a&&n.apply(i,o)}}
+
+    $('.productView-details').not('._hideShippingEstimatorMod').addClass('_hideShippingEstimatorMod').each(function(i, el) {
+        var $stock = $(el).find('[data-product-stock]');
+        if ($stock.length === 0) {
+            return;
+        }
+
+        var productId = $(el).find('input[name="product_id"]').val();
+
+        function observe() {
+            if (!Number($stock.text())) {
+                if ($('#theme_custom_bd91677cf8ae0f04_' + productId).length === 0) {
+                    $('<style id="theme_custom_bd91677cf8ae0f04_' + productId + '">[data-blackout-dates] { display: none !important }</style>').appendTo('head');
+                }
+            } else {
+                $('#theme_custom_bd91677cf8ae0f04_' + productId).remove();
+            }
+        }
+        
+        var mo = new MutationObserver(observe);
+        mo.observe($stock.get(0), { childList: true, subtree: true, attribute: true, characterData: true });
+        observe();
+    });
+})(window.jQueryTheme || window.jQuerySupermarket || window.jQuery);
+</script>
+```
+
+
+## Display additional checkout buttons full width
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- Location on page = `Footer`
+- Select pages where script will be added = `Store Pages`
+- Script type = `Script`
+
+```html
+<script type="text/plain" id="theme_custom_css_708c23ef6078">
+    @media (min-width: 551px) {
+        .cart-additionalCheckoutButtons { width: 75%; margin-left: auto; margin-right: 0 }
+    }
+    @media (min-width: 801px) {
+        .cart-additionalCheckoutButtons { width: 58.33333% }
+    }
+    @media (min-width: 1261px) {
+        .cart-additionalCheckoutButtons { width: 41.66667% }
+    }
+    .cart-additionalCheckoutButtons .FloatRight div { width: 100% }
+    .braintree-paypal-button.paypal-smart-buttons { max-width: none; width: 100% !important; }
+    div.paypal-buttons { width: 100% !important }
+    div.GooglePayCheckout button { width: 100% !important }
+    .or-use-label { display: none }
+    .cart-additionalCheckoutButtons .CheckoutButton { margin-bottom: 0 }
+</script>
+<script>
+    (function() {
+        var style = document.createElement('style');
+        style.innerHTML = document.getElementById('theme_custom_css_708c23ef6078').innerHTML;
+        document.head.appendChild(style);
+    })();
 </script>
 ```
