@@ -6,6 +6,10 @@ route: /faqs
 
 # FAQs
 
+## IMPORTANT NOTE:
+
+**ALL CUSTOM CODE SNIPPETS BELOW WE DO NOT HAVE ANY GUARANTEE WILL WORK AS YOU INTENDED. IN ADDITION, IT MAY AFFECT THE STABILITY OF THE ORIGINAL THEME. RECOMMENDED TO USE ONLY WHEN YOU UNDERSTAND. WE DO NOT HAVE ANY COMMITMENT NOR RESPONSIBILITY. IF IT CAUSES UNEXPECTED PROBLEMS, PLEASE REMOVE IT TO GET THE THEME WORKING PROPERLY AGAIN.**
+
 ## Limit length of product name display on products grid
 
 ![Limit number of lines of product name on product grids](img/limit-product-name-lines.png)
@@ -5654,6 +5658,56 @@ Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
         var style = document.createElement('style');
         style.innerHTML = document.getElementById('theme_custom_css_708c23ef6078').innerHTML;
         document.head.appendChild(style);
+    })();
+</script>
+```
+
+## Display page content full width when the sidebar is empty
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- Location on page = `Footer`
+- Select pages where script will be added = `Store Pages`
+- Script type = `Script`
+
+```html
+<script type="text/plain" id="theme_custom_css_79eafd1ca71f">
+    @media (min-width: 801px) {
+        .page--hideSidebarDesktop .page-sidebar {
+            display: none !important;
+        }
+        .page--hideSidebarDesktop .page-content {
+            width: 100%;
+        }
+    }
+</script>
+<script>
+    (function() {
+        /** debounce(func, wait, immediate) */
+        function debounce(n,t,u){var e;return function(){var i=this,o=arguments,a=u&&!e;clearTimeout(e),e=setTimeout(function(){e=null,u||n.apply(i,o)},t),a&&n.apply(i,o)}}
+
+        function main() {
+            if (Array.from(document.querySelectorAll('.page-sidebar')).filter(function(el) {
+                return el.clientHeight > 1;
+            }).length === 0) {
+                var page = document.querySelector('.page');
+                if (!page.classList.contains('page--hideSidebarDesktop')) {
+                    page.classList.add('page--hideSidebarDesktop');
+                }
+            } else {
+                var page = document.querySelector('.page');
+                if (page.classList.contains('page--hideSidebarDesktop')) {
+                    page.classList.remove('page--hideSidebarDesktop');
+                }
+            }
+        }
+
+        var style = document.createElement('style');
+        style.innerHTML = document.getElementById('theme_custom_css_79eafd1ca71f').innerHTML;
+        document.head.appendChild(style);
+
+        var mo = new MutationObserver(debounce(main, 300));
+        mo.observe(document.querySelector('body'), { childList: true, subtree: true });
     })();
 </script>
 ```
