@@ -5831,3 +5831,197 @@ Enter the script below to **Scripts contents**:
     })(window.jQuerySupermarket || window.jQuery);
 </script>
 ```
+
+## Display the quantity box on product cards
+
+Kindly contact us for a quote on this customization.
+
+<!--
+GitHub: https://github.com/tvlgiao/legalsupply-supermarket
+-->
+
+
+## Display Sticky Add to Cart bar
+
+![sticky add to cart](img/sticky-add-to-cart.jpg)
+
+Kindly contact us for a quote on this customization.
+
+<!--
+beachaudio.com\Supermarket-RepCopy-5.0.2
+-->
+
+
+
+## Display the included VAT/Tax price below the excluded Tax price
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- Location on page = `Head`
+- Select pages where script will be added = `Store Pages`
+- Script type = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+var style = document.createElement('style');
+style.innerHTML = '[data-product-price-without-tax] ~ abbr { display: none }'
++ '.price-section.rrp-price--withTax,'
++ '.price-section.rrp-price--withoutTax { display: none }'
++ '[data-product-price-with-tax] { font-size: 16px !important; color: #666 !important }'
++ '[data-product-price-with-tax]:before { content: "(" }'
++ '[data-product-price-with-tax]:after { content: " incl VAT)" }'
++ '[data-product-price-with-tax] ~ abbr { display: none }'
++ '.productView-price { display: flex; flex-direction: column }'
++ '.productView-price .price-section { margin: 0 !important }'
++ '.productView-price .price-section--withoutTax { order: 1 }'
++ '.productView-price .price-section--withTax { order: 2 }'
++ '.productView-price .price-section--saving { order: 3; margin-top: .75rem !important }'
++ '.card-text--price [data-product-price-with-tax] { font-weight: normal !important }'
++ '.card-text--price { display: flex; flex-direction: column }'
++ '.card-text--price .price-section { margin: 0 !important }'
++ '.card-text--price .price-section--withoutTax { order: 1 }'
++ '.card-text--price .price-section--withTax { order: 2 }';
+document.head.appendChild(style);
+})();
+</script>
+```
+
+
+## Display an alert message after customer select a specific shipping country
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- Location on page = `Footer`
+- Select pages where script will be added = `Checkout Page`
+- Script type = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+(function($) {
+    var ALERT_MESSAGE = 'YOUR ALERT CONTENT';
+    var COUNTRY = 'Australia|United States';
+
+    /** debounce(func, wait, immediate) */
+    function debounce(n,t,u){var e;return function(){var i=this,o=arguments,a=u&&!e;clearTimeout(e),e=setTimeout(function(){e=null,u||n.apply(i,o)},t),a&&n.apply(i,o)}}
+
+    function observe() {
+        var $consignment = $('.checkout-step--shipping .stepHeader-body .staticConsignment'); 
+        var $countryName = $consignment.find('.country-name');
+        if ($countryName.length === 0) {
+            $('#ecblendAlert').remove();
+        } else {
+            $countryName.not('._checked').addClass('_checked').each(function(i, el) {
+                var $el = $(el);
+                var re = new RegExp(COUNTRY, 'ig');
+                if (re.test($el.text())) {
+                    $('<div id="ecblendAlert" style="margin-top: 1.5rem"></div>').html('<div class="alertBox alertBox--warning">' + ALERT_MESSAGE + '</div>')
+                        .appendTo($consignment)
+                        .on('click', function(event) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        });
+                } else {
+                    $('#ecblendAlert').remove();
+                }
+            });
+        }
+    }
+
+    var mo = new MutationObserver(debounce(observe, 200));
+    mo.observe(document.body, { childList: true, subtree: true });
+    observe();
+})(window.jQueryTheme || window.jQuerySupermarket || window.chiarajQuery || window.jQuery);
+</script>
+```
+
+
+## Display a custom message below the order number on the Order Confirmation page
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- Location on page = `Footer`
+- Select pages where script will be added = `Order Confirmation`
+- Script type = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+    var YOUR_CONFIRM_MSG = 'An order confirmation has been sent to the email address <a href="mailto:%EMAIL%">%EMAIL%</a>';
+    
+    var orderId = '{{checkout.order.id}}';
+    
+    /** debounce(func, wait, immediate) */
+    function debounce(n,t,u){var e;return function(){var i=this,o=arguments,a=u&&!e;clearTimeout(e),e=setTimeout(function(){e=null,u||n.apply(i,o)},t),a&&n.apply(i,o)}}
+
+    function observe() {
+        var el = document.querySelector('[data-test="order-confirmation-order-number-text"]');
+        if (!el || el.classList.contains('_jssMod'))
+            return;
+        el.classList.add('_jssMod');
+
+        var script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/whatwg-fetch@3.5.0/dist/fetch.umd.min.js';
+        script.onload = function() {
+            fetch('/api/storefront/orders/' + orderId).then(function(resp) {
+                return resp.json();
+            }).then(function(data) {
+                var email = data.billingAddress.email;
+                var msg = YOUR_CONFIRM_MSG.replace(/%EMAIL%/g, email);
+                var p = document.createElement('p');
+                p.innerHTML = msg;
+                el.parentNode.insertBefore(p, el.nextSibling);
+            });
+
+        };
+
+        document.head.appendChild(script);
+    }
+
+    var mo = new MutationObserver(debounce(observe, 200));
+    mo.observe(document.body, { childList: true, subtree: true });
+    observe();
+})();
+</script>
+```
+
+
+## Fix anchor links do not work on category pages if the Faceted Filters is enabled
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- Location on page = `Head`
+- Select pages where script will be added = `Store Page`
+- Script type = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+    var isAnchor = false;
+    document.addEventListener('DOMContentLoaded', function() {
+        var els = document.querySelectorAll('a[href*="#"]');
+        for (var i = 0; i < els.length; i++) {
+            els[i].addEventListener('click', function() {
+                isAnchor = true;
+            });
+        }
+    });
+    window.addEventListener('popstate', function(event) {
+        if (isAnchor) {
+            event.stopImmediatePropagation();
+            isAnchor = false;
+        }
+    });
+})();
+</script>
+```
+
