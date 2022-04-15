@@ -5388,7 +5388,61 @@ Folow this guide: https://developers.afterpay.com/afterpay-online/docs/javascrip
 
 ## Display Klarna "4 interest-free payments of" on-site message
 
-Reference: https://developers.klarna.com/documentation/on-site-messaging/customization/
+Reference:
+- https://developers.klarna.com/documentation/on-site-messaging/customization/
+- https://x.klarnacdn.net/plugins/Klarna%20On-Site%20Messaging%20on%20BigCommerce%20-%20Support%20Guide.pdf
+
+1. Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- Location on page = `Head`
+- Select pages where script will be added = `Store Pages`
+- Script type = `Script`
+
+Enter the script below to Scripts contents:
+
+```html
+<script async src="https://na-library.klarnaservices.com/lib.js" data-client-id="YOUR_MERCHANT_ID"></script>
+<script>
+    (function() {
+        // Element.closest polyfill
+        Element.prototype.matches||(Element.prototype.matches=Element.prototype.msMatchesSelector||Element.prototype.webkitMatchesSelector);
+        Element.prototype.closest||(Element.prototype.closest=function(e){var t=this;do{if(Element.prototype.matches.call(t,e))return t;t=t.parentElement||t.parentNode}while(null!==t&&1===t.nodeType);return null});
+        function updateKlarna(el, priceEl) {
+            var value = Math.round(Number(String(priceEl.innerHTML).split(' - ')[0].replace(/[^0-9.]/g, '')) * 100);
+            el.setAttribute('data-purchase-amount', value);
+            window.KlarnaOnsiteService = window.KlarnaOnsiteService || [];
+            window.KlarnaOnsiteService.push({ eventName: 'refresh-placements' });
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            var els = document.querySelectorAll('klarna-placement');
+            for (var el of els) {
+                var priceEl = el.closest('.productView').querySelector('[data-product-price-without-tax]') || el.closest('.productView').querySelector('[data-product-price-with-tax]');
+                if (priceEl) {
+                    var mo = new MutationObserver(() => updateKlarna(el, priceEl));
+                    mo.observe(priceEl, { childList: true, characterData: true, attributes: true });
+                    updateKlarna(el, priceEl);
+                }
+            }
+        });
+    })();
+</script>
+```
+
+Replace `YOUR_MERCHANT_ID` by your Merchant ID code.
+
+2. Edit a product page in Page Builder, add a HTML widget to a particular global region. Enter the content below to the HTML widget:
+
+```html
+<!-- Placement v2 -->
+<klarna-placement
+    data-key="credit-promotion-small"
+    data-locale="en-US"
+    data-purchase-amount=""
+></klarna-placement>
+<!-- end Placement -->
+```
+
+
 
 
 ## Display all cart items in the dropdown cart preview
