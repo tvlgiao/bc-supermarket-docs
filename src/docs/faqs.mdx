@@ -6090,3 +6090,33 @@ Kindly contact us for a quote on this customization.
 GitHub: addons-dev/templates/components/_addons-dev/mega-menu-banners/footer-script.html
 -->
 
+
+
+## Display recent blog posts on the homepage in 4 columns
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- Location on page = `Head`
+- Select pages where script will be added = `Store Page`
+- Script type = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+    (function() {
+        var el = document.querySelector('.emthemesModez-blogGrid--featured');
+        if (el) {
+            el.classList.remove('emthemesModez-blogGrid--featured');
+            var style = document.createElement('style');
+            style.innerHTML = '@media (min-width: 551px) {'
+                + '.emthemesModez-blogGrid .emthemesModez-blogItem { width: 50% }'
+                + '}'
+                + '@media (min-width: 801px) {'
+                + '.emthemesModez-blogGrid .emthemesModez-blogItem { width: 25% }'
+                + '}';
+            document.head.appendChild(style);
+        }
+    })();
+</script>
+```
