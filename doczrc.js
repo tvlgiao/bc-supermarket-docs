@@ -55,7 +55,7 @@ export default {
       ]
     },
     'FAQs',
-    { name: 'Support', href: 'https://papathemes.kayako.com/conversation/new/1' }
+    { name: 'Support', href: 'https://papathemes.com/contact-us/' }
   ],
   ignore: ['README.md'],
 }
