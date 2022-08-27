@@ -3546,6 +3546,84 @@ Enter the script below to **Scripts contents**:
 </script>
 ```
 
+### Solution 2:
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Head`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+    var style = document.createElement('style');
+    style.innerHTML = `
+        .papaSupermarket-categoryPage-description,
+        .papaSupermarket-brandPage-description,
+        .papaSupermarket-home-description { max-height: 300px !important; overflow: hidden !important; margin-bottom: 1.5rem !important }
+        ._readMoreMod._opened { max-height: none !important }
+        ._readMoreContainer { margin-bottom: 1.5rem; padding: 0 .75rem }
+        .papaSupermarket-home-description + ._readMoreContainer { padding: 0 }
+        ._readMoreContainer ._readMore._hide { display: none }
+    `;
+    document.head.appendChild(style);
+
+    function debounce(n,t,u){var e;return function(){var i=this,o=arguments,a=u&&!e;clearTimeout(e),e=setTimeout(function(){e=null,u||n.apply(i,o)},t),a&&n.apply(i,o)}}
+    function main(resized) {
+        document.querySelectorAll('.papaSupermarket-categoryPage-description, .papaSupermarket-brandPage-description, .papaSupermarket-home-description').forEach(function(el) {
+            var isNew = false;
+            if (!el.classList.contains('_readMoreMod')) {
+                var div = document.createElement('div');
+                div.className = '_readMoreContainer';
+
+                var a = document.createElement('a');
+                a.innerHTML = 'Read More';
+                a.className = '_readMore _hide';
+                a.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    if (a.classList.contains('_opened')) {
+                        a.innerHTML = 'Close';
+                        a.classList.remove('_opened');
+                        el.classList.remove('_opened');
+                    } else {
+                        a.innerHTML = 'Read More';
+                        a.classList.add('_opened');
+                        el.classList.add('_opened');
+                    }
+                });
+
+                div.appendChild(a);
+                el.parentNode.insertBefore(div, el.nextSibling);
+                el.classList.add('_readMoreMod');
+                isNew = true;
+            }
+
+            if (isNew || resized) {
+                if (el.scrollHeight > el.clientHeight) {
+                    el.nextSibling.querySelector('._readMore').classList.remove('_hide');
+                } else {
+                    el.nextSibling.querySelector('._readMore').classList.add('_hide');
+                }
+            }
+        });
+    }
+
+    function ready() {
+        var mo = new MutationObserver(debounce(main, 300));
+        mo.observe(document.body, { childList: true, subtree: true });
+        window.addEventListener('resize', debounce(main.call(null, true), 300));
+        main();
+    }
+
+    document.addEventListener('DOMContentLoaded', ready);
+    ready();
+})();
+</script>
+```
+
 ## Hide number of products on the pagination bar on category pages
 
 Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
@@ -6156,3 +6234,35 @@ Enter the script below to **Scripts contents**:
     })();
 </script>
 ```
+
+## Change color of the info alert message
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Head`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**: 
+
+```html
+<script>
+(function() {
+    var css = document.createElement('style');
+    css.innerHTML = `
+        .alertBox--info {
+            color: #0000ff;
+            background-color: #f2f2f2;
+        }
+        .alertBox--info svg {
+            fill: #0000ff;
+        }
+    `;
+    document.head.appendChild(css);
+})();
+</script>
+```
+
+Where `color: #0000ff` is the text color, `background-color: #f2f2f2` is the background color, `fill: #0000ff` is the icon color.
+
+
