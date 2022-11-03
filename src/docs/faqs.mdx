@@ -1374,7 +1374,7 @@ Enter the script below to **Scripts contents**:
     $('.productView-reviewLink a').not('[data-reveal-id]').on('click', function() {
         $('html, body').animate({scrollTop: $('#product-reviews').offset().top - 200}, 500);
     });
-})(window.jQuerySupermarket || window.jQuery);
+})(window.jQuerySupermarket || window.chiarajQuery || window.jQuery);
 </script>
 ```
 
@@ -4161,11 +4161,9 @@ Enter the script below to **Scripts contents**:
             $table.data('modified', true);
             var bulk = [{ min: 0, max: 0, percent: 0 }];
             var $price = $table.closest('.productView').find('[data-product-price-without-tax]').first().hide();
-            var $priceClone = $table.closest('.productView').find('._data-product-price-without-tax._clone');
-            if ($priceClone.length === 0) {
-                $priceClone = $price.clone().insertAfter($price).addClass('_data-product-price-without-tax _clone').show();
-            }
-            var $qty = $table.closest('.productView').find('[data-quantity-change] input');
+            $price.nextAll('._clone').remove();
+            var $priceClone = $price.clone().insertAfter($price).addClass('_clone').removeAttr('data-product-price-without-tax').show();
+            var $qty = $table.closest('.productView').find('[data-quantity-change] input').first();
             $table.find('tr').each(function(j, tr) {
                 var $td;
                 $td = $(tr).find('td').first();
@@ -4212,7 +4210,6 @@ Enter the script below to **Scripts contents**:
                 }
             };
             var showBulkOptions = function() {
-                $table.closest('.productView').find('.form-field--bulk').remove();
                 var $field = $('<div class="form-field form-field--bulk"></div>');
                 $field.append('<label class="form-label form-label--alternate form-label--inlineSmall">Bulk savings</label>');
                 for (var j = 1; j < bulk.length; j++) {
@@ -4225,7 +4222,9 @@ Enter the script below to **Scripts contents**:
                     $field.append('<input class="form-radio" type="radio" id="_bulk_qty_' + uid + '" name="_bulk_qty" value="' + bulk[j].min + '">'
                         + '<label class="form-option" for="_bulk_qty_' + uid + '"><span class="form-option-variant">Buy ' + bulk[j].min + '<span class="_price">' + bulkPriceTxt + '/ea</span></span></label>');
                 }
-                $qty.closest('.form-field--increments').before($field);
+                const $incField = $qty.closest('.form-field--increments');
+                $incField.prevAll('.form-field--bulk').remove();
+                $incField.before($field);
                 $field.find('input').on('change', function(event) {
                    $qty.val($(event.target).val()).trigger('change');
                 });
@@ -4235,21 +4234,22 @@ Enter the script below to **Scripts contents**:
             if (mo) {
                 mo.disconnect();
             }
-            mo = new MutationObserver(debounce(function() {
+            mo = new MutationObserver(function() {
                 updatePrice();
                 updateBulkPrice();
                 showBulkOptions();
-            }, 10));
+            });
             mo.observe(priceEl, { attributes: true, childList: true });
             $price.data('bulkPricingMO', mo);
             $qty.on('change', updatePrice);
             $table.closest('.productView').find('[data-quantity-change] button').on('click', debounce(updatePrice, 300));
+            updatePrice();
             updateBulkPrice();
             showBulkOptions();
         });
     }
     main();
-    (new MutationObserver(debounce(main, 200))).observe(document.body, { childList: true, subtree: true });
+    (new MutationObserver(debounce(main, 300))).observe(document.body, { childList: true, subtree: true });
     var style = document.createElement('style');
     style.innerHTML = '.productView-options .form-field--bulk .form-option-variant { text-align: center }'
         + '.productView-options .form-field--bulk ._price { display: block; font-weight: bold }';
