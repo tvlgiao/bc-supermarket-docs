@@ -6266,3 +6266,60 @@ Enter the script below to **Scripts contents**:
 Where `color: #0000ff` is the text color, `background-color: #f2f2f2` is the background color, `fill: #0000ff` is the icon color.
 
 
+## Always display shipping address form on the checkout page
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Checkout Page`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+    // minified lodash debounce function
+    function debounce(e,t,n){var r;return function(){var o=this,i=arguments,u=function(){r=null,n||e.apply(o,i)},a=n&&!r;clearTimeout(r),r=setTimeout(u,t),a&&e.apply(o,i)}}
+
+    var shippingAddressShown = false;
+
+    function main() {
+        if (document.querySelector('#checkout-shipping-options')) {
+            shippingAddressShown = true;
+        }
+
+        var btn = document.querySelector('.checkout-step--shipping button[data-test="step-edit-button"]');
+        if (btn && !shippingAddressShown) {
+            btn.click();
+        }
+    }
+
+    var mo = new MutationObserver(debounce(main, 200));
+    mo.observe(document.body, { childList: true, subtree: true });
+    main();
+})();
+</script>
+```
+
+## Hide all additional checkout buttons on all pages
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+var style = document.createElement('style');
+style.innerHTML = '.previewCart-additionalCheckoutButtons, .previewCartCheckout-additionalCheckoutButtons, .cart-additionalCheckoutButtons, .checkoutRemote { display: none !important }';
+document.head.appendChild(style);
+})();
+</script>
+```
+
+
