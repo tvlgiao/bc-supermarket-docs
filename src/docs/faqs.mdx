@@ -6323,3 +6323,26 @@ document.head.appendChild(style);
 ```
 
 
+## Fix the incorrect indent displayed by UL, OL, LI elements in the product description
+
+The issue of incorrect indents in UL, OL, and LI elements in product descriptions arises due to an erroneous HTML structure, such as a P element nested within an LI element. To resolve this:
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Head`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+var style = document.createElement('style');
+style.innerHTML = '.productView-description-tabContent ul, .productView-description-tabContent ol { list-style-position: outside; margin-left: 1.5rem; }'
++ '.productView-description-tabContent ul p:not(:last-child), .productView-description-tabContent ol p:not(:last-child) { margin-bottom: 0 }';
+document.head.appendChild(style);
+})();
+</script>
+```
+
