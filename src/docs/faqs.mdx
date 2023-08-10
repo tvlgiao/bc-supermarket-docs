@@ -6346,3 +6346,31 @@ document.head.appendChild(style);
 </script>
 ```
 
+
+## Adjust the mega menu to display columns that flow vertically from left to right
+
+![custom mega menu column](img/custom-mega-menu-column-break.png)
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Head`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+var style = document.createElement('style');
+style.innerHTML = `
+@media (min-width: 801px) {
+    .navPage-subMenu-list { display: block; column-count: 4; column-gap: 0 }
+    .navPage-subMenu-item { width: 100%; display: block; break-inside: avoid }
+    .navPage-childList { column-count: 2; column-gap: 0.75rem }
+}
+`;
+document.head.appendChild(style);
+})();
+</script>
+```
