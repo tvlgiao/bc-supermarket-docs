@@ -4168,7 +4168,7 @@ Enter the script below to **Scripts contents**:
                 var $td;
                 $td = $(tr).find('td').first();
                 var item;
-                var m = $td.text().match(/([0-9]+).+([0-9]+|above)/);
+                var m = $td.text().match(/([0-9]+)[^0-9]+([0-9]+|above)/);
                 if (m) {
                     item = {
                         min: Number(m[1]) || 0,
@@ -4203,7 +4203,7 @@ Enter the script below to **Scripts contents**:
                         var percent = bulk[j].percent;
                         var priceTxt = $price.text();
                         var price = Number(priceTxt.replace(/[^0-9,.]/g, ''));
-                        var bulkPrice = (price * qty * (100 - percent) / 100).toFixed(2);
+                        var bulkPrice = (Number((price * (100 - percent) / 100).toFixed(2)) * qty).toFixed(2);
                         var bulkPriceTxt = priceTxt.replace(/[0-9.,]+/, bulkPrice);
                         $priceClone.html(bulkPriceTxt);
                     }
