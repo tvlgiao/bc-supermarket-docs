@@ -6374,3 +6374,32 @@ document.head.appendChild(style);
 })();
 </script>
 ```
+
+## Hide Quick-View, Add to Cart and Compare icons on product cards
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Head`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+var style = document.createElement('style');
+style.innerHTML = `
+@media (min-width: 801px) {
+    .productCarousel .card-buttons .card-figcaption-button.quickview::before,
+    .productGrid .card-buttons .card-figcaption-button.quickview::before,
+    .productCarousel .card-buttons .card-figcaption-button::before,
+    .productGrid .card-buttons .card-figcaption-button::before{ display: none }
+    .productCarousel .card-buttons .card-figcaption-button--compare,
+    .productGrid .card-buttons .card-figcaption-button--compare { font-size: inherit !important; text-indent: 0 !important }
+}
+`;
+document.head.appendChild(style);
+})();
+</script>
+```
