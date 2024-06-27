@@ -6403,3 +6403,23 @@ document.head.appendChild(style);
 })();
 </script>
 ```
+
+## Hide brand on product cards
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Head`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+var style = document.createElement('style');
+style.innerHTML = '.card-text--brand { display: none }';
+document.head.appendChild(style);
+})();
+</script>
+```
