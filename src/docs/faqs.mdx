@@ -6423,3 +6423,26 @@ document.head.appendChild(style);
 })();
 </script>
 ```
+
+## Fixing Quick Payment Button Sizing on Mobile
+
+If you're encountering issues with the size of Quick Payment buttons on mobile devices during checkout, or within the cart preview popup on desktop, follow these steps to resolve the problem:
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+var style = document.createElement('style');
+style.innerHTML = '@media (max-width: 550px) { #googlepaypaypalcommerceCheckoutButton { grid-column: span 12 } }'
++ '.previewCart-additionalCheckoutButtons { display: flex; flex-direction: column }';
+document.head.appendChild(style);
+})();
+</script>
+```
