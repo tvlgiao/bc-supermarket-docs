@@ -55,6 +55,7 @@ export default {
       ]
     },
     'FAQs',
+    'Release Notes',
     { name: 'Support', href: 'https://papathemes.com/contact-us/' }
   ],
   ignore: ['README.md'],
