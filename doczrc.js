@@ -41,6 +41,7 @@ export default {
         'Brands Page',
         'Instant Load',
         'Custom Popups',
+        'Social Proof',
         'Banner Sizes',
       ]
     },
