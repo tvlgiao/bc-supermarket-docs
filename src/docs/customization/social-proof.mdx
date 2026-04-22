@@ -97,6 +97,8 @@ Copy this as a starting point and adjust per feature. Keys you don't include fal
 
 Shows live-like social proof on product pages: _"12 people are viewing this"_ and _"Last ordered 8 minutes ago"_. Numbers are deterministic per product + visitor using a hashed PRNG so repeat views look consistent.
 
+![PDP Urgency Widget](../img/socialproof-urgency.png)
+
 | Key | Type | Default | Description |
 |---|---|---|---|
 | `enabled` | boolean | `true` | Master switch |
@@ -117,6 +119,8 @@ Disable the widget:
 ```
 
 ### Cart Goal Bar
+
+![Cart Goal Bar](../img/socialproof-cart-goal-bar.png)
 
 A progress bar on the cart / mini-cart that gamifies reaching checkout thresholds (free shipping, percentage discount, free gift, etc.). Thresholds are **display-only** — create an actual BigCommerce promotion that matches each milestone so customers actually receive the reward.
 
@@ -167,6 +171,8 @@ A progress bar on the cart / mini-cart that gamifies reaching checkout threshold
 
 ### Recent Sales Popup
 
+![Recent Sales Popup](../img/socialproof-recent-sales.png)
+
 A small popup in the corner of the page saying _"Someone in Chicago just bought [Product Name] — 3 minutes ago"_. Products come from BigCommerce via GraphQL Storefront API.
 
 | Key | Type | Default | Description |
@@ -216,6 +222,8 @@ A small popup in the corner of the page saying _"Someone in Chicago just bought 
 
 ### Promotional Popup
 
+![Promotional Popup](../img/socialproof-promo-popup.png)
+
 A centered modal advertising a coupon or campaign with click-to-copy of the coupon code.
 
 | Key | Type | Default | Description |
@@ -248,6 +256,8 @@ A centered modal advertising a coupon or campaign with click-to-copy of the coup
 ```
 
 ### Exit-Intent Popup
+
+![Exit-Intent Popup](../img/socialproof-exit-popup.png)
 
 Appears when the user is about to leave the page. On **desktop**, the trigger is the mouse moving out the top of the viewport. On **mobile**, since there is no mouse-leave event, the trigger is `mobileDelay` ms of user inactivity (no scroll / no tap).
 
