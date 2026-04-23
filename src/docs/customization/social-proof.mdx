@@ -13,11 +13,11 @@ From theme version 7.3.0, Supermarket ships with a suite of social-proof and mar
 
 | Feature | Default state | Enable method |
 |---|---|---|
-| PDP Urgency Widget | Enabled | `urgency.enabled: true` (default) |
-| Cart Goal Bar | Disabled | `cartGoal.enabled: true` + configure `items` |
-| Recent Sales Popup | Enabled (safe defaults) | `recentSales.enabled: true` (default) |
-| Promotional Popup | Disabled | `promo.enabled: true` |
-| Exit-Intent Popup | Disabled | `exit.enabled: true` |
+| PDP Urgency Widget | **Disabled** | `urgency.enabled: true` |
+| Cart Goal Bar | **Disabled** | `cartGoal.enabled: true` + configure `items` |
+| Recent Sales Popup | **Disabled** | `recentSales.enabled: true` |
+| Promotional Popup | **Disabled** | `promo.enabled: true` |
+| Exit-Intent Popup | **Disabled** | `exit.enabled: true` |
 | Newsletter Popup | Configured via Theme Editor | `nl_popup_show` theme setting (unchanged) |
 
 ## Configuration via Script Manager
@@ -40,6 +40,8 @@ All settings live in one JavaScript snippet injected through the BigCommerce Scr
 
 Copy this as a starting point and adjust per feature. Keys you don't include fall back to the theme defaults.
 
+All features are **disabled by default**. You only need to include the keys you want to enable.
+
 ```html
 <script>
   window.supermarketThemeSettings = {
@@ -52,7 +54,7 @@ Copy this as a starting point and adjust per feature. Keys you don't include fal
       refresh: 20000
     },
     cartGoal: {
-      enabled: false,
+      enabled: true,
       currency: 'USD',
       hideForGuests: false,
       items: [
@@ -70,7 +72,7 @@ Copy this as a starting point and adjust per feature. Keys you don't include fal
       excludePages: ['/cart.php', '/checkout']
     },
     promo: {
-      enabled: false,
+      enabled: true,
       title: 'Special Offer',
       description: 'Get 15% off your first order!',
       coupon: 'WELCOME15',
@@ -79,7 +81,7 @@ Copy this as a starting point and adjust per feature. Keys you don't include fal
       freqDays: 7
     },
     exit: {
-      enabled: false,
+      enabled: true,
       mode: 'discount',
       title: 'Wait! Before you go...',
       description: 'Here\'s 10% off to help you decide.',
@@ -101,7 +103,7 @@ Shows live-like social proof on product pages: _"12 people are viewing this"_ an
 
 | Key | Type | Default | Description |
 |---|---|---|---|
-| `enabled` | boolean | `true` | Master switch |
+| `enabled` | boolean | `false` | Master switch |
 | `viewCount` | `{ min, max }` | `{ min: 8, max: 42 }` | Range of the viewer count |
 | `viewRange` | `{ min, max }` | `{ min: 3, max: 15 }` | How much the count drifts per refresh |
 | `lastOrder` | `{ min, max }` | `{ min: 2, max: 60 }` | Minutes since last order |
@@ -177,7 +179,7 @@ A small popup in the corner of the page saying _"Someone in Chicago just bought 
 
 | Key | Type | Default | Description |
 |---|---|---|---|
-| `enabled` | boolean | `true` | Master switch |
+| `enabled` | boolean | `false` | Master switch |
 | `source` | string | `best-sellers` | One of: `best-sellers`, `new`, `featured`, `manual` |
 | `items` | array | `[]` | Required when `source: 'manual'` — see below |
 | `items[].productId` | number | — | BigCommerce product ID (OR use `sku`) |
@@ -300,7 +302,7 @@ From theme **7.3.0** onward, the newsletter popup is coordinated with the new so
 
 ## Disable All
 
-If you want to opt out of every new popup and keep only the legacy behavior:
+All features are disabled by default — no Script Manager snippet is needed if you don't want any social-proof widgets. If you previously had a snippet that enabled some features and want to revert, either remove the snippet or explicitly disable each feature:
 
 ```html
 <script>
