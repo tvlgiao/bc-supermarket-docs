@@ -11,7 +11,7 @@ From theme version 7.3.0, Supermarket ships with a suite of social-proof and mar
 
 ## Overview
 
-| Feature | Default state | Enable method |
+| Feature | Default state (production) | Enable method |
 |---|---|---|
 | PDP Urgency Widget | **Disabled** | `urgency.enabled: true` |
 | Cart Goal Bar | **Disabled** | `cartGoal.enabled: true` + configure `items` |
@@ -19,6 +19,21 @@ From theme version 7.3.0, Supermarket ships with a suite of social-proof and mar
 | Promotional Popup | **Disabled** | `promo.enabled: true` |
 | Exit-Intent Popup | **Disabled** | `exit.enabled: true` |
 | Newsletter Popup | Configured via Theme Editor | `nl_popup_show` theme setting (unchanged) |
+
+> Inside the BigCommerce **theme editor preview panel**, any widget you haven't configured in Script Manager renders with demo content so merchants can evaluate the feature before enabling it. See [Theme Editor Preview](#theme-editor-preview) below. Production shoppers always see the defaults above until you opt-in.
+
+## Theme Editor Preview
+
+From theme version **7.3.0**, the social-proof widgets automatically render with **demo content** inside the BigCommerce Stencil **theme editor preview panel** — so merchants can evaluate each widget in the editor without first adding a Script Manager snippet.
+
+Rules:
+
+- **Only inside the editor.** Detection requires both an iframe context and the `?stencilEditor=` URL param that BigCommerce adds to every editor preview URL. Production shoppers never see demo content.
+- **Per-feature, only when unset.** For each feature (`urgency`, `cartGoal`, `recentSales`, `promo`, `exit`), demo content fills in **only** when that key is missing from `window.supermarketThemeSettings`. If you've configured a feature — including explicitly disabling it with `enabled: false` — the editor preview respects your configuration exactly.
+- **Unknown top-level keys pass through.** Any custom keys you add to `window.supermarketThemeSettings` that are not part of the standard schema are preserved unchanged in both editor and production.
+- **Not a security boundary.** This is a best-effort environment check; the only consequence of a false-positive is demo copy being shown. No shopper data, auth, or state is gated on this check.
+
+To preview a specific feature in the editor without shipping it to shoppers, simply **do not** add a Script Manager snippet for that feature — the demo fills in automatically in the editor and the feature stays off in production. To test an explicit disable, add `{ urgency: { enabled: false } }` etc. to the Script Manager snippet.
 
 ## Configuration via Script Manager
 
