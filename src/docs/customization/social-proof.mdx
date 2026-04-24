@@ -28,7 +28,7 @@ From theme version **7.3.0**, the social-proof widgets automatically render with
 
 Rules:
 
-- **Only inside the editor.** Detection requires both an iframe context and the `?stencilEditor=` URL param that BigCommerce adds to every editor preview URL. Production shoppers never see demo content.
+- **Only inside the editor.** Detection keys off `window.previewSdk.themeEditor` — the Page Builder / theme editor SDK global BigCommerce injects into the storefront iframe when rendering a page in the editor. Production shoppers never see demo content because this global is not present on regular page loads.
 - **Per-feature, only when unset.** For each feature (`urgency`, `cartGoal`, `recentSales`, `promo`, `exit`), demo content fills in **only** when that key is missing from `window.supermarketThemeSettings`. If you've configured a feature — including explicitly disabling it with `enabled: false` — the editor preview respects your configuration exactly.
 - **Unknown top-level keys pass through.** Any custom keys you add to `window.supermarketThemeSettings` that are not part of the standard schema are preserved unchanged in both editor and production.
 - **Not a security boundary.** This is a best-effort environment check; the only consequence of a false-positive is demo copy being shown. No shopper data, auth, or state is gated on this check.
