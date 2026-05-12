@@ -8,6 +8,28 @@ route: /changelog
 -   Highly recommend making a backup copy of your current theme before updating to the newer version.
 -   Please note that if your theme files have been modified, it cannot be updated automatically. Please [contact us](/contact-us/) for a quote on manual updates.
 
+## 7.3.0 (05-12-2026)
+- [CORNERSTONE] Bump stencil-utils to 6.23.0.
+- Fix: Out of stock alert overlaps Add to Cart button when product allows back-ordering or when a purchasable variant is selected (#45).
+- Fix: Filter accordion +/- toggle button is not keyboard accessible when filters start collapsed (#39).
+- [CORNERSTONE] Backorder availability prompt on PDP — shows merchant-configured prompt text next to stock count when product has backorder stock available; updates dynamically on variant change ([#2592](https://github.com/bigcommerce/cornerstone/pull/2592))
+- [CORNERSTONE] Backordered quantity message on PDP — shows "{n} will be backordered" when selected quantity exceeds on-hand stock ([#2613](https://github.com/bigcommerce/cornerstone/pull/2613))
+- [CORNERSTONE] Backorder support for complex products (variants) — prompt and quantity message update correctly on variant/option change ([#2618](https://github.com/bigcommerce/cornerstone/pull/2618), [#2619](https://github.com/bigcommerce/cornerstone/pull/2619))
+- [CORNERSTONE] Custom backorder message on PDP — shows merchant-configured message alongside the backordered quantity line ([#2625](https://github.com/bigcommerce/cornerstone/pull/2625))
+- [CORNERSTONE] Cart line item backorder messages — shows quantity on hand, quantity backordered, and backorder message per item, controlled by individual inventory settings ([#2608](https://github.com/bigcommerce/cornerstone/pull/2608))
+- [CORNERSTONE] Shipping expectation prompt in cart totals — shows default_shipping_expectation_prompt in the Shipping row ([#2622](https://github.com/bigcommerce/cornerstone/pull/2622), [#2624](https://github.com/bigcommerce/cornerstone/pull/2624))
+- Feature: Add page transition overlay when navigating between pages.
+- [CORNERSTONE] Dispatch an event on productOptionsChanged ([#2400](https://github.com/bigcommerce/cornerstone/pull/2400))
+- [CORNERSTONE] Fix: swap content/data keys in onProductOptionsChanged event detail ([#2640](https://github.com/bigcommerce/cornerstone/pull/2640))
+- Feature: Add PDP urgency widget (viewing count + last purchase time). Enabled by default. Configure via Script Manager with `window.supermarketThemeSettings.urgency`.
+- Feature: Add cart goal progress bar with multi-milestone support (free shipping, discount, gift, etc.). Disabled by default. Enable via Script Manager with `window.supermarketThemeSettings.cartGoal`.
+- Feature: Add recent sales mini-popup sourced from best-sellers / new / featured / manual products. Enabled by default with safe settings (delay 8s, max 3 shows per session). Configure via `window.supermarketThemeSettings.recentSales`.
+- Feature: Add promotional popup with coupon code and clipboard copy. Disabled by default. Configure via `window.supermarketThemeSettings.promo`.
+- Feature: Add exit-intent popup (desktop mouse-leave / mobile inactivity). Disabled by default. Configure via `window.supermarketThemeSettings.exit`.
+- Change: Existing newsletter popup now coordinates with new popups through a priority queue to prevent overlap. Theme settings (`nl_popup_*`) and cookie (`NL_POPUP_HIDE`) preserved.
+- Change: Social proof widgets now render with demo content inside the BigCommerce theme editor preview panel when a given feature is not configured in Script Manager. Merchant-configured features (including explicit disables) are respected unchanged. Production shoppers see no change.
+- Docs: New user guide at `customization/social-proof` covering configuration and examples.
+
 ## 7.2.0 (12-12-2025)
 - Feature: [Suggest Keywords for Quick Search](/customization/header#quick-search---keyword-suggestions) (#36)
 
