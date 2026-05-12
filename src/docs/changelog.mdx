@@ -21,11 +21,26 @@ route: /changelog
 - Feature: Add page transition overlay when navigating between pages.
 - [CORNERSTONE] Dispatch an event on productOptionsChanged ([#2400](https://github.com/bigcommerce/cornerstone/pull/2400))
 - [CORNERSTONE] Fix: swap content/data keys in onProductOptionsChanged event detail ([#2640](https://github.com/bigcommerce/cornerstone/pull/2640))
-- Feature: Add PDP urgency widget (viewing count + last purchase time). Enabled by default. Configure via Script Manager with `window.supermarketThemeSettings.urgency`.
-- Feature: Add cart goal progress bar with multi-milestone support (free shipping, discount, gift, etc.). Disabled by default. Enable via Script Manager with `window.supermarketThemeSettings.cartGoal`.
-- Feature: Add recent sales mini-popup sourced from best-sellers / new / featured / manual products. Enabled by default with safe settings (delay 8s, max 3 shows per session). Configure via `window.supermarketThemeSettings.recentSales`.
-- Feature: Add promotional popup with coupon code and clipboard copy. Disabled by default. Configure via `window.supermarketThemeSettings.promo`.
-- Feature: Add exit-intent popup (desktop mouse-leave / mobile inactivity). Disabled by default. Configure via `window.supermarketThemeSettings.exit`.
+- Feature: Add PDP urgency widget (viewing count + last purchase time). Disabled by default. Enable via Script Manager with `window.supermarketThemeSettings.urgency`. See [PDP Urgency Widget](/customization/social-proof#pdp-urgency-widget).
+
+  ![PDP Urgency Widget](./img/socialproof-urgency.png)
+
+- Feature: Add cart goal progress bar with multi-milestone support (free shipping, discount, gift, etc.). Disabled by default. Enable via Script Manager with `window.supermarketThemeSettings.cartGoal`. See [Cart Goal Bar](/customization/social-proof#cart-goal-bar).
+
+  ![Cart Goal Bar](./img/socialproof-cart-goal-bar.png)
+
+- Feature: Add recent sales mini-popup sourced from best-sellers / new / featured / manual products. Disabled by default. Enable via `window.supermarketThemeSettings.recentSales` (safe defaults: delay 8s, max 3 shows per session). See [Recent Sales Popup](/customization/social-proof#recent-sales-popup).
+
+  ![Recent Sales Popup](./img/socialproof-recent-sales.png)
+
+- Feature: Add promotional popup with coupon code and clipboard copy. Disabled by default. Configure via `window.supermarketThemeSettings.promo`. See [Promotional Popup](/customization/social-proof#promotional-popup).
+
+  ![Promotional Popup](./img/socialproof-promo-popup.png)
+
+- Feature: Add exit-intent popup (desktop mouse-leave / mobile inactivity). Disabled by default. Configure via `window.supermarketThemeSettings.exit`. See [Exit-Intent Popup](/customization/social-proof#exit-intent-popup).
+
+  ![Exit-Intent Popup](./img/socialproof-exit-popup.png)
+
 - Change: Existing newsletter popup now coordinates with new popups through a priority queue to prevent overlap. Theme settings (`nl_popup_*`) and cookie (`NL_POPUP_HIDE`) preserved.
 - Change: Social proof widgets now render with demo content inside the BigCommerce theme editor preview panel when a given feature is not configured in Script Manager. Merchant-configured features (including explicit disables) are respected unchanged. Production shoppers see no change.
 - Docs: New user guide at `customization/social-proof` covering configuration and examples.
