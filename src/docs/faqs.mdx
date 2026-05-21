@@ -6494,3 +6494,36 @@ Enter the script below in **Scripts contents**:
 ```
 
 This script adds proper padding to the cart totals section to accommodate Affirm messaging display.
+
+
+## Stock level not showing on product page for some products or variants
+
+**Symptom:** Even though **Advanced Settings** > **Inventory** > **Stock level display** is set to `Show stock levels`, the stock number is missing on the product page for some products — or it disappears after selecting a variant (e.g. picking a color/size swatch), while other products show it correctly.
+
+**Cause:** This is a known theme bug affecting the built-in stock-level display on the product page. It is fixed in the next theme update.
+
+**Workaround:** Enable the **Social Proof** PDP Urgency widget with only the stock level turned on. The urgency widget renders the stock level reliably; setting `viewCount` and `lastOrder` to `false` keeps the random "people viewing" and "last ordered" messages hidden, so shoppers only see the stock number.
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+  window.supermarketThemeSettings = {
+    urgency: {
+      enabled: true,
+      viewCount: false,
+      lastOrder: false
+    }
+  };
+</script>
+```
+
+This shows the stock level on the product page but does not display the random view count or last-order messages.
+
+> **Note:** If you already use a `window.supermarketThemeSettings` snippet for other Social Proof features, do not add a second one — merge the `urgency` key into your existing snippet instead. See [Social Proof — Starter snippet](/customization/social-proof#starter-snippet) and the [PDP Urgency Widget](/customization/social-proof#pdp-urgency-widget) reference for all available options.
