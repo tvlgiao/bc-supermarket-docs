@@ -8,6 +8,15 @@ route: /changelog
 -   Highly recommend making a backup copy of your current theme before updating to the newer version.
 -   Please note that if your theme files have been modified, it cannot be updated automatically. Please [contact us](/contact-us/) for a quote on manual updates.
 
+## Draft
+- Fix: Hero carousel is now full-bleed (full-width) on every screen with a consistent aspect ratio. All slides reserve the first slide's ratio and use an absolutely-filled object-fit:cover image, so the carousel keeps the correct ratio, stays the same height across slides, and no longer jumps when Slick initializes (was up to +288px CLS). Affects all variations.
+- Feature: Add server-rendered skeleton placeholder to Products by Category Sorting Tabs so the section reserves its exact layout (cards, subcategory sidebar) while products load, eliminating layout shift (CLS). Respects `prefers-reduced-motion`.
+- Change: Product names in Products by Category Sorting Tabs are clamped to two lines with an ellipsis, giving every card a uniform height.
+- Change: The Products by Category Sorting Tabs banner now reserves a fixed aspect ratio (recommended upload 1448 x 525, cropped to fit) so loading the image no longer shifts the layout (CLS).
+- Fix: Products by Category Sorting Tabs skeleton now renders the real subcategory links in the sidebar instead of fixed-height placeholder bars, so the banner/sidebar row reserves its exact height at narrow viewports and no longer shifts the layout when products load (CLS).
+- Fix: Products by Category Sorting Tabs boxes now include products from subcategories. Switched the GraphQL query from `category.products` (returns directly-assigned products only) to `search.searchProducts` with `searchSubCategories: true` (#12741).
+- Fix: Social proof stock pill now always shows the variant stock count, even when the urgency widget is disabled. Previously the pill was gated behind the urgency feature flag (off by default), so stores not using urgency lost the native stock display entirely.
+
 ## 7.3.0 (05-12-2026)
 - [CORNERSTONE] Bump stencil-utils to 6.23.0.
 - Fix: Out of stock alert overlaps Add to Cart button when product allows back-ordering or when a purchasable variant is selected (#45).
