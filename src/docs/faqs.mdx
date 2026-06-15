@@ -884,6 +884,104 @@ Enter the script below to **Scripts contents**:
 ```
 
 
+## Show the discounted shipping price with strikethrough on the cart shipping estimator
+
+When a shipping discount or promotion applies, the cart's **Estimate Shipping** box shows the full shipping price instead of the discounted one. This snippet displays the original price with a strikethrough next to the discounted price (e.g. ~~$19.99~~ $9.99). Shipping methods without a discount are left unchanged.
+
+This is available natively in the latest theme version (it shows `cost_after_discount` returned by BigCommerce). Use this snippet only if you cannot update the theme. It reads the shipping-quote response the theme already requests, so it does not make any extra network calls; it does nothing when there is no shipping discount.
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function () {
+    'use strict';
+
+    var QUOTE_PATH = '/remote/v1/shipping-quote';
+    var APPLIED_ATTR = 'data-shipping-discount-applied';
+    var origFetch = window.fetch;
+
+    if (typeof origFetch !== 'function') { return; }
+
+    var style = document.createElement('style');
+    style.innerHTML = '.shipping-quotes .estimator-form-input--price .price--discounted { text-decoration: line-through; opacity: .7; margin-right: .35em; }';
+    document.head.appendChild(style);
+
+    window.fetch = function (input, init) {
+        var url = typeof input === 'string' ? input : (input && input.url) || '';
+        var result = origFetch.apply(this, arguments);
+
+        if (url.indexOf(QUOTE_PATH) === -1) { return result; }
+
+        return result.then(function (response) {
+            try {
+                response.clone().json()
+                    .then(function (json) {
+                        var quotes = json && json.data && json.data.quotes;
+                        if (quotes) { decorateWhenReady(collectDiscounted(quotes)); }
+                    })
+                    .catch(function () {});
+            } catch (e) {}
+            return response;
+        });
+    };
+
+    function collectDiscounted(quotes) {
+        var map = {};
+        ['shipping_methods', 'ups_shipping_methods'].forEach(function (group) {
+            (quotes[group] || []).forEach(function (m) {
+                if (m && m.cost_after_discount && m.cost && m.cost.formatted) {
+                    map['shipping-quote-' + m.type + '-' + m.id] = m;
+                }
+            });
+        });
+        return map;
+    }
+
+    function decorateWhenReady(map) {
+        if (!Object.keys(map).length) { return; }
+        var attempts = 0;
+        (function attempt() {
+            var remaining = decorate(map);
+            attempts += 1;
+            if (remaining && attempts < 25) { setTimeout(attempt, 100); }
+        })();
+    }
+
+    function decorate(map) {
+        var pending = false;
+        Object.keys(map).forEach(function (id) {
+            var input = document.getElementById(id);
+            var row = input && input.closest('.estimator-form-row');
+            var label = row && row.querySelector('.estimator-form-input--price label');
+
+            if (!label) { pending = true; return; }
+            if (label.getAttribute(APPLIED_ATTR)) { return; }
+            if (label.querySelector('.price--discounted')) { label.setAttribute(APPLIED_ATTR, '1'); return; }
+
+            var m = map[id];
+            label.innerHTML =
+                '<span class="price--discounted"><b>' + esc(m.cost.formatted) + '</b></span>'
+                + '<span><b>' + esc(m.cost_after_discount.formatted) + '</b></span>';
+            label.setAttribute(APPLIED_ATTR, '1');
+        });
+        return pending;
+    }
+
+    function esc(str) {
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+})();
+</script>
+```
+
+
 ## Fix quick search popup cut off when the header is configured sticky
 
 Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
