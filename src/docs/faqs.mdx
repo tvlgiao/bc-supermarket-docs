@@ -6625,3 +6625,69 @@ Enter the script below to **Scripts contents**:
 This shows the stock level on the product page but does not display the random view count or last-order messages.
 
 > **Note:** If you already use a `window.supermarketThemeSettings` snippet for other Social Proof features, do not add a second one — merge the `urgency` key into your existing snippet instead. See [Social Proof — Starter snippet](/customization/social-proof#starter-snippet) and the [PDP Urgency Widget](/customization/social-proof#pdp-urgency-widget) reference for all available options.
+
+
+## Fix loading skeleton stuck in the "Added to cart" popup
+
+When you add a product from a product **card/grid** (home, category or brand pages), the "X item(s) added to your cart" popup may show three grey placeholder bars (a loading skeleton of the Cart Shipping Goal Bar) stuck at the top forever.
+
+This happens because adding from a card goes through a different code path than adding from the product page, and — in older theme versions — that path did not notify the Cart Goal Bar that the popup had finished loading. The bar is therefore never hydrated (when the feature is enabled) nor hidden (the default), so its skeleton lingers.
+
+This is already fixed natively in the latest theme version. Use this snippet only if you cannot update the theme yet. It makes no network calls, and it watches only the "Added to cart" popup element (idle until you add a product), so it adds no ongoing scanning cost to the rest of the page. **Remove it after you update the theme.**
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `All pages`
+- **Script type** = `Script`
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function () {
+    'use strict';
+
+    // The "Added to cart" popup is a static container present at page load;
+    // only its inner content is replaced per add. Observing just this element
+    // (instead of document.body) keeps the observer idle until a product is
+    // added — no page-wide mutation scanning.
+    var modal = document.getElementById('previewModal');
+    if (!modal || !window.MutationObserver) { return; }
+
+    var SELECTOR = '[data-papathemes-cart-goal][aria-busy="true"]:not([data-sm-goal-fixed])';
+
+    function notifyCartUpdated() {
+        try {
+            document.dispatchEvent(new CustomEvent('supermarket:cart-updated', {
+                detail: { subtotal: null },
+            }));
+        } catch (e) {
+            // Never let this break the cart preview.
+        }
+    }
+
+    function scan() {
+        var pending = modal.querySelectorAll(SELECTOR);
+        if (!pending.length) { return; }
+        // Mark first so the event handler's DOM changes can't re-trigger us.
+        for (var i = 0; i < pending.length; i++) {
+            pending[i].setAttribute('data-sm-goal-fixed', '1');
+        }
+        // Handler re-reads data-subtotal from the freshly injected element.
+        notifyCartUpdated();
+    }
+
+    var scheduled = false;
+    new MutationObserver(function () {
+        if (scheduled) { return; }
+        scheduled = true;
+        // Coalesce the burst of mutations from injecting the popup HTML.
+        setTimeout(function () {
+            scheduled = false;
+            scan();
+        }, 50);
+    }).observe(modal, { childList: true, subtree: true });
+})();
+</script>
+```
