@@ -6691,3 +6691,54 @@ Enter the script below to **Scripts contents**:
 })();
 </script>
 ```
+
+
+## Show full product titles on the homepage (disable truncation)
+
+By default, the homepage's Featured / New / Best-selling tabs and the Products by category tabs clamp product titles to 2 lines so every card in a row keeps the same height, while the rest of the site (category, search and product carousels) already shows full titles. The snippet below restores full, untruncated titles on the homepage as well.
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Header`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+We use **Header** here (not Footer) so the styles apply before the page first paints, otherwise the titles would briefly show clamped to 2 lines and then jump to full length.
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function() {
+    var css = document.createElement('style');
+    css.innerHTML = `
+        .emthemesModez-specialProductsTabs .card-title > a,
+        .emthemesModez-productsByCategoryTabs .card-title > a {
+            display: block !important;
+            overflow: visible !important;
+            -webkit-line-clamp: unset !important;
+        }
+    `;
+    document.head.appendChild(css);
+})();
+</script>
+```
+
+The theme's `min-height` on the title is left untouched, so 1-line titles still reserve the 2-line height and stay aligned with taller cards in the same row.
+
+If you prefer a hard cap (the "at least 3 or 4 lines" case) rather than fully unbounded titles, keep the theme's clamp but raise the line count, and bump the reserved height so short titles stay aligned. Replace the CSS inside the backticks above with:
+
+```css
+.emthemesModez-specialProductsTabs .card-title > a,
+.emthemesModez-productsByCategoryTabs .card-title > a {
+    -webkit-line-clamp: 3 !important; /* set 4 for four lines */
+}
+.emthemesModez-specialProductsTabs .card-title,
+.emthemesModez-productsByCategoryTabs .card-title {
+    min-height: 3.75em !important; /* ~3 lines; use ~5em for four lines */
+}
+```
+
+Unbounded (first snippet) shows the complete title but rows can vary in height; the 3/4-line variant keeps a hard cap while showing more than the default 2 lines.
+
+With full titles, each row's cards still stretch to the same outer height, but the inner rows (price, add-to-cart) may not line up across cards because the title line-count now varies. If any product carousel looks uneven, see **Make all product card items in carousel (Related Products, Customer Also Viewed) same height** above.
