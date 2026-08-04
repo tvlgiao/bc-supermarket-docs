@@ -8,6 +8,19 @@ route: /changelog
 -   Highly recommend making a backup copy of your current theme before updating to the newer version.
 -   Please note that if your theme files have been modified, it cannot be updated automatically. Please [contact us](/contact-us/) for a quote on manual updates.
 
+## 7.5.0 (08-04-2026)
+- Feature: BigCommerce Featured Promotions — the callout a merchant attaches to an automatic promotion now shows under the price on product cards and product pages instead of only appearing in the cart. New Theme Editor group **Products** > **Featured Promotions** with an on/off switch and a colour pair per variation. JS-built cards (home tabs, Products by Category tabs) fall back safely on stores where the `featuredPromotions` GraphQL field has not been rolled out yet ([#2695](https://github.com/bigcommerce/cornerstone/pull/2695), [#2702](https://github.com/bigcommerce/cornerstone/pull/2702))
+- Feature: BigCommerce Backorders Phase 1.1 storefront messaging — availability prompt, backordered and ready-to-ship quantities, the merchant's backorder message and the shipping expectation note on the product page, cart, header cart dropdown and account order details, including per-pick-list-option stock and sell limits. Also corrects the partial 7.3.0 port, where quick view and Also Bought read the page product's stock and a backorderable product could be labelled Sold Out (#64)
+- [CORNERSTONE] Introduce strikethrough display for discounted shipping quote prices on cart page ([#2611](https://github.com/bigcommerce/cornerstone/pull/2611))
+- Fix: Homepage lost its Featured and Bestselling tabs and its Products by Category sections after a browser Back navigation with [Instant Load](/customization/instant-load) enabled (#51)
+- Fix: Homepage product tabs showed 4 products instead of 12 — always on mobile, and on the Featured and Bestselling tabs on desktop (#52)
+- Fix: Hero carousel slides after the first one always downloaded the 640px-wide image no matter how wide the carousel actually was, so they looked blurry on desktop. Introduced in 7.4.0. (#56)
+- Fix: Hero carousel's first slide downloaded an oversized image on layouts with a left sidebar (#59)
+- Fix: Product page main image downloaded a file up to 9x larger than needed, plus a second one it never displayed, when [Responsive main product images](/customization/product-page#responsive-main-product-images) is enabled (#61)
+- Fix: Lazyloading Mode "Lazyload with LQIP" never produced a low-quality placeholder, and "Disabled" never rendered the product page main image eagerly (#61)
+- Fix: Product gallery thumbnails could download a full-size image for a 33px slot around the 801px breakpoint, wasting about 54KB per page load (#61)
+- Fix: [Social proof](/customization/social-proof) stock pill low-stock highlight now uses the product's BigCommerce Low stock level instead of a hard-coded 10 (#55)
+
 ## 7.4.0 (06-12-2026)
 - Fix: Hero carousel is now full-bleed (full-width) on every screen with a consistent aspect ratio. All slides reserve the first slide's ratio and use an absolutely-filled object-fit:cover image, so the carousel keeps the correct ratio, stays the same height across slides, and no longer jumps when Slick initializes (was up to +288px CLS). Affects all variations.
 - Feature: Add server-rendered skeleton placeholder to Products by Category Sorting Tabs so the section reserves its exact layout (cards, subcategory sidebar) while products load, eliminating layout shift (CLS). Respects `prefers-reduced-motion`.
