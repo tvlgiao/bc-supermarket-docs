@@ -6742,3 +6742,80 @@ If you prefer a hard cap (the "at least 3 or 4 lines" case) rather than fully un
 Unbounded (first snippet) shows the complete title but rows can vary in height; the 3/4-line variant keeps a hard cap while showing more than the default 2 lines.
 
 With full titles, each row's cards still stretch to the same outer height, but the inner rows (price, add-to-cart) may not line up across cards because the title line-count now varies. If any product carousel looks uneven, see **Make all product card items in carousel (Related Products, Customer Also Viewed) same height** above.
+
+
+## Fix HTML tags showing in the store credit line in the mobile menu
+
+In versions 7.3.0 to 7.5.0, a logged-in customer with store credit sees raw HTML in the mobile / tablet navigation menu instead of the formatted amount:
+
+```
+<SPAN CLASS='FIRSTWORD'>$212.59 USD</SPAN>STORE CREDIT
+```
+
+The desktop header is not affected. The store credit label contains a small `<span>` so the amount can be styled separately from the words "Store Credit", but the mobile menu escapes it, so the tag is printed as text. The same line also uses a fixed grey that does not match the other items in the menu — on a dark navigation it falls below the WCAG AA contrast minimum.
+
+This is fixed in the theme from the release after 7.5.0. Until you update, the snippet below repairs it without editing any theme file.
+
+Go to **Storefront** > **Script Manager**, click **Create a Script**, choose:
+
+- **Location on page** = `Footer`
+- **Select pages where script will be added** = `Store Pages`
+- **Script type** = `Script`
+
+We use **Footer** here so the menu markup already exists when the script runs. There is no visible flicker because the mobile menu is closed until the shopper taps the hamburger icon.
+
+Enter the script below to **Scripts contents**:
+
+```html
+<script>
+(function () {
+    var RE = /^<span class=['"]firstword['"]>([\s\S]*?)<\/span>([\s\S]*)$/i;
+
+    function fix() {
+        var items = document.querySelectorAll('.navPages-action--storeCredit');
+        if (!items.length) return;
+
+        var ref = document.querySelector('.navPages-action:not(.navPages-action--storeCredit)');
+        var navColor = ref ? getComputedStyle(ref).color : '';
+
+        for (var i = 0; i < items.length; i++) {
+            var el = items[i];
+            if (el.hasAttribute('data-storecredit-fixed')) continue;
+
+            var m = el.textContent.trim().match(RE);
+            if (!m) continue;
+
+            el.setAttribute('data-storecredit-fixed', '1');
+
+            var span = document.createElement('span');
+            span.className = 'firstword';
+            span.textContent = m[1];
+            span.style.marginRight = '0.35em';
+
+            el.textContent = '';
+            el.appendChild(span);
+            el.appendChild(document.createTextNode(m[2]));
+
+            if (navColor) el.style.color = navColor;
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fix);
+    } else {
+        fix();
+    }
+})();
+</script>
+```
+
+The store credit line will read `$212.59 USD STORE CREDIT` on one line, in the same colour and weight as the ACCOUNT and SIGN OUT items below it. Hard-refresh on your phone, or use a private tab, to clear the cached page.
+
+A few notes on how it behaves:
+
+- The colour is read from the menu item next to it at runtime rather than hard-coded, so it follows whatever you set as the navigation colour in **Theme Settings**.
+- The label is rebuilt from plain text using `createElement` and `textContent` rather than by assigning `innerHTML`, so the snippet cannot introduce a scripting issue.
+- It only rewrites the line while the tags are still printed as text. Once you update to a theme version where this is fixed, the snippet does nothing — so it is safe to leave in place, and safe if it runs more than once.
+- Nothing outside the mobile menu store credit line is touched.
+
+If you prefer the amount on its own line above the words, matching the desktop header, add `span.style.display = 'block';` and `span.style.marginRight = '0';` in place of the existing `span.style.marginRight` line.
