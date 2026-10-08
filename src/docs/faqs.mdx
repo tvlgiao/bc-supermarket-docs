@@ -2107,19 +2107,41 @@ Enter the script below to **Scripts contents**:
 
 ```html
 <script>
-    (function() {
-        var css = document.createElement('style');
-        css.innerHTML = ''
-            + '@media (max-width: 800px) {'
-            + '.emthemesModez-header-topSection .navUser:last-child { position: absolute; left: 0; top: 55px; width: 100%; transform: none }'
-            + '.emthemesModez-header-topSection .navUser:last-child .navUser-section { display: block; float: none;  }'
-            + '.emthemesModez-header-topSection .navUser:last-child .navUser-item:last-child { display:block;  text-align: center; width: 100%; background: black; height: 34px; }'
-            + 'body { padding-top: 89px }'
-            + '}'
-        ;document.head.appendChild(css);
-    })();
+(function () {
+  if (document.getElementById('pt-mobile-infobar')) return;
+  var header = document.querySelector('.header');
+  var nav = document.querySelector('.emthemesModez-header-topSection .navUser:last-child .navUser-section');
+  if (!header || !nav) return;
+
+  var bar = document.createElement('div');
+  bar.id = 'pt-mobile-infobar';
+  var phone = nav.querySelector('.navUser-item:first-child .navUser-action');
+  if (phone) bar.appendChild(phone.cloneNode(true));
+  var account = nav.querySelector('.navUser-item--account');
+  if (account) {
+    var links = document.createElement('span');
+    links.className = 'pt-infobar-account';
+    links.innerHTML = account.innerHTML;
+    bar.appendChild(links);
+  }
+  header.parentNode.insertBefore(bar, header.nextSibling);
+
+  var css = document.createElement('style');
+  css.textContent = ''
+    + '#pt-mobile-infobar { display: none }'
+    + '@media (max-width: 800px) {'
+    + '#pt-mobile-infobar { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 20px; padding: 7px 12px; background: #000; color: #fff; font-size: 14px; line-height: 20px }'
+    + '#pt-mobile-infobar .navUser-action, #pt-mobile-infobar .navUser-or { display: inline-flex; align-items: center; padding: 0; color: #fff; font-size: 14px; text-decoration: none }'
+    + '#pt-mobile-infobar .navUser-or { margin: 0 6px }'
+    + '#pt-mobile-infobar .icon { display: inline-block; width: 14px; height: 14px; margin-right: 6px }'
+    + '#pt-mobile-infobar .icon svg { display: block; width: 14px; height: 14px; fill: currentColor }'
+    + '}';
+  document.head.appendChild(css);
+})();
 </script>
 ```
+
+On screens up to 800px wide this adds a bar below the header with the phone number (tap to call) and the Sign In / Register links. The bar scrolls with the page, so it never covers the page content.
 
 
 ## Translate language in Optimized Checkout Page and Order Confirmation Page without editing theme files.
