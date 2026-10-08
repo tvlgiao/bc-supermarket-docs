@@ -1176,19 +1176,40 @@ Enter the script below to **Scripts contents**:
 
 ```html
 <script>
-(function() {
-    var style = document.createElement('style');
-    style.innerHTML = ''
-    + '@media(max-width:800px) {'
-    + '.emthemesModez-header-topSection .navUser { z-index: 25; right: 55px }'
-    + '.emthemesModez-header-topSection .navUser:last-child .navUser-section .navUser-item:first-child { display: block; margin-right: 0; border: 0 } '
-	+ '.emthemesModez-header-topSection .navUser:last-child .navUser-section .navUser-item:first-child .navUser-action { padding-left: 0; padding-right: 0; font-size: 14px }'
-	+ '.emthemesModez-header-topSection .navUser:last-child .navUser-section .navUser-item:first-child .navUser-item-icon { padding-right: 5px; font-size: 20px }'
+(function () {
+  if (document.getElementById('pt-mobile-header-phone')) return;
+  var phone = '.emthemesModez-header-topSection .navUser:last-child .navUser-section .navUser-item:first-child';
+
+  var css = document.createElement('style');
+  css.id = 'pt-mobile-header-phone';
+  css.textContent = ''
+    + phone + ' .icon svg.pt-phone-line { display: none }'
+    + '@media (max-width: 800px) {'
+    + '.emthemesModez-header-topSection .navUser:last-child { z-index: 25; right: 90px }'
+    + phone + ' { display: block; margin: 0; border: 0 }'
+    + phone + ' .navUser-action { display: flex; align-items: center; padding: 0 6px; font-size: 14px; color: #282828 }'
+    + phone + ' .icon { width: 20px; height: 20px; margin-right: 5px }'
+    + phone + ' .icon svg { display: none }'
+    + phone + ' .icon svg.pt-phone-line { display: block; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round }'
+    + '}'
+    + '@media (max-width: 619px) {'
+    + phone + ' .navUser-action span { display: none }'
+    + phone + ' .icon { margin-right: 0 }'
+    + '}'
+    + '@media (max-width: 550px) {'
+    + '.emthemesModez-header-topSection .navUser:last-child { right: 52px }'
     + '}';
-    document.head.appendChild(style);
+  document.head.appendChild(css);
+
+  var icon = document.querySelector(phone + ' .icon');
+  if (icon && !icon.querySelector('.pt-phone-line')) {
+    icon.insertAdjacentHTML('beforeend', '<svg class="pt-phone-line" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>');
+  }
 })();
 </script>
 ```
+
+On phones narrower than 620px the header shows a phone icon (tap to call) next to the cart; from 620px to 800px the full number is shown. The desktop header is not changed. If your logo is much wider than 125px, increase `619px` in the script so the number does not touch the logo.
 
 
 ## Fix instagram photos display uniform
